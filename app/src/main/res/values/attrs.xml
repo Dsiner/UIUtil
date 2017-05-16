@@ -5,4 +5,16 @@
         <attr name="ctvColorCircle" format="color" />
         <attr name="ctvStrokeWidth" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="LrcView">
+        <attr name="lrcTextColor" format="color" />
+        <attr name="lrcCurTextColor" format="color" />
+        <attr name="lrcTimeColor" format="color" />
+        <attr name="lrcTextSize" format="dimension" />
+        <attr name="lrcCurTextSize" format="dimension" />
+        <attr name="lrcTimeSize" format="dimension" />
+        <attr name="lrcPadding" format="dimension" />
+        <attr name="lrcMinScale" format="float" />
+        <attr name="lrcMaxScale" format="float" />
+    </declare-styleable>
 </resources>

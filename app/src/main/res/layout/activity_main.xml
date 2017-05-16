@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/tr_padding">
+        android:padding="@dimen/dimens_padding">
 
         <com.d.uiutil.tick.CTickViewTest
             android:layout_width="match_parent"
@@ -17,24 +17,32 @@
         <com.d.uiutil.replybg.ReplyBgView
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_marginTop="@dimen/tr_padding"
+            android:layout_marginTop="@dimen/dimens_padding"
             android:background="#00000000" />
 
         <com.d.uiutil.tab.TabViewTest
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/tr_padding"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_padding"
             android:orientation="vertical" />
 
         <com.d.uiutil.vs.VSViewTest
             android:layout_width="match_parent"
             android:layout_height="34dp"
-            android:layout_marginTop="@dimen/tr_padding"
+            android:layout_marginTop="@dimen/dimens_padding"
             android:orientation="vertical" />
 
         <com.d.uiutil.stroke.HoleBgView
             android:layout_width="match_parent"
             android:layout_height="190dp"
-            android:layout_marginTop="@dimen/tr_padding" />
+            android:layout_marginTop="@dimen/dimens_padding" />
+
+        <Button
+            android:id="@+id/btn_lrc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_padding"
+            android:gravity="center"
+            android:text="lrc" />
     </LinearLayout>
 </ScrollView>

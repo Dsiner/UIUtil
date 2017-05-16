@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.d.uiutil.R;
 
@@ -13,9 +13,9 @@ import com.d.uiutil.R;
  * TabView Test
  * Created by D on 2017/4/20.
  */
-
 public class TabViewTest extends LinearLayout implements TabView.OnTabSelectedListener {
     private Context context;
+    private TextView tvTab;
 
     public TabViewTest(Context context) {
         this(context, null);
@@ -34,12 +34,13 @@ public class TabViewTest extends LinearLayout implements TabView.OnTabSelectedLi
         this.context = context;
         View view = LayoutInflater.from(context).inflate(
                 R.layout.layout_tab_view_test, this, true);
+        tvTab = (TextView) findViewById(R.id.tv_tab);
         TabView tabView = (TabView) view.findViewById(R.id.tabv_tab);
         tabView.setOnTabSelectedListener(this);
     }
 
     @Override
     public void onTabSelected(int position) {
-        Toast.makeText(context, "onTab:" + position, Toast.LENGTH_SHORT).show();
+        tvTab.setText("onTab:" + position);
     }
 }

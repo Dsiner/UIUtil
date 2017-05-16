@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dimens_padding">
+
+    <Button
+        android:id="@+id/btn_play_pause"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="play" />
+
+    <SeekBar
+        android:id="@+id/sb_scale"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_above="@+id/btn_play_pause" />
+
+    <SeekBar
+        android:id="@+id/sb_progress"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_above="@+id/sb_scale" />
+
+    <com.d.uiutil.lrc.LrcView
+        android:id="@+id/lrcv_lrc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/sb_progress"
+        app:lrcCurTextColor="@color/colorAccent"
+        app:lrcCurTextSize="17dp"
+        app:lrcMaxScale="1.7"
+        app:lrcMinScale="0.7"
+        app:lrcPadding="17dp"
+        app:lrcTextColor="@color/colorPrimary"
+        app:lrcTextSize="15dp"
+        app:lrcTimeColor="@color/colorPrimaryDark"
+        app:lrcTimeSize="8dp" />
+</RelativeLayout>

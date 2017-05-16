@@ -21,7 +21,6 @@ import com.nineoldandroids.animation.ValueAnimator;
  * TAB
  * Created by D on 2017/3/8.
  */
-
 public class TabView extends View {
     private int width;
     private int height;
@@ -34,8 +33,8 @@ public class TabView extends View {
     private Paint paintTitleCur;//仅用于当前选中文字的画笔
 
     private int count;//总数量
-    private int withB;//单个标题宽度block
-    private int withP;//两端预留间距side padding
+    private float withB;//单个标题宽度block
+    private float withP;//两端预留间距side padding
     private int lastIndex;//上次的位置
     private int curIndex;//当前的位置
     private int dIndex = 0;//actionDown按压的位置
@@ -166,7 +165,7 @@ public class TabView extends View {
 
         //step3:遍历绘制所有标题
         for (int i = 0; i < TITLES.length; i++) {
-            int startx = withP + withB * i + withB / 2;//标题的绘制x坐标，即标题底部中心点x坐标
+            float startx = withP + withB * i + withB / 2;//标题的绘制x坐标，即标题底部中心点x坐标
             float cursor = (offsetX + withB / 2) - withP;
             if (cursor < 0) {
                 cursor = 0;
@@ -186,39 +185,34 @@ public class TabView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width = MeasureSpec.getSize(widthMeasureSpec);
         height = MeasureSpec.getSize(heightMeasureSpec);
-        withB = (width - withP * 2) / count;
         rectRadius = (height + 0.5f) / 2;
         withP = (int) (rectRadius * 0.85f);
+        withB = (width - withP * 2) / count;
         setMeasuredDimension(width, height);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (count <= 0) {
+            return false;
+        }
         float eX = event.getX();
         float eY = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (eX - withP <= 0) {
-                    dIndex = 0;
-                } else if (eX >= width - withP) {
-                    uIndex = count - 1;
-                } else {
-                    dIndex = (int) ((eX - withP) / withB);
-                }
-                return dIndex != curIndex;
+                dIndex = (int) ((eX - withP) / withB);
+                dIndex = Math.max(dIndex, 0);
+                dIndex = Math.min(dIndex, count - 1);
+                return (factor == 0 || factor == 1) && dIndex != curIndex;
             case MotionEvent.ACTION_MOVE:
-                return true;
+                return factor == 0 || factor == 1;
             case MotionEvent.ACTION_UP:
                 if (eX < 0 || eX > width || eY < 0 || eY > height) {
                     return true;
                 }
-                if (eX - withP <= 0) {
-                    uIndex = 0;
-                } else if (eX >= width - withP) {
-                    uIndex = count - 1;
-                } else {
-                    uIndex = (int) ((eX - withP) / withB);
-                }
+                uIndex = (int) ((eX - withP) / withB);
+                uIndex = Math.max(dIndex, 0);
+                uIndex = Math.min(dIndex, count - 1);
                 if (uIndex == dIndex) {
                     if (factor == 0 || factor == 1) {
                         lastIndex = curIndex;
