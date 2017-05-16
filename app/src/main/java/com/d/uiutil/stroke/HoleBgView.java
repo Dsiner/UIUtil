@@ -16,8 +16,8 @@ import com.d.uiutil.Util;
  * 镂空背景
  * Created by D on 2017/3/15.
  */
-
 public class HoleBgView extends View {
+    private int width;
     private int height;
 
     private Rect rect;
@@ -27,6 +27,7 @@ public class HoleBgView extends View {
     private int offsetY;//偏移
     private int withrH;
     private int withrW;
+    private float strokeWidth;
 
     public HoleBgView(Context context) {
         this(context, null);
@@ -47,7 +48,7 @@ public class HoleBgView extends View {
         offsetY = Util.dip2px(context, 29.5f);
         withrH = Util.dip2px(context, 35000);
         withrW = Util.dip2px(context, 35014.3f);
-        float strokeWidth = withrH * 2 - Util.dip2px(context, 34.5f);
+        strokeWidth = withrH * 2 - Util.dip2px(context, 34.5f);
         rect = new Rect();
         rectF = new RectF();
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -73,7 +74,7 @@ public class HoleBgView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int width = MeasureSpec.getSize(widthMeasureSpec);
+        width = MeasureSpec.getSize(widthMeasureSpec);
         height = MeasureSpec.getSize(heightMeasureSpec);
         setMeasuredDimension(width, height);
     }
