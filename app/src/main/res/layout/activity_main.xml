@@ -44,5 +44,10 @@
             android:layout_marginTop="@dimen/dimens_padding"
             android:gravity="center"
             android:text="lrc" />
+
+        <com.d.uiutil.slidelayout.SlideLayoutTest
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="@dimen/dimens_padding" />
     </LinearLayout>
 </ScrollView>

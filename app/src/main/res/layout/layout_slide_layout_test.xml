@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.d.uiutil.slidelayout.SlideLayout
+        android:id="@+id/sl_slide"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dimens_padding"
+            android:text="content" />
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorYellow"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_stick"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="stick" />
+
+            <TextView
+                android:id="@+id/tv_delete"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorBlue"
+                android:gravity="center"
+                android:text="delete" />
+        </LinearLayout>
+    </com.d.uiutil.slidelayout.SlideLayout>
+</merge>
