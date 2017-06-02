@@ -31,7 +31,7 @@ public class CTickViewTest extends LinearLayout implements View.OnClickListener 
 
     private void init(Context context) {
         View view = LayoutInflater.from(context).inflate(
-                R.layout.layout_ctick_view_test, this, true);
+                R.layout.layout_ctick, this, true);
         cTickView = (CTickView) view.findViewById(R.id.ctv_tick);
         view.findViewById(R.id.btn_ctv_start).setOnClickListener(this);
         view.findViewById(R.id.btn_ctv_stop).setOnClickListener(this);

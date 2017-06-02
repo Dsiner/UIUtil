@@ -34,7 +34,7 @@ public class VSViewTest extends LinearLayout implements VSView.OnVSItemClickList
     private void init(Context context) {
         this.context = context;
         View view = LayoutInflater.from(context).inflate(
-                R.layout.layout_vs_view_test, this, true);
+                R.layout.layout_vs, this, true);
         vsView = (VSView) view.findViewById(R.id.vsv_vs);
         initVS();
     }
