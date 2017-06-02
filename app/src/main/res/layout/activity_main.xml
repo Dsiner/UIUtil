@@ -20,12 +20,6 @@
             android:layout_marginTop="@dimen/dimens_padding"
             android:background="#00000000" />
 
-        <com.d.uiutil.tab.TabViewTest
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:orientation="vertical" />
-
         <com.d.uiutil.vs.VSViewTest
             android:layout_width="match_parent"
             android:layout_height="34dp"
