@@ -17,4 +17,12 @@
         <attr name="lrcMinScale" format="float" />
         <attr name="lrcMaxScale" format="float" />
     </declare-styleable>
+
+    <declare-styleable name="ToggleButton">
+        <attr name="tbtn_colorNormal" format="color" />
+        <attr name="tbtn_colorLight" format="color" />
+        <attr name="tbtn_colorPadding" format="color" />
+        <attr name="tbtn_padding" format="dimension" />
+        <attr name="tbtn_duration" format="integer" />
+    </declare-styleable>
 </resources>
