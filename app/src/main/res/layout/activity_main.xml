@@ -22,7 +22,7 @@
             app:tbtn_colorLight="@color/colorAccent"
             app:tbtn_colorNormal="#ffffff"
             app:tbtn_colorPadding="#e5e5e5"
-            app:tbtn_duration="250"
+            app:tbtn_duration="200"
             app:tbtn_padding="2dp" />
 
         <com.d.uiutil.replybg.ReplyBgView
@@ -49,5 +49,13 @@
             android:layout_marginTop="@dimen/dimens_padding"
             android:gravity="center"
             android:text="lrc" />
+
+        <Button
+            android:id="@+id/btn_sort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_padding"
+            android:gravity="center"
+            android:text="sort" />
     </LinearLayout>
 </ScrollView>

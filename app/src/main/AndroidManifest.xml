@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.d.uiutil.LrcActivity" />
+        <activity android:name="com.d.uiutil.SortActivity" />
     </application>
 
 </manifest>

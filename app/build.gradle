@@ -28,4 +28,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.dsiner.lib:xrv:1.1.0'
+    compile 'com.github.promeg:tinypinyin:2.0.3'
 }
