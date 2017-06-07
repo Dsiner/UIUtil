@@ -132,7 +132,7 @@ public class ToggleButton extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         boolean toggle = (factor == 1) == isOpen;
-        float rectRadius = (height) / 2;
+        float rectRadius = height / 2f;
         rect.set(0, 0, width, height);
         rectF.set(rect);
         canvas.drawRoundRect(rectF, rectRadius, rectRadius, toggle ? paintLight : paintPadding);

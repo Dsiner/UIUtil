@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -43,7 +44,9 @@ public class HoleBgView extends View {
     }
 
     private void init(Context context) {
-        setLayerType(LAYER_TYPE_SOFTWARE, null);//禁用硬件加速
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            setLayerType(LAYER_TYPE_SOFTWARE, null);//禁用硬件加速
+        }
         offsetX = Util.dip2px(context, 136.5f);
         offsetY = Util.dip2px(context, 29.5f);
         withrH = Util.dip2px(context, 35000);
