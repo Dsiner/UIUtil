@@ -25,4 +25,28 @@
         <attr name="tbtn_padding" format="dimension" />
         <attr name="tbtn_duration" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="ArcMenu">
+        <attr name="am_position">
+            <enum name="left_top" value="0" />
+            <enum name="left_bottom" value="1" />
+            <enum name="right_top" value="2" />
+            <enum name="right_bottom" value="3" />
+        </attr>
+        <attr name="am_radius" format="dimension" />
+    </declare-styleable>
+
+    <!-- 飘星自定义属性 -->
+    <declare-styleable name="HeartLayout">
+        <attr name="hl_initX" format="dimension" />
+        <attr name="hl_initY" format="dimension" />
+        <attr name="hl_xRand" format="dimension" />
+        <attr name="hl_animLengthRand" format="dimension" />
+        <attr name="hl_xPointFactor" format="dimension" />
+        <attr name="hl_animLength" format="dimension" />
+        <attr name="hl_heart_width" format="dimension" />
+        <attr name="hl_heart_height" format="dimension" />
+        <attr name="hl_bezierFactor" format="integer" />
+        <attr name="hl_anim_duration" format="integer" />
+    </declare-styleable>
 </resources>

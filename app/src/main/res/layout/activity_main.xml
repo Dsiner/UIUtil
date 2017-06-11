@@ -42,6 +42,36 @@
             android:layout_height="190dp"
             android:layout_marginTop="@dimen/dimens_padding" />
 
+        <com.d.uiutil.arcmenu.ArcMenu
+            android:id="@+id/am_menu"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="@dimen/dimens_padding"
+            app:am_position="left_bottom"
+            app:am_radius="90dp">
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/am_circle_menu"
+                android:gravity="center"
+                android:text="P" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/am_circle_menu"
+                android:gravity="center"
+                android:text="R" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/am_circle_menu"
+                android:gravity="center"
+                android:text="M" />
+        </com.d.uiutil.arcmenu.ArcMenu>
+
         <Button
             android:id="@+id/btn_lrc"
             android:layout_width="match_parent"
@@ -57,5 +87,13 @@
             android:layout_marginTop="@dimen/dimens_padding"
             android:gravity="center"
             android:text="sort" />
+
+        <Button
+            android:id="@+id/btn_heart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_padding"
+            android:gravity="center"
+            android:text="heart" />
     </LinearLayout>
 </ScrollView>

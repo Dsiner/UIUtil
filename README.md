@@ -5,13 +5,18 @@
 ## Demo
 <p>
    <img src="https://github.com/Dsiner/UIUtil/blob/master/screenshot/screenshot.gif" width="320" alt="Screenshot"/>
+   <img src="https://github.com/Dsiner/UIUtil/blob/master/screenshot/screenshot_sort.png" width="320" alt="Screenshot"/>
 </p>
 
 * CTickView - 打勾
+* ToggleButton - Button按钮(滑动可选)
 * ReplyBgView - 回复消息背景
 * VSView - 对比
 * HoleBgView - 镂空背景
+* ArcMenu - 卫星菜单
 * LrcView - 歌词控件
+* SideBar - Sort联系人排序、
+* TCHeartLayout - 点赞动效
 
 More usage see [demo](app/src/main/java/com/d/uiutil/MainActivity.java)
 

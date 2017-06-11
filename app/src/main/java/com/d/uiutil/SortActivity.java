@@ -38,7 +38,7 @@ public class SortActivity extends AppCompatActivity {
         sortUtil = new SortUtil();
         sortUtil.sortDatas(datas);
         rvList.setLayoutManager(new LinearLayoutManager(this));
-        rvList.setAdapter(new SortAdapter(this, datas, R.layout.adapter_sort));
+        rvList.setAdapter(new SortAdapter(this, datas, R.layout.sort_adaptert));
         rvList.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {

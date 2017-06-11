@@ -57,8 +57,8 @@ public class SideBar extends View {
         rectRadius = Util.dip2px(context, 6);
         colorTrans = Color.parseColor("#00000000");
         colorWhite = Color.parseColor("#ffffff");
-        colorBar = Color.parseColor("#BBBBBB");
-        colorRect = Color.parseColor("#7F7F7F");
+        colorBar = Color.parseColor("#aaBBBBBB");
+        colorRect = Color.parseColor("#aa7F7F7F");
 
         rect = new Rect();
         rectF = new RectF();

@@ -27,5 +27,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, SortActivity.class));
             }
         });
+        findViewById(R.id.btn_heart).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, HeartActivity.class));
+            }
+        });
     }
 }
