@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">UIUtil</string>
+
+    <!-- msgadapter -->
+    <item name="hl_tag_first" type="id"></item>
+    <item name="hl_tag_second" type="id"></item>
 </resources>
