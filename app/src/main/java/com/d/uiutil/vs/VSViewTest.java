@@ -7,13 +7,14 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.d.lib.ui.vs.VSItem;
+import com.d.lib.ui.vs.VSView;
 import com.d.uiutil.R;
 
 /**
  * VSView Test
  * Created by D on 2017/4/20.
  */
-
 public class VSViewTest extends LinearLayout implements VSView.OnVSItemClickListen {
     private Context context;
     private VSView vsView;
@@ -33,8 +34,7 @@ public class VSViewTest extends LinearLayout implements VSView.OnVSItemClickList
 
     private void init(Context context) {
         this.context = context;
-        View view = LayoutInflater.from(context).inflate(
-                R.layout.layout_vs, this, true);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_vs, this, true);
         vsView = (VSView) view.findViewById(R.id.vsv_vs);
         initVS();
     }

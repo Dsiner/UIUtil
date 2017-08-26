@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="date">
+    <string-array name="sort_data">
         <item>131</item>
         <item>265B妹</item>
         <item>265阿妹</item>
