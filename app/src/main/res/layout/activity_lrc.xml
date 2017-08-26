@@ -25,7 +25,7 @@
         android:layout_height="35dp"
         android:layout_above="@+id/sb_scale" />
 
-    <com.d.uiutil.lrc.LrcView
+    <com.d.lib.ui.lrc.LrcView
         android:id="@+id/lrcv_lrc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

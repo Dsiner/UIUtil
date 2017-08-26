@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <com.d.uiutil.togglebutton.ToggleButton
+        <com.d.lib.ui.togglebutton.ToggleButton
             android:layout_width="60dp"
             android:layout_height="32dp"
             android:layout_marginTop="@dimen/dimens_padding"
@@ -25,7 +25,7 @@
             app:tbtn_duration="200"
             app:tbtn_padding="2dp" />
 
-        <com.d.uiutil.replybg.ReplyBgView
+        <com.d.lib.ui.replybg.ReplyBgView
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="@dimen/dimens_padding"
@@ -37,12 +37,12 @@
             android:layout_marginTop="@dimen/dimens_padding"
             android:orientation="vertical" />
 
-        <com.d.uiutil.stroke.HoleBgView
+        <com.d.lib.ui.stroke.HoleBgView
             android:layout_width="match_parent"
             android:layout_height="190dp"
             android:layout_marginTop="@dimen/dimens_padding" />
 
-        <com.d.uiutil.arcmenu.ArcMenu
+        <com.d.lib.ui.arcmenu.ArcMenu
             android:id="@+id/am_menu"
             android:layout_width="match_parent"
             android:layout_height="150dp"
@@ -53,24 +53,24 @@
             <TextView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:background="@drawable/am_circle_menu"
+                android:background="@drawable/circle_menu"
                 android:gravity="center"
                 android:text="P" />
 
             <TextView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:background="@drawable/am_circle_menu"
+                android:background="@drawable/circle_menu"
                 android:gravity="center"
                 android:text="R" />
 
             <TextView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:background="@drawable/am_circle_menu"
+                android:background="@drawable/circle_menu"
                 android:gravity="center"
                 android:text="M" />
-        </com.d.uiutil.arcmenu.ArcMenu>
+        </com.d.lib.ui.arcmenu.ArcMenu>
 
         <Button
             android:id="@+id/btn_lrc"
@@ -95,5 +95,13 @@
             android:layout_marginTop="@dimen/dimens_padding"
             android:gravity="center"
             android:text="heart" />
+
+        <Button
+            android:id="@+id/btn_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_padding"
+            android:gravity="center"
+            android:text="tab" />
     </LinearLayout>
 </ScrollView>

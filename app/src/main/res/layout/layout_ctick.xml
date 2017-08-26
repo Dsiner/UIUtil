@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.d.uiutil.tick.CTickView
+    <com.d.lib.ui.tick.CTickView
         android:id="@+id/ctv_tick"
         android:layout_width="60dp"
         android:layout_height="60dp"

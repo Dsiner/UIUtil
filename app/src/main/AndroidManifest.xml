@@ -16,9 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.d.uiutil.LrcActivity" />
-        <activity android:name="com.d.uiutil.SortActivity" />
-        <activity android:name="com.d.uiutil.HeartActivity" />
+        <activity android:name="com.d.uiutil.lrc.LrcActivity" />
+        <activity android:name="com.d.uiutil.sort.SortActivity" />
+        <activity android:name="com.d.uiutil.heartlayout.HeartActivity" />
+        <activity android:name="com.d.uiutil.tab.TabActivity" />
     </application>
 
 </manifest>

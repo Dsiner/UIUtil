@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.d.lib.ui.heartlayout.TCChatEntity;
 import com.d.uiutil.R;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -135,7 +136,7 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
         if (convertView == null) {
             holder = new ViewHolder();
             LayoutInflater layoutInflater = LayoutInflater.from(context);
-            convertView = layoutInflater.inflate(R.layout.hl_adapter_msg, null);
+            convertView = layoutInflater.inflate(R.layout.adapter_hl_msg, null);
             holder.sendContext = (TextView) convertView.findViewById(R.id.sendcontext);
             convertView.setTag(R.id.hl_tag_first, holder);
         } else {

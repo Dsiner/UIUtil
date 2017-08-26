@@ -30,7 +30,7 @@
             android:background="#e3e4e5" />
     </LinearLayout>
 
-    <com.d.uiutil.sort.SideBar
+    <com.d.lib.ui.sort.SideBar
         android:id="@+id/sb_sidebar"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
