@@ -19,24 +19,23 @@ import java.util.List;
  * Created by D on 2017/8/27.
  */
 public class TabActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
-    private ScrollTab scrollTab;
-    private ViewPager pager;
-    private ArrayList<Fragment> fragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
-        scrollTab = (ScrollTab) findViewById(R.id.stab_tab);
-        pager = (ViewPager) findViewById(R.id.pager);
-        init();
+        ScrollTab[] scrollTab0 = new ScrollTab[]{(ScrollTab) findViewById(R.id.stab_tab00), (ScrollTab) findViewById(R.id.stab_tab01), (ScrollTab) findViewById(R.id.stab_tab02)};
+        ScrollTab[] scrollTab1 = new ScrollTab[]{(ScrollTab) findViewById(R.id.stab_tab10), (ScrollTab) findViewById(R.id.stab_tab11), (ScrollTab) findViewById(R.id.stab_tab12)};
+        ViewPager pager0 = (ViewPager) findViewById(R.id.pager0);
+        ViewPager pager1 = (ViewPager) findViewById(R.id.pager1);
+        init(scrollTab0, pager0, Arrays.asList("Ted1", "Beille2", "Csdge3", "Gdegdd4"));
+        init(scrollTab1, pager1, Arrays.asList("Peach1", "Lemon2", "Watermelon3", "Pear4", "Avocado5",
+                "Banana6", "Grape7", "Apricot8", "Orange9", "Kumquat10"));
     }
 
-    private void init() {
-        List<String> titles = Arrays.asList("", "");
-
-        fragments = new ArrayList<>();
-        for (int i = 0; i < 11; i++) {
+    private void init(ScrollTab[] scrollTabs, final ViewPager pager, List<String> titles) {
+        final ArrayList<Fragment> fragments = new ArrayList<>();
+        for (int i = 0; i < titles.size(); i++) {
             TabFragment fragment = new TabFragment();
             Bundle bundle = new Bundle();
             bundle.putInt("index", i);
@@ -54,16 +53,19 @@ public class TabActivity extends AppCompatActivity implements ViewPager.OnPageCh
                 return fragments.get(arg0);
             }
         };
-        pager.setOffscreenPageLimit(2);
+        pager.setOffscreenPageLimit(titles.size() - 1);
         pager.setAdapter(fragmentPagerAdapter);
         pager.addOnPageChangeListener(this);
-        scrollTab.setViewPager(pager);
-        scrollTab.setOnTabListener(new ScrollTab.OnTabListener() {
-            @Override
-            public void onChange(int index, View v) {
-                pager.setCurrentItem(index, true);
-            }
-        });
+        for (ScrollTab scrollTab : scrollTabs) {
+            scrollTab.setTitles(titles);
+            scrollTab.setViewPager(pager);
+            scrollTab.setOnTabListener(new ScrollTab.OnTabListener() {
+                @Override
+                public void onChange(int index, View v) {
+                    pager.setCurrentItem(index, true);
+                }
+            });
+        }
     }
 
     @Override

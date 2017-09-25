@@ -6,19 +6,104 @@
     android:orientation="vertical">
 
     <com.d.lib.ui.tab.ScrollTab
-        android:id="@+id/stab_tab"
+        android:id="@+id/stab_tab00"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#F9F9F9"
         android:orientation="vertical"
-        app:stab_color="@color/colorA"
-        app:stab_padding="20dp"
-        app:stab_radius="0.5dp"
-        app:stab_titles="Hie000;Yull111;2222222;Wilan3333;Semon44444;Elien5;Piso6666;Hual777;Pal888;Bell99;Jeon10"
-        app:stab_weight="1dp" />
+        app:stab_avag="true"
+        app:stab_indicator_color="@color/colorA"
+        app:stab_indicator_padding="20dp"
+        app:stab_indicator_radius="0.5dp"
+        app:stab_indicator_type="trend"
+        app:stab_indicator_weight="1dp"
+        app:stab_indicator_width="40dp"
+        app:stab_type="view_group" />
+
+    <com.d.lib.ui.tab.ScrollTab
+        android:id="@+id/stab_tab01"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#F9F9F9"
+        android:orientation="vertical"
+        app:stab_avag="true"
+        app:stab_indicator_color="@color/colorA"
+        app:stab_indicator_padding="20dp"
+        app:stab_indicator_radius="0.5dp"
+        app:stab_indicator_type="translation"
+        app:stab_indicator_weight="1dp"
+        app:stab_indicator_width="40dp"
+        app:stab_type="view_group" />
+
+    <com.d.lib.ui.tab.ScrollTab
+        android:id="@+id/stab_tab02"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#F9F9F9"
+        android:orientation="vertical"
+        app:stab_avag="true"
+        app:stab_indicator_color="@color/colorA"
+        app:stab_indicator_padding="20dp"
+        app:stab_indicator_radius="0.5dp"
+        app:stab_indicator_type="none"
+        app:stab_indicator_weight="1dp"
+        app:stab_indicator_width="40dp"
+        app:stab_type="view_group" />
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
+        android:id="@+id/pager0"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.d.lib.ui.tab.ScrollTab
+        android:id="@+id/stab_tab10"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#F9F9F9"
+        android:orientation="vertical"
+        app:stab_avag="false"
+        app:stab_indicator_color="@color/colorA"
+        app:stab_indicator_padding="20dp"
+        app:stab_indicator_radius="0.5dp"
+        app:stab_indicator_type="trend"
+        app:stab_indicator_weight="1dp"
+        app:stab_indicator_width="40dp"
+        app:stab_type="view_group" />
+
+    <com.d.lib.ui.tab.ScrollTab
+        android:id="@+id/stab_tab11"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#F9F9F9"
+        android:orientation="vertical"
+        app:stab_avag="false"
+        app:stab_indicator_color="@color/colorA"
+        app:stab_indicator_padding="20dp"
+        app:stab_indicator_radius="0.5dp"
+        app:stab_indicator_type="translation"
+        app:stab_indicator_weight="1dp"
+        app:stab_indicator_width="40dp"
+        app:stab_type="view_group" />
+
+    <com.d.lib.ui.tab.ScrollTab
+        android:id="@+id/stab_tab12"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#F9F9F9"
+        android:orientation="vertical"
+        app:stab_avag="false"
+        app:stab_indicator_color="@color/colorA"
+        app:stab_indicator_padding="20dp"
+        app:stab_indicator_radius="0.5dp"
+        app:stab_indicator_type="none"
+        app:stab_indicator_weight="1dp"
+        app:stab_indicator_width="40dp"
+        app:stab_type="view_group" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.d.lib.ui.tab;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,8 @@ import com.d.lib.ui.R;
  * Created by D on 2017/8/25.
  */
 public class TabViewGroup extends RelativeLayout implements TabView {
-    private TextView tvTitle;
+    private Context context;
+    private TextView tvTitle, tvNumber;
 
     public TabViewGroup(Context context) {
         this(context, null);
@@ -26,8 +28,15 @@ public class TabViewGroup extends RelativeLayout implements TabView {
     }
 
     private void init(Context context) {
+        this.context = context;
         View root = LayoutInflater.from(context).inflate(R.layout.view_tab, this);
         tvTitle = (TextView) root.findViewById(R.id.tv_title);
+        tvNumber = (TextView) root.findViewById(R.id.tv_number);
+    }
+
+    public void setNumber(String text, int visibility) {
+        tvNumber.setText(text);
+        tvNumber.setVisibility(visibility);
     }
 
     @Override
@@ -37,7 +46,7 @@ public class TabViewGroup extends RelativeLayout implements TabView {
 
     @Override
     public void notifyData(boolean focus) {
-        tvTitle.setTextColor(getResources().getColor(focus ? R.color.colorA : R.color.colorT));
+        tvTitle.setTextColor(ContextCompat.getColor(context, focus ? R.color.colorA : R.color.colorT));
     }
 
     @Override

@@ -13,11 +13,14 @@
         android:text="title"
         android:textColor="@color/colorP" />
 
-    <ImageView
-        android:layout_width="3dp"
-        android:layout_height="3dp"
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
         android:layout_alignRight="@+id/tv_title"
         android:layout_alignTop="@+id/tv_title"
         android:layout_marginRight="-5dp"
-        android:background="#ff0000" />
+        android:background="#ff0000"
+        android:gravity="center"
+        android:textColor="#ffffff" />
 </merge>
