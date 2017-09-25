@@ -3,6 +3,7 @@ package com.d.lib.ui.tab;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -46,8 +47,8 @@ public class TabTextView extends View implements TabView {
     private void init(Context context) {
         textSize = UIUtil.dip2px(context, 15);
         padding = UIUtil.dip2px(context, 12);
-        textColor = getResources().getColor(R.color.colorT);
-        textColorFocus = getResources().getColor(R.color.colorA);
+        textColor = ContextCompat.getColor(context, R.color.colorT);
+        textColorFocus = ContextCompat.getColor(context, R.color.colorA);
 
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setTextAlign(Paint.Align.CENTER);
@@ -68,7 +69,11 @@ public class TabTextView extends View implements TabView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = (int) (textWidth + padding * 2);
+        if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.AT_MOST) {
+            width = (int) (textWidth + padding * 2);
+        } else {
+            width = MeasureSpec.getSize(widthMeasureSpec);
+        }
         height = MeasureSpec.getSize(heightMeasureSpec);
         setMeasuredDimension(width, height);
     }

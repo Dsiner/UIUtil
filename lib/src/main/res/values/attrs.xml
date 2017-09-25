@@ -52,15 +52,21 @@
 
     <declare-styleable name="ScrollTab">
         <attr name="stab_type">
+            <enum name="view" value="0" />
+            <enum name="view_group" value="1" />
+        </attr>
+        <attr name="stab_titles" format="string" />
+        <attr name="stab_avag" format="boolean" />
+        <attr name="stab_indicator_type">
             <enum name="trend" value="0" />
             <enum name="translation" value="1" />
             <enum name="none" value="2" />
         </attr>
-        <attr name="stab_titles" format="string" />
-        <attr name="stab_weight" format="dimension" />
-        <attr name="stab_radius" format="dimension" />
-        <attr name="stab_padding" format="dimension" />
-        <attr name="stab_color" format="color" />
+        <attr name="stab_indicator_color" format="color" />
+        <attr name="stab_indicator_width" format="dimension" />
+        <attr name="stab_indicator_weight" format="dimension" />
+        <attr name="stab_indicator_radius" format="dimension" />
+        <attr name="stab_indicator_padding" format="dimension" />
         <attr name="stab_duration" format="integer" />
     </declare-styleable>
 </resources>

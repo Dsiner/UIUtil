@@ -2,21 +2,20 @@
 
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-## Demo
-<p>
-   <img src="https://github.com/Dsiner/UIUtil/blob/master/screenshot/screenshot.gif" width="320" alt="Screenshot"/>
-   <img src="https://github.com/Dsiner/UIUtil/blob/master/screenshot/screenshot_sort.png" width="320" alt="Screenshot"/>
-</p>
-
-* CTickView - 打勾
-* ToggleButton - Button按钮(滑动可选)
-* ReplyBgView - 回复消息背景
-* VSView - 对比
-* HoleBgView - 镂空背景
-* ArcMenu - 卫星菜单
-* LrcView - 歌词控件
-* SideBar - Sort联系人排序、
-* TCHeartLayout - 点赞动效
+Demo
+======================
+Name | Explain | Demo
+--- | --- | ---
+[LrcView](lib/src/main/java/com/d/lib/ui/lrc/LrcView.java) | 歌词控件|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/lrc/lrc.gif" width="100%">
+[SideBar](lib/src/main/java/com/d/lib/ui/sort/SideBar.java) | 联系人排序 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort.gif" width="100%"> 
+[CTickView](lib/src/main/java/com/d/lib/ui/tick/CTickView.java) | 打勾|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/tick/tick.gif" width="100%">
+[ToggleButton](lib/src/main/java/com/d/lib/ui/togglebutton/ToggleButton.java) | Button按钮(滑动可选)|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/togglebutton/togglebutton.gif" width="100%">
+[ReplyBgView](lib/src/main/java/com/d/lib/ui/replybg/ReplyBgView.java) | 回复消息背景|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/replybg/replybg.png" width="100%">
+[VSView](lib/src/main/java/com/d/lib/ui/vs/VSView.java) | 对比|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/vs/vs.gif" width="100%">
+[HoleBgView](lib/src/main/java/com/d/lib/ui/stroke/HoleBgView.java) | 镂空背景|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/stroke/stroke.png" width="100%">
+[ArcMenu](lib/src/main/java/com/d/lib/ui/arcmenu/ArcMenu.java) | 卫星菜单|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/arcmenu/arcmenu.gif" width="100%">
+[TCHeartLayout](lib/src/main/java/com/d/lib/ui/heartlayout/TCHeartLayout.java) | 点赞动效|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/heartlayout/heartlayout.gif" width="100%">
+[ScrollTab](lib/src/main/java/com/d/lib/ui/tab/ScrollTab.java) | Tab指示器|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/tab/tab.gif" width="100%">
 
 More usage see [demo](app/src/main/java/com/d/uiutil/MainActivity.java)
 
