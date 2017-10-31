@@ -12,11 +12,13 @@ Name | Explain | Demo
 [ToggleButton](lib/src/main/java/com/d/lib/ui/togglebutton/ToggleButton.java) | Button按钮(滑动可选)|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/togglebutton/togglebutton.gif" width="49%">
 [ReplyBgView](lib/src/main/java/com/d/lib/ui/replybg/ReplyBgView.java) | 回复消息背景|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/replybg/replybg.png" width="100%">
 [VSView](lib/src/main/java/com/d/lib/ui/vs/VSView.java) | 对比|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/vs/vs.gif" width="49%">
-[HoleBgView](lib/src/main/java/com/d/lib/ui/stroke/HoleBgView.java) | 镂空背景|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/stroke/stroke.png" width="100%">
+[HoleBgView](lib/src/main/java/com/d/lib/ui/stroke/HoleBgView.java) | 镂空背景|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/stroke/stroke.png" width="49%">
 [ArcMenu](lib/src/main/java/com/d/lib/ui/arcmenu/ArcMenu.java) | 卫星菜单|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/arcmenu/arcmenu.gif" width="49%">
 [TCHeartLayout](lib/src/main/java/com/d/lib/ui/heartlayout/TCHeartLayout.java) | 点赞动效|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/heartlayout/heartlayout.gif" width="49%">
 [ScrollTab](lib/src/main/java/com/d/lib/ui/tab/ScrollTab.java) | Tab指示器|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/tab/tab.gif" width="49%">
 [ItouchSort](https://github.com/Dsiner/Xrv) | 拖曳排序|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Xrv/xrv_drag.gif" width="49%">
+[SlideLayout](https://github.com/Dsiner/SlideLayout) | 侧滑删除/菜单控件|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/SlideLayout/slidelayout.gif" width="49%">
+[TabView](https://github.com/Dsiner/TabView) | 滑动指示器/按钮/TAB控件|  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/TabView/tabview.gif" width="49%">
 
 More usage see [demo](app/src/main/java/com/d/uiutil/MainActivity.java)
 
