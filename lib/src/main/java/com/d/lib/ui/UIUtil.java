@@ -1,10 +1,12 @@
 package com.d.lib.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -99,5 +101,42 @@ public class UIUtil {
             e.printStackTrace();
             return number;
         }
+    }
+
+    /**
+     * 获取屏幕高度和宽度
+     */
+    public static int[] getScreenSize(Activity activity) {
+        DisplayMetrics metric = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metric);
+        return new int[]{metric.widthPixels, metric.heightPixels};
+    }
+
+    /**
+     * 调整TextView字体大小，自适应宽度
+     *
+     * @param textView：textView
+     * @param text：文本
+     * @param maxWidth：最大宽度限制
+     * @param dpMin：最小dp限制
+     * @param dpMax：最大dp限制，默认dp
+     */
+    public static void autoSize(TextView textView, String text, float maxWidth, float dpMin, float dpMax) {
+        Paint paint = textView.getPaint();
+        float minSize = UIUtil.dip2px(textView.getContext(), dpMin);
+        float textSize = UIUtil.dip2px(textView.getContext(), dpMax);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+        //获得当前TextView的有效宽度
+        int availableWidth = UIUtil.dip2px(textView.getContext(), maxWidth);
+        float textWidth = paint.measureText(text);
+        while (textWidth > availableWidth) {
+            if (textSize < minSize) {
+                break;
+            }
+            textSize = textSize - 1;
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);//这里传入的单位是px
+            textWidth = paint.measureText(text) + 2;
+        }
+        textView.setText(text);
     }
 }

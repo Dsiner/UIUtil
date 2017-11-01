@@ -19,7 +19,9 @@
         <activity android:name="com.d.uiutil.lrc.LrcActivity" />
         <activity android:name="com.d.uiutil.sort.SortActivity" />
         <activity android:name="com.d.uiutil.heartlayout.HeartActivity" />
+        <activity android:name="com.d.uiutil.praise.PraiseActivity" />
         <activity android:name="com.d.uiutil.tab.TabActivity" />
+        <activity android:name="com.d.uiutil.shadow.ShadowActivity" />
     </application>
 
 </manifest>
