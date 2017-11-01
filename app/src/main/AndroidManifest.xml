@@ -22,6 +22,7 @@
         <activity android:name="com.d.uiutil.praise.PraiseActivity" />
         <activity android:name="com.d.uiutil.tab.TabActivity" />
         <activity android:name="com.d.uiutil.shadow.ShadowActivity" />
+        <activity android:name="com.d.uiutil.recordtrigger.RecordTriggerActivity" />
     </application>
 
 </manifest>
