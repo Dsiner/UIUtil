@@ -4,4 +4,5 @@
     <color name="colorPD">#303F9F</color>
     <color name="colorA">#FF4081</color>
     <color name="colorT">#666666</color>
+    <color name="colorTrans">#00000000</color>
 </resources>

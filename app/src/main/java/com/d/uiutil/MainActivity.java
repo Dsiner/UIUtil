@@ -8,6 +8,7 @@ import android.view.View;
 import com.d.uiutil.heartlayout.HeartActivity;
 import com.d.uiutil.lrc.LrcActivity;
 import com.d.uiutil.praise.PraiseActivity;
+import com.d.uiutil.recordtrigger.RecordTriggerActivity;
 import com.d.uiutil.shadow.ShadowActivity;
 import com.d.uiutil.sort.SortActivity;
 import com.d.uiutil.tab.TabActivity;
@@ -56,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ShadowActivity.class));
+            }
+        });
+        findViewById(R.id.btn_recordtrigger).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RecordTriggerActivity.class));
             }
         });
     }
