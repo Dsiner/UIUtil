@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="64dp"
+    android:layout_height="70dp">
+
+    <ImageView
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/avatar" />
+
+    <LinearLayout
+        android:id="@+id/llyt_praise"
+        android:layout_width="53dp"
+        android:layout_height="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/praise_corner_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp">
+
+        <ImageView
+            android:id="@+id/iv_praise"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:src="@drawable/ic_heart" />
+
+        <TextView
+            android:id="@+id/tv_praise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:maxWidth="35dp"
+            android:singleLine="true"
+            android:text="255"
+            android:textColor="#ffffff"
+            android:textSize="9dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llyt_praise_layer"
+        android:layout_width="53dp"
+        android:layout_height="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/praise_corner_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_praise_layer"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:src="@drawable/ic_heart" />
+
+        <TextView
+            android:id="@+id/tv_praise_layer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:gravity="center"
+            android:maxWidth="35dp"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="#ffffff"
+            android:textSize="9dp" />
+    </LinearLayout>
+</RelativeLayout>

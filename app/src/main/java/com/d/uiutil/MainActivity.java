@@ -7,6 +7,8 @@ import android.view.View;
 
 import com.d.uiutil.heartlayout.HeartActivity;
 import com.d.uiutil.lrc.LrcActivity;
+import com.d.uiutil.praise.PraiseActivity;
+import com.d.uiutil.shadow.ShadowActivity;
 import com.d.uiutil.sort.SortActivity;
 import com.d.uiutil.tab.TabActivity;
 
@@ -38,10 +40,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, HeartActivity.class));
             }
         });
+        findViewById(R.id.btn_praise).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PraiseActivity.class));
+            }
+        });
         findViewById(R.id.btn_tab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, TabActivity.class));
+            }
+        });
+        findViewById(R.id.btn_shadow).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ShadowActivity.class));
             }
         });
     }
