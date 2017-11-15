@@ -127,5 +127,13 @@
             android:layout_marginTop="@dimen/dimens_padding"
             android:gravity="center"
             android:text="RecordTrigger" />
+
+        <Button
+            android:id="@+id/btn_verinor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_padding"
+            android:gravity="center"
+            android:text="VerInor" />
     </LinearLayout>
 </ScrollView>

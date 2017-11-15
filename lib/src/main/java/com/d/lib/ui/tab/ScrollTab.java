@@ -87,7 +87,7 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
         isAvag = typedArray.getBoolean(R.styleable.ScrollTab_stab_avag, false);
         strTitles = typedArray.getString(R.styleable.ScrollTab_stab_titles);
         indicatorType = typedArray.getInt(R.styleable.ScrollTab_stab_indicator_type, TYPE_INDICATOR_TREND);
-        indicatorColor = typedArray.getColor(R.styleable.ScrollTab_stab_indicator_color, ContextCompat.getColor(context, R.color.colorA));
+        indicatorColor = typedArray.getColor(R.styleable.ScrollTab_stab_indicator_color, ContextCompat.getColor(context, R.color.color_cccent));
         indicatorWidth = typedArray.getDimension(R.styleable.ScrollTab_stab_indicator_width, UIUtil.dip2px(context, 30));
         indicatorWeight = typedArray.getDimension(R.styleable.ScrollTab_stab_indicator_weight, UIUtil.dip2px(context, 1));
         indicatorRadius = typedArray.getDimension(R.styleable.ScrollTab_stab_indicator_radius, UIUtil.dip2px(context, 0.5f));

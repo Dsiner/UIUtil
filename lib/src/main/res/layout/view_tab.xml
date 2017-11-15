@@ -11,7 +11,7 @@
         android:gravity="center"
         android:singleLine="true"
         android:text="title"
-        android:textColor="@color/colorP" />
+        android:textColor="@color/color_primary" />
 
     <TextView
         android:id="@+id/tv_number"

@@ -12,6 +12,7 @@ import com.d.uiutil.recordtrigger.RecordTriggerActivity;
 import com.d.uiutil.shadow.ShadowActivity;
 import com.d.uiutil.sort.SortActivity;
 import com.d.uiutil.tab.TabActivity;
+import com.d.uiutil.verinor.VerInorActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, RecordTriggerActivity.class));
+            }
+        });
+        findViewById(R.id.btn_verinor).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, VerInorActivity.class));
             }
         });
     }
