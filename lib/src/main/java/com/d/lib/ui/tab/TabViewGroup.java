@@ -46,7 +46,7 @@ public class TabViewGroup extends RelativeLayout implements TabView {
 
     @Override
     public void notifyData(boolean focus) {
-        tvTitle.setTextColor(ContextCompat.getColor(context, focus ? R.color.colorA : R.color.colorT));
+        tvTitle.setTextColor(ContextCompat.getColor(context, focus ? R.color.color_cccent : R.color.color_text));
     }
 
     @Override

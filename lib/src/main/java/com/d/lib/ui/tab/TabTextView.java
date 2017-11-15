@@ -47,8 +47,8 @@ public class TabTextView extends View implements TabView {
     private void init(Context context) {
         textSize = UIUtil.dip2px(context, 15);
         padding = UIUtil.dip2px(context, 12);
-        textColor = ContextCompat.getColor(context, R.color.colorT);
-        textColorFocus = ContextCompat.getColor(context, R.color.colorA);
+        textColor = ContextCompat.getColor(context, R.color.color_text);
+        textColorFocus = ContextCompat.getColor(context, R.color.color_cccent);
 
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setTextAlign(Paint.Align.CENTER);

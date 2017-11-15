@@ -109,22 +109,22 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
 
         switch (idx & 0x7) {
             case 1:
-                return context.getResources().getColor(R.color.colorSendName1);
+                return context.getResources().getColor(R.color.color_sendname1);
             case 2:
-                return context.getResources().getColor(R.color.colorSendName2);
+                return context.getResources().getColor(R.color.color_sendname2);
             case 3:
-                return context.getResources().getColor(R.color.colorSendName3);
+                return context.getResources().getColor(R.color.color_sendname3);
             case 4:
-                return context.getResources().getColor(R.color.colorSendName4);
+                return context.getResources().getColor(R.color.color_sendname4);
             case 5:
-                return context.getResources().getColor(R.color.colorSendName5);
+                return context.getResources().getColor(R.color.color_sendname5);
             case 6:
-                return context.getResources().getColor(R.color.colorSendName6);
+                return context.getResources().getColor(R.color.color_sendname6);
             case 7:
-                return context.getResources().getColor(R.color.colorSendName7);
+                return context.getResources().getColor(R.color.color_sendname7);
             case 0:
             default:
-                return context.getResources().getColor(R.color.colorSendName);
+                return context.getResources().getColor(R.color.color_sendname);
         }
     }
 
@@ -154,7 +154,7 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
             // 设置名称为粗体
             StyleSpan boldStyle = new StyleSpan(Typeface.BOLD_ITALIC);
             spanString.setSpan(boldStyle, 0, item.getSenderName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            holder.sendContext.setTextColor(context.getResources().getColor(R.color.colorSendName1));
+            holder.sendContext.setTextColor(context.getResources().getColor(R.color.color_sendname1));
         } else {
             // 根据名称计算颜色
             spanString.setSpan(new ForegroundColorSpan(calcNameColor(item.getSenderName())),

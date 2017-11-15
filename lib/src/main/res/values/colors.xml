@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorP">#3F51B5</color>
-    <color name="colorPD">#303F9F</color>
-    <color name="colorA">#FF4081</color>
-    <color name="colorT">#666666</color>
-    <color name="colorTrans">#00000000</color>
+    <color name="color_primary">#3F51B5</color>
+    <color name="color_primary_dark">#303F9F</color>
+    <color name="color_cccent">#FF4081</color>
+
+    <color name="color_trans">#00000000</color>
+    <color name="color_line">#171A21</color>
+    <color name="color_text">#666666</color>
 </resources>

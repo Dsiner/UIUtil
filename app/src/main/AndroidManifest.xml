@@ -23,6 +23,7 @@
         <activity android:name="com.d.uiutil.tab.TabActivity" />
         <activity android:name="com.d.uiutil.shadow.ShadowActivity" />
         <activity android:name="com.d.uiutil.recordtrigger.RecordTriggerActivity" />
+        <activity android:name="com.d.uiutil.verinor.VerInorActivity" />
     </application>
 
 </manifest>
