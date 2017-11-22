@@ -19,7 +19,6 @@ import com.d.lib.ui.UILog;
 import com.d.lib.ui.UIUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -49,6 +48,7 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
 
     private int type;
     private boolean isAvag;
+    private float padding;//item内部左右预留间距
     private String strTitles;
     private int indicatorType;
     private int indicatorColor;
@@ -57,9 +57,8 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     private float indicatorRadius;
     private float indicatorPadding;
 
-    private ArrayList<String> titles;
+    private ArrayList<TabItem> items;
     private ArrayList<View> tabs;
-    private int withTab;//tab宽度
     private int count;
     private int position = 0;
     private float positionOffset;
@@ -85,6 +84,7 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ScrollTab);
         type = typedArray.getInt(R.styleable.ScrollTab_stab_type, TYPE_VIEW);
         isAvag = typedArray.getBoolean(R.styleable.ScrollTab_stab_avag, false);
+        padding = typedArray.getDimension(R.styleable.ScrollTab_stab_padding, UIUtil.dip2px(context, 12));
         strTitles = typedArray.getString(R.styleable.ScrollTab_stab_titles);
         indicatorType = typedArray.getInt(R.styleable.ScrollTab_stab_indicator_type, TYPE_INDICATOR_TREND);
         indicatorColor = typedArray.getColor(R.styleable.ScrollTab_stab_indicator_color, ContextCompat.getColor(context, R.color.color_cccent));
@@ -100,15 +100,18 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
         setWillNotDraw(false);
         setHorizontalScrollBarEnabled(false);
         setOverScrollMode(OVER_SCROLL_NEVER);
+        setFillViewport(isAvag);
         rectF = new RectF();
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(indicatorColor);
 
         tabs = new ArrayList<>();
-        titles = new ArrayList<>();
+        items = new ArrayList<>();
         if (!TextUtils.isEmpty(strTitles)) {
             String[] strs = strTitles.split(";");
-            setTitles(Arrays.asList(strs));
+            for (String t : strs) {
+                items.add(new TabItem(t, ""));
+            }
         }
     }
 
@@ -116,9 +119,11 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
      * 设置titles
      */
     public void setTitles(List<String> ts) {
-        if (this.titles != null && ts != null) {
-            this.titles.clear();
-            this.titles.addAll(ts);
+        if (this.items != null && ts != null) {
+            this.items.clear();
+            for (String t : ts) {
+                this.items.add(new TabItem(t, ""));
+            }
             if (!isFirst) {
                 resetTab();
                 invalidate();
@@ -127,17 +132,15 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     }
 
     private void resetTab() {
-        if (titles == null || titles.size() <= 0) {
-            count = 0;
+        if (items == null || items.size() <= 0 || width <= 0) {
             return;
         }
-        count = titles.size();
-        withTab = width / (count > 0 ? count : 1);
-        withTab = isAvag ? withTab : ViewGroup.LayoutParams.WRAP_CONTENT;
+        isFirst = false;
+        count = items.size();
         tabs.clear();
         removeAllViews();
         LinearLayout parent = new LinearLayout(context);
-        LayoutParams lp = new LayoutParams(isAvag ? width : LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+        LayoutParams lp = new LayoutParams(isAvag ? LayoutParams.MATCH_PARENT : LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         parent.setOrientation(LinearLayout.HORIZONTAL);
         parent.setLayoutParams(lp);
         for (int i = 0; i < count; i++) {
@@ -149,23 +152,23 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     }
 
     private View getTabView(int i) {
+        View child;
         if (type == TYPE_VIEW) {
-            TabTextView child = new TabTextView(context);
-            child.setText(titles.get(i));
-            child.notifyData(i == position);
-            child.setLayoutParams(new LinearLayout.LayoutParams(withTab, ViewGroup.LayoutParams.MATCH_PARENT));
-            child.setTag(i);
-            child.setOnClickListener(this);
-            return child;
+            child = new TabTextView(context);
         } else {
-            TabViewGroup child = new TabViewGroup(context);
-            child.setText(titles.get(i));
-            child.notifyData(i == position);
-            child.setLayoutParams(new LinearLayout.LayoutParams(withTab, ViewGroup.LayoutParams.MATCH_PARENT));
-            child.setTag(i);
-            child.setOnClickListener(this);
-            return child;
+            child = new TabViewGroup(context);
         }
+        ((TabView) child).setText(items.get(i).title);
+        ((TabView) child).setNumber(items.get(i).text, TextUtils.isEmpty(items.get(i).text) ? GONE : VISIBLE);
+        if (!isAvag) {
+            ((TabView) child).setPadding((int) padding);
+        }
+        ((TabView) child).notifyData(i == position);
+        child.setLayoutParams(new LinearLayout.LayoutParams(isAvag ? width / (count > 0 ? count : 1) : ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        child.setTag(i);
+        child.setOnClickListener(this);
+        return child;
     }
 
     @Override
@@ -202,27 +205,24 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
             right = middle + indicatorWidth / 2;
             rectF.set(left, height - indicatorWeight, right, height);
         } else {
-            if (positionOffset == 0) {
-                float left = tabs.get(position).getLeft();
-                float right = tabs.get(position).getRight();
-                float middle = left + (right - left) / 2;
-                left = middle - indicatorWidth / 2;
-                right = middle + indicatorWidth / 2;
-                rectF.set(left, height - indicatorWeight, right, height);
-            }
+            float left = tabs.get(position).getLeft();
+            float right = tabs.get(position).getRight();
+            float middle = left + (right - left) / 2;
+            left = middle - indicatorWidth / 2;
+            right = middle + indicatorWidth / 2;
+            rectF.set(left, height - indicatorWeight, right, height);
         }
         canvas.drawRoundRect(rectF, indicatorRadius, indicatorRadius, paint);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width = MeasureSpec.getSize(widthMeasureSpec);
         height = MeasureSpec.getSize(heightMeasureSpec);
         if (isFirst) {
             resetTab();
-            isFirst = false;
         }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     @Override
@@ -232,8 +232,7 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
             position = index;
             positionOffset = 0;
             onChange(index);
-            adjustScrollY();
-            invalidate();
+            adjustScrollY(index);
         }
         if (listener != null) {
             listener.onChange(index, v);
@@ -252,30 +251,48 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
         viewPager.addOnPageChangeListener(this);
     }
 
+    /**
+     * 设置红点
+     */
+    public void setNumber(int position, String text, int visibility) {
+        if (position < 0 || position > items.size() - 1) {
+            return;
+        }
+        items.get(position).text = text;
+        if (position < 0 || position > count - 1) {
+            return;
+        }
+        TabView view = (TabView) tabs.get(position);
+        view.setNumber(text, visibility);
+    }
+
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         UILog.d("dsiner_onPageScrolled: position: " + position + " Offset: " + positionOffset);
-        this.position = position;
-        this.positionOffset = positionOffset;
-        invalidate();
+        if (indicatorType != TYPE_INDICATOR_NONE) {
+            this.position = position;
+            this.positionOffset = positionOffset;
+            invalidate();
+        }
     }
 
     @Override
     public void onPageSelected(int position) {
         UILog.d("dsiner_onPageSelected: position: " + position + " Offset: " + positionOffset);
-        invalidate();
         onChange(position);
+        adjustScrollY(position);
+        if (indicatorType == TYPE_INDICATOR_NONE) {
+            this.position = position;
+            invalidate();
+        }
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
         UILog.d("dsiner_onPageScrollStateChanged: state: " + state);
-        if (state == ViewPager.SCROLL_STATE_IDLE) {
-            adjustScrollY();
-        }
     }
 
-    private void adjustScrollY() {
+    private void adjustScrollY(int position) {
         if (isAvag) {
             return;
         }

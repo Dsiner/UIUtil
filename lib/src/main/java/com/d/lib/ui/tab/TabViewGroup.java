@@ -34,14 +34,20 @@ public class TabViewGroup extends RelativeLayout implements TabView {
         tvNumber = (TextView) root.findViewById(R.id.tv_number);
     }
 
-    public void setNumber(String text, int visibility) {
-        tvNumber.setText(text);
-        tvNumber.setVisibility(visibility);
-    }
-
     @Override
     public void setText(String text) {
         tvTitle.setText(text);
+    }
+
+    @Override
+    public void setPadding(int padding) {
+        setPadding(padding, 0, padding, 0);
+    }
+
+    @Override
+    public void setNumber(String text, int visibility) {
+        tvNumber.setText(text);
+        tvNumber.setVisibility(visibility);
     }
 
     @Override
