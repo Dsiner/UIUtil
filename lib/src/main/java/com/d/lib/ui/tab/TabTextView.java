@@ -21,7 +21,6 @@ public class TabTextView extends View implements TabView {
     private Paint paint;
     private String text = "title";
     private float textHeight;
-    private float textWidth;
 
     /**
      * define
@@ -46,7 +45,6 @@ public class TabTextView extends View implements TabView {
 
     private void init(Context context) {
         textSize = UIUtil.dip2px(context, 15);
-        padding = UIUtil.dip2px(context, 12);
         textColor = ContextCompat.getColor(context, R.color.color_text);
         textColorFocus = ContextCompat.getColor(context, R.color.color_cccent);
 
@@ -68,20 +66,28 @@ public class TabTextView extends View implements TabView {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.AT_MOST) {
-            width = (int) (textWidth + padding * 2);
-        } else {
+        if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.EXACTLY) {
             width = MeasureSpec.getSize(widthMeasureSpec);
+        } else {
+            width = UIUtil.getTextWidth(text, paint) + padding * 2;
         }
-        height = MeasureSpec.getSize(heightMeasureSpec);
+        height = getDefaultSize(getSuggestedMinimumWidth(), heightMeasureSpec);
         setMeasuredDimension(width, height);
     }
 
     @Override
     public void setText(String text) {
         this.text = text;
-        this.textWidth = UIUtil.getTextWidth(text, paint);
+    }
+
+    @Override
+    public void setPadding(int padding) {
+        this.padding = padding;
+    }
+
+    @Override
+    public void setNumber(String text, int visibility) {
+
     }
 
     @Override

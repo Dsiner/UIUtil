@@ -57,6 +57,7 @@
         </attr>
         <attr name="stab_titles" format="string" />
         <attr name="stab_avag" format="boolean" />
+        <attr name="stab_padding" format="dimension" />
         <attr name="stab_indicator_type">
             <enum name="trend" value="0" />
             <enum name="translation" value="1" />

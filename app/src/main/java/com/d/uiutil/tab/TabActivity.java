@@ -33,7 +33,7 @@ public class TabActivity extends AppCompatActivity implements ViewPager.OnPageCh
                 "Banana6", "Grape7", "Apricot8", "Orange9", "Kumquat10"));
     }
 
-    private void init(ScrollTab[] scrollTabs, final ViewPager pager, List<String> titles) {
+    private void init(ScrollTab[] tabs, final ViewPager pager, List<String> titles) {
         final ArrayList<Fragment> fragments = new ArrayList<>();
         for (int i = 0; i < titles.size(); i++) {
             TabFragment fragment = new TabFragment();
@@ -56,10 +56,11 @@ public class TabActivity extends AppCompatActivity implements ViewPager.OnPageCh
         pager.setOffscreenPageLimit(titles.size() - 1);
         pager.setAdapter(fragmentPagerAdapter);
         pager.addOnPageChangeListener(this);
-        for (ScrollTab scrollTab : scrollTabs) {
-            scrollTab.setTitles(titles);
-            scrollTab.setViewPager(pager);
-            scrollTab.setOnTabListener(new ScrollTab.OnTabListener() {
+        for (ScrollTab tab : tabs) {
+            tab.setTitles(titles);
+            tab.setNumber(1, "9", View.VISIBLE);//设置数字红点
+            tab.setViewPager(pager);
+            tab.setOnTabListener(new ScrollTab.OnTabListener() {
                 @Override
                 public void onChange(int index, View v) {
                     pager.setCurrentItem(index, true);

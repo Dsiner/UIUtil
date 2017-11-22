@@ -6,21 +6,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
         android:gravity="center"
         android:singleLine="true"
         android:text="title"
-        android:textColor="@color/color_primary" />
+        android:textColor="@color/color_primary"
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/tv_number"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:layout_alignRight="@+id/tv_title"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
         android:layout_alignTop="@+id/tv_title"
-        android:layout_marginRight="-5dp"
-        android:background="#ff0000"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="-4dp"
+        android:layout_toRightOf="@+id/tv_title"
+        android:background="@drawable/circle_msg_number"
         android:gravity="center"
-        android:textColor="#ffffff" />
+        android:text="99"
+        android:textColor="#ffffff"
+        android:textSize="8dp"
+        android:visibility="gone" />
 </merge>
