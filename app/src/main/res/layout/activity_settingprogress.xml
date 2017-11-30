@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:gravity="center_vertical"
+            android:text="L: 0"
+            android:textColor="#000000"
+            android:textSize="13dp" />
+
+        <com.d.lib.ui.settingprogress.SettingProgressView
+            android:id="@+id/spv_level"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:spv_color_select="@color/colorAccent"
+            app:spv_color_unselect="#d8d8d8"
+            app:spv_count="5"
+            app:spv_radius_big="13dp"
+            app:spv_radius_small="4dp"
+            app:spv_radius_space="0dp" />
+    </LinearLayout>
+</LinearLayout>

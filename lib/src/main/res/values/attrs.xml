@@ -78,4 +78,13 @@
         <attr name="sl_shadow_radius" format="dimension" />
         <attr name="sl_shadow_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="SettingProgressView">
+        <attr name="spv_count" format="integer" />
+        <attr name="spv_color_select" format="color" />
+        <attr name="spv_color_unselect" format="color" />
+        <attr name="spv_radius_small" format="dimension" />
+        <attr name="spv_radius_big" format="dimension" />
+        <attr name="spv_radius_space" format="dimension" />
+    </declare-styleable>
 </resources>
