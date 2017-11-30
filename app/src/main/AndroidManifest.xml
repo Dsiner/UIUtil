@@ -24,6 +24,7 @@
         <activity android:name="com.d.uiutil.shadow.ShadowActivity" />
         <activity android:name="com.d.uiutil.recordtrigger.RecordTriggerActivity" />
         <activity android:name="com.d.uiutil.verinor.VerInorActivity" />
+        <activity android:name="com.d.uiutil.poi.PoiActivity" />
     </application>
 
 </manifest>

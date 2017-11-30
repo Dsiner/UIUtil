@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.d.uiutil.heartlayout.HeartActivity;
 import com.d.uiutil.lrc.LrcActivity;
+import com.d.uiutil.poi.PoiActivity;
 import com.d.uiutil.praise.PraiseActivity;
 import com.d.uiutil.recordtrigger.RecordTriggerActivity;
 import com.d.uiutil.shadow.ShadowActivity;
@@ -70,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, VerInorActivity.class));
+            }
+        });
+        findViewById(R.id.btn_poi).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PoiActivity.class));
             }
         });
     }
