@@ -10,6 +10,7 @@ import com.d.uiutil.lrc.LrcActivity;
 import com.d.uiutil.poi.PoiActivity;
 import com.d.uiutil.praise.PraiseActivity;
 import com.d.uiutil.recordtrigger.RecordTriggerActivity;
+import com.d.uiutil.settingprogress.SettingProgressActivity;
 import com.d.uiutil.shadow.ShadowActivity;
 import com.d.uiutil.sort.SortActivity;
 import com.d.uiutil.tab.TabActivity;
@@ -41,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, HeartActivity.class));
+            }
+        });
+        findViewById(R.id.btn_settingprogress).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SettingProgressActivity.class));
             }
         });
         findViewById(R.id.btn_praise).setOnClickListener(new View.OnClickListener() {

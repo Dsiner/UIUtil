@@ -97,6 +97,14 @@
             android:text="heart" />
 
         <Button
+            android:id="@+id/btn_settingprogress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_padding"
+            android:gravity="center"
+            android:text="SettingProgress" />
+
+        <Button
             android:id="@+id/btn_praise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

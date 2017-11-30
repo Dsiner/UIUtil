@@ -13,7 +13,7 @@
         android:id="@+id/tv_desc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_cccent"
+        android:background="@color/color_accent"
         android:gravity="center"
         android:text="0" />
 
