@@ -7,7 +7,7 @@
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/avatar" />
+        android:src="@drawable/ic_avatar" />
 
     <LinearLayout
         android:id="@+id/llyt_praise"

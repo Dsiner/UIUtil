@@ -23,6 +23,7 @@ Name | Explain | Demo
 [Shadow](lib/src/main/java/com/d/lib/ui/shadow/ShadowLayout.java) | 阴影效果 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/shadow/shadow.png" width="49%">
 [RecordTrigger](lib/src/main/java/com/d/lib/ui/recordtrigger/RecordTriggerView.java) | 语音触发器 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/recordtrigger/recordtrigger.gif" width="49%">
 [VerInor](lib/src/main/java/com/d/uiutil/verinor/VerInorActivity.java) | RecyclerView嵌套RecyclerView |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/verinor/verinor.gif" width="49%">
+[PoiLayout](lib/src/main/java/com/d/lib/ui/poi/PoiLayout.java) | 地图列表Poi、抽屉效果 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/poi/poi.gif" width="49%">
 
 More usage see [demo](app/src/main/java/com/d/uiutil/MainActivity.java)
 

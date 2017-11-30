@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_map"
+        android:scaleType="centerCrop" />
+
+    <com.d.lib.ui.poi.PoiLayout
+        android:id="@+id/poi_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="#ffffff" />
+
+        <com.d.lib.ui.poi.PoiListView
+            android:id="@+id/poi_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff" />
+
+        <com.d.lib.ui.poi.PoiTextView
+            android:id="@+id/tv_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="上滑展开更多列表"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:visibility="gone" />
+    </com.d.lib.ui.poi.PoiLayout>
+</FrameLayout>
