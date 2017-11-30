@@ -19,7 +19,7 @@ Name | Explain | Demo
 [ItouchSort](https://github.com/Dsiner/Xrv) | 拖曳排序 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Xrv/xrv_drag.gif" width="49%">
 [SlideLayout](https://github.com/Dsiner/SlideLayout) | 侧滑删除/菜单控件 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/SlideLayout/slidelayout.gif" width="49%">
 [TabView](https://github.com/Dsiner/TabView) | 滑动指示器/按钮/TAB控件 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/TabView/tabview.gif" width="49%">
-[Praise](lib/src/main/java/com/d/lib/ui/settingprogress/SettingProgressView.java) | 进度Progress、Level |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/settingprogress/settingprogress.gif" width="49%">
+[Praise](lib/src/main/java/com/d/lib/ui/settingprogress/SettingProgressView.java) | 进度Progress、Level |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/settingprogress/settingprogress.gif" width="100%">
 [Praise](lib/src/main/java/com/d/lib/ui/praise/PraiseLayout.java) | 点赞动效 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/praise/praise.gif" width="49%">
 [Shadow](lib/src/main/java/com/d/lib/ui/shadow/ShadowLayout.java) | 阴影效果 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/shadow/shadow.png" width="49%">
 [RecordTrigger](lib/src/main/java/com/d/lib/ui/recordtrigger/RecordTriggerView.java) | 语音触发器 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/recordtrigger/recordtrigger.gif" width="49%">
