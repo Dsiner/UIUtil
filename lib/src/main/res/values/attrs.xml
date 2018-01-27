@@ -87,4 +87,10 @@
         <attr name="spv_radius_big" format="dimension" />
         <attr name="spv_radius_space" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="ConvenientBanner">
+        <attr name="canLoop" format="boolean" />
+        <attr name="cb_ppadding" format="dimension" />
+        <attr name="cb_layout" format="reference" />
+    </declare-styleable>
 </resources>

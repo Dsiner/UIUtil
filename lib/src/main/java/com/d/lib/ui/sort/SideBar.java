@@ -28,7 +28,7 @@ public class SideBar extends View {
     private Paint paintRect;
     private int colorTrans, colorWhite, colorBar, colorRect;
     private int count;
-    private int onpice;
+    private float onpice;
     private int widthBar;
     private int widthRect;
     private int rectRadius;
@@ -103,9 +103,9 @@ public class SideBar extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width = MeasureSpec.getSize(widthMeasureSpec);
         height = MeasureSpec.getSize(heightMeasureSpec);
-        onpice = height / count;
+        onpice = 1f * height / count;
         widthBar = (int) (onpice * 1.182f);
-        int textSize = UIUtil.dip2px(getContext(), onpice * 0.36f);
+        float textSize = onpice * 0.686f;
         paint.setTextSize(textSize);
         paintCur.setTextSize(textSize);
         textHeight = UIUtil.getTextHeight(paint);
