@@ -78,12 +78,12 @@ public abstract class TCAbstractPathAnimator {
         static public Config fromTypeArray(TypedArray typedArray, float x, float y, int pointx, int heartWidth, int heartHeight) {
             Config config = new Config();
             Resources res = typedArray.getResources();
-            config.initX = (int) typedArray.getDimension(R.styleable.HeartLayout_hl_initX, x);
-            config.initY = (int) typedArray.getDimension(R.styleable.HeartLayout_hl_initY, y);
-            config.xRand = (int) typedArray.getDimension(R.styleable.HeartLayout_hl_xRand, 100);
-            config.animLength = (int) typedArray.getDimension(R.styleable.HeartLayout_hl_animLength, 200);//动画长度
-            config.animLengthRand = (int) typedArray.getDimension(R.styleable.HeartLayout_hl_animLengthRand, 700);
-            config.bezierFactor = typedArray.getInteger(R.styleable.HeartLayout_hl_bezierFactor, 6);
+            config.initX = (int) typedArray.getDimension(R.styleable.lib_ui_HeartLayout_lib_ui_hl_initX, x);
+            config.initY = (int) typedArray.getDimension(R.styleable.lib_ui_HeartLayout_lib_ui_hl_initY, y);
+            config.xRand = (int) typedArray.getDimension(R.styleable.lib_ui_HeartLayout_lib_ui_hl_xRand, 100);
+            config.animLength = (int) typedArray.getDimension(R.styleable.lib_ui_HeartLayout_lib_ui_hl_animLength, 200);//动画长度
+            config.animLengthRand = (int) typedArray.getDimension(R.styleable.lib_ui_HeartLayout_lib_ui_hl_animLengthRand, 700);
+            config.bezierFactor = typedArray.getInteger(R.styleable.lib_ui_HeartLayout_lib_ui_hl_bezierFactor, 6);
             config.xPointFactor = pointx;
 //            config.heartWidth = (int) typedArray.getDimension(R.styleable.HeartLayout_heart_width,
 //                    res.getDimensionPixelOffset(R.dimen.heart_size_width));//动画图片宽度
@@ -91,7 +91,7 @@ public abstract class TCAbstractPathAnimator {
 //                    res.getDimensionPixelOffset(R.dimen.heart_size_height));//动画图片高度
             config.heartWidth = heartWidth;
             config.heartHeight = heartHeight;
-            config.animDuration = typedArray.getInteger(R.styleable.HeartLayout_hl_anim_duration, 1000);//持续期
+            config.animDuration = typedArray.getInteger(R.styleable.lib_ui_HeartLayout_lib_ui_hl_animDuration, 1000);//持续期
             return config;
         }
     }

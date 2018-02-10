@@ -92,27 +92,27 @@ public class ShadowLayout extends FrameLayout {
         }
 
         // Retrieve attributes from xml
-        final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ShadowLayout);
+        final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_ShadowLayout);
         try {
-            setIsShadowed(typedArray.getBoolean(R.styleable.ShadowLayout_sl_shadowed, true));
+            setIsShadowed(typedArray.getBoolean(R.styleable.lib_ui_ShadowLayout_lib_ui_sl_shadowed, true));
             setShadowRadius(
                     typedArray.getDimension(
-                            R.styleable.ShadowLayout_sl_shadow_radius, DEFAULT_SHADOW_RADIUS
+                            R.styleable.lib_ui_ShadowLayout_lib_ui_sl_shadowRadius, DEFAULT_SHADOW_RADIUS
                     )
             );
             setShadowDistance(
                     typedArray.getDimension(
-                            R.styleable.ShadowLayout_sl_shadow_distance, DEFAULT_SHADOW_DISTANCE
+                            R.styleable.lib_ui_ShadowLayout_lib_ui_sl_shadowDistance, DEFAULT_SHADOW_DISTANCE
                     )
             );
             setShadowAngle(
                     typedArray.getInteger(
-                            R.styleable.ShadowLayout_sl_shadow_angle, (int) DEFAULT_SHADOW_ANGLE
+                            R.styleable.lib_ui_ShadowLayout_lib_ui_sl_shadowAngle, (int) DEFAULT_SHADOW_ANGLE
                     )
             );
             setShadowColor(
                     typedArray.getColor(
-                            R.styleable.ShadowLayout_sl_shadow_color, DEFAULT_SHADOW_COLOR
+                            R.styleable.lib_ui_ShadowLayout_lib_ui_sl_shadowColor, DEFAULT_SHADOW_COLOR
                     )
             );
         } finally {

@@ -138,9 +138,9 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             convertView = layoutInflater.inflate(R.layout.adapter_hl_msg, null);
             holder.sendContext = (TextView) convertView.findViewById(R.id.sendcontext);
-            convertView.setTag(R.id.hl_tag_first, holder);
+            convertView.setTag(R.id.tag_hl_first, holder);
         } else {
-            holder = (ViewHolder) convertView.getTag(R.id.hl_tag_first);
+            holder = (ViewHolder) convertView.getTag(R.id.tag_hl_first);
         }
 
         TCChatEntity item = listMessage.get(position);
@@ -177,7 +177,7 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
      * @param itemView 当前执行动画View
      */
     private void stopViewAnimator(View itemView) {
-        AnimatorSet aniSet = (AnimatorSet) itemView.getTag(R.id.hl_tag_second);
+        AnimatorSet aniSet = (AnimatorSet) itemView.getTag(R.id.tag_hl_second);
         if (null != aniSet) {
             aniSet.cancel();
             mAnimatorSetList.remove(aniSet);
@@ -198,7 +198,7 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
         aniSet.play(animator);
         aniSet.start();
         mAnimatorSetList.add(aniSet);
-        itemView.setTag(R.id.hl_tag_second, aniSet);
+        itemView.setTag(R.id.tag_hl_second, aniSet);
     }
 
     /**

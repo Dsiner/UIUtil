@@ -29,7 +29,7 @@ public class TabViewGroup extends RelativeLayout implements TabView {
 
     private void init(Context context) {
         this.context = context;
-        View root = LayoutInflater.from(context).inflate(R.layout.view_tab, this);
+        View root = LayoutInflater.from(context).inflate(R.layout.lib_ui_stab_view_tab, this);
         tvTitle = (TextView) root.findViewById(R.id.tv_title);
         tvNumber = (TextView) root.findViewById(R.id.tv_number);
     }
@@ -52,7 +52,7 @@ public class TabViewGroup extends RelativeLayout implements TabView {
 
     @Override
     public void notifyData(boolean focus) {
-        tvTitle.setTextColor(ContextCompat.getColor(context, focus ? R.color.color_accent : R.color.color_text));
+        tvTitle.setTextColor(ContextCompat.getColor(context, focus ? R.color.lib_ui_color_accent : R.color.lib_ui_color_text));
     }
 
     @Override

@@ -62,12 +62,12 @@ public class ToggleButton extends View {
     }
 
     private void initTypedArray(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ToggleButton);
-        colorNormal = typedArray.getColor(R.styleable.ToggleButton_tbtn_colorNormal, Color.parseColor("#ffffff"));
-        colorLight = typedArray.getColor(R.styleable.ToggleButton_tbtn_colorLight, Color.parseColor("#FF4081"));
-        colorPadding = typedArray.getColor(R.styleable.ToggleButton_tbtn_colorPadding, Color.parseColor("#e3e4e5"));
-        padding = (int) typedArray.getDimension(R.styleable.ToggleButton_tbtn_padding, 4);
-        duration = typedArray.getInteger(R.styleable.ToggleButton_tbtn_duration, 0);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_ToggleButton);
+        colorNormal = typedArray.getColor(R.styleable.lib_ui_ToggleButton_lib_ui_tbtn_colorNormal, Color.parseColor("#ffffff"));
+        colorLight = typedArray.getColor(R.styleable.lib_ui_ToggleButton_lib_ui_tbtn_colorLight, Color.parseColor("#FF4081"));
+        colorPadding = typedArray.getColor(R.styleable.lib_ui_ToggleButton_lib_ui_tbtn_colorPadding, Color.parseColor("#e3e4e5"));
+        padding = (int) typedArray.getDimension(R.styleable.lib_ui_ToggleButton_lib_ui_tbtn_padding, 4);
+        duration = typedArray.getInteger(R.styleable.lib_ui_ToggleButton_lib_ui_tbtn_duration, 0);
         typedArray.recycle();
     }
 

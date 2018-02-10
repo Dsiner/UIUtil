@@ -93,9 +93,9 @@ public class CBPageAdapter<T> extends PagerAdapter {
         if (view == null) {
             holder = (Holder) holderCreator.createHolder();
             view = holder.createView(container.getContext());
-            view.setTag(R.id.cb_item_tag, holder);
+            view.setTag(R.id.lib_ui_cb_item_tag, holder);
         } else {
-            holder = (Holder<T>) view.getTag(R.id.cb_item_tag);
+            holder = (Holder<T>) view.getTag(R.id.lib_ui_cb_item_tag);
         }
         if (mDatas != null && !mDatas.isEmpty())
             holder.UpdateUI(container.getContext(), position, mDatas.get(position), canLoop);

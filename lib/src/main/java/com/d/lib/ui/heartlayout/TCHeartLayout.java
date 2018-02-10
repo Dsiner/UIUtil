@@ -36,7 +36,7 @@ import java.util.Random;
  * TCHeartView 单个心形界面
  */
 public class TCHeartLayout extends RelativeLayout {
-    private static int[] drawableIds = new int[]{R.drawable.hl_heart0, R.drawable.hl_heart1, R.drawable.hl_heart2, R.drawable.hl_heart3, R.drawable.hl_heart4, R.drawable.hl_heart5, R.drawable.hl_heart6, R.drawable.hl_heart7, R.drawable.hl_heart8,};
+    private static int[] drawableIds = new int[]{R.drawable.lib_ui_hl_heart0, R.drawable.lib_ui_hl_heart1, R.drawable.lib_ui_hl_heart2, R.drawable.lib_ui_hl_heart3, R.drawable.lib_ui_hl_heart4, R.drawable.lib_ui_hl_heart5, R.drawable.lib_ui_hl_heart6, R.drawable.lib_ui_hl_heart7, R.drawable.lib_ui_hl_heart8,};
     private static Drawable[] sDrawables;
 
     private int textHight;
@@ -59,8 +59,8 @@ public class TCHeartLayout extends RelativeLayout {
     }
 
     private void findViewById(Context context) {
-        LayoutInflater.from(context).inflate(R.layout.hl_layout_periscope, this);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hl_icon_like_png);
+        LayoutInflater.from(context).inflate(R.layout.lib_ui_hl_periscope, this);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_hl_like);
         dHeight = bitmap.getWidth();
         dWidth = bitmap.getHeight();
         textHight = sp2px(getContext(), 20) + dHeight / 2;
@@ -70,7 +70,7 @@ public class TCHeartLayout extends RelativeLayout {
 
     private void init(AttributeSet attrs, int defStyleAttr) {
         final TypedArray a = getContext().obtainStyledAttributes(
-                attrs, R.styleable.HeartLayout, defStyleAttr, 0);
+                attrs, R.styleable.lib_ui_HeartLayout, defStyleAttr, 0);
 
         //todo:获取确切值
         initX = 30;

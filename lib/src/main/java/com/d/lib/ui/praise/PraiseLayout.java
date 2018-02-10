@@ -57,7 +57,7 @@ public class PraiseLayout extends RelativeLayout {
     }
 
     private void init() {
-        heart = ContextCompat.getDrawable(getContext(), R.drawable.ic_heart);
+        heart = ContextCompat.getDrawable(getContext(), R.drawable.lib_ui_pl_ic_heart);
         dHeight = UIUtil.dip2px(getContext(), 15);
         dWidth = UIUtil.dip2px(getContext(), 15);
         setMarginLeft(true);

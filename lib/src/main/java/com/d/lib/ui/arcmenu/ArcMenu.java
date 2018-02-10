@@ -60,8 +60,8 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
     public ArcMenu(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         //获取自定义属性的值
-        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ArcMenu, defStyle, 0);
-        int pos = a.getInt(R.styleable.ArcMenu_am_position, POS_RIGHT_BOTTOM);
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.lib_ui_ArcMenu, defStyle, 0);
+        int pos = a.getInt(R.styleable.lib_ui_ArcMenu_lib_ui_am_position, POS_RIGHT_BOTTOM);
         switch (pos) {
             case POS_LEFT_TOP:
                 mPosition = Position.LEFT_TOP;
@@ -76,7 +76,7 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
                 mPosition = Position.RIGHT_BOTTOM;
                 break;
         }
-        mRadius = (int) a.getDimension(R.styleable.ArcMenu_am_radius, TypedValue
+        mRadius = (int) a.getDimension(R.styleable.lib_ui_ArcMenu_lib_ui_am_radius, TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics()));
         a.recycle();
     }

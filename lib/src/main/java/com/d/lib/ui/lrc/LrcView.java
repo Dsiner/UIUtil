@@ -88,16 +88,16 @@ public class LrcView extends View implements ILrcView {
 
     public LrcView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LrcView);
-        colorText = typedArray.getColor(R.styleable.LrcView_lrcTextColor, Color.parseColor("#4577B7"));
-        colorTextCur = typedArray.getColor(R.styleable.LrcView_lrcCurTextColor, Color.parseColor("#FF4081"));
-        colorTime = typedArray.getColor(R.styleable.LrcView_lrcTimeColor, Color.parseColor("#FF4081"));
-        sizeText = SIZE_TEXT_DEFAULT = typedArray.getDimension(R.styleable.LrcView_lrcTextSize, 15);
-        sizeTextCur = SIZE_TEXT_CUR_DEFAULT = typedArray.getDimension(R.styleable.LrcView_lrcCurTextSize, 17);
-        sizeTime = SIZE_TIME_DEFAULT = typedArray.getDimension(R.styleable.LrcView_lrcTimeSize, 8);
-        padding = PADDING_DEFAULT = typedArray.getDimension(R.styleable.LrcView_lrcPadding, 17);
-        MIN_SCALE = typedArray.getFloat(R.styleable.LrcView_lrcMinScale, 0.7f);
-        MAX_SCALE = typedArray.getFloat(R.styleable.LrcView_lrcMaxScale, 1.7f);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_LrcView);
+        colorText = typedArray.getColor(R.styleable.lib_ui_LrcView_lib_ui_lrc_textColor, Color.parseColor("#4577B7"));
+        colorTextCur = typedArray.getColor(R.styleable.lib_ui_LrcView_lib_ui_lrc_textColorCur, Color.parseColor("#FF4081"));
+        colorTime = typedArray.getColor(R.styleable.lib_ui_LrcView_lib_ui_lrc_timeColor, Color.parseColor("#FF4081"));
+        sizeText = SIZE_TEXT_DEFAULT = typedArray.getDimension(R.styleable.lib_ui_LrcView_lib_ui_lrc_textSize, 15);
+        sizeTextCur = SIZE_TEXT_CUR_DEFAULT = typedArray.getDimension(R.styleable.lib_ui_LrcView_lib_ui_lrc_textSizeCur, 17);
+        sizeTime = SIZE_TIME_DEFAULT = typedArray.getDimension(R.styleable.lib_ui_LrcView_lib_ui_lrc_timeSize, 8);
+        padding = PADDING_DEFAULT = typedArray.getDimension(R.styleable.lib_ui_LrcView_lib_ui_lrc_padding, 17);
+        MIN_SCALE = typedArray.getFloat(R.styleable.lib_ui_LrcView_lib_ui_lrc_minScale, 0.7f);
+        MAX_SCALE = typedArray.getFloat(R.styleable.lib_ui_LrcView_lib_ui_lrc_maxScale, 1.7f);
         typedArray.recycle();
         paddingTime = PADDING_TIME_DEFAULT = UIUtil.dip2px(context, 5);
         init(context);

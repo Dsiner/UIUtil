@@ -47,10 +47,10 @@ public class RecordTriggerView extends AppCompatTextView {
     private void init(Context context) {
         touchRadius = UIUtil.dip2px(context, 105);
         setGravity(Gravity.CENTER);
-        setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.recordtrigger_corner_bg_normal));
+        setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.lib_ui_rtv_corner_bg_normal));
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         setTextColor(Color.parseColor("#727272"));
-        setText(R.string.record_tip_voice);
+        setText(R.string.lib_ui_record_tip_voice);
     }
 
     @Override
@@ -71,8 +71,8 @@ public class RecordTriggerView extends AppCompatTextView {
                 dY = eY;
                 isValid = true;
                 curState = STATE_VALID;
-                setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.recordtrigger_corner_bg_select));
-                setText(R.string.record_tip_submit);
+                setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.lib_ui_rtv_corner_bg_select));
+                setText(R.string.lib_ui_record_tip_submit);
                 if (listener != null) {
                     listener.onStateChange(curState);
                 }
@@ -81,7 +81,7 @@ public class RecordTriggerView extends AppCompatTextView {
                 isValid = Math.abs(Math.sqrt((eX - dX) * (eX - dX) + (eY - dY) * (eY - dY))) < touchRadius;
                 int state = isValid ? STATE_VALID : STATE_INVALID;
                 if (state != curState) {
-                    setText(isValid ? R.string.record_tip_submit : R.string.record_tip_cancle);
+                    setText(isValid ? R.string.lib_ui_record_tip_submit : R.string.lib_ui_record_tip_cancle);
                     if (listener != null) {
                         listener.onStateChange(state);
                     }
@@ -94,8 +94,8 @@ public class RecordTriggerView extends AppCompatTextView {
                 if (listener != null) {
                     listener.onStateChange(curState);
                 }
-                setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.recordtrigger_corner_bg_normal));
-                setText(R.string.record_tip_voice);
+                setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.lib_ui_rtv_corner_bg_normal));
+                setText(R.string.lib_ui_record_tip_voice);
                 return true;
         }
         return super.onTouchEvent(event);

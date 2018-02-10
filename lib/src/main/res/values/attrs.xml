@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CTickView">
-        <attr name="ctvColor" format="color" />
-        <attr name="ctvColorCircle" format="color" />
-        <attr name="ctvStrokeWidth" format="dimension" />
+    <declare-styleable name="lib_ui_CTickView">
+        <attr name="lib_ui_ctv_color" format="color" />
+        <attr name="lib_ui_ctv_colorCircle" format="color" />
+        <attr name="lib_ui_ctv_strokeWidth" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="LrcView">
-        <attr name="lrcTextColor" format="color" />
-        <attr name="lrcCurTextColor" format="color" />
-        <attr name="lrcTimeColor" format="color" />
-        <attr name="lrcTextSize" format="dimension" />
-        <attr name="lrcCurTextSize" format="dimension" />
-        <attr name="lrcTimeSize" format="dimension" />
-        <attr name="lrcPadding" format="dimension" />
-        <attr name="lrcMinScale" format="float" />
-        <attr name="lrcMaxScale" format="float" />
+    <declare-styleable name="lib_ui_LrcView">
+        <attr name="lib_ui_lrc_textColor" format="color" />
+        <attr name="lib_ui_lrc_textColorCur" format="color" />
+        <attr name="lib_ui_lrc_timeColor" format="color" />
+        <attr name="lib_ui_lrc_textSize" format="dimension" />
+        <attr name="lib_ui_lrc_textSizeCur" format="dimension" />
+        <attr name="lib_ui_lrc_timeSize" format="dimension" />
+        <attr name="lib_ui_lrc_padding" format="dimension" />
+        <attr name="lib_ui_lrc_minScale" format="float" />
+        <attr name="lib_ui_lrc_maxScale" format="float" />
     </declare-styleable>
 
-    <declare-styleable name="ToggleButton">
-        <attr name="tbtn_colorNormal" format="color" />
-        <attr name="tbtn_colorLight" format="color" />
-        <attr name="tbtn_colorPadding" format="color" />
-        <attr name="tbtn_padding" format="dimension" />
-        <attr name="tbtn_duration" format="integer" />
+    <declare-styleable name="lib_ui_ToggleButton">
+        <attr name="lib_ui_tbtn_colorNormal" format="color" />
+        <attr name="lib_ui_tbtn_colorLight" format="color" />
+        <attr name="lib_ui_tbtn_colorPadding" format="color" />
+        <attr name="lib_ui_tbtn_padding" format="dimension" />
+        <attr name="lib_ui_tbtn_duration" format="integer" />
     </declare-styleable>
 
-    <declare-styleable name="ArcMenu">
-        <attr name="am_position">
+    <declare-styleable name="lib_ui_ArcMenu">
+        <attr name="lib_ui_am_position">
             <enum name="left_top" value="0" />
             <enum name="left_bottom" value="1" />
             <enum name="right_top" value="2" />
             <enum name="right_bottom" value="3" />
         </attr>
-        <attr name="am_radius" format="dimension" />
+        <attr name="lib_ui_am_radius" format="dimension" />
     </declare-styleable>
 
     <!-- 飘星自定义属性 -->
-    <declare-styleable name="HeartLayout">
-        <attr name="hl_initX" format="dimension" />
-        <attr name="hl_initY" format="dimension" />
-        <attr name="hl_xRand" format="dimension" />
-        <attr name="hl_animLengthRand" format="dimension" />
-        <attr name="hl_xPointFactor" format="dimension" />
-        <attr name="hl_animLength" format="dimension" />
-        <attr name="hl_heart_width" format="dimension" />
-        <attr name="hl_heart_height" format="dimension" />
-        <attr name="hl_bezierFactor" format="integer" />
-        <attr name="hl_anim_duration" format="integer" />
+    <declare-styleable name="lib_ui_HeartLayout">
+        <attr name="lib_ui_hl_initX" format="dimension" />
+        <attr name="lib_ui_hl_initY" format="dimension" />
+        <attr name="lib_ui_hl_xRand" format="dimension" />
+        <attr name="lib_ui_hl_animLengthRand" format="dimension" />
+        <attr name="lib_ui_hl_xPointFactor" format="dimension" />
+        <attr name="lib_ui_hl_animLength" format="dimension" />
+        <attr name="lib_ui_hl_heartWidth" format="dimension" />
+        <attr name="lib_ui_hl_heartHeight" format="dimension" />
+        <attr name="lib_ui_hl_bezierFactor" format="integer" />
+        <attr name="lib_ui_hl_animDuration" format="integer" />
     </declare-styleable>
 
-    <declare-styleable name="ScrollTab">
-        <attr name="stab_type">
+    <declare-styleable name="lib_ui_ScrollTab">
+        <attr name="lib_ui_stab_type">
             <enum name="view" value="0" />
             <enum name="view_group" value="1" />
         </attr>
-        <attr name="stab_titles" format="string" />
-        <attr name="stab_avag" format="boolean" />
-        <attr name="stab_padding" format="dimension" />
-        <attr name="stab_indicator_type">
+        <attr name="lib_ui_stab_titles" format="string" />
+        <attr name="lib_ui_stab_avag" format="boolean" />
+        <attr name="lib_ui_stab_padding" format="dimension" />
+        <attr name="lib_ui_stab_indicatorType">
             <enum name="trend" value="0" />
             <enum name="translation" value="1" />
             <enum name="none" value="2" />
         </attr>
-        <attr name="stab_indicator_color" format="color" />
-        <attr name="stab_indicator_width" format="dimension" />
-        <attr name="stab_indicator_weight" format="dimension" />
-        <attr name="stab_indicator_radius" format="dimension" />
-        <attr name="stab_indicator_padding" format="dimension" />
-        <attr name="stab_duration" format="integer" />
+        <attr name="lib_ui_stab_indicatorColor" format="color" />
+        <attr name="lib_ui_stab_indicatorWidth" format="dimension" />
+        <attr name="lib_ui_stab_indicatorWeight" format="dimension" />
+        <attr name="lib_ui_stab_indicatorRadius" format="dimension" />
+        <attr name="lib_ui_stab_indicatorPadding" format="dimension" />
+        <attr name="lib_ui_stab_duration" format="integer" />
     </declare-styleable>
 
-    <declare-styleable name="ShadowLayout">
-        <attr name="sl_shadowed" format="boolean" />
-        <attr name="sl_shadow_distance" format="dimension" />
-        <attr name="sl_shadow_angle" format="integer" />
-        <attr name="sl_shadow_radius" format="dimension" />
-        <attr name="sl_shadow_color" format="color" />
+    <declare-styleable name="lib_ui_ShadowLayout">
+        <attr name="lib_ui_sl_shadowed" format="boolean" />
+        <attr name="lib_ui_sl_shadowDistance" format="dimension" />
+        <attr name="lib_ui_sl_shadowAngle" format="integer" />
+        <attr name="lib_ui_sl_shadowRadius" format="dimension" />
+        <attr name="lib_ui_sl_shadowColor" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="SettingProgressView">
-        <attr name="spv_count" format="integer" />
-        <attr name="spv_color_select" format="color" />
-        <attr name="spv_color_unselect" format="color" />
-        <attr name="spv_radius_small" format="dimension" />
-        <attr name="spv_radius_big" format="dimension" />
-        <attr name="spv_radius_space" format="dimension" />
+    <declare-styleable name="lib_ui_SettingProgressView">
+        <attr name="lib_ui_spv_count" format="integer" />
+        <attr name="lib_ui_spv_colorSelect" format="color" />
+        <attr name="lib_ui_spv_colorUnselect" format="color" />
+        <attr name="lib_ui_spv_radiusSmall" format="dimension" />
+        <attr name="lib_ui_spv_radiusBig" format="dimension" />
+        <attr name="lib_ui_spv_radiusSpace" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="ConvenientBanner">
-        <attr name="canLoop" format="boolean" />
-        <attr name="cb_ppadding" format="dimension" />
-        <attr name="cb_layout" format="reference" />
+    <declare-styleable name="lib_ui_ConvenientBanner">
+        <attr name="lib_ui_cb_canLoop" format="boolean" />
+        <attr name="lib_ui_cb_ppadding" format="dimension" />
+        <attr name="lib_ui_cb_layout" format="reference" />
     </declare-styleable>
 </resources>

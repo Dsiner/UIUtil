@@ -56,13 +56,13 @@ public class SettingProgressView extends View {
 
     public SettingProgressView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SettingProgressView);
-        itemCount = typedArray.getInteger(R.styleable.SettingProgressView_spv_count, 5);
-        colorSelected = typedArray.getColor(R.styleable.SettingProgressView_spv_color_select, Color.parseColor("#69B068"));
-        colorUnselected = typedArray.getColor(R.styleable.SettingProgressView_spv_color_unselect, Color.GRAY);
-        radiusSmall = typedArray.getDimension(R.styleable.SettingProgressView_spv_radius_small, UIUtil.dip2px(context, 5));
-        radiusBig = typedArray.getDimension(R.styleable.SettingProgressView_spv_radius_big, UIUtil.dip2px(context, 10));
-        radiusSpace = typedArray.getDimension(R.styleable.SettingProgressView_spv_radius_space, UIUtil.dip2px(context, 2));
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_SettingProgressView);
+        itemCount = typedArray.getInteger(R.styleable.lib_ui_SettingProgressView_lib_ui_spv_count, 5);
+        colorSelected = typedArray.getColor(R.styleable.lib_ui_SettingProgressView_lib_ui_spv_colorSelect, Color.parseColor("#69B068"));
+        colorUnselected = typedArray.getColor(R.styleable.lib_ui_SettingProgressView_lib_ui_spv_colorUnselect, Color.GRAY);
+        radiusSmall = typedArray.getDimension(R.styleable.lib_ui_SettingProgressView_lib_ui_spv_radiusSmall, UIUtil.dip2px(context, 5));
+        radiusBig = typedArray.getDimension(R.styleable.lib_ui_SettingProgressView_lib_ui_spv_radiusBig, UIUtil.dip2px(context, 10));
+        radiusSpace = typedArray.getDimension(R.styleable.lib_ui_SettingProgressView_lib_ui_spv_radiusSpace, UIUtil.dip2px(context, 2));
         typedArray.recycle();
         init(context);
     }

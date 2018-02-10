@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/recordlight_corner_dialog"
+    android:background="@drawable/lib_ui_rtv_corner_dialog"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="12dp">
@@ -11,14 +11,14 @@
         android:id="@+id/iv_flag"
         android:layout_width="73dp"
         android:layout_height="95dp"
-        android:src="@drawable/ic_recordlight_voice" />
+        android:src="@drawable/lib_ui_rtv_ic_voice" />
 
     <TextView
         android:id="@+id/tv_toast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/color_trans"
+        android:background="@color/lib_ui_color_trans"
         android:padding="10dp"
         android:text="手指上滑，取消发送"
         android:textColor="#ffffff"

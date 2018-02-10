@@ -64,10 +64,10 @@ public class ConvenientBanner<T> extends LinearLayout {
 
     public ConvenientBanner(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ConvenientBanner);
-        canLoop = a.getBoolean(R.styleable.ConvenientBanner_canLoop, true);
-        pointPadding = (int) (a.getDimension(R.styleable.ConvenientBanner_cb_ppadding, 0));
-        cbLayout = a.getResourceId(R.styleable.ConvenientBanner_cb_layout, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_ConvenientBanner);
+        canLoop = a.getBoolean(R.styleable.lib_ui_ConvenientBanner_lib_ui_cb_canLoop, true);
+        pointPadding = (int) (a.getDimension(R.styleable.lib_ui_ConvenientBanner_lib_ui_cb_ppadding, 0));
+        cbLayout = a.getResourceId(R.styleable.lib_ui_ConvenientBanner_lib_ui_cb_layout, 0);
         a.recycle();
         init(context);
     }
@@ -75,10 +75,10 @@ public class ConvenientBanner<T> extends LinearLayout {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public ConvenientBanner(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ConvenientBanner);
-        canLoop = a.getBoolean(R.styleable.ConvenientBanner_canLoop, true);
-        pointPadding = (int) (a.getDimension(R.styleable.ConvenientBanner_cb_ppadding, 0));
-        cbLayout = a.getResourceId(R.styleable.ConvenientBanner_cb_layout, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_ConvenientBanner);
+        canLoop = a.getBoolean(R.styleable.lib_ui_ConvenientBanner_lib_ui_cb_canLoop, true);
+        pointPadding = (int) (a.getDimension(R.styleable.lib_ui_ConvenientBanner_lib_ui_cb_ppadding, 0));
+        cbLayout = a.getResourceId(R.styleable.lib_ui_ConvenientBanner_lib_ui_cb_layout, 0);
         a.recycle();
         init(context);
     }
@@ -86,10 +86,10 @@ public class ConvenientBanner<T> extends LinearLayout {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public ConvenientBanner(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ConvenientBanner);
-        canLoop = a.getBoolean(R.styleable.ConvenientBanner_canLoop, true);
-        pointPadding = (int) (a.getDimension(R.styleable.ConvenientBanner_cb_ppadding, 0));
-        cbLayout = a.getResourceId(R.styleable.ConvenientBanner_cb_layout, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_ConvenientBanner);
+        canLoop = a.getBoolean(R.styleable.lib_ui_ConvenientBanner_lib_ui_cb_canLoop, true);
+        pointPadding = (int) (a.getDimension(R.styleable.lib_ui_ConvenientBanner_lib_ui_cb_ppadding, 0));
+        cbLayout = a.getResourceId(R.styleable.lib_ui_ConvenientBanner_lib_ui_cb_layout, 0);
         a.recycle();
         init(context);
     }
@@ -101,7 +101,7 @@ public class ConvenientBanner<T> extends LinearLayout {
                     cbLayout, this, true);
         } else {
             hView = LayoutInflater.from(context).inflate(
-                    R.layout.include_viewpager, this, true);
+                    R.layout.lib_ui_cb_include, this, true);
         }
         viewPager = (CBLoopViewPager) hView.findViewById(R.id.cbLoopViewPager);
         loPageTurningPoint = (ViewGroup) hView
