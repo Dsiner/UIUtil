@@ -52,10 +52,10 @@ public class CTickView extends View {
 
     public CTickView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CTickView);
-        color = typedArray.getColor(R.styleable.CTickView_ctvColor, Color.parseColor("#ffffff"));
-        colorCircle = typedArray.getColor(R.styleable.CTickView_ctvColorCircle, Color.parseColor("#47b018"));
-        strokeWidth = typedArray.getDimension(R.styleable.CTickView_ctvStrokeWidth, 5);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_CTickView);
+        color = typedArray.getColor(R.styleable.lib_ui_CTickView_lib_ui_ctv_color, Color.parseColor("#ffffff"));
+        colorCircle = typedArray.getColor(R.styleable.lib_ui_CTickView_lib_ui_ctv_colorCircle, Color.parseColor("#47b018"));
+        strokeWidth = typedArray.getDimension(R.styleable.lib_ui_CTickView_lib_ui_ctv_strokeWidth, 5);
         typedArray.recycle();
         init();
     }

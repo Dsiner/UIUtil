@@ -32,7 +32,7 @@ public class RecordLightView extends LinearLayout {
     }
 
     private void init(Context context) {
-        View root = LayoutInflater.from(context).inflate(R.layout.view_recordlight, this);
+        View root = LayoutInflater.from(context).inflate(R.layout.lib_ui_rtv_view, this);
         ivFlag = (ImageView) root.findViewById(R.id.iv_flag);
         tvToast = (TextView) root.findViewById(R.id.tv_toast);
     }
@@ -41,14 +41,14 @@ public class RecordLightView extends LinearLayout {
         switch (state) {
             case RecordTriggerView.STATE_VALID:
                 setVisibility(VISIBLE);
-                ivFlag.setImageResource(R.drawable.ic_recordlight_voice);
-                tvToast.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.color_trans));
+                ivFlag.setImageResource(R.drawable.lib_ui_rtv_ic_voice);
+                tvToast.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lib_ui_color_trans));
                 tvToast.setText(toastUp);
                 break;
             case RecordTriggerView.STATE_INVALID:
                 setVisibility(VISIBLE);
-                ivFlag.setImageResource(R.drawable.ic_recordlight_back);
-                tvToast.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.recordlight_corner_bg));
+                ivFlag.setImageResource(R.drawable.lib_ui_rtv_ic_back);
+                tvToast.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.lib_ui_rtv_corner_bg));
                 tvToast.setText(toastCancel);
                 break;
             case RecordTriggerView.STATE_CANCLE:

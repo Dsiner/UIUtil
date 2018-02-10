@@ -93,14 +93,14 @@ public class VSView extends View {
 
         mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
 
-        bitmapA = BitmapFactory.decodeResource(getResources(), R.drawable.vs_ab);
-        bitmapAP = BitmapFactory.decodeResource(getResources(), R.drawable.vs_ab);
-        bitmapAS = BitmapFactory.decodeResource(getResources(), R.drawable.vs_ab);
-        bitmapAU = BitmapFactory.decodeResource(getResources(), R.drawable.vs_ab);
-        bitmapB = BitmapFactory.decodeResource(getResources(), R.drawable.vs_ab);
-        bitmapBP = BitmapFactory.decodeResource(getResources(), R.drawable.vs_ab);
-        bitmapBS = BitmapFactory.decodeResource(getResources(), R.drawable.vs_ab);
-        bitmapBU = BitmapFactory.decodeResource(getResources(), R.drawable.vs_ab);
+        bitmapA = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_vs_icon);
+        bitmapAP = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_vs_icon);
+        bitmapAS = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_vs_icon);
+        bitmapAU = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_vs_icon);
+        bitmapB = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_vs_icon);
+        bitmapBP = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_vs_icon);
+        bitmapBS = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_vs_icon);
+        bitmapBU = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_vs_icon);
 
         rectBp = new Rect();
         rect = new Rect();

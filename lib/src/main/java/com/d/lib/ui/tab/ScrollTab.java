@@ -81,17 +81,17 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     }
 
     private void initTypedArray(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ScrollTab);
-        type = typedArray.getInt(R.styleable.ScrollTab_stab_type, TYPE_VIEW);
-        isAvag = typedArray.getBoolean(R.styleable.ScrollTab_stab_avag, false);
-        padding = typedArray.getDimension(R.styleable.ScrollTab_stab_padding, UIUtil.dip2px(context, 12));
-        strTitles = typedArray.getString(R.styleable.ScrollTab_stab_titles);
-        indicatorType = typedArray.getInt(R.styleable.ScrollTab_stab_indicator_type, TYPE_INDICATOR_TREND);
-        indicatorColor = typedArray.getColor(R.styleable.ScrollTab_stab_indicator_color, ContextCompat.getColor(context, R.color.color_accent));
-        indicatorWidth = typedArray.getDimension(R.styleable.ScrollTab_stab_indicator_width, UIUtil.dip2px(context, 30));
-        indicatorWeight = typedArray.getDimension(R.styleable.ScrollTab_stab_indicator_weight, UIUtil.dip2px(context, 1));
-        indicatorRadius = typedArray.getDimension(R.styleable.ScrollTab_stab_indicator_radius, UIUtil.dip2px(context, 0.5f));
-        indicatorPadding = typedArray.getDimension(R.styleable.ScrollTab_stab_indicator_padding, UIUtil.dip2px(context, 5));
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_ScrollTab);
+        type = typedArray.getInt(R.styleable.lib_ui_ScrollTab_lib_ui_stab_type, TYPE_VIEW);
+        isAvag = typedArray.getBoolean(R.styleable.lib_ui_ScrollTab_lib_ui_stab_avag, false);
+        padding = typedArray.getDimension(R.styleable.lib_ui_ScrollTab_lib_ui_stab_padding, UIUtil.dip2px(context, 12));
+        strTitles = typedArray.getString(R.styleable.lib_ui_ScrollTab_lib_ui_stab_titles);
+        indicatorType = typedArray.getInt(R.styleable.lib_ui_ScrollTab_lib_ui_stab_indicatorType, TYPE_INDICATOR_TREND);
+        indicatorColor = typedArray.getColor(R.styleable.lib_ui_ScrollTab_lib_ui_stab_indicatorColor, ContextCompat.getColor(context, R.color.lib_ui_color_accent));
+        indicatorWidth = typedArray.getDimension(R.styleable.lib_ui_ScrollTab_lib_ui_stab_indicatorWidth, UIUtil.dip2px(context, 30));
+        indicatorWeight = typedArray.getDimension(R.styleable.lib_ui_ScrollTab_lib_ui_stab_indicatorWeight, UIUtil.dip2px(context, 1));
+        indicatorRadius = typedArray.getDimension(R.styleable.lib_ui_ScrollTab_lib_ui_stab_indicatorRadius, UIUtil.dip2px(context, 0.5f));
+        indicatorPadding = typedArray.getDimension(R.styleable.lib_ui_ScrollTab_lib_ui_stab_indicatorPadding, UIUtil.dip2px(context, 5));
         typedArray.recycle();
     }
 

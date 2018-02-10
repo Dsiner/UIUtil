@@ -8,9 +8,9 @@
         android:id="@+id/ctv_tick"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:ctvColor="#ffffff"
-        app:ctvColorCircle="#47b018"
-        app:ctvStrokeWidth="5dp" />
+        app:lib_ui_ctv_color="#ffffff"
+        app:lib_ui_ctv_colorCircle="#47b018"
+        app:lib_ui_ctv_strokeWidth="5dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

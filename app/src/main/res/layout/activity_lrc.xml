@@ -30,13 +30,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/sb_progress"
-        app:lrcCurTextColor="@color/colorAccent"
-        app:lrcCurTextSize="17dp"
-        app:lrcMaxScale="1.7"
-        app:lrcMinScale="0.7"
-        app:lrcPadding="17dp"
-        app:lrcTextColor="@color/colorPrimary"
-        app:lrcTextSize="15dp"
-        app:lrcTimeColor="@color/colorPrimaryDark"
-        app:lrcTimeSize="8dp" />
+        app:lib_ui_lrc_maxScale="1.7"
+        app:lib_ui_lrc_minScale="0.7"
+        app:lib_ui_lrc_padding="17dp"
+        app:lib_ui_lrc_textColor="@color/colorPrimary"
+        app:lib_ui_lrc_textColorCur="@color/colorAccent"
+        app:lib_ui_lrc_textSize="15dp"
+        app:lib_ui_lrc_textSizeCur="17dp"
+        app:lib_ui_lrc_timeColor="@color/colorPrimaryDark"
+        app:lib_ui_lrc_timeSize="8dp" />
 </RelativeLayout>

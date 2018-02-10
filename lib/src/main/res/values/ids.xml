@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--convenientbanner-->
-    <item name="cb_item_tag" type="id" />
+    <item name="lib_ui_cb_item_tag" type="id" />
 </resources>

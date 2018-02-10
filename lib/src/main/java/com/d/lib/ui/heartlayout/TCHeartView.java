@@ -37,8 +37,8 @@ import com.d.lib.ui.R;
 public class TCHeartView extends AppCompatImageView {
 
     private static final Paint sPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
-    private int mHeartResId = R.drawable.hl_heart0;
-    private int mHeartBorderResId = R.drawable.hl_heart1;
+    private int mHeartResId = R.drawable.lib_ui_hl_heart0;
+    private int mHeartBorderResId = R.drawable.lib_ui_hl_heart1;
     private static Bitmap sHeart;
     private static Bitmap sHeartBorder;
     private static final Canvas sCanvas = new Canvas();

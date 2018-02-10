@@ -27,11 +27,11 @@
             android:id="@+id/spv_level"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            app:spv_color_select="@color/colorAccent"
-            app:spv_color_unselect="#d8d8d8"
-            app:spv_count="5"
-            app:spv_radius_big="13dp"
-            app:spv_radius_small="4dp"
-            app:spv_radius_space="0dp" />
+            app:lib_ui_spv_colorSelect="@color/colorAccent"
+            app:lib_ui_spv_colorUnselect="#d8d8d8"
+            app:lib_ui_spv_count="5"
+            app:lib_ui_spv_radiusBig="13dp"
+            app:lib_ui_spv_radiusSmall="4dp"
+            app:lib_ui_spv_radiusSpace="0dp" />
     </LinearLayout>
 </LinearLayout>

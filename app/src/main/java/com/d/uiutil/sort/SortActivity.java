@@ -60,7 +60,7 @@ public class SortActivity extends AppCompatActivity {
     }
 
     public List<SortBean> getDatas() {
-        String[] arrays = getResources().getStringArray(R.array.sort_data);
+        String[] arrays = getResources().getStringArray(R.array.arrays_sort);
         List<SortBean> datas = new ArrayList<>();
         for (String c : arrays) {
             SortBean bean = new SortBean(c);

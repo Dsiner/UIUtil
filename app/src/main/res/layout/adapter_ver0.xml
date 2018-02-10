@@ -7,7 +7,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/color_line" />
+        android:background="@color/lib_ui_color_line" />
 
     <TextView
         android:id="@+id/tv_desc"
@@ -19,5 +19,5 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/color_line" />
+        android:background="@color/lib_ui_color_line" />
 </LinearLayout>

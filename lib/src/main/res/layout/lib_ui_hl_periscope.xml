@@ -16,7 +16,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/hl_icon_like_png"
+            android:src="@drawable/lib_ui_hl_like"
             android:visibility="gone" />
     </LinearLayout>
 </RelativeLayout>

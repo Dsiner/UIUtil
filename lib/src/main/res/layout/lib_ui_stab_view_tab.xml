@@ -9,7 +9,7 @@
         android:gravity="center"
         android:singleLine="true"
         android:text="title"
-        android:textColor="@color/color_primary"
+        android:textColor="@color/lib_ui_color_primary"
         android:textSize="15dp" />
 
     <TextView
@@ -20,7 +20,7 @@
         android:layout_marginLeft="-1dp"
         android:layout_marginTop="-4dp"
         android:layout_toRightOf="@+id/tv_title"
-        android:background="@drawable/circle_msg_number"
+        android:background="@drawable/lib_ui_stab_circle_msg"
         android:gravity="center"
         android:text="99"
         android:textColor="#ffffff"

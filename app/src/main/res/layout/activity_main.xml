@@ -19,11 +19,11 @@
             android:layout_width="60dp"
             android:layout_height="32dp"
             android:layout_marginTop="@dimen/dimens_padding"
-            app:tbtn_colorLight="@color/colorAccent"
-            app:tbtn_colorNormal="#ffffff"
-            app:tbtn_colorPadding="#e5e5e5"
-            app:tbtn_duration="200"
-            app:tbtn_padding="2dp" />
+            app:lib_ui_tbtn_colorLight="@color/colorAccent"
+            app:lib_ui_tbtn_colorNormal="#ffffff"
+            app:lib_ui_tbtn_colorPadding="#e5e5e5"
+            app:lib_ui_tbtn_duration="200"
+            app:lib_ui_tbtn_padding="2dp" />
 
         <com.d.lib.ui.replybg.ReplyBgView
             android:layout_width="match_parent"
@@ -47,8 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="@dimen/dimens_padding"
-            app:am_position="left_bottom"
-            app:am_radius="90dp">
+            app:lib_ui_am_position="left_bottom"
+            app:lib_ui_am_radius="90dp">
 
             <TextView
                 android:layout_width="35dp"

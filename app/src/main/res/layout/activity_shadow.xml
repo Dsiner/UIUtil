@@ -9,48 +9,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        app:sl_shadow_angle="90"
-        app:sl_shadow_color="#97E9EF"
-        app:sl_shadow_distance="3dp"
-        app:sl_shadow_radius="3dp"
-        app:sl_shadowed="true">
+        app:lib_ui_sl_shadowAngle="90"
+        app:lib_ui_sl_shadowColor="#97E9EF"
+        app:lib_ui_sl_shadowDistance="3dp"
+        app:lib_ui_sl_shadowRadius="3dp"
+        app:lib_ui_sl_shadowed="true">
 
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/hl_heart0" />
+            android:src="@drawable/lib_ui_hl_heart0" />
     </com.d.lib.ui.shadow.ShadowLayout>
 
     <com.d.lib.ui.shadow.ShadowLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        app:sl_shadow_angle="210"
-        app:sl_shadow_color="#FDB59D"
-        app:sl_shadow_distance="5dp"
-        app:sl_shadow_radius="5dp"
-        app:sl_shadowed="true">
+        app:lib_ui_sl_shadowAngle="210"
+        app:lib_ui_sl_shadowColor="#FDB59D"
+        app:lib_ui_sl_shadowDistance="5dp"
+        app:lib_ui_sl_shadowRadius="5dp"
+        app:lib_ui_sl_shadowed="true">
 
         <ImageView
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:src="@drawable/hl_heart2" />
+            android:src="@drawable/lib_ui_hl_heart2" />
     </com.d.lib.ui.shadow.ShadowLayout>
 
     <com.d.lib.ui.shadow.ShadowLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        app:sl_shadow_angle="0"
-        app:sl_shadow_color="@color/colorAccent"
-        app:sl_shadow_distance="6dp"
-        app:sl_shadow_radius="10dp"
-        app:sl_shadowed="true">
+        app:lib_ui_sl_shadowAngle="0"
+        app:lib_ui_sl_shadowColor="@color/colorAccent"
+        app:lib_ui_sl_shadowDistance="6dp"
+        app:lib_ui_sl_shadowRadius="10dp"
+        app:lib_ui_sl_shadowed="true">
 
         <ImageView
             android:layout_width="95dp"
             android:layout_height="95dp"
-            android:src="@drawable/hl_heart1" />
+            android:src="@drawable/lib_ui_hl_heart1" />
     </com.d.lib.ui.shadow.ShadowLayout>
 
     <LinearLayout
@@ -62,11 +62,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            app:sl_shadow_angle="90"
-            app:sl_shadow_color="#873930"
-            app:sl_shadow_distance="5dp"
-            app:sl_shadow_radius="3dp"
-            app:sl_shadowed="true">
+            app:lib_ui_sl_shadowAngle="90"
+            app:lib_ui_sl_shadowColor="#873930"
+            app:lib_ui_sl_shadowDistance="5dp"
+            app:lib_ui_sl_shadowRadius="3dp"
+            app:lib_ui_sl_shadowed="true">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,11 +80,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            app:sl_shadow_angle="270"
-            app:sl_shadow_color="#3e3e3e"
-            app:sl_shadow_distance="3dp"
-            app:sl_shadow_radius="3dp"
-            app:sl_shadowed="true">
+            app:lib_ui_sl_shadowAngle="270"
+            app:lib_ui_sl_shadowColor="#3e3e3e"
+            app:lib_ui_sl_shadowDistance="3dp"
+            app:lib_ui_sl_shadowRadius="3dp"
+            app:lib_ui_sl_shadowed="true">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,11 +98,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            app:sl_shadow_angle="45"
-            app:sl_shadow_color="#71e430"
-            app:sl_shadow_distance="5dp"
-            app:sl_shadow_radius="5dp"
-            app:sl_shadowed="true">
+            app:lib_ui_sl_shadowAngle="45"
+            app:lib_ui_sl_shadowColor="#71e430"
+            app:lib_ui_sl_shadowDistance="5dp"
+            app:lib_ui_sl_shadowRadius="5dp"
+            app:lib_ui_sl_shadowed="true">
 
             <TextView
                 android:layout_width="wrap_content"
