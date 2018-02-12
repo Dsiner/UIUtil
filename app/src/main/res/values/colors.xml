@@ -3,9 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorBlue">#4577B7</color>
-    <color name="colorWhite">#ffffff</color>
-    <color name="colorYellow">#ffff00</color>
+
+    <color name="color_blue">#4577B7</color>
+    <color name="color_white">#ffffff</color>
+    <color name="color_yellow">#ffff00</color>
 
     <color name="color_sendname">#9966cc</color>
     <color name="color_sendname1">#F12B5B</color>
