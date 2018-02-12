@@ -9,6 +9,7 @@ import com.d.lib.xrv.adapter.CommonHolder;
 import com.d.lib.xrv.adapter.MultiItemTypeSupport;
 import com.d.uiutil.R;
 import com.d.uiutil.verinor.adapter.VerAdapter;
+import com.d.uiutil.verinor.models.OffsetBean;
 import com.d.uiutil.verinor.models.VerInorModel;
 import com.d.uiutil.verinor.models.VerModel;
 
@@ -58,11 +59,7 @@ public class VerInorActivity extends Activity {
             public void onViewRecycled(RecyclerView.ViewHolder vh) {
                 if (vh instanceof CommonHolder && ((CommonHolder) vh).mLayoutId == R.layout.adapter_ver1) {
                     CommonHolder holder = (CommonHolder) vh;
-                    RecyclerView rv = holder.getView(R.id.rv_ver_inor);
-                    VerAdapter.OffsetBean offsetBean = (VerAdapter.OffsetBean) rv.getTag();
-                    if (offsetBean != null) {
-                        offsetBean.setPositionAndOffset(rv);
-                    }
+                    OffsetBean.setPositionAndOffset((RecyclerView) holder.getView(R.id.rv_ver_inor));
                 }
             }
         });

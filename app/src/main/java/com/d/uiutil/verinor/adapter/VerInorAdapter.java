@@ -18,8 +18,11 @@ import java.util.List;
 public class VerInorAdapter extends CommonAdapter<VerInorModel> {
     private int upPos;//父position
 
-    public VerInorAdapter(Context context, List<VerInorModel> datas, int layoutId, int upPos) {
+    public VerInorAdapter(Context context, List<VerInorModel> datas, int layoutId) {
         super(context, datas, layoutId);
+    }
+
+    public void setUpPos(int upPos) {
         this.upPos = upPos;
     }
 
