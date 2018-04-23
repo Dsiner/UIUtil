@@ -7,8 +7,8 @@ android {
     resourcePrefix 'lib_ui_'
 
     defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion 22
+        minSdkVersion 9
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
         consumerProguardFiles 'consumer-proguard-rules.pro'
@@ -16,6 +16,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -32,5 +33,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.promeg:tinypinyin:2.0.3'
-    compile 'com.dsiner.lib:xrv:1.1.0'
+    compile 'com.dsiner.lib:xrv:1.1.1'
 }

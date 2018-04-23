@@ -6,12 +6,14 @@ android {
 
     defaultConfig {
         applicationId "com.d.uiutil"
-        minSdkVersion 11
+        minSdkVersion 9
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -29,5 +31,5 @@ dependencies {
     compile project(':lib')
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support.constraint:constraint-layout:1.1.0'
 }
