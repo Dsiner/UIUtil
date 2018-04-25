@@ -5,68 +5,68 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.d.lib.ui.shadow.ShadowLayout
+    <com.d.lib.ui.layout.shadow.ShadowLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        app:lib_ui_sl_shadowAngle="90"
-        app:lib_ui_sl_shadowColor="#97E9EF"
-        app:lib_ui_sl_shadowDistance="3dp"
-        app:lib_ui_sl_shadowRadius="3dp"
-        app:lib_ui_sl_shadowed="true">
+        app:lib_ui_layout_sl_shadowAngle="90"
+        app:lib_ui_layout_sl_shadowColor="#97E9EF"
+        app:lib_ui_layout_sl_shadowDistance="3dp"
+        app:lib_ui_layout_sl_shadowRadius="3dp"
+        app:lib_ui_layout_sl_shadowed="true">
 
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/lib_ui_hl_heart0" />
-    </com.d.lib.ui.shadow.ShadowLayout>
+            android:src="@drawable/lib_ui_layout_hl_ic_heart0" />
+    </com.d.lib.ui.layout.shadow.ShadowLayout>
 
-    <com.d.lib.ui.shadow.ShadowLayout
+    <com.d.lib.ui.layout.shadow.ShadowLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        app:lib_ui_sl_shadowAngle="210"
-        app:lib_ui_sl_shadowColor="#FDB59D"
-        app:lib_ui_sl_shadowDistance="5dp"
-        app:lib_ui_sl_shadowRadius="5dp"
-        app:lib_ui_sl_shadowed="true">
+        app:lib_ui_layout_sl_shadowAngle="210"
+        app:lib_ui_layout_sl_shadowColor="#FDB59D"
+        app:lib_ui_layout_sl_shadowDistance="5dp"
+        app:lib_ui_layout_sl_shadowRadius="5dp"
+        app:lib_ui_layout_sl_shadowed="true">
 
         <ImageView
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:src="@drawable/lib_ui_hl_heart2" />
-    </com.d.lib.ui.shadow.ShadowLayout>
+            android:src="@drawable/lib_ui_layout_hl_ic_heart2" />
+    </com.d.lib.ui.layout.shadow.ShadowLayout>
 
-    <com.d.lib.ui.shadow.ShadowLayout
+    <com.d.lib.ui.layout.shadow.ShadowLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        app:lib_ui_sl_shadowAngle="0"
-        app:lib_ui_sl_shadowColor="@color/colorAccent"
-        app:lib_ui_sl_shadowDistance="6dp"
-        app:lib_ui_sl_shadowRadius="10dp"
-        app:lib_ui_sl_shadowed="true">
+        app:lib_ui_layout_sl_shadowAngle="0"
+        app:lib_ui_layout_sl_shadowColor="@color/colorAccent"
+        app:lib_ui_layout_sl_shadowDistance="6dp"
+        app:lib_ui_layout_sl_shadowRadius="10dp"
+        app:lib_ui_layout_sl_shadowed="true">
 
         <ImageView
             android:layout_width="95dp"
             android:layout_height="95dp"
-            android:src="@drawable/lib_ui_hl_heart1" />
-    </com.d.lib.ui.shadow.ShadowLayout>
+            android:src="@drawable/lib_ui_layout_hl_ic_heart1" />
+    </com.d.lib.ui.layout.shadow.ShadowLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.d.lib.ui.shadow.ShadowLayout
+        <com.d.lib.ui.layout.shadow.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            app:lib_ui_sl_shadowAngle="90"
-            app:lib_ui_sl_shadowColor="#873930"
-            app:lib_ui_sl_shadowDistance="5dp"
-            app:lib_ui_sl_shadowRadius="3dp"
-            app:lib_ui_sl_shadowed="true">
+            app:lib_ui_layout_sl_shadowAngle="90"
+            app:lib_ui_layout_sl_shadowColor="#873930"
+            app:lib_ui_layout_sl_shadowDistance="5dp"
+            app:lib_ui_layout_sl_shadowRadius="3dp"
+            app:lib_ui_layout_sl_shadowed="true">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -74,17 +74,17 @@
                 android:text="Apple"
                 android:textColor="#873930"
                 android:textSize="16dp" />
-        </com.d.lib.ui.shadow.ShadowLayout>
+        </com.d.lib.ui.layout.shadow.ShadowLayout>
 
-        <com.d.lib.ui.shadow.ShadowLayout
+        <com.d.lib.ui.layout.shadow.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            app:lib_ui_sl_shadowAngle="270"
-            app:lib_ui_sl_shadowColor="#3e3e3e"
-            app:lib_ui_sl_shadowDistance="3dp"
-            app:lib_ui_sl_shadowRadius="3dp"
-            app:lib_ui_sl_shadowed="true">
+            app:lib_ui_layout_sl_shadowAngle="270"
+            app:lib_ui_layout_sl_shadowColor="#3e3e3e"
+            app:lib_ui_layout_sl_shadowDistance="3dp"
+            app:lib_ui_layout_sl_shadowRadius="3dp"
+            app:lib_ui_layout_sl_shadowed="true">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,17 +92,17 @@
                 android:text="Orange"
                 android:textColor="#3e3e3e"
                 android:textSize="19dp" />
-        </com.d.lib.ui.shadow.ShadowLayout>
+        </com.d.lib.ui.layout.shadow.ShadowLayout>
 
-        <com.d.lib.ui.shadow.ShadowLayout
+        <com.d.lib.ui.layout.shadow.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            app:lib_ui_sl_shadowAngle="45"
-            app:lib_ui_sl_shadowColor="#71e430"
-            app:lib_ui_sl_shadowDistance="5dp"
-            app:lib_ui_sl_shadowRadius="5dp"
-            app:lib_ui_sl_shadowed="true">
+            app:lib_ui_layout_sl_shadowAngle="45"
+            app:lib_ui_layout_sl_shadowColor="#71e430"
+            app:lib_ui_layout_sl_shadowDistance="5dp"
+            app:lib_ui_layout_sl_shadowRadius="5dp"
+            app:lib_ui_layout_sl_shadowed="true">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -110,6 +110,6 @@
                 android:text="Banana"
                 android:textColor="#71e430"
                 android:textSize="22dp" />
-        </com.d.lib.ui.shadow.ShadowLayout>
+        </com.d.lib.ui.layout.shadow.ShadowLayout>
     </LinearLayout>
 </LinearLayout>

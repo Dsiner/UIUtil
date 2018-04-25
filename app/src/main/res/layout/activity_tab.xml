@@ -5,50 +5,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.d.lib.ui.tab.ScrollTab
+    <com.d.lib.ui.view.tab.ScrollTab
         android:id="@+id/stab_tab00"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#F9F9F9"
         android:orientation="vertical"
-        app:lib_ui_stab_avag="true"
-        app:lib_ui_stab_indicatorColor="@color/lib_ui_color_accent"
-        app:lib_ui_stab_indicatorPadding="20dp"
-        app:lib_ui_stab_indicatorRadius="0.5dp"
-        app:lib_ui_stab_indicatorType="trend"
-        app:lib_ui_stab_indicatorWeight="1dp"
-        app:lib_ui_stab_indicatorWidth="40dp"
-        app:lib_ui_stab_type="view_group" />
+        app:lib_ui_view_stab_avag="true"
+        app:lib_ui_view_stab_indicatorColor="@color/lib_ui_common_color_accent"
+        app:lib_ui_view_stab_indicatorPadding="20dp"
+        app:lib_ui_view_stab_indicatorRadius="0.5dp"
+        app:lib_ui_view_stab_indicatorType="trend"
+        app:lib_ui_view_stab_indicatorWeight="1dp"
+        app:lib_ui_view_stab_indicatorWidth="40dp"
+        app:lib_ui_view_stab_type="view_group" />
 
-    <com.d.lib.ui.tab.ScrollTab
+    <com.d.lib.ui.view.tab.ScrollTab
         android:id="@+id/stab_tab01"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#F9F9F9"
         android:orientation="vertical"
-        app:lib_ui_stab_avag="true"
-        app:lib_ui_stab_indicatorColor="@color/lib_ui_color_accent"
-        app:lib_ui_stab_indicatorPadding="20dp"
-        app:lib_ui_stab_indicatorRadius="0.5dp"
-        app:lib_ui_stab_indicatorType="translation"
-        app:lib_ui_stab_indicatorWeight="1dp"
-        app:lib_ui_stab_indicatorWidth="40dp"
-        app:lib_ui_stab_type="view_group" />
+        app:lib_ui_view_stab_avag="true"
+        app:lib_ui_view_stab_indicatorColor="@color/lib_ui_common_color_accent"
+        app:lib_ui_view_stab_indicatorPadding="20dp"
+        app:lib_ui_view_stab_indicatorRadius="0.5dp"
+        app:lib_ui_view_stab_indicatorType="translation"
+        app:lib_ui_view_stab_indicatorWeight="1dp"
+        app:lib_ui_view_stab_indicatorWidth="40dp"
+        app:lib_ui_view_stab_type="view_group" />
 
-    <com.d.lib.ui.tab.ScrollTab
+    <com.d.lib.ui.view.tab.ScrollTab
         android:id="@+id/stab_tab02"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#F9F9F9"
         android:orientation="vertical"
-        app:lib_ui_stab_avag="true"
-        app:lib_ui_stab_indicatorColor="@color/lib_ui_color_accent"
-        app:lib_ui_stab_indicatorPadding="20dp"
-        app:lib_ui_stab_indicatorRadius="0.5dp"
-        app:lib_ui_stab_indicatorType="none"
-        app:lib_ui_stab_indicatorWeight="1dp"
-        app:lib_ui_stab_indicatorWidth="40dp"
-        app:lib_ui_stab_type="view_group" />
+        app:lib_ui_view_stab_avag="true"
+        app:lib_ui_view_stab_indicatorColor="@color/lib_ui_common_color_accent"
+        app:lib_ui_view_stab_indicatorPadding="20dp"
+        app:lib_ui_view_stab_indicatorRadius="0.5dp"
+        app:lib_ui_view_stab_indicatorType="none"
+        app:lib_ui_view_stab_indicatorWeight="1dp"
+        app:lib_ui_view_stab_indicatorWidth="40dp"
+        app:lib_ui_view_stab_type="view_group" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager0"
@@ -56,50 +56,50 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.d.lib.ui.tab.ScrollTab
+    <com.d.lib.ui.view.tab.ScrollTab
         android:id="@+id/stab_tab10"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#F9F9F9"
         android:orientation="vertical"
-        app:lib_ui_stab_avag="false"
-        app:lib_ui_stab_indicatorColor="@color/lib_ui_color_accent"
-        app:lib_ui_stab_indicatorPadding="20dp"
-        app:lib_ui_stab_indicatorRadius="0.5dp"
-        app:lib_ui_stab_indicatorType="trend"
-        app:lib_ui_stab_indicatorWeight="1dp"
-        app:lib_ui_stab_indicatorWidth="40dp"
-        app:lib_ui_stab_type="view_group" />
+        app:lib_ui_view_stab_avag="false"
+        app:lib_ui_view_stab_indicatorColor="@color/lib_ui_common_color_accent"
+        app:lib_ui_view_stab_indicatorPadding="20dp"
+        app:lib_ui_view_stab_indicatorRadius="0.5dp"
+        app:lib_ui_view_stab_indicatorType="trend"
+        app:lib_ui_view_stab_indicatorWeight="1dp"
+        app:lib_ui_view_stab_indicatorWidth="40dp"
+        app:lib_ui_view_stab_type="view_group" />
 
-    <com.d.lib.ui.tab.ScrollTab
+    <com.d.lib.ui.view.tab.ScrollTab
         android:id="@+id/stab_tab11"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#F9F9F9"
         android:orientation="vertical"
-        app:lib_ui_stab_avag="false"
-        app:lib_ui_stab_indicatorColor="@color/lib_ui_color_accent"
-        app:lib_ui_stab_indicatorPadding="20dp"
-        app:lib_ui_stab_indicatorRadius="0.5dp"
-        app:lib_ui_stab_indicatorType="translation"
-        app:lib_ui_stab_indicatorWeight="1dp"
-        app:lib_ui_stab_indicatorWidth="40dp"
-        app:lib_ui_stab_type="view_group" />
+        app:lib_ui_view_stab_avag="false"
+        app:lib_ui_view_stab_indicatorColor="@color/lib_ui_common_color_accent"
+        app:lib_ui_view_stab_indicatorPadding="20dp"
+        app:lib_ui_view_stab_indicatorRadius="0.5dp"
+        app:lib_ui_view_stab_indicatorType="translation"
+        app:lib_ui_view_stab_indicatorWeight="1dp"
+        app:lib_ui_view_stab_indicatorWidth="40dp"
+        app:lib_ui_view_stab_type="view_group" />
 
-    <com.d.lib.ui.tab.ScrollTab
+    <com.d.lib.ui.view.tab.ScrollTab
         android:id="@+id/stab_tab12"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#F9F9F9"
         android:orientation="vertical"
-        app:lib_ui_stab_avag="false"
-        app:lib_ui_stab_indicatorColor="@color/lib_ui_color_accent"
-        app:lib_ui_stab_indicatorPadding="20dp"
-        app:lib_ui_stab_indicatorRadius="0.5dp"
-        app:lib_ui_stab_indicatorType="none"
-        app:lib_ui_stab_indicatorWeight="1dp"
-        app:lib_ui_stab_indicatorWidth="40dp"
-        app:lib_ui_stab_type="view_group" />
+        app:lib_ui_view_stab_avag="false"
+        app:lib_ui_view_stab_indicatorColor="@color/lib_ui_common_color_accent"
+        app:lib_ui_view_stab_indicatorPadding="20dp"
+        app:lib_ui_view_stab_indicatorRadius="0.5dp"
+        app:lib_ui_view_stab_indicatorType="none"
+        app:lib_ui_view_stab_indicatorWeight="1dp"
+        app:lib_ui_view_stab_indicatorWidth="40dp"
+        app:lib_ui_view_stab_type="view_group" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager1"

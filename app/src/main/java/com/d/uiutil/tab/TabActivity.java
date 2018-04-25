@@ -7,7 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.d.lib.ui.tab.ScrollTab;
+import com.d.lib.ui.view.tab.ScrollTab;
 import com.d.uiutil.R;
 
 import java.util.ArrayList;

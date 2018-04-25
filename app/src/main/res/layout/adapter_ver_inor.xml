@@ -7,18 +7,18 @@
     <View
         android:layout_width="1px"
         android:layout_height="match_parent"
-        android:background="@color/lib_ui_color_line" />
+        android:background="@color/lib_ui_common_color_line" />
 
     <TextView
         android:id="@+id/tv_desc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lib_ui_color_accent"
+        android:background="@color/lib_ui_common_color_accent"
         android:gravity="center"
         android:text="0" />
 
     <View
         android:layout_width="1px"
         android:layout_height="match_parent"
-        android:background="@color/lib_ui_color_line" />
+        android:background="@color/lib_ui_common_color_line" />
 </LinearLayout>

@@ -25,7 +25,7 @@
         android:layout_marginRight="25dp"
         android:text="Click" />
 
-    <com.d.lib.ui.praise.PraiseLayout
+    <com.d.lib.ui.layout.praise.PraiseLayout
         android:id="@+id/pl_praise"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

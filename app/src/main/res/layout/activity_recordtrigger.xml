@@ -15,13 +15,13 @@
         android:paddingRight="105dp"
         android:paddingTop="6dp">
 
-        <com.d.lib.ui.recordtrigger.RecordTriggerView
+        <com.d.lib.ui.view.recordtrigger.RecordTriggerView
             android:id="@+id/rtv_trigger"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
 
-    <com.d.lib.ui.recordtrigger.RecordLightView
+    <com.d.lib.ui.view.recordtrigger.RecordLightView
         android:id="@+id/rlv_light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

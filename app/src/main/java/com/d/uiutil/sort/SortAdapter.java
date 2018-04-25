@@ -3,7 +3,7 @@ package com.d.uiutil.sort;
 import android.content.Context;
 import android.view.View;
 
-import com.d.lib.ui.sort.SortBean;
+import com.d.lib.ui.view.sort.SortBean;
 import com.d.lib.xrv.adapter.CommonAdapter;
 import com.d.lib.xrv.adapter.CommonHolder;
 import com.d.uiutil.R;

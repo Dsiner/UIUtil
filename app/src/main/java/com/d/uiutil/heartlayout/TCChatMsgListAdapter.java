@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.d.lib.ui.heartlayout.TCChatEntity;
+import com.d.lib.ui.layout.heartlayout.TCChatEntity;
 import com.d.uiutil.R;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;

@@ -9,7 +9,7 @@
         android:background="@drawable/ic_map"
         android:scaleType="centerCrop" />
 
-    <com.d.lib.ui.poi.PoiLayout
+    <com.d.lib.ui.layout.poi.PoiLayout
         android:id="@+id/poi_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,13 +19,13 @@
             android:layout_height="6dp"
             android:background="#ffffff" />
 
-        <com.d.lib.ui.poi.PoiListView
+        <com.d.lib.ui.layout.poi.PoiListView
             android:id="@+id/poi_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ffffff" />
 
-        <com.d.lib.ui.poi.PoiTextView
+        <com.d.lib.ui.layout.poi.PoiTextView
             android:id="@+id/tv_bottom"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -35,5 +35,5 @@
             android:textColor="#000000"
             android:textSize="12dp"
             android:visibility="gone" />
-    </com.d.lib.ui.poi.PoiLayout>
+    </com.d.lib.ui.layout.poi.PoiLayout>
 </FrameLayout>

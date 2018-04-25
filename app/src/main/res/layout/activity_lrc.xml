@@ -25,18 +25,18 @@
         android:layout_height="35dp"
         android:layout_above="@+id/sb_scale" />
 
-    <com.d.lib.ui.lrc.LrcView
+    <com.d.lib.ui.view.lrc.LrcView
         android:id="@+id/lrcv_lrc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/sb_progress"
-        app:lib_ui_lrc_maxScale="1.7"
-        app:lib_ui_lrc_minScale="0.7"
-        app:lib_ui_lrc_padding="17dp"
-        app:lib_ui_lrc_textColor="@color/colorPrimary"
-        app:lib_ui_lrc_textColorCur="@color/colorAccent"
-        app:lib_ui_lrc_textSize="15dp"
-        app:lib_ui_lrc_textSizeCur="17dp"
-        app:lib_ui_lrc_timeColor="@color/colorPrimaryDark"
-        app:lib_ui_lrc_timeSize="8dp" />
+        app:lib_ui_view_lrc_maxScale="1.7"
+        app:lib_ui_view_lrc_minScale="0.7"
+        app:lib_ui_view_lrc_padding="17dp"
+        app:lib_ui_view_lrc_textColor="@color/colorPrimary"
+        app:lib_ui_view_lrc_textColorCur="@color/colorAccent"
+        app:lib_ui_view_lrc_textSize="15dp"
+        app:lib_ui_view_lrc_textSizeCur="17dp"
+        app:lib_ui_view_lrc_timeColor="@color/colorPrimaryDark"
+        app:lib_ui_view_lrc_timeSize="8dp" />
 </RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lib_ui_common_color_primary">#3F51B5</color>
+    <color name="lib_ui_common_color_primary_dark">#303F9F</color>
+    <color name="lib_ui_common_color_accent">#FF4081</color>
+
+    <color name="lib_ui_common_color_trans">#00000000</color>
+    <color name="lib_ui_common_color_line">#171A21</color>
+    <color name="lib_ui_common_color_text">#666666</color>
+</resources>

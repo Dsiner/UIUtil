@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.d.lib.ui.vs.VSView
+    <com.d.lib.ui.view.vs.VSView
         android:id="@+id/vsv_vs"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

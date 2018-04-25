@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-import com.d.lib.ui.lrc.DefaultLrcParser;
-import com.d.lib.ui.lrc.LrcRow;
-import com.d.lib.ui.lrc.LrcView;
+import com.d.lib.ui.view.lrc.DefaultLrcParser;
+import com.d.lib.ui.view.lrc.LrcRow;
+import com.d.lib.ui.view.lrc.LrcView;
 import com.d.uiutil.R;
 
 import java.io.BufferedReader;
