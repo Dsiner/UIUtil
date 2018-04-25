@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.d.lib.ui.tick.CTickView;
+import com.d.lib.ui.view.tick.CTickView;
 import com.d.uiutil.R;
 
 /**

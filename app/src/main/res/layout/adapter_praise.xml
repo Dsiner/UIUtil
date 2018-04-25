@@ -16,7 +16,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/lib_ui_pl_corner_bg"
+        android:background="@drawable/lib_ui_layout_pl_corner_bg"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="4dp"
@@ -26,7 +26,7 @@
             android:id="@+id/iv_praise"
             android:layout_width="8dp"
             android:layout_height="8dp"
-            android:src="@drawable/lib_ui_pl_ic_heart" />
+            android:src="@drawable/lib_ui_layout_pl_ic_heart" />
 
         <TextView
             android:id="@+id/tv_praise"
@@ -48,7 +48,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/lib_ui_pl_corner_bg"
+        android:background="@drawable/lib_ui_layout_pl_corner_bg"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="4dp"
@@ -59,7 +59,7 @@
             android:id="@+id/iv_praise_layer"
             android:layout_width="8dp"
             android:layout_height="8dp"
-            android:src="@drawable/lib_ui_pl_ic_heart" />
+            android:src="@drawable/lib_ui_layout_pl_ic_heart" />
 
         <TextView
             android:id="@+id/tv_praise_layer"

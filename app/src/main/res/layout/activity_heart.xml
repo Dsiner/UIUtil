@@ -14,7 +14,7 @@
         android:gravity="right|center_vertical"
         android:text="Click here" />
 
-    <com.d.lib.ui.heartlayout.TCHeartLayout
+    <com.d.lib.ui.layout.heartlayout.TCHeartLayout
         android:id="@+id/tch_pr"
         android:layout_width="150dp"
         android:layout_height="match_parent"

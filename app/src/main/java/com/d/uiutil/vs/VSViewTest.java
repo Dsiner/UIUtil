@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.d.lib.ui.vs.VSItem;
-import com.d.lib.ui.vs.VSView;
+import com.d.lib.ui.view.vs.VSItem;
+import com.d.lib.ui.view.vs.VSView;
 import com.d.uiutil.R;
 
 /**

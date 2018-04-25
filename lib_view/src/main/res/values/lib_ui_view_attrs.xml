@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="lib_ui_view_CTickView">
+        <attr name="lib_ui_view_ctv_color" format="color" />
+        <attr name="lib_ui_view_ctv_colorCircle" format="color" />
+        <attr name="lib_ui_view_ctv_strokeWidth" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="lib_ui_view_LrcView">
+        <attr name="lib_ui_view_lrc_textColor" format="color" />
+        <attr name="lib_ui_view_lrc_textColorCur" format="color" />
+        <attr name="lib_ui_view_lrc_timeColor" format="color" />
+        <attr name="lib_ui_view_lrc_textSize" format="dimension" />
+        <attr name="lib_ui_view_lrc_textSizeCur" format="dimension" />
+        <attr name="lib_ui_view_lrc_timeSize" format="dimension" />
+        <attr name="lib_ui_view_lrc_padding" format="dimension" />
+        <attr name="lib_ui_view_lrc_minScale" format="float" />
+        <attr name="lib_ui_view_lrc_maxScale" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="lib_ui_view_ToggleButton">
+        <attr name="lib_ui_view_tbtn_colorNormal" format="color" />
+        <attr name="lib_ui_view_tbtn_colorLight" format="color" />
+        <attr name="lib_ui_view_tbtn_colorPadding" format="color" />
+        <attr name="lib_ui_view_tbtn_padding" format="dimension" />
+        <attr name="lib_ui_view_tbtn_duration" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="lib_ui_view_ArcMenu">
+        <attr name="lib_ui_view_am_position">
+            <enum name="left_top" value="0" />
+            <enum name="left_bottom" value="1" />
+            <enum name="right_top" value="2" />
+            <enum name="right_bottom" value="3" />
+        </attr>
+        <attr name="lib_ui_view_am_radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="lib_ui_view_ScrollTab">
+        <attr name="lib_ui_view_stab_type">
+            <enum name="view" value="0" />
+            <enum name="view_group" value="1" />
+        </attr>
+        <attr name="lib_ui_view_stab_titles" format="string" />
+        <attr name="lib_ui_view_stab_avag" format="boolean" />
+        <attr name="lib_ui_view_stab_padding" format="dimension" />
+        <attr name="lib_ui_view_stab_indicatorType">
+            <enum name="trend" value="0" />
+            <enum name="translation" value="1" />
+            <enum name="none" value="2" />
+        </attr>
+        <attr name="lib_ui_view_stab_indicatorColor" format="color" />
+        <attr name="lib_ui_view_stab_indicatorWidth" format="dimension" />
+        <attr name="lib_ui_view_stab_indicatorWeight" format="dimension" />
+        <attr name="lib_ui_view_stab_indicatorRadius" format="dimension" />
+        <attr name="lib_ui_view_stab_indicatorPadding" format="dimension" />
+        <attr name="lib_ui_view_stab_duration" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="lib_ui_view_SettingProgressView">
+        <attr name="lib_ui_view_spv_count" format="integer" />
+        <attr name="lib_ui_view_spv_colorSelect" format="color" />
+        <attr name="lib_ui_view_spv_colorUnselect" format="color" />
+        <attr name="lib_ui_view_spv_radiusSmall" format="dimension" />
+        <attr name="lib_ui_view_spv_radiusBig" format="dimension" />
+        <attr name="lib_ui_view_spv_radiusSpace" format="dimension" />
+    </declare-styleable>
+</resources>

@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.d.lib.ui.recordtrigger.RecordLightView;
-import com.d.lib.ui.recordtrigger.RecordTriggerView;
+import com.d.lib.ui.view.recordtrigger.RecordLightView;
+import com.d.lib.ui.view.recordtrigger.RecordTriggerView;
 import com.d.uiutil.R;
 
 /**

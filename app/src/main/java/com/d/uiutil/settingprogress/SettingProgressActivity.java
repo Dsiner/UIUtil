@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
 
-import com.d.lib.ui.settingprogress.SettingProgressView;
+import com.d.lib.ui.view.settingprogress.SettingProgressView;
 import com.d.uiutil.R;
 
 /**

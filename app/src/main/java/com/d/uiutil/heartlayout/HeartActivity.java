@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 
-import com.d.lib.ui.heartlayout.TCChatEntity;
-import com.d.lib.ui.heartlayout.TCHeartLayout;
+import com.d.lib.ui.layout.heartlayout.TCChatEntity;
+import com.d.lib.ui.layout.heartlayout.TCHeartLayout;
 import com.d.uiutil.R;
 
 import java.util.ArrayList;

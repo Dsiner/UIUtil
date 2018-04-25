@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
-import com.d.lib.ui.UIUtil;
+import com.d.lib.ui.common.UIUtil;
 import com.d.lib.xrv.adapter.CommonAdapter;
 import com.d.lib.xrv.adapter.CommonHolder;
 import com.d.uiutil.R;

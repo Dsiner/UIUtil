@@ -6,9 +6,9 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.d.lib.ui.poi.PoiLayout;
-import com.d.lib.ui.poi.PoiListView;
-import com.d.lib.ui.poi.PoiTextView;
+import com.d.lib.ui.layout.poi.PoiLayout;
+import com.d.lib.ui.layout.poi.PoiListView;
+import com.d.lib.ui.layout.poi.PoiTextView;
 import com.d.uiutil.R;
 import com.d.uiutil.loader.CommenLoader;
 

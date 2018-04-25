@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.d.lib.ui.tick.CTickView
+    <com.d.lib.ui.view.tick.CTickView
         android:id="@+id/ctv_tick"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:lib_ui_ctv_color="#ffffff"
-        app:lib_ui_ctv_colorCircle="#47b018"
-        app:lib_ui_ctv_strokeWidth="5dp" />
+        app:lib_ui_view_ctv_color="#ffffff"
+        app:lib_ui_view_ctv_colorCircle="#47b018"
+        app:lib_ui_view_ctv_strokeWidth="5dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

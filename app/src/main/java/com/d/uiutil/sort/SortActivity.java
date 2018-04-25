@@ -7,9 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.d.lib.ui.sort.SideBar;
-import com.d.lib.ui.sort.SortBean;
-import com.d.lib.ui.sort.SortUtil;
+import com.d.lib.ui.view.sort.SideBar;
+import com.d.lib.ui.view.sort.SortBean;
+import com.d.lib.ui.view.sort.SortUtil;
 import com.d.uiutil.R;
 
 import java.util.ArrayList;

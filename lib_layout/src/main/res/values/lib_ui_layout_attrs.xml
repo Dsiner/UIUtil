@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 飘星自定义属性 -->
+    <declare-styleable name="lib_ui_layout_HeartLayout">
+        <attr name="lib_ui_layout_hl_initX" format="dimension" />
+        <attr name="lib_ui_layout_hl_initY" format="dimension" />
+        <attr name="lib_ui_layout_hl_xRand" format="dimension" />
+        <attr name="lib_ui_layout_hl_animLengthRand" format="dimension" />
+        <attr name="lib_ui_layout_hl_xPointFactor" format="dimension" />
+        <attr name="lib_ui_layout_hl_animLength" format="dimension" />
+        <attr name="lib_ui_layout_hl_heartWidth" format="dimension" />
+        <attr name="lib_ui_layout_hl_heartHeight" format="dimension" />
+        <attr name="lib_ui_layout_hl_bezierFactor" format="integer" />
+        <attr name="lib_ui_layout_hl_animDuration" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="lib_ui_layout_ShadowLayout">
+        <attr name="lib_ui_layout_sl_shadowed" format="boolean" />
+        <attr name="lib_ui_layout_sl_shadowDistance" format="dimension" />
+        <attr name="lib_ui_layout_sl_shadowAngle" format="integer" />
+        <attr name="lib_ui_layout_sl_shadowRadius" format="dimension" />
+        <attr name="lib_ui_layout_sl_shadowColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="lib_ui_layout_ConvenientBanner">
+        <attr name="lib_ui_layout_cb_canLoop" format="boolean" />
+        <attr name="lib_ui_layout_cb_ppadding" format="dimension" />
+        <attr name="lib_ui_layout_cb_layout" format="reference" />
+    </declare-styleable>
+</resources>
