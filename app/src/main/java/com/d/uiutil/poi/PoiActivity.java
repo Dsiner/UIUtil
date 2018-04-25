@@ -2,6 +2,7 @@ package com.d.uiutil.poi;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 
@@ -23,11 +24,13 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
     private PoiTextView tvBottom;
     private PoiMapAdapter adapter;
     private CommenLoader<PoiModel> commenLoader;
+    private Handler handler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poi);
+        handler = new Handler();
         initView();
         initList();
         initPoiLayout();
@@ -47,6 +50,7 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
         list.showAsList();
         list.setAdapter(adapter);
         commenLoader = new CommenLoader<>(list, adapter);
+        commenLoader.setPageCount(10);
         commenLoader.setOnLoaderListener(new CommenLoader.OnLoaderListener() {
             @Override
             public void onRefresh() {
@@ -88,13 +92,23 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
     /**
      * 模拟数据获取
      */
-    private void getData(int page) {
-        ArrayList<PoiModel> datas = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            int index = 10 * (page - 1) + i;
-            datas.add(new PoiModel("标题:" + index, "xxxxxxxxxx" + index));
-        }
-        setData(datas);
+    private void getData(final int page) {
+        long delayMillis = page == 1 ? 0 : 2000;
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (isFinishing()) {
+                    return;
+                }
+                ArrayList<PoiModel> datas = new ArrayList<>();
+                int count = page < 10 ? 10 : 6;
+                for (int i = 0; i < count; i++) {
+                    int index = 10 * (page - 1) + i;
+                    datas.add(new PoiModel("标题:" + index, "xxxxxxxxxx" + index));
+                }
+                setData(datas);
+            }
+        }, delayMillis);
     }
 
     /**
@@ -119,5 +133,11 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
     @Override
     public void onScroll(float offset) {
         tvBottom.setVisibility(offset == 1 ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    protected void onDestroy() {
+        handler.removeCallbacksAndMessages(null);
+        super.onDestroy();
     }
 }
