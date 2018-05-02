@@ -1,4 +1,4 @@
-package com.d.lib.ui;
+package com.d.lib.ui.view;
 
 import org.junit.Test;
 

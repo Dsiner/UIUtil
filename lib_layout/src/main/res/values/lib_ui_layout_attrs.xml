@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="lib_ui_layout_ArcMenu">
+        <attr name="lib_ui_layout_am_position">
+            <enum name="left_top" value="0" />
+            <enum name="left_bottom" value="1" />
+            <enum name="right_top" value="2" />
+            <enum name="right_bottom" value="3" />
+        </attr>
+        <attr name="lib_ui_layout_am_radius" format="dimension" />
+    </declare-styleable>
+
     <!-- 飘星自定义属性 -->
     <declare-styleable name="lib_ui_layout_HeartLayout">
         <attr name="lib_ui_layout_hl_initX" format="dimension" />

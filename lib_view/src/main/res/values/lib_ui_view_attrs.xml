@@ -26,16 +26,6 @@
         <attr name="lib_ui_view_tbtn_duration" format="integer" />
     </declare-styleable>
 
-    <declare-styleable name="lib_ui_view_ArcMenu">
-        <attr name="lib_ui_view_am_position">
-            <enum name="left_top" value="0" />
-            <enum name="left_bottom" value="1" />
-            <enum name="right_top" value="2" />
-            <enum name="right_bottom" value="3" />
-        </attr>
-        <attr name="lib_ui_view_am_radius" format="dimension" />
-    </declare-styleable>
-
     <declare-styleable name="lib_ui_view_ScrollTab">
         <attr name="lib_ui_view_stab_type">
             <enum name="view" value="0" />

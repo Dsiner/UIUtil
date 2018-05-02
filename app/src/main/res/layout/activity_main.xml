@@ -42,13 +42,13 @@
             android:layout_height="190dp"
             android:layout_marginTop="@dimen/dimens_padding" />
 
-        <com.d.lib.ui.view.arcmenu.ArcMenu
+        <com.d.lib.ui.layout.arcmenu.ArcMenu
             android:id="@+id/am_menu"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="@dimen/dimens_padding"
-            app:lib_ui_view_am_position="left_bottom"
-            app:lib_ui_view_am_radius="90dp">
+            app:lib_ui_layout_am_position="left_bottom"
+            app:lib_ui_layout_am_radius="90dp">
 
             <TextView
                 android:layout_width="35dp"
@@ -70,7 +70,7 @@
                 android:background="@drawable/circle_menu"
                 android:gravity="center"
                 android:text="M" />
-        </com.d.lib.ui.view.arcmenu.ArcMenu>
+        </com.d.lib.ui.layout.arcmenu.ArcMenu>
 
         <Button
             android:id="@+id/btn_lrc"
