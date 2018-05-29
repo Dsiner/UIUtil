@@ -4,13 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.d.lib.ui.view.tick.CTickView
-        android:id="@+id/ctv_tick"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:lib_ui_view_ctv_color="#ffffff"
-        app:lib_ui_view_ctv_colorCircle="#47b018"
-        app:lib_ui_view_ctv_strokeWidth="5dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.d.lib.ui.view.tick.CTickView
+            android:id="@+id/ctv_tick"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:lib_ui_view_ctv_color="#ffffff"
+            app:lib_ui_view_ctv_colorCircle="#47b018"
+            app:lib_ui_view_ctv_strokeWidth="5dp" />
+
+        <com.d.lib.ui.view.tick.STickView
+            android:id="@+id/stv_tick"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginLeft="@dimen/dimens_padding"
+            app:lib_ui_view_ctv_color="#ffffff"
+            app:lib_ui_view_ctv_colorCircle="#47b018"
+            app:lib_ui_view_ctv_strokeWidth="5dp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

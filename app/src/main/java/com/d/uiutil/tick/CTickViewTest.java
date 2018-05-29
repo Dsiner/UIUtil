@@ -1,12 +1,15 @@
 package com.d.uiutil.tick;
 
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.d.lib.ui.view.tick.CTickView;
+import com.d.lib.ui.view.tick.STickView;
 import com.d.uiutil.R;
 
 /**
@@ -15,15 +18,19 @@ import com.d.uiutil.R;
  */
 public class CTickViewTest extends LinearLayout implements View.OnClickListener {
     private CTickView cTickView;
+    private STickView sTickView;
 
     public CTickViewTest(Context context) {
-        this(context, null);
+        super(context);
+        init(context);
     }
 
     public CTickViewTest(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        init(context);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     public CTickViewTest(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
@@ -33,6 +40,7 @@ public class CTickViewTest extends LinearLayout implements View.OnClickListener 
         View view = LayoutInflater.from(context).inflate(
                 R.layout.layout_ctick, this, true);
         cTickView = (CTickView) view.findViewById(R.id.ctv_tick);
+        sTickView = (STickView) view.findViewById(R.id.stv_tick);
         view.findViewById(R.id.btn_ctv_start).setOnClickListener(this);
         view.findViewById(R.id.btn_ctv_stop).setOnClickListener(this);
     }
@@ -42,9 +50,11 @@ public class CTickViewTest extends LinearLayout implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.btn_ctv_start:
                 cTickView.start();
+                sTickView.start();
                 break;
             case R.id.btn_ctv_stop:
                 cTickView.stop();
+                sTickView.stop();
                 break;
         }
     }
