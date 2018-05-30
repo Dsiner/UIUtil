@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -34,11 +35,11 @@ public class HoleBgView extends View {
         this(context, null);
     }
 
-    public HoleBgView(Context context, AttributeSet attrs) {
+    public HoleBgView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public HoleBgView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public HoleBgView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }

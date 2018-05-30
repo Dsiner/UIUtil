@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -33,11 +34,11 @@ public class ReplyBgView extends View {
         this(context, null);
     }
 
-    public ReplyBgView(Context context, AttributeSet attrs) {
+    public ReplyBgView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ReplyBgView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ReplyBgView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }

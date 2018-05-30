@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
@@ -14,9 +15,9 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
-import com.d.lib.ui.view.R;
 import com.d.lib.ui.common.UILog;
 import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.view.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,11 +71,11 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
         this(context, null);
     }
 
-    public ScrollTab(Context context, AttributeSet attrs) {
+    public ScrollTab(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ScrollTab(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ScrollTab(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initTypedArray(context, attrs);
         init(context);

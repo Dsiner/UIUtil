@@ -19,11 +19,17 @@ public class TabViewGroup extends RelativeLayout implements TabView {
     private TextView tvTitle, tvNumber;
 
     public TabViewGroup(Context context) {
-        this(context, null);
+        super(context);
+        init(context);
     }
 
     public TabViewGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
+    }
+
+    public TabViewGroup(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         init(context);
     }
 

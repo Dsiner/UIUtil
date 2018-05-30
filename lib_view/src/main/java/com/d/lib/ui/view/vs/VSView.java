@@ -14,11 +14,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.d.lib.ui.view.R;
 import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.view.R;
 
 /**
- * 使用：
+ * Use：
  * VSIitem vsIitemA = new VSIitem("A", true); //true:已选中，false:未选中
  * VSIitem vsIitemB = new VSIitem("B", false);
  * vsView.setStrCompareA(vsIitemA)

@@ -17,7 +17,6 @@ import android.view.animation.TranslateAnimation;
 
 import com.d.lib.ui.layout.R;
 
-
 public class ArcMenu extends ViewGroup implements OnClickListener {
     private static final int POS_LEFT_TOP = 0;
     private static final int POS_LEFT_BOTTOM = 1;

@@ -12,8 +12,8 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.d.lib.ui.layout.R;
 import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.layout.R;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.AnimatorSet;
