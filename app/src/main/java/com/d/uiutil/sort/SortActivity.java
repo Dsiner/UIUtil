@@ -36,7 +36,7 @@ public class SortActivity extends AppCompatActivity {
     private void init() {
         List<SortBean> datas = getDatas();
         sortUtil = new SortUtil();
-        sortUtil.sortDatas(datas);
+        List<String> letters = sortUtil.sortDatas(datas);
         rvList.setLayoutManager(new LinearLayoutManager(this));
         rvList.setAdapter(new SortAdapter(this, datas, R.layout.adapter_sort));
         rvList.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -51,6 +51,7 @@ public class SortActivity extends AppCompatActivity {
                 sortUtil.onScrolled(recyclerView, llytTin, tvTinLetter);
             }
         });
+        sideBar.reset(letters);
         sideBar.setOnLetterChangedListener(new SideBar.OnLetterChangedListener() {
             @Override
             public void onChange(int index, String c) {

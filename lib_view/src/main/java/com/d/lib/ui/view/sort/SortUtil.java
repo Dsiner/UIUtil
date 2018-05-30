@@ -9,8 +9,9 @@ import android.widget.TextView;
 
 import com.github.promeg.pinyinhelper.Pinyin;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -81,10 +82,14 @@ public class SortUtil {
         }
     }
 
-    public Map<String, int[]> sortDatas(List<SortBean> list) {
-        letterMap = new HashMap<>();
+    /**
+     * @param list: sort list
+     * @return letters
+     */
+    public List<String> sortDatas(List<SortBean> list) {
+        letterMap = new LinkedHashMap<>();
         if (list == null || list.size() <= 0) {
-            return letterMap;
+            return new ArrayList<>();
         }
         int count = list.size();
         for (int i = 0; i < count; i++) {
@@ -117,6 +122,17 @@ public class SortUtil {
             }
         }
         datas = list;
-        return letterMap;
+        return getLetters(letterMap);
+    }
+
+    private List<String> getLetters(Map<String, int[]> letterMap) {
+        if (letterMap == null) {
+            return new ArrayList<>();
+        }
+        List<String> letters = new ArrayList<>();
+        for (Map.Entry<String, int[]> entry : letterMap.entrySet()) {
+            letters.add(entry.getKey());
+        }
+        return letters;
     }
 }
