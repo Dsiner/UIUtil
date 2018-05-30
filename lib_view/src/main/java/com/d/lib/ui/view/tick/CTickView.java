@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -14,23 +15,21 @@ import android.view.animation.LinearInterpolator;
 import com.d.lib.ui.view.R;
 import com.nineoldandroids.animation.ValueAnimator;
 
-
 /**
- * tick
+ * Tick
  * Created by D on 2017/2/28.
  */
-
 public class CTickView extends View {
     private int width;
     private int height;
 
-    float factor;//进度因子:0-1
-    float scaleAX = 0.2659f;
-    float scaleAY = 0.4588f;
-    float scaleBX = 0.4541f;
-    float scaleBY = 0.6306f;
-    float scaleCX = 0.7553f;
-    float scaleCY = 0.3388f;
+    private float factor;//factor: 0-1
+    private float scaleAX = 0.2659f;
+    private float scaleAY = 0.4588f;
+    private float scaleBX = 0.4541f;
+    private float scaleBY = 0.6306f;
+    private float scaleCX = 0.7553f;
+    private float scaleCY = 0.3388f;
 
     private int color;
     private int colorCircle;
@@ -40,17 +39,17 @@ public class CTickView extends View {
     private Paint paintTick;
     private Paint paintCircle;
     private PathMeasure tickPathMeasure;
-    ValueAnimator animation;
+    private ValueAnimator animation;
 
     public CTickView(Context context) {
         this(context, null);
     }
 
-    public CTickView(Context context, AttributeSet attrs) {
+    public CTickView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CTickView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CTickView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_CTickView);
         color = typedArray.getColor(R.styleable.lib_ui_view_CTickView_lib_ui_view_ctv_color, Color.parseColor("#ffffff"));
@@ -80,8 +79,8 @@ public class CTickView extends View {
         animation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                factor = (float) animation.getAnimatedValue();//更新进度因子
-                postInvalidate();//刷新
+                factor = (float) animation.getAnimatedValue();
+                postInvalidate();
             }
         });
     }
@@ -111,17 +110,19 @@ public class CTickView extends View {
     }
 
     /**
-     * 开始打勾动画
+     * Start animation
      */
     public void start() {
         stop();
         path = new Path();
-        //属性动画-插值器刷新
         if (animation != null) {
             animation.start();
         }
     }
 
+    /**
+     * Stop animation
+     */
     public void stop() {
         if (animation != null) {
             animation.end();

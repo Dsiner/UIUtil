@@ -1,6 +1,9 @@
 package com.d.lib.ui.view.recordtrigger;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -26,8 +29,14 @@ public class RecordLightView extends LinearLayout {
         init(context);
     }
 
-    public RecordLightView(Context context, AttributeSet attrs) {
+    public RecordLightView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        init(context);
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public RecordLightView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         init(context);
     }
 

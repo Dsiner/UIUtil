@@ -1,5 +1,6 @@
 package com.d.lib.ui.layout.poi;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -11,6 +12,7 @@ import android.widget.TextView;
  * PoiTextView
  * Created by D on 2017/7/28.
  */
+@SuppressLint("AppCompatCustomView")
 public class PoiTextView extends TextView {
     private boolean isClickValid = true;
     private int touchSlop;

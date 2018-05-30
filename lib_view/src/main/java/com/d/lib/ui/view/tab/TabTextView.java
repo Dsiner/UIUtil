@@ -3,12 +3,13 @@ package com.d.lib.ui.view.tab;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.d.lib.ui.view.R;
 import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.view.R;
 
 /**
  * TabTextView
@@ -34,11 +35,11 @@ public class TabTextView extends View implements TabView {
         this(context, null);
     }
 
-    public TabTextView(Context context, AttributeSet attrs) {
+    public TabTextView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public TabTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TabTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }

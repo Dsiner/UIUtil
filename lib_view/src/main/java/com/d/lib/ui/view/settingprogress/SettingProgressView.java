@@ -6,13 +6,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.d.lib.ui.view.R;
 import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.view.R;
 
 /**
  * SettingProgressView
@@ -50,11 +51,11 @@ public class SettingProgressView extends View {
         super(context, null);
     }
 
-    public SettingProgressView(Context context, AttributeSet attrs) {
+    public SettingProgressView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SettingProgressView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SettingProgressView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_SettingProgressView);
         itemCount = typedArray.getInteger(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_count, 5);

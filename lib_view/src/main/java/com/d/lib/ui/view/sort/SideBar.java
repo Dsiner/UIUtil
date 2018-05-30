@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -52,11 +53,11 @@ public class SideBar extends View {
         this(context, null);
     }
 
-    public SideBar(Context context, AttributeSet attrs) {
+    public SideBar(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SideBar(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SideBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initTypedArray(context, attrs);
         init(context);

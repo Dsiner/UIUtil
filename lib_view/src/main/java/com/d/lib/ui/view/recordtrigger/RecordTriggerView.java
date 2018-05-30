@@ -1,22 +1,25 @@
 package com.d.lib.ui.view.recordtrigger;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.widget.TextView;
 
-import com.d.lib.ui.view.R;
 import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.view.R;
 
 /**
  * 触发器
  * Created by D on 2017/11/1.
  */
-public class RecordTriggerView extends AppCompatTextView {
+@SuppressLint("AppCompatCustomView")
+public class RecordTriggerView extends TextView {
     public static final int STATE_CANCLE = 0;//滑出范围，取消本次录音
     public static final int STATE_VALID = 1;//有效，开始录音
     public static final int STATE_INVALID = 2;//无效，滑出范围
@@ -32,14 +35,16 @@ public class RecordTriggerView extends AppCompatTextView {
     private int curState;
 
     public RecordTriggerView(Context context) {
-        this(context, null);
+        super(context);
+        init(context);
     }
 
-    public RecordTriggerView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+    public RecordTriggerView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
     }
 
-    public RecordTriggerView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RecordTriggerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
