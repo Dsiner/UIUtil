@@ -1,24 +1,33 @@
 package com.d.lib.ui.view.sort;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.view.R;
+
+import java.util.List;
 
 /**
  * SideBar
  * Created by D on 2017/6/6.
  */
 public class SideBar extends View {
-    private final String[] c = {"↑", "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
+    private int TYPE_NORMAL = 0, TYPE_CENTER = 1;
+    private String[] DEFAULT_LETTERS = {"↑", "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
             "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#"};
+    private String[] c;
+    private int maxCount;
+
     private int width;
     private int height;
     private Rect rect;
@@ -26,6 +35,7 @@ public class SideBar extends View {
     private Paint paint;
     private Paint paintCur;
     private Paint paintRect;
+    private int type;
     private int colorTrans, colorWhite, colorBar, colorRect;
     private int count;
     private float onpice;
@@ -48,10 +58,30 @@ public class SideBar extends View {
 
     public SideBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initTypedArray(context, attrs);
         init(context);
     }
 
+    private void initTypedArray(Context context, AttributeSet attrs) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_SideBar);
+        type = typedArray.getInt(R.styleable.lib_ui_view_SideBar_lib_ui_view_sidebar_type, TYPE_NORMAL);
+        maxCount = typedArray.getInt(R.styleable.lib_ui_view_SideBar_lib_ui_view_sidebar_maxCount, 29);
+        if (type != TYPE_CENTER) {
+            String strLetters = typedArray.getString(R.styleable.lib_ui_view_SideBar_lib_ui_view_sidebar_letters);
+            if (TextUtils.isEmpty(strLetters)) {
+                c = DEFAULT_LETTERS;
+            } else {
+                c = strLetters.split(";");
+            }
+            maxCount = c.length;
+        }
+        typedArray.recycle();
+    }
+
     private void init(Context context) {
+        if (type == TYPE_CENTER) {
+            c = new String[]{};
+        }
         count = c.length;
         widthRect = UIUtil.dip2px(context, 70);
         rectRadius = UIUtil.dip2px(context, 6);
@@ -78,17 +108,27 @@ public class SideBar extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        resetRect(width - widthBar, 0, width, height, index == -1 ? colorTrans : colorBar);
-        canvas.drawRect(rectF, paintRect);
+        if (type == TYPE_NORMAL) {
+            resetRect(width - widthBar, 0, width, height, index == -1 ? colorTrans : colorBar);
+            canvas.drawRect(rectF, paintRect);
 
-        for (int i = 0; i < count; i++) {
-            canvas.drawText(c[i], width - widthBar / 2, onpice * i + onpice / 2 + textHeight / 2, i == index ? paintCur : paint);
-        }
-        if (index >= 0 && index < count) {
-            resetRect((width - widthRect) / 2, (height - widthRect) / 2, (width + widthRect) / 2, (height + widthRect) / 2, colorRect);
-            canvas.drawRoundRect(rectF, rectRadius, rectRadius, paintRect);
-            paintRect.setColor(colorWhite);
-            canvas.drawText(c[index], width / 2, (height + textLightHeight) / 2, paintRect);
+            for (int i = 0; i < count; i++) {
+                canvas.drawText(c[i], width - widthBar / 2, onpice * i + onpice / 2 + textHeight / 2, i == index ? paintCur : paint);
+            }
+            if (index >= 0 && index < count) {
+                resetRect((width - widthRect) / 2, (height - widthRect) / 2, (width + widthRect) / 2, (height + widthRect) / 2, colorRect);
+                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paintRect);
+                paintRect.setColor(colorWhite);
+                canvas.drawText(c[index], width / 2, (height + textLightHeight) / 2, paintRect);
+            }
+        } else {
+            super.onDraw(canvas);
+            float offsetY = height * (1 - 1f * count / maxCount) / 2;
+            float endY = offsetY + onpice * count;
+
+            for (int i = 0; i < count; i++) {
+                canvas.drawText(c[i], width - widthBar / 2, offsetY + onpice * i + onpice / 2 + textHeight / 2, i == index ? paintCur : paint);
+            }
         }
     }
 
@@ -103,7 +143,7 @@ public class SideBar extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width = MeasureSpec.getSize(widthMeasureSpec);
         height = MeasureSpec.getSize(heightMeasureSpec);
-        onpice = 1f * height / count;
+        onpice = 1f * height / (type == TYPE_CENTER ? maxCount : count);
         widthBar = (int) (onpice * 1.182f);
         float textSize = onpice * 0.686f;
         paint.setTextSize(textSize);
@@ -115,12 +155,13 @@ public class SideBar extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        float offsetY = type == TYPE_CENTER ? height * (1 - 1f * count / maxCount) / 2 : 0;
         float eX = event.getX();
-        float eY = event.getY();
+        float eY = event.getY() - offsetY;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                dValid = eX > width - widthBar;
-                return delegate(adjustIndex(eY));
+                dValid = eY >= 0 && eY <= onpice * count + 1 && eX > width - widthBar;
+                return dValid && delegate(adjustIndex(eY));
             case MotionEvent.ACTION_MOVE:
                 return delegate(adjustIndex(eY));
             case MotionEvent.ACTION_CANCEL:
@@ -149,6 +190,15 @@ public class SideBar extends View {
             return true;
         }
         return false;
+    }
+
+    public void reset(List<String> datas) {
+        if (type != TYPE_CENTER || datas == null) {
+            return;
+        }
+        c = datas.toArray(new String[datas.size()]);
+        count = c.length;
+        invalidate();
     }
 
     public interface OnLetterChangedListener {

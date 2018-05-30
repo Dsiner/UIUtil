@@ -55,4 +55,13 @@
         <attr name="lib_ui_view_spv_radiusBig" format="dimension" />
         <attr name="lib_ui_view_spv_radiusSpace" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="lib_ui_view_SideBar">
+        <attr name="lib_ui_view_sidebar_type">
+            <enum name="normal" value="0" />
+            <enum name="center" value="1" />
+        </attr>
+        <attr name="lib_ui_view_sidebar_letters" format="string" />
+        <attr name="lib_ui_view_sidebar_maxCount" format="integer" />
+    </declare-styleable>
 </resources>
