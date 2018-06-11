@@ -280,6 +280,21 @@ public class PoiLayout extends ViewGroup {
         }
     }
 
+    public void setStatus(int status) {
+        this.status = status;
+        switch (status) {
+            case STATUS_EXTEND:
+                scrollTo(0, offsetExtend);
+                break;
+            case STATUS_CLOSE:
+                scrollTo(0, offsetClose);
+                break;
+            case STATUS_DEFAULT:
+                scrollTo(0, offsetDefault);
+                break;
+        }
+    }
+
     public void toggle(int status) {
         this.status = status;
         curY = getScrollY();

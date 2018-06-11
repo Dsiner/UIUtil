@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.ViewTreeObserver;
 
 import com.d.lib.ui.layout.poi.PoiLayout;
 import com.d.lib.ui.layout.poi.PoiListView;
@@ -87,6 +88,14 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
                 poiLayout.toggle(PoiLayout.STATUS_EXTEND);
             }
         });
+        poiLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                poiLayout.setStatus(PoiLayout.STATUS_CLOSE);
+                tvBottom.setVisibility(View.VISIBLE);
+                poiLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+            }
+        });
     }
 
     /**
@@ -119,7 +128,8 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
         if (commenLoader.page == 1) {
             if (data.size() > 0) {
                 poiLayout.setVisibility(View.VISIBLE);
-                poiLayout.toggle(PoiLayout.STATUS_DEFAULT);
+                poiLayout.setStatus(PoiLayout.STATUS_CLOSE);
+                tvBottom.setVisibility(View.VISIBLE);
             }
             list.scrollToPosition(0);
         }
