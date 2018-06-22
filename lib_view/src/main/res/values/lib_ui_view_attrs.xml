@@ -64,4 +64,18 @@
         <attr name="lib_ui_view_sidebar_letters" format="string" />
         <attr name="lib_ui_view_sidebar_maxCount" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="lib_ui_view_ReplyBgView">
+        <attr name="lib_ui_view_replybv_gravity">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+            <enum name="top" value="2" />
+            <enum name="bottom" value="3" />
+        </attr>
+        <attr name="lib_ui_view_replybv_color" format="color" />
+        <attr name="lib_ui_view_replybv_radius" format="dimension" />
+        <attr name="lib_ui_view_replybv_offset" format="dimension" />
+        <attr name="lib_ui_view_replybv_trgWidth" format="dimension" />
+        <attr name="lib_ui_view_replybv_trgHeight" format="dimension" />
+    </declare-styleable>
 </resources>

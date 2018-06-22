@@ -234,6 +234,7 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
             positionOffset = 0;
             onChange(index);
             adjustScrollY(index);
+            invalidate();
         }
         if (listener != null) {
             listener.onChange(index, v);
