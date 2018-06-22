@@ -47,6 +47,16 @@
         <attr name="lib_ui_view_stab_duration" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="lib_ui_view_SegementView">
+        <attr name="lib_ui_view_segementv_titles" format="string" />
+        <attr name="lib_ui_view_segementv_colorMain" format="color" />
+        <attr name="lib_ui_view_segementv_colorSub" format="color" />
+        <attr name="lib_ui_view_segementv_textSize" format="dimension" />
+        <attr name="lib_ui_view_segementv_radius" format="dimension" />
+        <attr name="lib_ui_view_segementv_divideWidth" format="dimension" />
+        <attr name="lib_ui_view_segementv_borderWidth" format="dimension" />
+    </declare-styleable>
+
     <declare-styleable name="lib_ui_view_SettingProgressView">
         <attr name="lib_ui_view_spv_count" format="integer" />
         <attr name="lib_ui_view_spv_colorSelect" format="color" />

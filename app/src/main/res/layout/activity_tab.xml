@@ -5,10 +5,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.d.lib.ui.view.segement.SegementView
+        android:id="@+id/sv_segement0"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:layout_marginLeft="@dimen/dimens_padding"
+        android:layout_marginRight="@dimen/dimens_padding"
+        android:layout_marginTop="@dimen/dimens_padding"
+        app:lib_ui_view_segementv_borderWidth="1dp"
+        app:lib_ui_view_segementv_colorMain="@color/lib_ui_common_color_accent"
+        app:lib_ui_view_segementv_colorSub="@color/color_white"
+        app:lib_ui_view_segementv_divideWidth="1dp"
+        app:lib_ui_view_segementv_radius="4dp"
+        app:lib_ui_view_segementv_textSize="12dp" />
+
+    <com.d.lib.ui.view.segement.SegementView
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:layout_marginLeft="@dimen/dimens_padding"
+        android:layout_marginRight="@dimen/dimens_padding"
+        android:layout_marginTop="@dimen/dimens_padding"
+        app:lib_ui_view_segementv_borderWidth="1dp"
+        app:lib_ui_view_segementv_colorMain="@color/lib_ui_common_color_accent"
+        app:lib_ui_view_segementv_colorSub="@color/color_white"
+        app:lib_ui_view_segementv_divideWidth="1dp"
+        app:lib_ui_view_segementv_radius="4dp"
+        app:lib_ui_view_segementv_textSize="12dp"
+        app:lib_ui_view_segementv_titles="标签一;标签二;标签三;标签四" />
+
     <com.d.lib.ui.view.tab.ScrollTab
         android:id="@+id/stab_tab00"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginTop="@dimen/dimens_padding"
         android:background="#F9F9F9"
         android:orientation="vertical"
         app:lib_ui_view_stab_avag="true"

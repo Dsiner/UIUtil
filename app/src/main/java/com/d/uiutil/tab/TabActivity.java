@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.d.lib.ui.view.segement.SegementView;
 import com.d.lib.ui.view.tab.ScrollTab;
 import com.d.uiutil.R;
 
@@ -24,16 +25,23 @@ public class TabActivity extends AppCompatActivity implements ViewPager.OnPageCh
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
+        initView();
+    }
+
+    private void initView() {
+        SegementView segement0 = (SegementView) findViewById(R.id.sv_segement0);
+        segement0.setTitles(Arrays.asList("标签一", "标签二"));
+
         ScrollTab[] scrollTab0 = new ScrollTab[]{(ScrollTab) findViewById(R.id.stab_tab00), (ScrollTab) findViewById(R.id.stab_tab01), (ScrollTab) findViewById(R.id.stab_tab02)};
         ScrollTab[] scrollTab1 = new ScrollTab[]{(ScrollTab) findViewById(R.id.stab_tab10), (ScrollTab) findViewById(R.id.stab_tab11), (ScrollTab) findViewById(R.id.stab_tab12)};
         ViewPager pager0 = (ViewPager) findViewById(R.id.pager0);
         ViewPager pager1 = (ViewPager) findViewById(R.id.pager1);
-        init(scrollTab0, pager0, Arrays.asList("Ted1", "Beille2", "Csdge3", "Gdegdd4"));
-        init(scrollTab1, pager1, Arrays.asList("Peach1", "Lemon2", "Watermelon3", "Pear4", "Avocado5",
-                "Banana6", "Grape7", "Apricot8", "Orange9", "Kumquat10"));
+        initTab(scrollTab0, pager0, Arrays.asList("Kitkat", "Lollipop", "M"));
+        initTab(scrollTab1, pager1, Arrays.asList("Peach", "Lemon", "Watermelon", "Pear", "Avocado",
+                "Banana", "Grape", "Apricot", "Orange", "Kumquat"));
     }
 
-    private void init(ScrollTab[] tabs, final ViewPager pager, List<String> titles) {
+    private void initTab(ScrollTab[] tabs, final ViewPager pager, List<String> titles) {
         final ArrayList<Fragment> fragments = new ArrayList<>();
         for (int i = 0; i < titles.size(); i++) {
             TabFragment fragment = new TabFragment();
