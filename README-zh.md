@@ -9,7 +9,7 @@ List
 Name | Explain | Demo
 --- | --- | ---
 [LrcView](lib_view/src/main/java/com/d/lib/ui/view/lrc/LrcView.java) | 歌词控件 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/lrc/lrc.gif" width="49%">
-[SideBar](lib_view/src/main/java/com/d/lib/ui/view/sort/SideBar.java) | 联系人排序 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort.gif" width="49%">
+[SideBar](lib_view/src/main/java/com/d/lib/ui/view/sort/SideBar.java) | 联系人排序 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort.gif" width="49%"> <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort-center.png" width="49%">
 [CTickView](lib_view/src/main/java/com/d/lib/ui/view/tick/CTickView.java) | 打勾 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/tick/tick.gif" width="49%">
 [ToggleButton](lib_view/src/main/java/com/d/lib/ui/view/togglebutton/ToggleButton.java) | Button按钮(滑动可选) |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/togglebutton/togglebutton.gif" width="49%">
 [ReplyBgView](lib_view/src/main/java/com/d/lib/ui/view/replybg/ReplyBgView.java) | 回复消息背景 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/replybg/replybg.png" width="100%">

@@ -9,7 +9,7 @@ List
 Name | Explain | Demo
 --- | --- | ---
 [LrcView](lib_view/src/main/java/com/d/lib/ui/view/lrc/LrcView.java) | Lrc |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/lrc/lrc.gif" width="49%">
-[SideBar](lib_view/src/main/java/com/d/lib/ui/view/sort/SideBar.java) | Contact sort |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort.gif" width="49%">
+[SideBar](lib_view/src/main/java/com/d/lib/ui/view/sort/SideBar.java) | Contact sort |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort.gif" width="49%"> <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort-center.png" width="49%">
 [CTickView](lib_view/src/main/java/com/d/lib/ui/view/tick/CTickView.java) | Tick |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/tick/tick.gif" width="49%">
 [ToggleButton](lib_view/src/main/java/com/d/lib/ui/view/togglebutton/ToggleButton.java) | Button button (slide optional) |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/togglebutton/togglebutton.gif" width="49%">
 [ReplyBgView](lib_view/src/main/java/com/d/lib/ui/view/replybg/ReplyBgView.java) | Reply message background |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/replybg/replybg.png" width="100%">
