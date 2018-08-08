@@ -27,6 +27,7 @@ Name | Explain | Demo
 [RecordTrigger](lib/src/main/java/com/d/lib/ui/view/recordtrigger/RecordTriggerView.java) | 语音触发器 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/recordtrigger/recordtrigger.gif" width="49%">
 [VerInor](app/src/main/java/com/d/uiutil/verinor/VerInorActivity.java) | RecyclerView嵌套RecyclerView |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/verinor/verinor.gif" width="49%">
 [PoiLayout](lib_layout/src/main/java/com/d/lib/ui/layout/poi/PoiLayout.java) | 地图列表Poi、抽屉效果 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/poi/poi.gif" width="49%">
+[ClockSetView](lib_view/src/main/java/com/d/lib/ui/view/clock/ClockSetView.java) | 时钟设置 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/clock/clockset.gif" width="49%">
 
 More usage see [demo](app/src/main/java/com/d/uiutil/MainActivity.java)
 
