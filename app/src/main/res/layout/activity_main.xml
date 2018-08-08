@@ -156,5 +156,13 @@
             android:layout_marginTop="@dimen/dimens_padding"
             android:gravity="center"
             android:text="Poi" />
+
+        <Button
+            android:id="@+id/btn_clockset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_padding"
+            android:gravity="center"
+            android:text="Clock Set" />
     </LinearLayout>
 </ScrollView>

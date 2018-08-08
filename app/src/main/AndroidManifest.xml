@@ -26,6 +26,7 @@
         <activity android:name="com.d.uiutil.recordtrigger.RecordTriggerActivity" />
         <activity android:name="com.d.uiutil.verinor.VerInorActivity" />
         <activity android:name="com.d.uiutil.poi.PoiActivity" />
+        <activity android:name="com.d.uiutil.clock.ClockSetActivity" />
     </application>
 
 </manifest>

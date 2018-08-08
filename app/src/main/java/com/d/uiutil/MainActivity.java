@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.d.uiutil.clock.ClockSetActivity;
 import com.d.uiutil.heartlayout.HeartActivity;
 import com.d.uiutil.lrc.LrcActivity;
 import com.d.uiutil.poi.PoiActivity;
@@ -84,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, PoiActivity.class));
+            }
+        });
+        findViewById(R.id.btn_clockset).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ClockSetActivity.class));
             }
         });
     }
