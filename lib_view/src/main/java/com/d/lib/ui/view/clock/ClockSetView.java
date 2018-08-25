@@ -158,11 +158,11 @@ public class ClockSetView extends View {
                 // Draw big center circle
                 canvas.rotate(sweepAngle);
                 canvas.drawCircle(0, -radius, radiusSmall * 0.618f, paint);
-                canvas.restoreToCount(sc);
             }
+            canvas.restoreToCount(sc);
+        } else {
+            canvas.restore();
         }
-
-        canvas.restore();
     }
 
     @Override
