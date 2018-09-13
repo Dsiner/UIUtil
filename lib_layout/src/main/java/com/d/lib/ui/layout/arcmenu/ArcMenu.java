@@ -25,10 +25,12 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
 
     private Position mPosition = Position.RIGHT_BOTTOM;
     private int mRadius;
+
     /**
      * 菜单的状态
      */
     private Status mCurrentStatus = Status.CLOSE;
+
     /**
      * 菜单的主按钮
      */
@@ -58,7 +60,7 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
 
     public ArcMenu(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        //获取自定义属性的值
+        // 获取自定义属性的值
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.lib_ui_layout_ArcMenu, defStyle, 0);
         int pos = a.getInt(R.styleable.lib_ui_layout_ArcMenu_lib_ui_layout_am_position, POS_RIGHT_BOTTOM);
         switch (pos) {
@@ -160,8 +162,8 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
             final View childView = getChildAt(i);
             childView.setVisibility(View.VISIBLE);
 
-            // end 0 , 0
-            // start
+            // End 0 , 0
+            // Start
             int cl = (int) (mRadius * Math.sin(Math.PI / 2 / (mCount - 2) * i));
             int ct = (int) (mRadius * Math.cos(Math.PI / 2 / (mCount - 2) * i));
 
@@ -176,7 +178,7 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
                 yflag = -1;
             }
 
-            //可选
+            // 可选
 //            xflag *= 0.96;
 //            yflag *= 0.96;
 
@@ -184,19 +186,19 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
             Animation tranAnim;
 
             if (mCurrentStatus == Status.CLOSE) {
-                // to open
+                // To open
                 tranAnim = new TranslateAnimation(xflag * cl, 0, yflag * ct, 0);
                 childView.setClickable(true);
                 childView.setFocusable(true);
             } else {
-                // to close
+                // To close
                 tranAnim = new TranslateAnimation(0, xflag * cl, 0, yflag * ct);
                 childView.setClickable(false);
                 childView.setFocusable(false);
             }
             tranAnim.setFillAfter(true);
             tranAnim.setDuration(duration);
-            //可选,延迟不规则弹出
+            // 可选，延迟不规则弹出
 //            tranAnim.setStartOffset((i * 100) / mCount);
 
             tranAnim.setAnimationListener(new AnimationListener() {
@@ -259,8 +261,8 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
     /**
      * 为当前点击的Item设置变大和透明度降低的动画
      *
-     * @param type:true放大 false缩小
-     * @param duration:延时
+     * @param type     true: 放大; false: 缩小
+     * @param duration 延时
      * @return animationSet
      */
     private Animation getScaleAnim(boolean type, int duration) {

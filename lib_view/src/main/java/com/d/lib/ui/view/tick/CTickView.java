@@ -23,7 +23,7 @@ public class CTickView extends View {
     private int width;
     private int height;
 
-    private float factor;//factor: 0-1
+    private float factor; // Factor: 0-1
     private float scaleAX = 0.2659f;
     private float scaleAY = 0.4588f;
     private float scaleBX = 0.4541f;

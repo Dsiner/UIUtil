@@ -73,7 +73,7 @@ public class SortUtil {
         }
         LinearLayoutManager manager = (LinearLayoutManager) lm;
         if (index == 0) {
-            manager.scrollToPositionWithOffset(0, 0);//置顶
+            manager.scrollToPositionWithOffset(0, 0); // 置顶
             return;
         }
         int[] value = letterMap.get(c);
@@ -83,7 +83,7 @@ public class SortUtil {
     }
 
     /**
-     * @param list: sort list
+     * @param list Sort list
      * @return letters
      */
     public List<String> sortDatas(List<SortBean> list) {
@@ -96,7 +96,7 @@ public class SortUtil {
             SortBean bean = list.get(i);
             String pinyin = Pinyin.toPinyin(bean.content, "");
             String letter = TextUtils.isEmpty(pinyin) ? "" : pinyin.substring(0, 1).toUpperCase();
-            //正则表达式，判断首字母是否是英文字母/数字/其他
+            // 正则表达式，判断首字母是否是英文字母/数字/其他
             if (letter.matches("[0-9]")) {
                 letter = "☆";
             } else if (!letter.matches("[A-Z]")) {
@@ -108,7 +108,7 @@ public class SortUtil {
         }
         Collections.sort(list, new PinyinComparator());
         String key = null;
-        int[] value = null;//is[0]:thisSectionPosition,is[1]:nextSectionPosition
+        int[] value = null; // is[0]:thisSectionPosition, is[1]:nextSectionPosition
         for (int i = 0; i < count; i++) {
             SortBean b = list.get(i);
             if (!TextUtils.equals(key, b.letter)) {

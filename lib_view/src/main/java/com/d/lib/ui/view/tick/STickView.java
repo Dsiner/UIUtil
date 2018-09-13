@@ -12,12 +12,12 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Interpolator;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.view.R;
 import com.nineoldandroids.animation.ValueAnimator;
 
 public class STickView extends View {
-    private final long mDuration = 2500;//anim duration
+    private final long mDuration = 2500; // Anim duration
 
     private int width;
     private int height;
@@ -53,7 +53,7 @@ public class STickView extends View {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_CTickView);
         color = typedArray.getColor(R.styleable.lib_ui_view_CTickView_lib_ui_view_ctv_color, Color.parseColor("#ffffff"));
         colorCircle = typedArray.getColor(R.styleable.lib_ui_view_CTickView_lib_ui_view_ctv_colorCircle, Color.parseColor("#47b018"));
-        strokeWidth = typedArray.getDimension(R.styleable.lib_ui_view_CTickView_lib_ui_view_ctv_strokeWidth, UIUtil.dip2px(context, 3.5f));
+        strokeWidth = typedArray.getDimension(R.styleable.lib_ui_view_CTickView_lib_ui_view_ctv_strokeWidth, Util.dip2px(context, 3.5f));
         typedArray.recycle();
         init();
     }

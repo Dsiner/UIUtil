@@ -8,8 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.d.lib.ui.common.UILog;
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.ULog;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.layout.praise.IPraise;
 import com.d.lib.ui.layout.praise.PraiseLayout;
 import com.d.uiutil.R;
@@ -33,8 +33,8 @@ public class PraiseActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_praise);
-        screenWidth = UIUtil.getScreenSize(this)[0];
-        endPosFirst = UIUtil.dip2px(this, 64 / 2 - 15 / 2);
+        screenWidth = Util.getScreenSize(this)[0];
+        endPosFirst = Util.dip2px(this, 64 / 2 - 15 / 2);
         initView();
         initPraise();
         initClick();
@@ -58,11 +58,12 @@ public class PraiseActivity extends Activity {
         rvList.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+
                 /**
                  * newState
-                 * 1：手指拖动，开始滑动
-                 * 2：手指松开，自由惯性滑动
-                 * 0：滑动停止/惯性滑动停止
+                 * 1: 手指拖动，开始滑动
+                 * 2: 手指松开，自由惯性滑动
+                 * 0: 滑动停止/惯性滑动停止
                  */
                 adapter.setScrollState(newState);
                 super.onScrollStateChanged(recyclerView, newState);
@@ -90,14 +91,14 @@ public class PraiseActivity extends Activity {
                 if (posLiving < 0 || posLiving >= adapter.getItemCount()) {
                     return;
                 }
-                plPraise.setEndP(getPosition(posLiving));//设置此次红心飘移的终点横坐标
-                plPraise.addHeart("");//开始一次点赞，动画开始
+                plPraise.setEndP(getPosition(posLiving)); // 设置此次红心飘移的终点横坐标
+                plPraise.addHeart(""); // 开始一次点赞，动画开始
             }
         });
     }
 
     /**
-     * 获取当前直播item距屏幕左边距
+     * 获取当前直播Item距屏幕左边距
      */
     private int getPosition(int position) {
         int endPos;
@@ -112,7 +113,7 @@ public class PraiseActivity extends Activity {
             rvList.smoothScrollToPosition(position);
             endPos = screenWidth;
         }
-        UILog.d("dsiner_endPos: " + endPos);
+        ULog.d("dsiner endPos: " + endPos);
         return endPos;
     }
 
@@ -120,7 +121,7 @@ public class PraiseActivity extends Activity {
         List<PraiseAdapter.Bean> datas = new ArrayList<PraiseAdapter.Bean>();
         for (int i = 0; i < 20; i++) {
             PraiseAdapter.Bean b = new PraiseAdapter.Bean();
-            b.usrId = i;
+            b.userId = i;
             b.count = 5 * (20 - i) * (20 - i);
             datas.add(b);
         }

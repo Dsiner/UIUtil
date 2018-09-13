@@ -10,7 +10,7 @@ import com.d.lib.ui.layout.poi.PoiLayout;
 import com.d.lib.ui.layout.poi.PoiListView;
 import com.d.lib.ui.layout.poi.PoiTextView;
 import com.d.uiutil.R;
-import com.d.uiutil.loader.CommenLoader;
+import com.d.uiutil.loader.CommonLoader;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
     private PoiListView list;
     private PoiTextView tvBottom;
     private PoiMapAdapter adapter;
-    private CommenLoader<PoiModel> commenLoader;
+    private CommonLoader<PoiModel> commonLoader;
     private Handler handler;
 
     @Override
@@ -34,7 +34,7 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
         initView();
         initList();
         initPoiLayout();
-        getData(commenLoader.page);
+        getData(commonLoader.page);
     }
 
     private void initView() {
@@ -49,9 +49,9 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
         list.setCanLoadMore(true);
         list.showAsList();
         list.setAdapter(adapter);
-        commenLoader = new CommenLoader<>(list, adapter);
-        commenLoader.setPageCount(10);
-        commenLoader.setOnLoaderListener(new CommenLoader.OnLoaderListener() {
+        commonLoader = new CommonLoader<>(list, adapter);
+        commonLoader.setPageCount(10);
+        commonLoader.setOnLoaderListener(new CommonLoader.OnLoaderListener() {
             @Override
             public void onRefresh() {
 
@@ -59,7 +59,7 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
 
             @Override
             public void onLoadMore() {
-                getData(commenLoader.page);
+                getData(commonLoader.page);
             }
 
             @Override
@@ -115,8 +115,8 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
      * 数据设置
      */
     private void setData(final ArrayList<PoiModel> data) {
-        commenLoader.setData(data);
-        if (commenLoader.page == 1) {
+        commonLoader.setData(data);
+        if (commonLoader.page == 1) {
             if (data.size() > 0) {
                 poiLayout.setVisibility(View.VISIBLE);
                 poiLayout.toggle(PoiLayout.STATUS_DEFAULT);

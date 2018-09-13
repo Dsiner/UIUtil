@@ -8,7 +8,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.ValueAnimator;
 
@@ -30,13 +30,13 @@ public class PoiLayout extends ViewGroup {
     private int touchSlop;
     private int slideSlop;
     private int duration = 210;
-    private float dX, dY;//TouchEvent_ACTION_DOWN坐标(dX,dY)
-    private float lastY;//TouchEvent最后一次坐标(lastX,lastY)
-    private boolean isEventValid = true;//本次touch事件是否有效
+    private float dX, dY; // TouchEvent_ACTION_DOWN坐标(dX,dY)
+    private float lastY; // TouchEvent最后一次坐标(lastX,lastY)
+    private boolean isEventValid = true; // 本次touch事件是否有效
     private boolean isMoveValid;
     private int status;
     private ValueAnimator animation;
-    private float factor;//进度因子:0-1
+    private float factor; // 进度因子: 0-1
     private int curY, dstY;
     private OnChangeListener listener;
     private int offsetB;
@@ -60,18 +60,18 @@ public class PoiLayout extends ViewGroup {
 
     private void init(Context context) {
         touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
-        slideSlop = UIUtil.dip2px(context, 45);
-        offsetB = UIUtil.dip2px(context, 40);
+        slideSlop = Util.dip2px(context, 45);
+        offsetB = Util.dip2px(context, 40);
         animation = ValueAnimator.ofFloat(0f, 1f);
         animation.setDuration(duration);
         animation.setInterpolator(new LinearInterpolator());
         animation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                factor = (float) animation.getAnimatedValue();//更新进度因子
+                factor = (float) animation.getAnimatedValue();
                 float scrollY = curY + (dstY - curY) * factor;
                 scrollTo(0, (int) scrollY);
-                postInvalidate();//刷新
+                invalidate();
                 if (listener != null) {
                     listener.onScroll(getOffset(scrollY));
                 }
@@ -137,7 +137,7 @@ public class PoiLayout extends ViewGroup {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width = MeasureSpec.getSize(widthMeasureSpec);
         height = MeasureSpec.getSize(heightMeasureSpec);
-        offsetY = height - UIUtil.dip2px(getContext(), 210);
+        offsetY = height - Util.dip2px(getContext(), 210);
         offsetExtend = offsetY;
         offsetClose = offsetY + offsetB - height;
         offsetDefault = 0;
@@ -211,7 +211,7 @@ public class PoiLayout extends ViewGroup {
                 if (isMoveValid) {
                     if (getScrollY() + offset <= offsetClose) {
                         scrollTo(0, offsetClose);
-                        dY = eY;//reset eY
+                        dY = eY; // Reset eY
                         status = STATUS_CLOSE;
                         if (listener != null) {
                             listener.onScroll(getScrollY());
@@ -219,7 +219,7 @@ public class PoiLayout extends ViewGroup {
                         }
                     } else if (getScrollY() + offset >= offsetExtend) {
                         scrollTo(0, offsetExtend);
-                        dY = eY;//reset eY
+                        dY = eY; // Reset eY
                         status = STATUS_EXTEND;
                         if (listener != null) {
                             listener.onScroll(getScrollY());

@@ -3,7 +3,6 @@ package com.d.lib.ui.view.segement;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -15,7 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.view.R;
 
 import java.util.ArrayList;
@@ -37,12 +36,12 @@ public class SegementView extends View {
     private int colorA;
     private int colorB;
 
-    private List<String> TITLES = new ArrayList<>();//variables Titles
+    private List<String> TITLES = new ArrayList<>(); // Variables Titles
     private String strTitles;
     private float textSize;
     private float rectRadius;
     private float divideWidth;
-    private float padding;//variables Background border line width
+    private float padding; // Variables Background border line width
     private int heightText;
     private int curIndex = 0;
     private float dX, dY;
@@ -70,17 +69,17 @@ public class SegementView extends View {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_SegementView);
         strTitles = typedArray.getString(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_titles);
         colorA = typedArray.getColor(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_colorMain, ContextCompat.getColor(context, R.color.lib_ui_common_color_accent));
-        colorB = typedArray.getColor(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_colorSub, Color.parseColor("#ffffff"));
-        textSize = typedArray.getDimension(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_textSize, UIUtil.dip2px(context, 14));
+        colorB = typedArray.getColor(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_colorSub, ContextCompat.getColor(context, R.color.lib_ui_common_color_white));
+        textSize = typedArray.getDimension(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_textSize, Util.dip2px(context, 14));
         rectRadius = typedArray.getDimension(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_radius, -1);
-        divideWidth = typedArray.getDimension(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_divideWidth, UIUtil.dip2px(context, 1));
-        padding = typedArray.getDimension(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_borderWidth, UIUtil.dip2px(context, 1));
+        divideWidth = typedArray.getDimension(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_divideWidth, Util.dip2px(context, 1));
+        padding = typedArray.getDimension(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_borderWidth, Util.dip2px(context, 1));
         typedArray.recycle();
     }
 
     private void init(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            //Disabling hardware acceleration
+            // Disabling hardware acceleration
             setLayerType(LAYER_TYPE_SOFTWARE, null);
         }
         touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
@@ -97,8 +96,8 @@ public class SegementView extends View {
         paintB.setTextSize(textSize);
         paintB.setTextAlign(Paint.Align.CENTER);
 
-        //Get title height px
-        heightText = (int) UIUtil.getTextHeight(paintB);
+        // Get title height px
+        heightText = (int) Util.getTextHeight(paintB);
 
         if (!TextUtils.isEmpty(strTitles)) {
             String[] strs = strTitles.split(";");
@@ -115,7 +114,7 @@ public class SegementView extends View {
         int size = TITLES.size();
         float space = (1f * width) / size / 2;
 
-        //Background
+        // Background
         rect.set(0, 0, width, height);
         rectF.set(rect);
         canvas.drawRoundRect(rectF, rectRadius, rectRadius, paintA);
@@ -124,7 +123,7 @@ public class SegementView extends View {
         rectF.set(rect);
         canvas.drawRoundRect(rectF, rectRadius, rectRadius, paintB);
 
-        //Slider
+        // Slider
         if (curIndex == 0) {
             canvas.drawRect(space, 0, space * 2, height, paintA);
             rect.set(0, 0, (int) (space * 2), height);
@@ -142,11 +141,11 @@ public class SegementView extends View {
         int starty = (height + heightText) / 2;
         for (int i = 0; i < size; i++) {
             if (i != 0) {
-                //Draw divide line
+                // Draw divide line
                 canvas.drawRect(space * 2 * i - divideWidth / 2, 0,
                         space * 2 * i + divideWidth / 2, height, paintA);
             }
-            //Draw title
+            // Draw title
             canvas.drawText(TITLES.get(i), space * 2 * i + space, starty, curIndex == i ? paintB : paintA);
         }
     }
@@ -219,7 +218,7 @@ public class SegementView extends View {
     /**
      * Switch current Tab
      *
-     * @param index: destination index
+     * @param index Index
      */
     public void select(int index) {
         if (index < 0 || index > 1) {
@@ -230,8 +229,9 @@ public class SegementView extends View {
     }
 
     public interface OnSelectedListener {
+
         /**
-         * @param index: index
+         * @param index Index
          */
         void onSelected(int index);
     }

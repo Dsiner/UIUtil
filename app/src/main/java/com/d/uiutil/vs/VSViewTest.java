@@ -42,17 +42,17 @@ public class VSViewTest extends LinearLayout implements VSView.OnVSItemClickList
     private void initVS() {
         VSItem vsA = new VSItem("A", false);
         VSItem vsB = new VSItem("B", false);
-        vsView.setStrCompareA(vsA).setStrCompareB(vsB).setPercent(-1, false);
+        vsView.setCompareA(vsA).setCompareB(vsB).setPercent(-1, false);
         vsView.setOnVSItemSelectListener(this);
     }
 
     @Override
-    public void onItemClick(int index, VSItem iitem) {
+    public void onItemClick(int index, VSItem item) {
         if (index == 0) {
             vsView.setPercent(0.7f, true);
         } else {
             vsView.setPercent(0.3f, true);
         }
-        Toast.makeText(context, "onSelected:" + iitem.mainText, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Selected: " + item.mainText, Toast.LENGTH_SHORT).show();
     }
 }

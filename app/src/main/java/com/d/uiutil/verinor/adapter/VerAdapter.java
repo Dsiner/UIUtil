@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 纵向adapter
+ * 纵向Adapter
  * Created by D on 2017/1/4.
  */
 public class VerAdapter extends CommonAdapter<VerModel> {
@@ -33,16 +33,16 @@ public class VerAdapter extends CommonAdapter<VerModel> {
     @Override
     public void convert(final int position, CommonHolder holder, VerModel item) {
         if (holder.mLayoutId == R.layout.adapter_ver0) {
-            //文本类型
+            // 文本类型
             holder.setText(R.id.tv_desc, item.content);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext.getApplicationContext(), "click: " + position, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext.getApplicationContext(), "Click at: " + position, Toast.LENGTH_SHORT).show();
                 }
             });
         } else if (holder.mLayoutId == R.layout.adapter_ver1) {
-            //嵌套类型
+            // 嵌套类型
             loadInor((RecyclerView) holder.getView(R.id.rv_ver_inor), item, position);
         }
     }

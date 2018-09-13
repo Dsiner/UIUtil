@@ -12,7 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.view.R;
 
 /**
@@ -24,25 +24,25 @@ public class SettingProgressView extends View {
     private int height;
 
     private Paint paint;
-    private Paint paintShader;//用于绘制当前选中的渐变阴影
+    private Paint paintShader; // 用于绘制当前选中的渐变阴影
     private int itemCount;
     private int colorSelected;
     private int colorUnselected;
     private float radiusSmall;
     private float radiusBig;
     private float radiusSpace;
-    private float lineHeight;//中间连接线高度
-    private float shadeRadius;//渐变阴影的宽度
+    private float lineHeight; // 中间连接线高度
+    private float shadeRadius; // 渐变阴影的宽度
     private float itemWidth;
     private float firstItemRange;
     private float bigRadiusWidth;
-    private int curColor;//当前选中的颜色
+    private int curColor; // 当前选中的颜色
     private int curPosition;
     private int clickPosition;
     private int touchSlop;
     private boolean canDrag;
-    private boolean isClickValid;//点击是否有效
-    private float divX, divY;//当前Move位置
+    private boolean isClickValid; // 点击是否有效
+    private float divX, divY; // 当前Move位置
     private float lastX;
     private float lastY;
     private OnProgressChangeListener listener;
@@ -61,20 +61,21 @@ public class SettingProgressView extends View {
         itemCount = typedArray.getInteger(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_count, 5);
         colorSelected = typedArray.getColor(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_colorSelect, Color.parseColor("#69B068"));
         colorUnselected = typedArray.getColor(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_colorUnselect, Color.GRAY);
-        radiusSmall = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSmall, UIUtil.dip2px(context, 5));
-        radiusBig = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusBig, UIUtil.dip2px(context, 10));
-        radiusSpace = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSpace, UIUtil.dip2px(context, 2));
+        radiusSmall = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSmall, Util.dip2px(context, 5));
+        radiusBig = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusBig, Util.dip2px(context, 10));
+        radiusSpace = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSpace, Util.dip2px(context, 2));
         typedArray.recycle();
         init(context);
     }
 
     private void init(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            setLayerType(LAYER_TYPE_SOFTWARE, null);//禁用硬件加速
+            // 禁用硬件加速
+            setLayerType(LAYER_TYPE_SOFTWARE, null);
         }
         touchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-        lineHeight = UIUtil.dip2px(context, 2);
-        shadeRadius = UIUtil.dip2px(context, 5);
+        lineHeight = Util.dip2px(context, 2);
+        shadeRadius = Util.dip2px(context, 5);
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintShader = new Paint(Paint.ANTI_ALIAS_FLAG);
         curColor = Color.WHITE;
@@ -160,12 +161,12 @@ public class SettingProgressView extends View {
                 } else if (event.getX() >= firstItemRange) {
                     clickPosition = (int) ((event.getX() - firstItemRange) / itemWidth) + 1;
                     if (!(Math.abs(bigRadiusWidth / 2 + itemWidth * clickPosition - event.getX()) <= bigRadiusWidth / 2)) {
-                        clickPosition = -1;//未点中大圆范围内
+                        clickPosition = -1; // 未点中大圆范围内
                     }
                 }
                 if (clickPosition == curPosition) {
                     canDrag = true;
-                    isClickValid = false;//点击无效，交给ACTION_MOVE处理
+                    isClickValid = false; // 点击无效，交给ACTION_MOVE处理
                     if (divX < bigRadiusWidth / 2) {
                         divX = bigRadiusWidth / 2;
                     }
@@ -175,7 +176,7 @@ public class SettingProgressView extends View {
                     invalidate();
                 } else {
                     canDrag = false;
-                    isClickValid = true;//点击有效，交给ACTION_UP处理
+                    isClickValid = true; // 点击有效，交给ACTION_UP处理
                 }
                 return true;
             case MotionEvent.ACTION_MOVE:
@@ -190,7 +191,7 @@ public class SettingProgressView extends View {
                 if (divX > width - bigRadiusWidth / 2) {
                     divX = width - bigRadiusWidth / 2;
                 }
-                isClickValid = false;//只要移动，点击无效，交给ACTION_UP处理
+                isClickValid = false; // 只要移动，点击无效，交给ACTION_UP处理
                 if (event.getX() >= width - firstItemRange) {
                     position = itemCount - 1;
                 } else if (event.getX() >= firstItemRange) {
@@ -242,21 +243,15 @@ public class SettingProgressView extends View {
         return this;
     }
 
-    /**
-     * 刷新
-     */
-    public void refresh() {
-        invalidate();
-    }
-
     public interface OnProgressChangeListener {
+
         /**
-         * @param position: from 0 to itemCount-1
+         * @param position From 0 to item count - 1
          */
         void onProgressChange(int position);
 
         /**
-         * @param position: from 0 to itemCount-1
+         * @param position from 0 to item count - 1
          */
         void onClick(int position);
     }

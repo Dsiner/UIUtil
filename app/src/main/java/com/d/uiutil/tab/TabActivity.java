@@ -66,7 +66,7 @@ public class TabActivity extends AppCompatActivity implements ViewPager.OnPageCh
         pager.addOnPageChangeListener(this);
         for (ScrollTab tab : tabs) {
             tab.setTitles(titles);
-            tab.setNumber(1, "9", View.VISIBLE);//设置数字红点
+            tab.setNumber(1, "9", View.VISIBLE); // 设置数字红点
             tab.setViewPager(pager);
             tab.setOnTabListener(new ScrollTab.OnTabListener() {
                 @Override

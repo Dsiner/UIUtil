@@ -35,14 +35,14 @@ public class ToggleButton extends View {
     private Paint paintShader;
 
     private int touchSlop;
-    private boolean isOpen;//当前的位置
-    private boolean isClickValid;//点击是否有效
+    private boolean isOpen; // 当前的位置
+    private boolean isClickValid; // 点击是否有效
 
-    private float padding;//variables 背景边框线宽度
-    private int duration;//variables 动画时长
+    private float padding; // Variables 背景边框线宽度
+    private int duration; // Variables 动画时长
 
     private ValueAnimator animation;
-    private float factor = 1;//进度因子:0-1
+    private float factor = 1; // 进度因子:0-1
 
     private OnToggleListener listener;
     private int colorNormal, colorLight, colorPadding;
@@ -74,7 +74,8 @@ public class ToggleButton extends View {
 
     private void init(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            setLayerType(LAYER_TYPE_SOFTWARE, null);//禁用硬件加速
+            // 禁用硬件加速
+            setLayerType(LAYER_TYPE_SOFTWARE, null);
         }
         touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
 
@@ -100,7 +101,7 @@ public class ToggleButton extends View {
         animation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                factor = (float) animation.getAnimatedValue();//更新进度因子
+                factor = (float) animation.getAnimatedValue(); // 更新进度因子
                 invalidate();
             }
         });
@@ -145,7 +146,7 @@ public class ToggleButton extends View {
         float c1 = width - height / 2;
         float start = !isOpen ? c1 : c0;
         float end = isOpen ? c1 : c0;
-        float offsetX = start + (end - start) * factor;//通过属性动画因子，计算此瞬间圆心的横坐标
+        float offsetX = start + (end - start) * factor; // 通过属性动画因子，计算此瞬间圆心的横坐标
 
         canvas.drawCircle(offsetX, height / 2, height / 2 - padding, paintShader);
     }
@@ -211,9 +212,9 @@ public class ToggleButton extends View {
     }
 
     /**
-     * toggle
+     * Toggle
      *
-     * @param withAn: with animation
+     * @param withAn With animation
      */
     public void toggle(boolean withAn) {
         isOpen = !isOpen;
@@ -231,7 +232,7 @@ public class ToggleButton extends View {
 
     public interface OnToggleListener {
         /**
-         * @param isOpen: isOpen
+         * @param isOpen isOpen
          */
         void onToggle(boolean isOpen);
     }

@@ -12,7 +12,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.layout.R;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
@@ -31,13 +31,13 @@ public class PraiseLayout extends RelativeLayout {
     private IPraise iPraise;
     private int mHeight;
     private int mWidth;
-    private int dHeight;//图片高度
-    private int dWidth;//图片宽度
+    private int dHeight; // 图片高度
+    private int dWidth; // 图片宽度
     private int marginLeft;
     private int marginBottom;
     private Drawable heart;
     private RelativeLayout.LayoutParams lp;
-    private Interpolator line = new LinearInterpolator();//线性
+    private Interpolator line = new LinearInterpolator(); // 线性
     private Random random = new Random();
     private int endPX;
 
@@ -58,8 +58,8 @@ public class PraiseLayout extends RelativeLayout {
 
     private void init() {
         heart = ContextCompat.getDrawable(getContext(), R.drawable.lib_ui_layout_pl_ic_heart);
-        dHeight = UIUtil.dip2px(getContext(), 15);
-        dWidth = UIUtil.dip2px(getContext(), 15);
+        dHeight = Util.dip2px(getContext(), 15);
+        dWidth = Util.dip2px(getContext(), 15);
         setMarginLeft(true);
         lp = new RelativeLayout.LayoutParams(dWidth, dHeight);
         lp.addRule(ALIGN_PARENT_BOTTOM, TRUE);
@@ -97,7 +97,7 @@ public class PraiseLayout extends RelativeLayout {
     /**
      * 获取贝塞尔曲线动画
      *
-     * @param target:执行动画的目标View
+     * @param target 执行动画的目标View
      * @return animator
      */
     private ValueAnimator getBezierValueAnimator(View target) {
@@ -112,7 +112,7 @@ public class PraiseLayout extends RelativeLayout {
     /**
      * 获取中间的两个随机点
      *
-     * @param scale:范围约束
+     * @param scale 范围约束
      */
     private PointF getPointF(int scale) {
         PointF pointF = new PointF();
@@ -128,27 +128,27 @@ public class PraiseLayout extends RelativeLayout {
      */
     public void setMarginLeft(boolean isPortrait) {
         if (isPortrait) {
-            //竖屏
-            marginLeft = UIUtil.dip2px(getContext(), 275);
-            marginBottom = UIUtil.dip2px(getContext(), 22);
+            // 竖屏
+            marginLeft = Util.dip2px(getContext(), 275);
+            marginBottom = Util.dip2px(getContext(), 22);
         } else {
-            //横屏
-            marginLeft = UIUtil.dip2px(getContext(), 275 + 14);
-            marginBottom = UIUtil.dip2px(getContext(), 25);
+            // 横屏
+            marginLeft = Util.dip2px(getContext(), 275 + 14);
+            marginBottom = Util.dip2px(getContext(), 25);
         }
     }
 
     /**
      * 设置终点
      *
-     * @param endPX:终点横坐标
+     * @param endPX 终点横坐标
      */
     public void setEndP(int endPX) {
         this.endPX = endPX;
     }
 
     /**
-     * 清空所有view及动画
+     * 清空所有View及动画
      */
     public void clearAllAnimators() {
         int size = getChildCount();

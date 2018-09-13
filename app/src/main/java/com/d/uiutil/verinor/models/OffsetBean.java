@@ -19,12 +19,12 @@ public class OffsetBean {
         OffsetBean tag = (OffsetBean) rv.getTag();
 
         LinearLayoutManager layoutManager = (LinearLayoutManager) rv.getLayoutManager();
-        //获取可视的第一个view
+        // 获取可视的第一个view
         View topView = layoutManager.getChildAt(0);
         if (topView != null) {
-            //得到该View的数组位置
+            // 得到该View的数组位置
             tag.lastPosition = layoutManager.getPosition(topView);
-            //获取与该view的左部的偏移量
+            // 获取与该view的左部的偏移量
             tag.lastOffset = topView.getLeft();
         }
     }

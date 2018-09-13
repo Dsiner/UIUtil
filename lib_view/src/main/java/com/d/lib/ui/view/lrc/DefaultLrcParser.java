@@ -23,7 +23,7 @@ public class DefaultLrcParser implements ILrcParser {
     private DefaultLrcParser() {
     }
 
-    /***
+    /**
      * 将歌词文件里面的字符串 解析成一个List<LrcRow>
      */
     @Override

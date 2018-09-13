@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.xrv.adapter.CommonAdapter;
 import com.d.lib.xrv.adapter.CommonHolder;
 import com.d.uiutil.R;
@@ -24,12 +24,12 @@ import java.util.List;
  */
 public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
     private RecyclerView recyclerView;
-    private int scrollState;//状态
-    private boolean isDelay;//延迟状态
-    private boolean hasPraiseQueue;//是否有被阻塞的点赞，待刷新
-    private int posLiving;//当前正在直播，在榜单中的位置
-    private boolean isAs;//放大动画标志位
-    private boolean isAsAnimation;//是否正在执行放大动画
+    private int scrollState; // 状态
+    private boolean isDelay; // 延迟状态
+    private boolean hasPraiseQueue; // 是否有被阻塞的点赞，待刷新
+    private int posLiving; // 当前正在直播，在榜单中的位置
+    private boolean isAs; // 放大动画标志位
+    private boolean isAsAnimation; // 是否正在执行放大动画
     private Handler handler;
     private Runnable runnable;
     private View animView;
@@ -44,7 +44,7 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
             public void run() {
                 isDelay = false;
                 if (scrollState != RecyclerView.SCROLL_STATE_IDLE) {
-                    //正在滑动直接返回
+                    // 正在滑动直接返回
                     return;
                 }
                 scroollAdjust();
@@ -80,9 +80,9 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
     }
 
     /**
-     * 是否静止态，没有手指触发-按压|滑动
+     * 是否静止态，没有手指触发 - 按压|滑动
      *
-     * @return true:静止态 false:手指触发未静止
+     * @return true: 静止态, false: 手指触发未静止
      */
     public boolean isStateIdle() {
         return scrollState == RecyclerView.SCROLL_STATE_IDLE;
@@ -122,7 +122,7 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
             mDatas.add(toPosition, fromModel);
             posLiving = toPosition;
             if (scrollState != RecyclerView.SCROLL_STATE_IDLE || isDelay) {
-                //手指触发的滑动，未结束时，禁止刷新
+                // 手指触发的滑动，未结束时，禁止刷新
                 hasPraiseQueue = true;
             } else {
                 hasPraiseQueue = false;
@@ -134,7 +134,7 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
         } else {
             isAs = true;
             if (scrollState != RecyclerView.SCROLL_STATE_IDLE || isDelay) {
-                //手指触发的滑动，未结束时，禁止刷新
+                // 手指触发的滑动，未结束时，禁止刷新
                 hasPraiseQueue = true;
             } else {
                 hasPraiseQueue = false;
@@ -144,10 +144,10 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
     }
 
     /**
-     * 点赞-一次性加上
+     * 点赞 - 一次性加上
      *
-     * @param count:点赞数
-     * @param notify:是否刷新当前新增数
+     * @param count  点赞数
+     * @param notify 是否刷新当前新增数
      */
     public void doPraiseAll(long count, boolean notify) {
         if (mDatas == null || mDatas.size() <= 0 || posLiving < 0 || posLiving >= mDatas.size()) {
@@ -229,10 +229,10 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
     @Override
     public void convert(int position, CommonHolder holder, Bean item) {
         String count = getValueEX(item.count);
-        UIUtil.autoSize((TextView) holder.getView(R.id.tv_praise), count, 35, 6, 9);
+        Util.autoSize((TextView) holder.getView(R.id.tv_praise), count, 35, 6, 9);
         if (isAs && position == posLiving) {
-            //执行放大动画
-            UIUtil.autoSize((TextView) holder.getView(R.id.tv_praise_layer), count, 35, 6, 9);
+            // 执行放大动画
+            Util.autoSize((TextView) holder.getView(R.id.tv_praise_layer), count, 35, 6, 9);
             animView = holder.getView(R.id.llyt_praise_layer);
             if (anim == null) {
                 initAnim();
@@ -244,7 +244,7 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
     }
 
     public static class Bean {
-        public long usrId;
+        public long userId;
         public String name;
         public long count;
     }

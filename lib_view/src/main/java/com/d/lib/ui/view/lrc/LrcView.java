@@ -13,7 +13,7 @@ import android.view.ViewConfiguration;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.view.R;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.ValueAnimator;
@@ -99,7 +99,7 @@ public class LrcView extends View implements ILrcView {
         MIN_SCALE = typedArray.getFloat(R.styleable.lib_ui_view_LrcView_lib_ui_view_lrc_minScale, 0.7f);
         MAX_SCALE = typedArray.getFloat(R.styleable.lib_ui_view_LrcView_lib_ui_view_lrc_maxScale, 1.7f);
         typedArray.recycle();
-        paddingTime = PADDING_TIME_DEFAULT = UIUtil.dip2px(context, 5);
+        paddingTime = PADDING_TIME_DEFAULT = Util.dip2px(context, 5);
         init(context);
     }
 
@@ -131,7 +131,7 @@ public class LrcView extends View implements ILrcView {
         super.onDraw(canvas);
         if (lrcRows == null || lrcRows.size() <= 0) {
             //画默认的显示文字
-            drawLine(canvas, paint, height / 2 + UIUtil.getTextHeight(paint) / 2, DEFAULT_TEXT);
+            drawLine(canvas, paint, height / 2 + Util.getTextHeight(paint) / 2, DEFAULT_TEXT);
             return;
         }
 
@@ -392,8 +392,8 @@ public class LrcView extends View implements ILrcView {
         paintCur.setTextSize(sizeTextCur);
         paintLine.setTextSize(sizeTime);
 
-        offsetY = (int) (UIUtil.getTextHeight(paintCur) / 2);
-        rowHeight = (int) (UIUtil.getTextHeight(paintCur) + padding);
+        offsetY = (int) (Util.getTextHeight(paintCur) / 2);
+        rowHeight = (int) (Util.getTextHeight(paintCur) + padding);
     }
 
     @Override

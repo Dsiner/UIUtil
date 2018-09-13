@@ -3,7 +3,7 @@ package com.d.lib.ui.view.lrc;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import com.d.lib.ui.common.UILog;
+import com.d.lib.ui.common.ULog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +101,7 @@ public class LrcRow implements Comparable<LrcRow> {
                 LrcRow lrcRow = new LrcRow(tem, formatTime(tem), content);
                 lrcRows.add(lrcRow);
             } catch (Exception e) {
-                UILog.d("LrcRow" + e.getMessage());
+                ULog.d("LrcRow" + e.getMessage());
             }
         }
         return lrcRows;

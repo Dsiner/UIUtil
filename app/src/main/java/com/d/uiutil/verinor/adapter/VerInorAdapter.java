@@ -12,11 +12,11 @@ import com.d.uiutil.verinor.models.VerInorModel;
 import java.util.List;
 
 /**
- * 横向adapter
+ * 横向Adapter
  * Created by D on 2017/1/4.
  */
 public class VerInorAdapter extends CommonAdapter<VerInorModel> {
-    private int upPos;//父position
+    private int upPos; // 父position
 
     public VerInorAdapter(Context context, List<VerInorModel> datas, int layoutId) {
         super(context, datas, layoutId);
@@ -32,7 +32,7 @@ public class VerInorAdapter extends CommonAdapter<VerInorModel> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext.getApplicationContext(), "click: " + upPos + "_" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext.getApplicationContext(), "Click at: " + upPos + "_" + position, Toast.LENGTH_SHORT).show();
             }
         });
     }

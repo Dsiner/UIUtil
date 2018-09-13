@@ -11,7 +11,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.view.R;
 
 /**
@@ -20,17 +20,17 @@ import com.d.lib.ui.view.R;
  */
 @SuppressLint("AppCompatCustomView")
 public class RecordTriggerView extends TextView {
-    public static final int STATE_CANCLE = 0;//滑出范围，取消本次录音
-    public static final int STATE_VALID = 1;//有效，开始录音
-    public static final int STATE_INVALID = 2;//无效，滑出范围
-    public static final int STATE_SUBMIT = 3;//未滑出范围，提交本次录音
+    public static final int STATE_CANCLE = 0; // 滑出范围，取消本次录音
+    public static final int STATE_VALID = 1; // 有效，开始录音
+    public static final int STATE_INVALID = 2; // 无效，滑出范围
+    public static final int STATE_SUBMIT = 3; // 未滑出范围，提交本次录音
 
     private int width;
     private int height;
 
-    private int touchRadius;//touch有效范围，半径
+    private int touchRadius; // Touch有效范围，半径
     private float dX, dY;
-    private boolean isValid;//touch是否有效，在有效范围内
+    private boolean isValid; // Touch是否有效，在有效范围内
     private OnTriggerListener listener;
     private int curState;
 
@@ -50,7 +50,7 @@ public class RecordTriggerView extends TextView {
     }
 
     private void init(Context context) {
-        touchRadius = UIUtil.dip2px(context, 105);
+        touchRadius = Util.dip2px(context, 105);
         setGravity(Gravity.CENTER);
         setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.lib_ui_view_rtv_corner_bg_normal));
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

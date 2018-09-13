@@ -5,6 +5,8 @@
     <color name="lib_ui_common_color_accent">#FF4081</color>
 
     <color name="lib_ui_common_color_trans">#00000000</color>
+    <color name="lib_ui_common_color_white">#FFFFFF</color>
+
     <color name="lib_ui_common_color_line">#171A21</color>
     <color name="lib_ui_common_color_text">#666666</color>
 </resources>

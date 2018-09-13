@@ -12,7 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.view.R;
 
 /**
@@ -31,13 +31,13 @@ public class ReplyBgView extends View {
     private Rect rect;
     private RectF rectF;
     private Paint paint;
-    private Path pathTrg;//三角形路径
+    private Path pathTrg; // 三角形路径
     private int gravity;
     private int colorBg;
     private float rectRadius;
-    private float offset;//三角形左偏移
-    private float trgHalfWidth;//三角形底边长度/2
-    private float trgHeight;//三角形高度
+    private float offset; // 三角形左偏移
+    private float trgHalfWidth; // 三角形底边长度/2
+    private float trgHeight; // 三角形高度
 
     public ReplyBgView(Context context) {
         this(context, null);
@@ -57,10 +57,10 @@ public class ReplyBgView extends View {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_ReplyBgView);
         gravity = typedArray.getInteger(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_gravity, TOP);
         colorBg = typedArray.getColor(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_color, ContextCompat.getColor(context, R.color.lib_ui_common_color_accent));
-        rectRadius = typedArray.getDimension(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_radius, UIUtil.dip2px(context, 3));
-        offset = typedArray.getDimension(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_offset, UIUtil.dip2px(context, 6.5f));
-        trgHalfWidth = typedArray.getDimension(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_trgWidth, UIUtil.dip2px(context, 6)) / 2;
-        trgHeight = typedArray.getDimension(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_trgHeight, UIUtil.dip2px(context, 5));
+        rectRadius = typedArray.getDimension(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_radius, Util.dip2px(context, 3));
+        offset = typedArray.getDimension(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_offset, Util.dip2px(context, 6.5f));
+        trgHalfWidth = typedArray.getDimension(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_trgWidth, Util.dip2px(context, 6)) / 2;
+        trgHeight = typedArray.getDimension(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_trgHeight, Util.dip2px(context, 5));
         typedArray.recycle();
     }
 
@@ -85,7 +85,7 @@ public class ReplyBgView extends View {
 
                 rect.set((int) trgHeight, 0, width, height);
                 rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);//在原有矩形基础上，画成圆角矩形
+                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint); // 在原有矩形基础上，画成圆角矩形
                 break;
 
             case RIGHT:
@@ -97,7 +97,7 @@ public class ReplyBgView extends View {
 
                 rect.set(0, 0, (int) (width - trgHeight), height);
                 rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);//在原有矩形基础上，画成圆角矩形
+                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint); // 在原有矩形基础上，画成圆角矩形
                 break;
 
             case TOP:
@@ -109,7 +109,7 @@ public class ReplyBgView extends View {
 
                 rect.set(0, (int) trgHeight, width, height);
                 rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);//在原有矩形基础上，画成圆角矩形
+                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint); // 在原有矩形基础上，画成圆角矩形
                 break;
 
             case BOTTOM:
@@ -121,7 +121,7 @@ public class ReplyBgView extends View {
 
                 rect.set(0, 0, width, (int) (height - trgHeight));
                 rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);//在原有矩形基础上，画成圆角矩形
+                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint); // 在原有矩形基础上，画成圆角矩形
                 break;
         }
     }

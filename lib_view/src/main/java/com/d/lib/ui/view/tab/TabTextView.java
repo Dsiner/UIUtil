@@ -8,7 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.view.R;
 
 /**
@@ -24,12 +24,12 @@ public class TabTextView extends View implements TabView {
     private float textHeight;
 
     /**
-     * define
+     * Define
      */
-    private int textSize;//title文字大小
-    private int textColor;//title文字颜色
-    private int textColorFocus;//title文字颜色
-    private int padding;//title文字左右预留间距
+    private int textSize; // Title文字大小
+    private int textColor; // Title文字颜色
+    private int textColorFocus; // Title文字颜色
+    private int padding; // Title文字左右预留间距
 
     public TabTextView(Context context) {
         this(context, null);
@@ -45,7 +45,7 @@ public class TabTextView extends View implements TabView {
     }
 
     private void init(Context context) {
-        textSize = UIUtil.dip2px(context, 15);
+        textSize = Util.dip2px(context, 15);
         textColor = ContextCompat.getColor(context, R.color.lib_ui_common_color_text);
         textColorFocus = ContextCompat.getColor(context, R.color.lib_ui_common_color_accent);
 
@@ -54,7 +54,7 @@ public class TabTextView extends View implements TabView {
         paint.setTextSize(textSize);
         paint.setColor(textColor);
 
-        textHeight = UIUtil.getTextHeight(paint);
+        textHeight = Util.getTextHeight(paint);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class TabTextView extends View implements TabView {
         if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.EXACTLY) {
             width = MeasureSpec.getSize(widthMeasureSpec);
         } else {
-            width = UIUtil.getTextWidth(text, paint) + padding * 2;
+            width = Util.getTextWidth(text, paint) + padding * 2;
         }
         height = getDefaultSize(getSuggestedMinimumWidth(), heightMeasureSpec);
         setMeasuredDimension(width, height);

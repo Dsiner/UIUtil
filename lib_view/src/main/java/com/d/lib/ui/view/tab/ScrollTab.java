@@ -15,8 +15,7 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
-import com.d.lib.ui.common.UILog;
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.view.R;
 
 import java.util.ArrayList;
@@ -27,6 +26,7 @@ import java.util.List;
  * Created by D on 2017/8/25.
  */
 public class ScrollTab extends HorizontalScrollView implements View.OnClickListener, ViewPager.OnPageChangeListener {
+
     /**
      * TAB类型
      */
@@ -49,7 +49,7 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
 
     private int type;
     private boolean isAvag;
-    private float padding;//item内部左右预留间距
+    private float padding; // Item内部左右预留间距
     private String strTitles;
     private int indicatorType;
     private int indicatorColor;
@@ -85,14 +85,14 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_ScrollTab);
         type = typedArray.getInt(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_type, TYPE_VIEW);
         isAvag = typedArray.getBoolean(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_avag, false);
-        padding = typedArray.getDimension(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_padding, UIUtil.dip2px(context, 12));
+        padding = typedArray.getDimension(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_padding, Util.dip2px(context, 12));
         strTitles = typedArray.getString(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_titles);
         indicatorType = typedArray.getInt(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_indicatorType, TYPE_INDICATOR_TREND);
         indicatorColor = typedArray.getColor(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_indicatorColor, ContextCompat.getColor(context, R.color.lib_ui_common_color_accent));
-        indicatorWidth = typedArray.getDimension(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_indicatorWidth, UIUtil.dip2px(context, 30));
-        indicatorWeight = typedArray.getDimension(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_indicatorWeight, UIUtil.dip2px(context, 1));
-        indicatorRadius = typedArray.getDimension(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_indicatorRadius, UIUtil.dip2px(context, 0.5f));
-        indicatorPadding = typedArray.getDimension(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_indicatorPadding, UIUtil.dip2px(context, 5));
+        indicatorWidth = typedArray.getDimension(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_indicatorWidth, Util.dip2px(context, 30));
+        indicatorWeight = typedArray.getDimension(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_indicatorWeight, Util.dip2px(context, 1));
+        indicatorRadius = typedArray.getDimension(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_indicatorRadius, Util.dip2px(context, 0.5f));
+        indicatorPadding = typedArray.getDimension(R.styleable.lib_ui_view_ScrollTab_lib_ui_view_stab_indicatorPadding, Util.dip2px(context, 5));
         typedArray.recycle();
     }
 
@@ -117,7 +117,7 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     }
 
     /**
-     * 设置titles
+     * 设置Titles
      */
     public void setTitles(List<String> ts) {
         if (this.items != null && ts != null) {
@@ -270,7 +270,6 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        UILog.d("dsiner_onPageScrolled: position: " + position + " Offset: " + positionOffset);
         if (indicatorType != TYPE_INDICATOR_NONE) {
             this.position = position;
             this.positionOffset = positionOffset;
@@ -280,7 +279,6 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
 
     @Override
     public void onPageSelected(int position) {
-        UILog.d("dsiner_onPageSelected: position: " + position + " Offset: " + positionOffset);
         onChange(position);
         adjustScrollY(position);
         if (indicatorType == TYPE_INDICATOR_NONE) {
@@ -291,7 +289,7 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        UILog.d("dsiner_onPageScrollStateChanged: state: " + state);
+
     }
 
     private void adjustScrollY(int position) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- msg adapter -->
+    <!-- Msg adapter -->
     <item name="tag_hl_first" type="id" />
     <item name="tag_hl_second" type="id" />
 </resources>

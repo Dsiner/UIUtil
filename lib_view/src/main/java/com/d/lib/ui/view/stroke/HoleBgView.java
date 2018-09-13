@@ -11,7 +11,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 
 
 /**
@@ -25,8 +25,8 @@ public class HoleBgView extends View {
     private Rect rect;
     private RectF rectF;
     private Paint paint;
-    private int offsetX;//偏移
-    private int offsetY;//偏移
+    private int offsetX; // 偏移
+    private int offsetY; // 偏移
     private int withrH;
     private int withrW;
     private float strokeWidth;
@@ -46,13 +46,14 @@ public class HoleBgView extends View {
 
     private void init(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            setLayerType(LAYER_TYPE_SOFTWARE, null);//禁用硬件加速
+            // 禁用硬件加速
+            setLayerType(LAYER_TYPE_SOFTWARE, null);
         }
-        offsetX = UIUtil.dip2px(context, 136.5f);
-        offsetY = UIUtil.dip2px(context, 29.5f);
-        withrH = UIUtil.dip2px(context, 35000);
-        withrW = UIUtil.dip2px(context, 35014.3f);
-        strokeWidth = withrH * 2 - UIUtil.dip2px(context, 34.5f);
+        offsetX = Util.dip2px(context, 136.5f);
+        offsetY = Util.dip2px(context, 29.5f);
+        withrH = Util.dip2px(context, 35000);
+        withrW = Util.dip2px(context, 35014.3f);
+        strokeWidth = withrH * 2 - Util.dip2px(context, 34.5f);
         rect = new Rect();
         rectF = new RectF();
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -72,7 +73,7 @@ public class HoleBgView extends View {
         int bottom = offsetYF + withrH;
         rect.set(left, top, right, bottom);
         rectF.set(rect);
-        canvas.drawRoundRect(rectF, withrH, withrH, paint);//在原有矩形基础上，画成圆角矩形
+        canvas.drawRoundRect(rectF, withrH, withrH, paint); // 在原有矩形基础上，画成圆角矩形
     }
 
     @Override

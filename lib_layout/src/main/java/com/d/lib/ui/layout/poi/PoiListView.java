@@ -14,8 +14,8 @@ import com.d.lib.xrv.XRecyclerView;
  * Created by D on 2017/7/24.
  */
 public class PoiListView extends XRecyclerView {
-    private float dX, dY;//TouchEvent_ACTION_DOWN坐标(dX,dY)
-    private float lastY;//TouchEvent最后一次坐标(lastX,lastY)
+    private float dX, dY; // TouchEvent_ACTION_DOWN坐标(dX,dY)
+    private float lastY; // TouchEvent最后一次坐标(lastX,lastY)
     private int touchSlop;
     private boolean isMoveValid;
     private boolean canScroll = true;

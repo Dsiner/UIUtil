@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.view.R;
 
 import java.util.List;
@@ -84,8 +84,8 @@ public class SideBar extends View {
             c = new String[]{};
         }
         count = c.length;
-        widthRect = UIUtil.dip2px(context, 70);
-        rectRadius = UIUtil.dip2px(context, 6);
+        widthRect = Util.dip2px(context, 70);
+        rectRadius = Util.dip2px(context, 6);
         colorTrans = Color.parseColor("#00000000");
         colorWhite = Color.parseColor("#ffffff");
         colorBar = Color.parseColor("#aaBBBBBB");
@@ -103,7 +103,7 @@ public class SideBar extends View {
 
         paintRect = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintRect.setTextAlign(Paint.Align.CENTER);
-        paintRect.setTextSize(UIUtil.dip2px(context, 32));
+        paintRect.setTextSize(Util.dip2px(context, 32));
     }
 
     @Override
@@ -149,8 +149,8 @@ public class SideBar extends View {
         float textSize = onpice * 0.686f;
         paint.setTextSize(textSize);
         paintCur.setTextSize(textSize);
-        textHeight = UIUtil.getTextHeight(paint);
-        textLightHeight = UIUtil.getTextHeight(paintRect);
+        textHeight = Util.getTextHeight(paint);
+        textLightHeight = Util.getTextHeight(paintRect);
         setMeasuredDimension(width, height);
     }
 

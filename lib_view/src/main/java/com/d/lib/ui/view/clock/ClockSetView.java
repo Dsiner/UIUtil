@@ -14,7 +14,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.d.lib.ui.common.UIUtil;
+import com.d.lib.ui.common.Util;
 import com.d.lib.ui.view.R;
 
 /**
@@ -68,12 +68,12 @@ public class ClockSetView extends View {
         colorFoucusMain = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_mainFoucusColor, Color.parseColor("#ffffff"));
         colorFoucusSub = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_subFoucusColor, Color.parseColor("#DFB5B8"));
         colorIndicator = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_indicatorColor, Color.parseColor("#DC4339"));
-        textMainSize = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_mainTextSize, UIUtil.dip2px(context, 16f));
-        textSubSize = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_subTextSize, UIUtil.dip2px(context, 12f));
-        radiusBig = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_radiusBig, UIUtil.dip2px(context, 18f));
-        radiusSmall = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_radiusSmall, UIUtil.dip2px(context, 3));
-        indicatorWidth = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_indicatorWidth, UIUtil.dip2px(context, 2));
-        padding = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_padding, UIUtil.dip2px(context, 3));
+        textMainSize = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_mainTextSize, Util.dip2px(context, 16f));
+        textSubSize = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_subTextSize, Util.dip2px(context, 12f));
+        radiusBig = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_radiusBig, Util.dip2px(context, 18f));
+        radiusSmall = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_radiusSmall, Util.dip2px(context, 3));
+        indicatorWidth = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_indicatorWidth, Util.dip2px(context, 2));
+        padding = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_padding, Util.dip2px(context, 3));
         typedArray.recycle();
     }
 
@@ -87,9 +87,9 @@ public class ClockSetView extends View {
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setDither(true);
         paint.setFilterBitmap(true);
-        textHeightSub = UIUtil.getTextHeight(paint);
+        textHeightSub = Util.getTextHeight(paint);
         paint.setTextSize(textMainSize);
-        textHeightMain = UIUtil.getTextHeight(paint);
+        textHeightMain = Util.getTextHeight(paint);
         textHeight = textHeightMain;
     }
 

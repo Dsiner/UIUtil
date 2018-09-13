@@ -16,8 +16,8 @@ import android.widget.TextView;
 public class PoiTextView extends TextView {
     private boolean isClickValid = true;
     private int touchSlop;
-    private float dX, dY;//TouchEvent_ACTION_DOWN坐标(dX,dY)
-    private float lastY;//TouchEvent最后一次坐标(lastX,lastY)
+    private float dX, dY; // TouchEvent_ACTION_DOWN坐标(dX,dY)
+    private float lastY; // TouchEvent最后一次坐标(lastX,lastY)
     private OnTikListener listener;
 
     public PoiTextView(Context context) {
