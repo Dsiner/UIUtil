@@ -1,6 +1,7 @@
 package com.d.lib.ui.view.progress;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -235,6 +236,11 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
     }
 
     public class Request {
+        public Request thumb(Bitmap bitmap) {
+            ivThumb.setImageBitmap(bitmap);
+            return this;
+        }
+
         public Request thumb(Drawable drawable) {
             ivThumb.setImageDrawable(drawable);
             return this;

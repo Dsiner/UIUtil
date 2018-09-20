@@ -103,4 +103,32 @@
         <attr name="lib_ui_view_clocksetv_indicatorWidth" format="dimension" />
         <attr name="lib_ui_view_clocksetv_padding" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="lib_ui_view_RoundedImageView">
+        <attr name="lib_ui_view_riv_corner_radius" format="dimension" />
+        <attr name="lib_ui_view_riv_corner_radius_top_left" format="dimension" />
+        <attr name="lib_ui_view_riv_corner_radius_top_right" format="dimension" />
+        <attr name="lib_ui_view_riv_corner_radius_bottom_left" format="dimension" />
+        <attr name="lib_ui_view_riv_corner_radius_bottom_right" format="dimension" />
+        <attr name="lib_ui_view_riv_border_width" format="dimension" />
+        <attr name="lib_ui_view_riv_border_color" format="color" />
+        <attr name="lib_ui_view_riv_mutate_background" format="boolean" />
+        <attr name="lib_ui_view_riv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+        <attr name="lib_ui_view_riv_tile_mode">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="lib_ui_view_riv_tile_mode_x">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="lib_ui_view_riv_tile_mode_y">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+    </declare-styleable>
 </resources>
