@@ -1,4 +1,4 @@
-package com.d.uiutil.snapprogress;
+package com.d.uiutil.progress;
 
 import android.app.Activity;
 import android.content.Context;
@@ -95,7 +95,7 @@ public class SnapProgressActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_snapprogress);
+        setContentView(R.layout.activity_progress_snap);
         init();
     }
 

@@ -1,4 +1,4 @@
-package com.d.lib.ui.view.settingprogress;
+package com.d.lib.ui.view.progress;
 
 import android.content.Context;
 import android.content.res.TypedArray;

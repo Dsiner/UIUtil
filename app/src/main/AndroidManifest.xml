@@ -19,7 +19,7 @@
         <activity android:name="com.d.uiutil.lrc.LrcActivity" />
         <activity android:name="com.d.uiutil.sort.SortActivity" />
         <activity android:name="com.d.uiutil.heartlayout.HeartActivity" />
-        <activity android:name="com.d.uiutil.settingprogress.SettingProgressActivity" />
+        <activity android:name="com.d.uiutil.progress.SettingProgressActivity" />
         <activity android:name="com.d.uiutil.praise.PraiseActivity" />
         <activity android:name="com.d.uiutil.tab.TabActivity" />
         <activity android:name="com.d.uiutil.shadow.ShadowActivity" />
@@ -27,7 +27,7 @@
         <activity android:name="com.d.uiutil.verinor.VerInorActivity" />
         <activity android:name="com.d.uiutil.poi.PoiActivity" />
         <activity android:name="com.d.uiutil.clock.ClockSetActivity" />
-        <activity android:name="com.d.uiutil.snapprogress.SnapProgressActivity" />
+        <activity android:name="com.d.uiutil.progress.SnapProgressActivity" />
     </application>
 
 </manifest>

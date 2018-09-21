@@ -1,11 +1,11 @@
-package com.d.uiutil.settingprogress;
+package com.d.uiutil.progress;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
 
-import com.d.lib.ui.view.settingprogress.SettingProgressView;
+import com.d.lib.ui.view.progress.SettingProgressView;
 import com.d.uiutil.R;
 
 /**
@@ -17,7 +17,7 @@ public class SettingProgressActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settingprogress);
+        setContentView(R.layout.activity_progress_setting);
         final TextView tvLevel = (TextView) findViewById(R.id.tv_level);
         SettingProgressView spvLevel = (SettingProgressView) findViewById(R.id.spv_level);
         spvLevel.setCurPosition(0);

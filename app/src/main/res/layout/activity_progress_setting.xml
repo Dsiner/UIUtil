@@ -23,7 +23,7 @@
             android:textColor="#000000"
             android:textSize="13dp" />
 
-        <com.d.lib.ui.view.settingprogress.SettingProgressView
+        <com.d.lib.ui.view.progress.SettingProgressView
             android:id="@+id/spv_level"
             android:layout_width="match_parent"
             android:layout_height="50dp"
