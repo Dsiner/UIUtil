@@ -13,6 +13,7 @@ import com.d.uiutil.praise.PraiseActivity;
 import com.d.uiutil.recordtrigger.RecordTriggerActivity;
 import com.d.uiutil.settingprogress.SettingProgressActivity;
 import com.d.uiutil.shadow.ShadowActivity;
+import com.d.uiutil.snapprogress.SnapProgressActivity;
 import com.d.uiutil.sort.SortActivity;
 import com.d.uiutil.tab.TabActivity;
 import com.d.uiutil.verinor.VerInorActivity;
@@ -91,6 +92,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ClockSetActivity.class));
+            }
+        });
+        findViewById(R.id.btn_snapprogress).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SnapProgressActivity.class));
             }
         });
     }

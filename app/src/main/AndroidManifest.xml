@@ -27,6 +27,7 @@
         <activity android:name="com.d.uiutil.verinor.VerInorActivity" />
         <activity android:name="com.d.uiutil.poi.PoiActivity" />
         <activity android:name="com.d.uiutil.clock.ClockSetActivity" />
+        <activity android:name="com.d.uiutil.snapprogress.SnapProgressActivity" />
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.d.lib.ui.view.progress;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -12,7 +13,6 @@ import android.support.annotation.FloatRange;
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -21,6 +21,7 @@ import android.widget.ImageView;
 
 import com.d.lib.ui.common.Util;
 import com.d.lib.ui.view.R;
+import com.d.lib.ui.view.roundedimageview.RoundedImageView;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -68,7 +69,7 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
     private int mState = STATE_SCANNING;
     private boolean isFirst = true;
     private Request mRequest;
-    private ImageView ivThumb, ivAlpha, ivState;
+    private RoundedImageView ivThumb, ivAlpha, ivState;
     private OnClickListener listener;
 
     @IntDef({STATE_SCANNING, STATE_PROGRESS, STATE_PENDDING, STATE_DONE, STATE_ERROR})
@@ -93,8 +94,8 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
     }
 
     private void initAttrs(Context context, @SuppressWarnings("unused") AttributeSet attrs) {
-        colorCircle = ContextCompat.getColor(context, R.color.lib_ui_common_color_primary);
-        colorArc = ContextCompat.getColor(context, R.color.lib_ui_common_color_accent);
+        colorCircle = Color.parseColor("#33FF4081");
+        colorArc = Color.parseColor("#FF4081");
         space = Util.dip2px(context, 2.5f);
         paddingIcon = new int[]{Util.dip2px(context, 21.5f),
                 Util.dip2px(context, 20f)};
@@ -104,20 +105,23 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
         this.context = context;
         this.setWillNotDraw(false);
         LayoutParams lp;
-        ivThumb = new ImageView(context);
+        ivThumb = new RoundedImageView(context);
+        ivThumb.setOval(true);
         ivThumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
         lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         lp.gravity = Gravity.CENTER;
         addView(ivThumb, lp);
 
-        ivAlpha = new ImageView(context);
+        ivAlpha = new RoundedImageView(context);
+        ivAlpha.setOval(true);
         ivAlpha.setScaleType(ImageView.ScaleType.CENTER_CROP);
         ivAlpha.setImageResource(R.drawable.lib_ui_view_stab_circle_msg);
         lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         lp.gravity = Gravity.CENTER;
         addView(ivAlpha, lp);
 
-        ivState = new ImageView(context);
+        ivState = new RoundedImageView(context);
+        ivState.setOval(true);
         ivState.setScaleType(ImageView.ScaleType.CENTER_CROP);
         lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         lp.gravity = Gravity.CENTER;
