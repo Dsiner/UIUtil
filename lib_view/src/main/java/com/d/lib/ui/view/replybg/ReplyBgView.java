@@ -31,13 +31,13 @@ public class ReplyBgView extends View {
     private Rect rect;
     private RectF rectF;
     private Paint paint;
-    private Path pathTrg; // 三角形路径
+    private Path pathTrg; // Triangular path
     private int gravity;
     private int colorBg;
     private float rectRadius;
-    private float offset; // 三角形左偏移
-    private float trgHalfWidth; // 三角形底边长度/2
-    private float trgHeight; // 三角形高度
+    private float offset; // Triangle left offset
+    private float trgHalfWidth; // Triangle bottom length/2
+    private float trgHeight; // Triangle height
 
     public ReplyBgView(Context context) {
         this(context, null);
@@ -64,7 +64,7 @@ public class ReplyBgView extends View {
         typedArray.recycle();
     }
 
-    private void init(Context context) {
+    private void init(@SuppressWarnings("unused") Context context) {
         pathTrg = new Path();
         rect = new Rect();
         rectF = new RectF();
@@ -85,7 +85,7 @@ public class ReplyBgView extends View {
 
                 rect.set((int) trgHeight, 0, width, height);
                 rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint); // 在原有矩形基础上，画成圆角矩形
+                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);
                 break;
 
             case RIGHT:
@@ -97,7 +97,7 @@ public class ReplyBgView extends View {
 
                 rect.set(0, 0, (int) (width - trgHeight), height);
                 rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint); // 在原有矩形基础上，画成圆角矩形
+                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);
                 break;
 
             case TOP:
@@ -109,7 +109,7 @@ public class ReplyBgView extends View {
 
                 rect.set(0, (int) trgHeight, width, height);
                 rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint); // 在原有矩形基础上，画成圆角矩形
+                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);
                 break;
 
             case BOTTOM:
@@ -121,7 +121,7 @@ public class ReplyBgView extends View {
 
                 rect.set(0, 0, width, (int) (height - trgHeight));
                 rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint); // 在原有矩形基础上，画成圆角矩形
+                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);
                 break;
         }
     }
