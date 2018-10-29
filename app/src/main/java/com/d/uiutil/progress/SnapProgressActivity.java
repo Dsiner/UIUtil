@@ -25,7 +25,7 @@ import java.util.Random;
  * Created by D on 2017/11/1.
  */
 public class SnapProgressActivity extends Activity {
-    private SnapProgressBar spbarSnap;
+    private SnapProgressBar[] spbarSnaps;
     private Random random = new Random();
     private Handler handler;
     private Task task;
@@ -68,7 +68,7 @@ public class SnapProgressActivity extends Activity {
         progress = 0.33f * count + 0.33f * progress;
 
         MediaInfo media = datas.get(index);
-        spbarSnap.setState(SnapProgressBar.STATE_PROGRESS).
+        spbarSnaps[4].setState(SnapProgressBar.STATE_PROGRESS).
                 thumb(Presenter.getThumb(getApplicationContext(), media.id))
                 .progress(progress);
 
@@ -96,13 +96,23 @@ public class SnapProgressActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress_snap);
-        init();
+        initView();
     }
 
-    private void init() {
+    private void initView() {
         handler = new Handler();
         task = new Task(this);
-        spbarSnap = (SnapProgressBar) findViewById(R.id.spbar_snap);
+        spbarSnaps = new SnapProgressBar[]{(SnapProgressBar) findViewById(R.id.spbar_snap_scanning),
+                (SnapProgressBar) findViewById(R.id.spbar_snap_padding),
+                (SnapProgressBar) findViewById(R.id.spbar_snap_done),
+                (SnapProgressBar) findViewById(R.id.spbar_snap_error),
+                (SnapProgressBar) findViewById(R.id.spbar_snap_progress)};
+        spbarSnaps[0].setState(SnapProgressBar.STATE_SCANNING);
+        spbarSnaps[1].setState(SnapProgressBar.STATE_PENDDING);
+        spbarSnaps[2].setState(SnapProgressBar.STATE_DONE);
+        spbarSnaps[3].setState(SnapProgressBar.STATE_ERROR);
+        spbarSnaps[4].setState(SnapProgressBar.STATE_PROGRESS).progress(0);
+
         findViewById(R.id.btn_start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,16 +135,6 @@ public class SnapProgressActivity extends Activity {
     protected void onDestroy() {
         stopTask();
         super.onDestroy();
-    }
-
-    static class MediaInfo {
-        public String id;
-        public String path;
-
-        public MediaInfo(String id, String path) {
-            this.id = id;
-            this.path = path;
-        }
     }
 
     static class Presenter {
@@ -174,6 +174,16 @@ public class SnapProgressActivity extends Activity {
                 }
             }
             return datas;
+        }
+    }
+
+    static class MediaInfo {
+        public String id;
+        public String path;
+
+        public MediaInfo(String id, String path) {
+            this.id = id;
+            this.path = path;
         }
     }
 }

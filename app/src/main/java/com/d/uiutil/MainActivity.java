@@ -10,6 +10,7 @@ import com.d.uiutil.heartlayout.HeartActivity;
 import com.d.uiutil.lrc.LrcActivity;
 import com.d.uiutil.poi.PoiActivity;
 import com.d.uiutil.praise.PraiseActivity;
+import com.d.uiutil.progress.CircleProgressActivity;
 import com.d.uiutil.progress.SettingProgressActivity;
 import com.d.uiutil.progress.SnapProgressActivity;
 import com.d.uiutil.recordtrigger.RecordTriggerActivity;
@@ -98,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SnapProgressActivity.class));
+            }
+        });
+        findViewById(R.id.btn_circleprogress).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CircleProgressActivity.class));
             }
         });
     }

@@ -38,7 +38,7 @@ import java.lang.annotation.Target;
  */
 public class CircleProgressBar extends FrameLayout implements View.OnClickListener {
     public final static int STATE_PROGRESS = 0;
-    public final static int STATE_PENDDING = 1;
+    public final static int STATE_PENDING = 1;
     public final static int STATE_ERROR = 2;
 
     /**
@@ -72,7 +72,7 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
     private RoundedImageView ivThumb, ivAlpha, ivState;
     private OnClickListener listener;
 
-    @IntDef({STATE_PROGRESS, STATE_PENDDING, STATE_ERROR})
+    @IntDef({STATE_PROGRESS, STATE_PENDING, STATE_ERROR})
     @Target({ElementType.PARAMETER})
     @Retention(RetentionPolicy.SOURCE)
     public @interface State {
@@ -164,7 +164,7 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
                 draw(canvas, colorArc, getPoints(0));
                 draw(canvas, colorArc, getPoints(1));
                 break;
-            case STATE_PENDDING:
+            case STATE_PENDING:
                 draw(canvas, colorArc, getPoints(2));
                 break;
             case STATE_ERROR:
@@ -265,7 +265,7 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
                     listener.onPause();
                 }
                 break;
-            case STATE_PENDDING:
+            case STATE_PENDING:
                 if (listener != null) {
                     listener.onResume();
                 }
@@ -296,7 +296,7 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
                     invalidate();
                 }
                 break;
-            case STATE_PENDDING:
+            case STATE_PENDING:
                 ivThumb.setVisibility(VISIBLE);
                 ivAlpha.setVisibility(VISIBLE);
                 ivState.setVisibility(VISIBLE);
@@ -304,8 +304,8 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
                         (int) ((height - diameter) / 2f + paddingIcon[1]),
                         (int) ((width - diameter) / 2f + paddingIcon[0]),
                         (int) ((height - diameter) / 2f + paddingIcon[1]));
-                if (resIds[STATE_PENDDING] != -1) {
-                    ivState.setImageResource(resIds[STATE_PENDDING]);
+                if (resIds[STATE_PENDING] != -1) {
+                    ivState.setImageResource(resIds[STATE_PENDING]);
                 } else {
                     invalidate();
                 }

@@ -1,20 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_white"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:background="@color/color_white">
 
-    <com.d.lib.ui.view.progress.SnapProgressBar
-        android:id="@+id/spbar_snap"
-        android:layout_width="65dp"
-        android:layout_height="65dp" />
-
-    <Button
-        android:id="@+id/btn_start"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimens_padding"
-        android:text="Start" />
-</LinearLayout>
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.d.lib.ui.view.progress.SnapProgressBar
+            android:id="@+id/spbar_snap_scanning"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="@dimen/dimens_padding" />
+
+        <com.d.lib.ui.view.progress.SnapProgressBar
+            android:id="@+id/spbar_snap_padding"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="@dimen/dimens_padding" />
+
+        <com.d.lib.ui.view.progress.SnapProgressBar
+            android:id="@+id/spbar_snap_done"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="@dimen/dimens_padding" />
+
+        <com.d.lib.ui.view.progress.SnapProgressBar
+            android:id="@+id/spbar_snap_error"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="@dimen/dimens_padding" />
+
+        <com.d.lib.ui.view.progress.SnapProgressBar
+            android:id="@+id/spbar_snap_progress"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="@dimen/dimens_padding" />
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimens_padding"
+            android:text="Start" />
+    </LinearLayout>
+</ScrollView>

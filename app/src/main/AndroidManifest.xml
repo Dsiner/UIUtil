@@ -28,6 +28,7 @@
         <activity android:name="com.d.uiutil.poi.PoiActivity" />
         <activity android:name="com.d.uiutil.clock.ClockSetActivity" />
         <activity android:name="com.d.uiutil.progress.SnapProgressActivity" />
+        <activity android:name="com.d.uiutil.progress.CircleProgressActivity" />
     </application>
 
 </manifest>
