@@ -11,7 +11,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
-import com.d.lib.ui.common.Util;
+import com.d.lib.common.utils.Util;
 import com.d.lib.ui.view.R;
 
 /**

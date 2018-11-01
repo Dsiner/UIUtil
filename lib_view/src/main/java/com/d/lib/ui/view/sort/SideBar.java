@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.d.lib.ui.common.Util;
+import com.d.lib.common.utils.Util;
 import com.d.lib.ui.view.R;
 
 import java.util.List;

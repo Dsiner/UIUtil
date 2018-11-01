@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/llyt_dsl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/v_dsl_t"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+
+        <ImageView
+            android:id="@+id/iv_dsl_icon"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/tv_dsl_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/lib_pub_no_data"
+            android:textColor="@color/lib_pub_color_text_sub"
+            android:textSize="@dimen/lib_pub_dimen_text_sub" />
+
+        <Button
+            android:id="@+id/btn_dsl"
+            android:layout_width="145dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/lib_pub_select_btn_main"
+            android:gravity="center"
+            android:text="@string/lib_pub_retry"
+            android:textColor="@color/lib_pub_color_select_btn_main"
+            android:textSize="@dimen/lib_pub_dimen_text_small"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/v_dsl_b"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+    </LinearLayout>
+
+    <com.d.lib.common.view.loading.LoadingLayout
+        android:id="@+id/ldl_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

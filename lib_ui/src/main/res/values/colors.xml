@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lib_pub_color_trans">#00000000</color>
+    <color name="lib_pub_color_translucent">#9900040a</color>
+    <color name="lib_pub_color_white">#ffffff</color>
+    <color name="lib_pub_color_black">#000000</color>
+    <color name="lib_pub_color_gray">#FF888888</color>
+    <color name="lib_pub_color_lgray">#99CCCCCC</color>
+    <color name="lib_pub_color_dgray">#CCCCCC</color>
+    <color name="lib_pub_color_red">#ff0000</color>
+    <color name="lib_pub_color_green">#00ff00</color>
+
+    <!-- Global background color -->
+    <color name="lib_pub_color_bg_main">#F9F9F9</color>
+    <color name="lib_pub_color_bg_sub">#FFFFFF</color>
+
+    <color name="lib_pub_color_main">#5E87FF</color>
+    <color name="lib_pub_color_main_press">#5073DA</color>
+    <color name="lib_pub_color_main_90">#E65E87FF</color>
+    <color name="lib_pub_color_main_50">#805E87FF</color>
+    <color name="lib_pub_color_main_30">#665E87FF</color>
+
+    <color name="lib_pub_color_destroy">#FA715B</color>
+    <color name="lib_pub_color_destroy_press">#D5604D</color>
+
+    <color name="lib_pub_color_text_main">#000000</color>
+    <color name="lib_pub_color_text_sub">#7F7F7F</color>
+    <color name="lib_pub_color_text_hint">#CCCCCC</color>
+    <color name="lib_pub_color_text_disable">#A7AAB1</color>
+    <color name="lib_pub_color_text_dialog_content">#5E5F64</color>
+
+    <color name="lib_pub_color_press">#E6F7F7F7</color>
+    <color name="lib_pub_color_hint">#e3e4e5</color>
+    <color name="lib_pub_color_notice">#FFF4CB</color>
+    <color name="lib_pub_color_line">#e5e5e5</color>
+    <color name="lib_pub_color_dialog_bg">#AAC1C1C1</color>
+</resources>

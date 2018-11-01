@@ -11,7 +11,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.d.lib.ui.common.Util;
+import com.d.lib.common.utils.Util;
 
 
 /**

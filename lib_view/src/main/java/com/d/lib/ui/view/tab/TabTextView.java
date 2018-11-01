@@ -8,7 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.d.lib.ui.common.Util;
+import com.d.lib.common.utils.Util;
 import com.d.lib.ui.view.R;
 
 /**
@@ -46,8 +46,8 @@ public class TabTextView extends View implements TabView {
 
     private void init(Context context) {
         textSize = Util.dip2px(context, 15);
-        textColor = ContextCompat.getColor(context, R.color.lib_ui_common_color_text);
-        textColorFocus = ContextCompat.getColor(context, R.color.lib_ui_common_color_accent);
+        textColor = ContextCompat.getColor(context, R.color.lib_pub_color_text_sub);
+        textColorFocus = ContextCompat.getColor(context, R.color.lib_pub_color_main);
 
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setTextAlign(Paint.Align.CENTER);

@@ -12,7 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.d.lib.ui.common.Util;
+import com.d.lib.common.utils.Util;
 import com.d.lib.ui.view.R;
 
 /**
@@ -56,7 +56,7 @@ public class ReplyBgView extends View {
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_ReplyBgView);
         gravity = typedArray.getInteger(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_gravity, TOP);
-        colorBg = typedArray.getColor(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_color, ContextCompat.getColor(context, R.color.lib_ui_common_color_accent));
+        colorBg = typedArray.getColor(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_color, ContextCompat.getColor(context, R.color.lib_pub_color_main));
         rectRadius = typedArray.getDimension(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_radius, Util.dip2px(context, 3));
         offset = typedArray.getDimension(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_offset, Util.dip2px(context, 6.5f));
         trgHalfWidth = typedArray.getDimension(R.styleable.lib_ui_view_ReplyBgView_lib_ui_view_replybv_trgWidth, Util.dip2px(context, 6)) / 2;

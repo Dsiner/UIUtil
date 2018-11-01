@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.d.lib.ui.common.Util;
+import com.d.lib.common.utils.Util;
 import com.d.lib.ui.view.R;
 import com.d.lib.ui.view.roundedimageview.RoundedImageView;
 
@@ -47,7 +47,7 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
      * [4]: Error
      */
     private final int[] resIds = new int[]{R.drawable.lib_ui_view_vs_icon,
-            R.color.lib_ui_common_color_trans,
+            R.color.lib_pub_color_trans,
             R.drawable.lib_ui_view_vs_icon,
             R.drawable.lib_ui_view_vs_icon,
             R.drawable.lib_ui_view_vs_icon};

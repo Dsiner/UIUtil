@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="lib_pub_dimen_title_height">50dp</dimen>
+    <dimen name="lib_pub_dimen_tab_height">46dp</dimen>
+    <dimen name="lib_pub_dimen_row_height">45dp</dimen>
+    <dimen name="lib_pub_dimen_dialog_width">300dp</dimen>
+    <dimen name="lib_pub_dimen_dialog_min_height">115dp</dimen>
+    <dimen name="lib_pub_dimen_dialog_btn_height">46dp</dimen>
+    <dimen name="lib_pub_dimen_margin">12dp</dimen>
+
+    <dimen name="lib_pub_dimen_item_height">50dp</dimen>
+    <dimen name="lib_pub_dimen_item_margin_top">2dp</dimen>
+
+    <dimen name="lib_pub_dimen_text_main">19dp</dimen>
+    <dimen name="lib_pub_dimen_text_sub">17dp</dimen>
+    <dimen name="lib_pub_dimen_text_small">15dp</dimen>
+    <dimen name="lib_pub_dimen_text_mini">13dp</dimen>
+
+    <dimen name="lib_pub_dimen_btn_corner">4dp</dimen>
+</resources>

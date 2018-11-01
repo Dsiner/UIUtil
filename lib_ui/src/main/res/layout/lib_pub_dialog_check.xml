@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/lib_pub_dimen_dialog_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/lib_pub_corner_dialog"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/lib_pub_dimen_margin">
+
+    <include layout="@layout/lib_pub_dialog_gt_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lib_pub_color_bg_sub">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/lib_pub_dimen_margin"
+            android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+            android:layout_marginRight="@dimen/lib_pub_dimen_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:textColor="@color/lib_pub_color_text_sub"
+                android:textSize="@dimen/lib_pub_dimen_text_sub" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:id="@+id/flyt_toggle"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:descendantFocusability="blocksDescendants">
+
+                    <CheckBox
+                        android:id="@+id/cb_toggle"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/lib_pub_select_check"
+                        android:button="@null"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:gravity="center" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_sub_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lib_pub_color_text_hint"
+                    android:textSize="@dimen/lib_pub_dimen_text_mini" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/lib_pub_dialog_gt_btn" />
+</LinearLayout>

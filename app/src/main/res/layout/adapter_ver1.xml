@@ -7,7 +7,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/lib_ui_common_color_line" />
+        android:background="@color/lib_pub_color_line" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_ver_inor"
@@ -17,5 +17,5 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/lib_ui_common_color_line" />
+        android:background="@color/lib_pub_color_line" />
 </LinearLayout>

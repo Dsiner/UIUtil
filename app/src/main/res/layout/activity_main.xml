@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="@dimen/dimens_padding"
-            app:lib_ui_view_replybv_color="@color/lib_ui_common_color_accent"
+            app:lib_ui_view_replybv_color="@color/lib_pub_color_main"
             app:lib_ui_view_replybv_gravity="top"
             app:lib_ui_view_replybv_offset="-6dp"
             app:lib_ui_view_replybv_radius="4dp"

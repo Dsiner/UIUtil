@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="135dp"
+        android:layout_height="92dp"
+        android:background="@drawable/lib_pub_corner_dialog_loading"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.d.lib.common.view.loading.LoadingView
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
+
+        <TextView
+            android:id="@+id/tv_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lib_pub_loading"
+            android:textColor="@color/lib_pub_color_main" />
+    </LinearLayout>
+</merge>

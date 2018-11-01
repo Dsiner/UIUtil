@@ -8,8 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.d.lib.ui.common.ULog;
-import com.d.lib.ui.common.Util;
+import com.d.lib.common.utils.log.ULog;
+import com.d.lib.common.utils.Util;
 import com.d.lib.ui.layout.praise.IPraise;
 import com.d.lib.ui.layout.praise.PraiseLayout;
 import com.d.uiutil.R;

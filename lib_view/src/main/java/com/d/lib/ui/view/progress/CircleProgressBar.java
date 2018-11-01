@@ -23,7 +23,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.d.lib.ui.common.Util;
+import com.d.lib.common.utils.Util;
 import com.d.lib.ui.view.R;
 import com.d.lib.ui.view.roundedimageview.RoundedImageView;
 
@@ -114,7 +114,7 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
 
         ivAlpha = new RoundedImageView(context);
         ivAlpha.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ivAlpha.setImageResource(R.color.lib_ui_common_color_trans);
+        ivAlpha.setImageResource(R.color.lib_pub_color_trans);
         lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         lp.gravity = Gravity.CENTER;
         addView(ivAlpha, lp);

@@ -8,7 +8,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 
-import com.d.lib.ui.common.Util;
+import com.d.lib.common.utils.Util;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.ValueAnimator;
 

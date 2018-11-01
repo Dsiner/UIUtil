@@ -3,7 +3,7 @@ package com.d.lib.ui.view.lrc;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import com.d.lib.ui.common.ULog;
+import com.d.lib.common.utils.log.ULog;
 
 import java.util.ArrayList;
 import java.util.List;

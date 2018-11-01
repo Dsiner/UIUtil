@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <View
+        android:id="@+id/line_middle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lib_pub_color_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_pub_dimen_dialog_btn_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/lib_pub_color_trans"
+            android:gravity="center"
+            android:text="@string/lib_pub_cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/lib_pub_color_main"
+            android:textSize="@dimen/lib_pub_dimen_text_main"
+            android:textStyle="normal" />
+
+        <View
+            android:id="@+id/line_bottom"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/lib_pub_color_line" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/lib_pub_color_trans"
+            android:gravity="center"
+            android:text="@string/lib_pub_ok"
+            android:textAllCaps="false"
+            android:textColor="@color/lib_pub_color_main"
+            android:textSize="@dimen/lib_pub_dimen_text_main"
+            android:textStyle="normal" />
+    </LinearLayout>
+</merge>

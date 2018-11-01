@@ -14,7 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.d.lib.ui.common.Util;
+import com.d.lib.common.utils.Util;
 import com.d.lib.ui.view.R;
 
 import java.util.ArrayList;
@@ -68,8 +68,8 @@ public class SegementView extends View {
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_SegementView);
         strTitles = typedArray.getString(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_titles);
-        colorA = typedArray.getColor(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_colorMain, ContextCompat.getColor(context, R.color.lib_ui_common_color_accent));
-        colorB = typedArray.getColor(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_colorSub, ContextCompat.getColor(context, R.color.lib_ui_common_color_white));
+        colorA = typedArray.getColor(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_colorMain, ContextCompat.getColor(context, R.color.lib_pub_color_main));
+        colorB = typedArray.getColor(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_colorSub, ContextCompat.getColor(context, R.color.lib_pub_color_white));
         textSize = typedArray.getDimension(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_textSize, Util.dip2px(context, 14));
         rectRadius = typedArray.getDimension(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_radius, -1);
         divideWidth = typedArray.getDimension(R.styleable.lib_ui_view_SegementView_lib_ui_view_segementv_divideWidth, Util.dip2px(context, 1));

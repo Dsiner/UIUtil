@@ -51,7 +51,7 @@ public class RecordLightView extends LinearLayout {
             case RecordTriggerView.STATE_VALID:
                 setVisibility(VISIBLE);
                 ivFlag.setImageResource(R.drawable.lib_ui_view_rtv_ic_voice);
-                tvToast.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lib_ui_common_color_trans));
+                tvToast.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lib_pub_color_trans));
                 tvToast.setText(toastUp);
                 break;
             case RecordTriggerView.STATE_INVALID:

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lib_pub_ok">Ok</string>
+    <string name="lib_pub_cancel">Cancel</string>
+    <string name="lib_pub_loading">Loading...</string>
+
+    <string name="lib_pub_no_data">No data</string>
+    <string name="lib_pub_net_error">Failed to load, please check the network and try again</string>
+    <string name="lib_pub_retry">Retry</string>
+</resources>

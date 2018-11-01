@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/lib_pub_dimen_dialog_width"
+    android:layout_height="match_parent"
+    android:background="@drawable/lib_pub_corner_dialog"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/lib_pub_dimen_margin">
+
+    <include layout="@layout/lib_pub_dialog_gt_title" />
+
+    <com.d.lib.common.view.ClearEditText
+        android:id="@+id/cet_edit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/lib_pub_dimen_margin"
+        android:background="#EDEDED"
+        android:paddingBottom="6dp"
+        android:paddingLeft="@dimen/lib_pub_dimen_margin"
+        android:paddingRight="@dimen/lib_pub_dimen_margin"
+        android:paddingTop="6dp" />
+
+    <include layout="@layout/lib_pub_dialog_gt_btn" />
+</LinearLayout>
