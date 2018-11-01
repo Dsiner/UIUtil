@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lib_pub_color_bg_main"
+    android:orientation="vertical">
+
+    <com.d.lib.common.view.TitleLayout
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_pub_dimen_title_height"
+        android:background="@color/lib_pub_color_main"
+        app:lib_pub_tl_leftDrawable="@drawable/lib_pub_ic_title_back"
+        app:lib_pub_tl_middleText="Row" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/lib_pub_dimen_margin"
+            android:paddingTop="@dimen/lib_pub_dimen_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/lib_pub_dimen_margin"
+                android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+                android:text="@string/module_ui_desc_row"
+                android:textColor="@color/lib_pub_color_black"
+                android:textSize="@dimen/lib_pub_dimen_text_small" />
+
+            <include layout="@layout/lib_pub_layout_line" />
+
+            <com.d.lib.common.view.RowLayout
+                android:id="@+id/rl_row0"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lib_pub_dimen_row_height"
+                android:background="@color/lib_pub_color_bg_sub"
+                app:lib_pub_rl_gotoVisibility="visible"
+                app:lib_pub_rl_text="@string/module_ui_dialog_title_single"
+                app:lib_pub_rl_toggleVisibility="gone" />
+
+            <include layout="@layout/lib_pub_layout_line" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:background="@color/lib_pub_color_line" />
+
+            <com.d.lib.common.view.RowLayout
+                android:id="@+id/rl_row1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lib_pub_dimen_row_height"
+                android:background="@color/lib_pub_color_bg_sub"
+                app:lib_pub_rl_gotoVisibility="visible"
+                app:lib_pub_rl_text="@string/module_ui_dialog_title_single"
+                app:lib_pub_rl_toggleVisibility="gone" />
+
+            <include layout="@layout/lib_pub_layout_line" />
+
+            <com.d.lib.common.view.RowLayout
+                android:id="@+id/rl_row2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lib_pub_dimen_row_height"
+                android:background="@color/lib_pub_color_bg_sub"
+                app:lib_pub_rl_gotoVisibility="visible"
+                app:lib_pub_rl_hint="@string/module_ui_dialog_detail"
+                app:lib_pub_rl_text="@string/module_ui_dialog_title_single"
+                app:lib_pub_rl_toggleVisibility="gone" />
+
+            <include layout="@layout/lib_pub_layout_line" />
+
+            <com.d.lib.common.view.RowLayout
+                android:id="@+id/rl_row3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lib_pub_dimen_row_height"
+                android:background="@color/lib_pub_color_bg_sub"
+                app:lib_pub_rl_gotoVisibility="gone"
+                app:lib_pub_rl_text="@string/module_ui_dialog_title_single"
+                app:lib_pub_rl_toggleVisibility="visible" />
+
+            <include layout="@layout/lib_pub_layout_line" />
+
+            <com.d.lib.common.view.RowLayout
+                android:id="@+id/rl_row4"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lib_pub_dimen_row_height"
+                android:background="@color/lib_pub_color_bg_sub"
+                app:lib_pub_rl_gotoVisibility="gone"
+                app:lib_pub_rl_text="@string/module_ui_dialog_title_single"
+                app:lib_pub_rl_toggleVisibility="visible" />
+
+            <include layout="@layout/lib_pub_layout_line" />
+
+            <com.d.lib.common.view.RowLayout
+                android:id="@+id/rl_row5"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lib_pub_dimen_row_height"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:background="@color/lib_pub_color_bg_sub"
+                app:lib_pub_rl_gotoVisibility="visible"
+                app:lib_pub_rl_icon="@drawable/lib_pub_ic_btb_icon"
+                app:lib_pub_rl_text="@string/module_ui_dialog_title_single"
+                app:lib_pub_rl_toggleVisibility="gone" />
+
+            <include layout="@layout/lib_pub_layout_line" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

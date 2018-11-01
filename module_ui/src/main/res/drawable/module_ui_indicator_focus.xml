@@ -3,7 +3,4 @@
     android:shape="oval"
     android:useLevel="false">
     <solid android:color="@color/lib_pub_color_main" />
-    <size
-        android:width="15dp"
-        android:height="15dp" />
 </shape>

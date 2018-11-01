@@ -15,15 +15,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <com.d.lib.ui.view.togglebutton.ToggleButton
+        <com.d.lib.common.view.toggle.ToggleButton
             android:layout_width="60dp"
             android:layout_height="32dp"
             android:layout_marginTop="@dimen/dimens_padding"
-            app:lib_ui_view_tbtn_colorLight="@color/colorAccent"
-            app:lib_ui_view_tbtn_colorNormal="#ffffff"
-            app:lib_ui_view_tbtn_colorPadding="#e5e5e5"
-            app:lib_ui_view_tbtn_duration="200"
-            app:lib_ui_view_tbtn_padding="2dp" />
+            app:lib_pub_tbtn_colorPadding="@color/lib_pub_color_hint"
+            app:lib_pub_tbtn_colorThumb="@color/lib_pub_color_white"
+            app:lib_pub_tbtn_colorTrackOff="@color/lib_pub_color_white"
+            app:lib_pub_tbtn_colorTrackOpen="@color/lib_pub_color_main"
+            app:lib_pub_tbtn_duration="250"
+            app:lib_pub_tbtn_padding="1.5dp" />
 
         <com.d.lib.ui.view.replybg.ReplyBgView
             android:layout_width="match_parent"
@@ -78,107 +79,107 @@
         </com.d.lib.ui.layout.arcmenu.ArcMenu>
 
         <Button
-            android:id="@+id/btn_lrc"
+            android:id="@+id/btn_ui"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
-            android:text="lrc" />
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+            android:text="UI" />
+
+        <Button
+            android:id="@+id/btn_lrc"
+            style="@style/lib_pub_btn_style"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+            android:text="Lrc" />
 
         <Button
             android:id="@+id/btn_sort"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
-            android:text="sort" />
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+            android:text="Sort" />
 
         <Button
             android:id="@+id/btn_heart"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
-            android:text="heart" />
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+            android:text="Heart" />
 
         <Button
             android:id="@+id/btn_settingprogress"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
             android:text="SettingProgress" />
 
         <Button
             android:id="@+id/btn_praise"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
-            android:text="praise" />
-
-        <Button
-            android:id="@+id/btn_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
-            android:text="tab" />
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+            android:text="Praise" />
 
         <Button
             android:id="@+id/btn_shadow"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
-            android:text="shadow" />
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+            android:text="Shadow" />
 
         <Button
             android:id="@+id/btn_recordtrigger"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
             android:text="RecordTrigger" />
 
         <Button
             android:id="@+id/btn_verinor"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
             android:text="VerInor" />
 
         <Button
             android:id="@+id/btn_poi"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
             android:text="Poi" />
 
         <Button
             android:id="@+id/btn_clockset"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
             android:text="Clock Set" />
 
         <Button
             android:id="@+id/btn_snapprogress"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
             android:text="Snap Progress" />
 
         <Button
             android:id="@+id/btn_circleprogress"
+            style="@style/lib_pub_btn_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:gravity="center"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
             android:text="Circle Progress" />
     </LinearLayout>
 </ScrollView>

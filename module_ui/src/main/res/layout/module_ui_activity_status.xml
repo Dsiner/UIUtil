@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.d.lib.common.view.TitleLayout
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_pub_dimen_title_height"
+        android:background="@color/lib_pub_color_main"
+        app:lib_pub_tl_leftDrawable="@drawable/lib_pub_ic_title_back"
+        app:lib_pub_tl_middleText="Status"
+        app:lib_pub_tl_rightDrawable="@drawable/lib_pub_ic_title_more" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/lib_pub_dimen_margin"
+            android:paddingTop="@dimen/lib_pub_dimen_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/lib_pub_dimen_margin"
+                android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+                android:text="@string/module_ui_desc_bagde"
+                android:textColor="@color/lib_pub_color_black"
+                android:textSize="@dimen/lib_pub_dimen_text_small" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/lib_pub_dimen_margin">
+
+                <com.d.lib.common.view.BadgeView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:gravity="center"
+                    android:textColor="@color/lib_pub_color_white"
+                    app:lib_pub_badgev_color="@color/lib_pub_color_red" />
+
+                <com.d.lib.common.view.BadgeView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="24dp"
+                    android:gravity="center"
+                    android:minWidth="20dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:text="1"
+                    android:textColor="@color/lib_pub_color_white"
+                    android:textSize="10dp"
+                    app:lib_pub_badgev_color="@color/lib_pub_color_red" />
+
+                <com.d.lib.common.view.BadgeView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="24dp"
+                    android:gravity="center"
+                    android:minWidth="20dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:text="99+"
+                    android:textColor="@color/lib_pub_color_white"
+                    android:textSize="10dp"
+                    app:lib_pub_badgev_circle="false"
+                    app:lib_pub_badgev_color="@color/lib_pub_color_red" />
+
+                <com.d.lib.common.view.BadgeView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="24dp"
+                    android:gravity="center"
+                    android:minWidth="20dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:text="···"
+                    android:textColor="@color/lib_pub_color_white"
+                    android:textSize="10dp"
+                    app:lib_pub_badgev_circle="false"
+                    app:lib_pub_badgev_color="@color/lib_pub_color_red" />
+
+                <com.d.lib.common.view.BadgeView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="24dp"
+                    android:gravity="center"
+                    android:minWidth="20dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:text="1234"
+                    android:textColor="@color/lib_pub_color_white"
+                    android:textSize="10dp"
+                    app:lib_pub_badgev_circle="false"
+                    app:lib_pub_badgev_color="@color/lib_pub_color_red" />
+
+                <com.d.lib.common.view.BadgeView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="24dp"
+                    android:gravity="center"
+                    android:minWidth="20dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:text="123467"
+                    android:textColor="@color/lib_pub_color_white"
+                    android:textSize="10dp"
+                    app:lib_pub_badgev_circle="false"
+                    app:lib_pub_badgev_color="@color/lib_pub_color_red"
+                    app:lib_pub_badgev_radius="6dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/lib_pub_dimen_margin"
+                android:text="@string/module_ui_desc_page_indicator"
+                android:textColor="@color/lib_pub_color_black"
+                android:textSize="@dimen/lib_pub_dimen_text_small" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/lib_pub_dimen_margin">
+
+                <ImageView
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:src="@drawable/module_ui_indicator_focus" />
+
+                <ImageView
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+                    android:src="@drawable/module_ui_indicator_normal" />
+
+                <ImageView
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+                    android:src="@drawable/module_ui_indicator_normal" />
+
+                <ImageView
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+                    android:src="@drawable/module_ui_indicator_normal" />
+
+                <ImageView
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+                    android:src="@drawable/module_ui_indicator_normal" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/lib_pub_dimen_margin"
+                android:text="@string/module_ui_desc_notice_bar"
+                android:textColor="@color/lib_pub_color_black"
+                android:textSize="@dimen/lib_pub_dimen_text_small" />
+
+            <com.d.lib.common.view.NoticeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+                android:layout_marginRight="@dimen/lib_pub_dimen_margin"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                app:lib_pub_noticel_exitVisibility="gone"
+                app:lib_pub_noticel_gotoVisibility="visible"
+                app:lib_pub_noticel_text="@string/module_ui_notice_type1" />
+
+            <com.d.lib.common.view.NoticeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+                android:layout_marginRight="@dimen/lib_pub_dimen_margin"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                app:lib_pub_noticel_exitVisibility="visible"
+                app:lib_pub_noticel_gotoVisibility="gone"
+                app:lib_pub_noticel_text="@string/module_ui_notice_type2" />
+
+            <com.d.lib.common.view.NoticeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+                android:layout_marginRight="@dimen/lib_pub_dimen_margin"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                app:lib_pub_noticel_button="@string/module_ui_button"
+                app:lib_pub_noticel_exitVisibility="gone"
+                app:lib_pub_noticel_gotoVisibility="gone"
+                app:lib_pub_noticel_text="@string/module_ui_notice_type3" />
+
+            <com.d.lib.common.view.NoticeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+                android:layout_marginRight="@dimen/lib_pub_dimen_margin"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                app:lib_pub_noticel_exitVisibility="gone"
+                app:lib_pub_noticel_gotoVisibility="gone"
+                app:lib_pub_noticel_text="@string/module_ui_notice_type4" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

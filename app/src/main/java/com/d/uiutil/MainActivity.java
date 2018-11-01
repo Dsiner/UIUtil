@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.d.common.ui.UIActivity;
 import com.d.uiutil.clock.ClockSetActivity;
 import com.d.uiutil.heartlayout.HeartActivity;
 import com.d.uiutil.lrc.LrcActivity;
@@ -16,7 +17,6 @@ import com.d.uiutil.progress.SnapProgressActivity;
 import com.d.uiutil.recordtrigger.RecordTriggerActivity;
 import com.d.uiutil.shadow.ShadowActivity;
 import com.d.uiutil.sort.SortActivity;
-import com.d.uiutil.tab.TabActivity;
 import com.d.uiutil.verinor.VerInorActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,10 +25,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initClick();
+        bindView();
     }
 
-    private void initClick() {
+    private void bindView() {
+        findViewById(R.id.btn_ui).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, UIActivity.class));
+            }
+        });
         findViewById(R.id.btn_lrc).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,12 +63,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, PraiseActivity.class));
-            }
-        });
-        findViewById(R.id.btn_tab).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TabActivity.class));
             }
         });
         findViewById(R.id.btn_shadow).setOnClickListener(new View.OnClickListener() {

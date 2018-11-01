@@ -24,8 +24,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.d.lib.common.utils.Util;
+import com.d.lib.common.view.roundedimageview.RoundedImageView;
 import com.d.lib.ui.view.R;
-import com.d.lib.ui.view.roundedimageview.RoundedImageView;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

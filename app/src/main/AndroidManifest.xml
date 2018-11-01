@@ -21,7 +21,6 @@
         <activity android:name="com.d.uiutil.heartlayout.HeartActivity" />
         <activity android:name="com.d.uiutil.progress.SettingProgressActivity" />
         <activity android:name="com.d.uiutil.praise.PraiseActivity" />
-        <activity android:name="com.d.uiutil.tab.TabActivity" />
         <activity android:name="com.d.uiutil.shadow.ShadowActivity" />
         <activity android:name="com.d.uiutil.recordtrigger.RecordTriggerActivity" />
         <activity android:name="com.d.uiutil.verinor.VerInorActivity" />

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Description -->
+    <string name="module_ui_desc_title">Navigation Bar 组件</string>
+    <string name="module_ui_desc_row">Row 组件</string>
+    <string name="module_ui_desc_tab">Tab 组件</string>
+    <string name="module_ui_desc_alert">Alert 组件</string>
+    <string name="module_ui_desc_sheet">Action Sheet 组件(用于由用户主动操作触发的，执行后立即生效的)</string>
+    <string name="module_ui_desc_bagde">Bagde 组件</string>
+    <string name="module_ui_desc_page_indicator">Page Indicator 组件</string>
+    <string name="module_ui_desc_notice_bar">Notice Bar 组件</string>
+
+    <!-- Dialog -->
+    <string name="module_ui_dialog_title">标题</string>
+    <string name="module_ui_dialog_title_single">标题单行</string>
+    <string name="module_ui_dialog_detail">详细信息</string>
+    <string name="module_ui_dialog_content">告知当前状态，信息和解决方案，文字换行的情况。</string>
+    <string name="module_ui_dialog_sub_tips">辅助说明不超过一行</string>
+    <string name="module_ui_dialog_gotit">知道了</string>
+    <string name="module_ui_dialog_bottom_title">告知当前状态，信息和解决方案单行</string>
+    <string name="module_ui_dialog_bottom_operation">操作</string>
+    <string name="module_ui_dialog_bottom_operation_normal">普通操作</string>
+    <string name="module_ui_dialog_bottom_operation_dangerous">危险操作</string>
+    <string name="module_ui_dialog_bottom_operation_none">不可用操作</string>
+
+    <!-- Default State -->
+    <string name="module_ui_ds_loading">拼命加载中...</string>
+    <string name="module_ui_ds_no_data">没有数据奥~</string>
+    <string name="module_ui_ds_net_err">网络开小差了~</string>
+    <string name="module_ui_ds_scan">数据扫描中...</string>
+    <string name="module_ui_ds_retry">点我重试</string>
+
+    <!-- Button -->
+    <string name="module_ui_button">按钮</string>
+    <string name="module_ui_button_text">文字按钮</string>
+    <string name="module_ui_button_main_disable">页面主按钮 Disable</string>
+    <string name="module_ui_button_main_press">页面主按钮 Presss</string>
+    <string name="module_ui_button_main_normal">页面主按钮 Normal</string>
+    <string name="module_ui_button_destroy_press">毁灭性按钮 Presss</string>
+    <string name="module_ui_button_destroy_normal">毁灭性按钮 Normal</string>
+
+    <!-- ScrollTab -->
+    <string name="module_ui_label">标签</string>
+    <string name="module_ui_label1">标签一</string>
+    <string name="module_ui_label2">标签二</string>
+    <string name="module_ui_label3">标签三</string>
+    <string name="module_ui_label4">标签四</string>
+    <string name="module_ui_labels">标签一;标签二</string>
+    <string name="module_ui_labelss">标签一;标签二;标签三;标签四</string>
+    <string name="module_ui_scrolltab">Apple;Orange</string>
+    <string name="module_ui_scrolltab_list">GINGERBREAD;GINGERBREAD_MR1;HONEYCOMB;HONEYCOMB_MR1;HONEYCOMB_MR2;ICE_CREAM_SANDWICH;ICE_CREAM_SANDWICH_MR1</string>
+
+    <!-- Notice -->
+    <string name="module_ui_notice_type1">可点击跳转的通告栏样式</string>
+    <string name="module_ui_notice_type2">可关闭的通告栏样式</string>
+    <string name="module_ui_notice_type3">带按钮的通告栏样式</string>
+    <string name="module_ui_notice_type4">可滚动轮播的通告栏样式可滚动轮播的通告栏样式</string>
+
+    <!-- Share -->
+    <string name="module_ui_share">分享</string>
+    <string name="module_ui_share_qq">QQ</string>
+    <string name="module_ui_share_weixin">微信</string>
+    <string name="module_ui_share_moments">朋友圈</string>
+    <string name="module_ui_share_weibo">微博</string>
+    <string name="module_ui_share_sms">短信</string>
+
+    <string name="module_ui_share_file_name">文件名</string>
+    <string name="module_ui_share_link_address">链接地址: </string>
+    <string name="module_ui_share_retrieve_password">提取密码: </string>
+
+    <!-- Operation -->
+    <string name="module_ui_download">下载</string>
+    <string name="module_ui_move">移动</string>
+    <string name="module_ui_delete">删除</string>
+    <string name="module_ui_rename">重命名</string>
+    <string name="module_ui_info">详情</string>
+</resources>
