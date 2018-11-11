@@ -29,5 +29,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api project(':lib_ui')
+
+    // ----- Component -----
     api 'com.github.promeg:tinypinyin:2.0.3'
 }

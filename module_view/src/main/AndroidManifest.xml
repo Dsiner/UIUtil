@@ -1,2 +1,2 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.d.ui.view" />
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.d.ui.view" />
