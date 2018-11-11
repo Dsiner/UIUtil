@@ -1,4 +1,4 @@
-include ':app',
+include ':app', ':module_view', ':module_layout',
         ':lib_ui',
         ':lib_view', ':lib_layout',
         ':module_ui'
