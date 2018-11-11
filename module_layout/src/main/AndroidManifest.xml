@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.d.ui.layout" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.d.ui.layout">
+
+    <application>
+        <activity android:name="com.d.ui.layout.arcmenu.ArcMenuActivity" />
+        <activity android:name="com.d.ui.layout.heartlayout.HeartActivity" />
+        <activity android:name="com.d.ui.layout.poi.PoiActivity" />
+        <activity android:name="com.d.ui.layout.praise.PraiseActivity" />
+        <activity android:name="com.d.ui.layout.shadow.ShadowActivity" />
+    </application>
+</manifest>

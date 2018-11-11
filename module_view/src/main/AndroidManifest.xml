@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.d.ui.view" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.d.ui.view">
+
+    <application>
+        <activity android:name="com.d.ui.view.lrc.LrcActivity" />
+        <activity android:name="com.d.ui.view.sort.SortActivity" />
+        <activity android:name="com.d.ui.view.tick.TickActivity" />
+        <activity android:name="com.d.ui.view.toggle.ToggleActivity" />
+        <activity android:name="com.d.ui.view.replybg.ReplyBgActivity" />
+        <activity android:name="com.d.ui.view.stroke.HoleBgActivity" />
+        <activity android:name="com.d.ui.view.progress.ProgressActivity" />
+        <activity android:name="com.d.ui.view.recordtrigger.RecordTriggerActivity" />
+        <activity android:name="com.d.ui.view.verinor.VerInorActivity" />
+        <activity android:name="com.d.ui.view.clock.ClockSetActivity" />
+    </application>
+</manifest>

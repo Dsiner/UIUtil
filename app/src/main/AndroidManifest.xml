@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.d.uiutil">
+    package="com.d.ui">
 
     <application
         android:allowBackup="true"
@@ -8,26 +8,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.d.uiutil.MainActivity">
+        android:theme="@style/lib_pub_AppTheme">
+        <activity android:name="com.d.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.d.uiutil.lrc.LrcActivity" />
-        <activity android:name="com.d.uiutil.sort.SortActivity" />
-        <activity android:name="com.d.uiutil.heartlayout.HeartActivity" />
-        <activity android:name="com.d.uiutil.progress.SettingProgressActivity" />
-        <activity android:name="com.d.uiutil.praise.PraiseActivity" />
-        <activity android:name="com.d.uiutil.shadow.ShadowActivity" />
-        <activity android:name="com.d.uiutil.recordtrigger.RecordTriggerActivity" />
-        <activity android:name="com.d.uiutil.verinor.VerInorActivity" />
-        <activity android:name="com.d.uiutil.poi.PoiActivity" />
-        <activity android:name="com.d.uiutil.clock.ClockSetActivity" />
-        <activity android:name="com.d.uiutil.progress.SnapProgressActivity" />
-        <activity android:name="com.d.uiutil.progress.CircleProgressActivity" />
     </application>
 
 </manifest>

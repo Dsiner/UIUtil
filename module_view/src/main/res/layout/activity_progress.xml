@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.d.lib.common.view.TitleLayout
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_pub_dimen_title_height"
+        android:background="@color/lib_pub_color_main"
+        app:lib_pub_tl_leftDrawable="@drawable/lib_pub_ic_title_back"
+        app:lib_pub_tl_middleText="Progress" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/lib_pub_dimen_margin"
+                android:text="VS"
+                android:textColor="@color/lib_pub_color_text_main"
+                android:textSize="@dimen/lib_pub_dimen_text_sub" />
+
+            <com.d.ui.view.vs.VSViewTest
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_margin="@dimen/lib_pub_dimen_margin"
+                android:orientation="vertical" />
+
+            <include layout="@layout/lib_pub_layout_line" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/lib_pub_dimen_margin"
+                android:text="Setting"
+                android:textColor="@color/lib_pub_color_text_main"
+                android:textSize="@dimen/lib_pub_dimen_text_sub" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/lib_pub_dimen_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:gravity="center_vertical"
+                    android:text="Level: 0"
+                    android:textColor="#000000"
+                    android:textSize="13dp" />
+
+                <com.d.lib.ui.view.progress.SettingProgressView
+                    android:id="@+id/spv_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:lib_ui_view_spv_colorSelect="@color/lib_pub_color_main"
+                    app:lib_ui_view_spv_colorUnselect="#d8d8d8"
+                    app:lib_ui_view_spv_count="5"
+                    app:lib_ui_view_spv_radiusBig="13dp"
+                    app:lib_ui_view_spv_radiusSmall="4dp"
+                    app:lib_ui_view_spv_radiusSpace="0dp" />
+            </LinearLayout>
+
+            <include layout="@layout/lib_pub_layout_line" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/lib_pub_dimen_margin"
+                android:text="Snap"
+                android:textColor="@color/lib_pub_color_text_main"
+                android:textSize="@dimen/lib_pub_dimen_text_sub" />
+
+            <com.d.ui.view.progress.SnapProgressTest
+                android:id="@+id/snap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include layout="@layout/lib_pub_layout_line" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/lib_pub_dimen_margin"
+                android:text="Circle"
+                android:textColor="@color/lib_pub_color_text_main"
+                android:textSize="@dimen/lib_pub_dimen_text_sub" />
+
+            <com.d.ui.view.progress.CircleProgressTest
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

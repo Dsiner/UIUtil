@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.d.lib.common.view.TitleLayout
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_pub_dimen_title_height"
+        android:background="@color/lib_pub_color_main"
+        app:lib_pub_tl_leftDrawable="@drawable/lib_pub_ic_title_back"
+        app:lib_pub_tl_middleText="Poi" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/lib_pub_dimen_title_height"
+        android:background="@drawable/ic_map"
+        android:scaleType="centerCrop" />
+
+    <com.d.lib.ui.layout.poi.PoiLayout
+        android:id="@+id/poi_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/lib_pub_dimen_title_height">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="#ffffff" />
+
+        <com.d.lib.ui.layout.poi.PoiListView
+            android:id="@+id/poi_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff" />
+
+        <com.d.lib.ui.layout.poi.PoiTextView
+            android:id="@+id/tv_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="上滑展开更多列表"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            android:visibility="gone" />
+    </com.d.lib.ui.layout.poi.PoiLayout>
+</FrameLayout>

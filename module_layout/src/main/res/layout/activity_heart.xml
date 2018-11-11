@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.d.lib.common.view.TitleLayout
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_pub_dimen_title_height"
+        android:background="@color/lib_pub_color_main"
+        app:lib_pub_tl_leftDrawable="@drawable/lib_pub_ic_title_back"
+        app:lib_pub_tl_middleText="Heart" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="right|center_vertical"
+            android:text="Click here" />
+
+        <com.d.lib.ui.layout.heartlayout.TCHeartLayout
+            android:id="@+id/tch_pr"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btn_click"
+            android:layout_alignParentRight="true" />
+
+        <ListView
+            android:id="@+id/lv_msg"
+            android:layout_width="180dp"
+            android:layout_height="230dp"
+            android:layout_above="@+id/btn_click"
+            android:layout_marginLeft="15dp"
+            android:cacheColorHint="#00000000"
+            android:divider="#3c421b1b"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="none"
+            android:stackFromBottom="true"
+            android:transcriptMode="normal" />
+    </RelativeLayout>
+</LinearLayout>

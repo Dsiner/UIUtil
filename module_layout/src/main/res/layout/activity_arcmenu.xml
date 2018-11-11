@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.d.lib.common.view.TitleLayout
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_pub_dimen_title_height"
+        android:background="@color/lib_pub_color_main"
+        app:lib_pub_tl_leftDrawable="@drawable/lib_pub_ic_title_back"
+        app:lib_pub_tl_middleText="ArcMenu" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.d.lib.ui.layout.arcmenu.ArcMenu
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+            android:layout_marginBottom="@dimen/lib_pub_dimen_margin"
+            app:lib_ui_layout_am_position="left_bottom"
+            app:lib_ui_layout_am_radius="90dp">
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="P" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="R" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="M" />
+        </com.d.lib.ui.layout.arcmenu.ArcMenu>
+
+        <com.d.lib.ui.layout.arcmenu.ArcMenu
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+            app:lib_ui_layout_am_position="left_top"
+            app:lib_ui_layout_am_radius="90dp">
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="P" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="R" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="M" />
+        </com.d.lib.ui.layout.arcmenu.ArcMenu>
+
+        <com.d.lib.ui.layout.arcmenu.ArcMenu
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+            android:layout_marginRight="@dimen/lib_pub_dimen_margin"
+            app:lib_ui_layout_am_position="right_top"
+            app:lib_ui_layout_am_radius="90dp">
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="P" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="R" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="M" />
+        </com.d.lib.ui.layout.arcmenu.ArcMenu>
+
+        <com.d.lib.ui.layout.arcmenu.ArcMenu
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/lib_pub_dimen_margin"
+            android:layout_marginBottom="@dimen/lib_pub_dimen_margin"
+            app:lib_ui_layout_am_position="right_bottom"
+            app:lib_ui_layout_am_radius="90dp">
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="P" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="R" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="M" />
+        </com.d.lib.ui.layout.arcmenu.ArcMenu>
+    </RelativeLayout>
+</LinearLayout>

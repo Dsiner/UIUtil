@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.d.lib.common.view.TitleLayout
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_pub_dimen_title_height"
+        android:background="@color/lib_pub_color_main"
+        app:lib_pub_tl_leftDrawable="@drawable/lib_pub_ic_title_back"
+        app:lib_pub_tl_middleText="Clock Set" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lib_pub_color_translucent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:background="@color/lib_pub_color_bg_sub"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#DC4339"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/lib_pub_dimen_margin"
+            android:paddingBottom="@dimen/lib_pub_dimen_margin">
+
+            <TextView
+                android:id="@+id/tv_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="#ffffff"
+                android:textSize="56dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:textColor="#DFB5B8"
+                android:textSize="56dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textColor="#DFB5B8"
+                android:textSize="56dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <com.d.lib.ui.view.clock.ClockSetView
+            android:id="@+id/csv_clockset"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+            android:layout_marginBottom="@dimen/lib_pub_dimen_margin" />
+    </LinearLayout>
+</FrameLayout>

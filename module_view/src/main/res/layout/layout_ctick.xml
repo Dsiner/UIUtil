@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.d.lib.ui.view.tick.CTickView
+            android:id="@+id/ctv_tick"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:lib_ui_view_ctv_color="#ffffff"
+            app:lib_ui_view_ctv_colorCircle="#47b018"
+            app:lib_ui_view_ctv_strokeWidth="5dp" />
+
+        <com.d.lib.ui.view.tick.STickView
+            android:id="@+id/stv_tick"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
+            app:lib_ui_view_ctv_color="#ffffff"
+            app:lib_ui_view_ctv_colorCircle="#47b018"
+            app:lib_ui_view_ctv_strokeWidth="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_ctv_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="start" />
+
+        <Button
+            android:id="@+id/btn_ctv_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="stop" />
+    </LinearLayout>
+</merge>

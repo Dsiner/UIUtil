@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_white">#ffffff</color>
+
+    <color name="color_sendname">#9966cc</color>
+    <color name="color_sendname1">#F12B5B</color>
+    <color name="color_sendname2">#2B7DE2</color>
+    <color name="color_sendname3">#006599</color>
+    <color name="color_sendname4">#FF7906</color>
+    <color name="color_sendname5">#1FBCB6</color>
+    <color name="color_sendname6">#FFAE1F</color>
+    <color name="color_sendname7">#FF437D</color>
+</resources>

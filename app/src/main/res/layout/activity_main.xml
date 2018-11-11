@@ -1,185 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <com.d.lib.common.view.TitleLayout
+        android:id="@+id/tl_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/dimens_padding">
+        android:layout_height="@dimen/lib_pub_dimen_title_height"
+        android:background="@color/lib_pub_color_main"
+        app:lib_pub_tl_middleText="UI" />
 
-        <com.d.uiutil.tick.CTickViewTest
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:padding="@dimen/lib_pub_dimen_margin">
 
-        <com.d.lib.common.view.toggle.ToggleButton
-            android:layout_width="60dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="@dimen/dimens_padding"
-            app:lib_pub_tbtn_colorPadding="@color/lib_pub_color_hint"
-            app:lib_pub_tbtn_colorThumb="@color/lib_pub_color_white"
-            app:lib_pub_tbtn_colorTrackOff="@color/lib_pub_color_white"
-            app:lib_pub_tbtn_colorTrackOpen="@color/lib_pub_color_main"
-            app:lib_pub_tbtn_duration="250"
-            app:lib_pub_tbtn_padding="1.5dp" />
+            <Button
+                android:id="@+id/btn_ui"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="UI Components" />
 
-        <com.d.lib.ui.view.replybg.ReplyBgView
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="@dimen/dimens_padding"
-            app:lib_ui_view_replybv_color="@color/lib_pub_color_main"
-            app:lib_ui_view_replybv_gravity="top"
-            app:lib_ui_view_replybv_offset="-6dp"
-            app:lib_ui_view_replybv_radius="4dp"
-            app:lib_ui_view_replybv_trgHeight="4dp"
-            app:lib_ui_view_replybv_trgWidth="9dp" />
+            <Button
+                android:id="@+id/btn_lrc"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Lrc" />
 
-        <com.d.uiutil.vs.VSViewTest
-            android:layout_width="match_parent"
-            android:layout_height="34dp"
-            android:layout_marginTop="@dimen/dimens_padding"
-            android:orientation="vertical" />
+            <Button
+                android:id="@+id/btn_sort"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Sort" />
 
-        <com.d.lib.ui.view.stroke.HoleBgView
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_marginTop="@dimen/dimens_padding" />
+            <Button
+                android:id="@+id/btn_tick"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Tick" />
 
-        <com.d.lib.ui.layout.arcmenu.ArcMenu
-            android:id="@+id/am_menu"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="@dimen/dimens_padding"
-            app:lib_ui_layout_am_position="left_bottom"
-            app:lib_ui_layout_am_radius="90dp">
+            <Button
+                android:id="@+id/btn_toggle"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Toggle" />
 
-            <TextView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/circle_menu"
-                android:gravity="center"
-                android:text="P" />
+            <Button
+                android:id="@+id/btn_replybg"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Reply Background" />
 
-            <TextView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/circle_menu"
-                android:gravity="center"
-                android:text="R" />
+            <Button
+                android:id="@+id/btn_stoke"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Hole Background" />
 
-            <TextView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/circle_menu"
-                android:gravity="center"
-                android:text="M" />
-        </com.d.lib.ui.layout.arcmenu.ArcMenu>
+            <Button
+                android:id="@+id/btn_arcmenu"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="ArcMenu" />
 
-        <Button
-            android:id="@+id/btn_ui"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="UI" />
+            <Button
+                android:id="@+id/btn_heart"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Heart" />
 
-        <Button
-            android:id="@+id/btn_lrc"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="Lrc" />
+            <Button
+                android:id="@+id/btn_progress"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Progress" />
 
-        <Button
-            android:id="@+id/btn_sort"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="Sort" />
+            <Button
+                android:id="@+id/btn_praise"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Praise" />
 
-        <Button
-            android:id="@+id/btn_heart"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="Heart" />
+            <Button
+                android:id="@+id/btn_shadow"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Shadow" />
 
-        <Button
-            android:id="@+id/btn_settingprogress"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="SettingProgress" />
+            <Button
+                android:id="@+id/btn_recordtrigger"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="RecordTrigger" />
 
-        <Button
-            android:id="@+id/btn_praise"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="Praise" />
+            <Button
+                android:id="@+id/btn_verinor"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="VerInor" />
 
-        <Button
-            android:id="@+id/btn_shadow"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="Shadow" />
+            <Button
+                android:id="@+id/btn_poi"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Poi" />
 
-        <Button
-            android:id="@+id/btn_recordtrigger"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="RecordTrigger" />
-
-        <Button
-            android:id="@+id/btn_verinor"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="VerInor" />
-
-        <Button
-            android:id="@+id/btn_poi"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="Poi" />
-
-        <Button
-            android:id="@+id/btn_clockset"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="Clock Set" />
-
-        <Button
-            android:id="@+id/btn_snapprogress"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="Snap Progress" />
-
-        <Button
-            android:id="@+id/btn_circleprogress"
-            style="@style/lib_pub_btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin"
-            android:text="Circle Progress" />
-    </LinearLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/btn_clockset"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Clock Set" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
