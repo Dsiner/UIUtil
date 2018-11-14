@@ -143,7 +143,6 @@ public class SettingProgressView extends View {
         setMeasuredDimension(width, height);
     }
 
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         firstItemRange = radiusBig + radiusSpace + itemWidth / 2;
@@ -183,6 +182,8 @@ public class SettingProgressView extends View {
                 if (!canDrag) {
                     return true;
                 }
+                // Disable parent view interception events
+                getParent().requestDisallowInterceptTouchEvent(true);
                 divX = event.getX();
                 divY = event.getY();
                 if (divX < bigRadiusWidth / 2) {

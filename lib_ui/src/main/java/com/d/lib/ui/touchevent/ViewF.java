@@ -1,4 +1,4 @@
-package com.d.lib.common.view.touchevent;
+package com.d.lib.ui.touchevent;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
