@@ -19,7 +19,7 @@ abstract class BottomThirdAdapter<T> {
     protected List<T> mDatas;
     protected LayoutInflater mInflater;
     protected int mLayoutId;
-    protected DataSetObserver dataSetObserver;
+    protected DataSetObserver mDataSetObserver;
 
     public BottomThirdAdapter(Context context, List<T> datas, int layoutId) {
         mContext = context;
@@ -32,12 +32,12 @@ abstract class BottomThirdAdapter<T> {
     }
 
     public void registerDataSetObserver(DataSetObserver observer) {
-        this.dataSetObserver = observer;
+        this.mDataSetObserver = observer;
     }
 
     public void notifyDataSetChanged() {
-        if (dataSetObserver != null) {
-            dataSetObserver.notifyChanged();
+        if (mDataSetObserver != null) {
+            mDataSetObserver.notifyChanged();
         }
     }
 

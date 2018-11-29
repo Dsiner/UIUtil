@@ -14,11 +14,12 @@
     <color name="lib_pub_color_bg_main">#F9F9F9</color>
     <color name="lib_pub_color_bg_sub">#FFFFFF</color>
 
-    <color name="lib_pub_color_main">#5E87FF</color>
-    <color name="lib_pub_color_main_press">#5073DA</color>
-    <color name="lib_pub_color_main_90">#E65E87FF</color>
-    <color name="lib_pub_color_main_50">#805E87FF</color>
-    <color name="lib_pub_color_main_30">#665E87FF</color>
+    <color name="lib_pub_color_main">#008577</color>
+    <color name="lib_pub_color_main_press">#00574B</color>
+    <color name="lib_pub_color_main_disable">#7BCBBF</color>
+    <color name="lib_pub_color_main_90">#E6008577</color>
+    <color name="lib_pub_color_main_50">#80008577</color>
+    <color name="lib_pub_color_main_30">#66008577</color>
 
     <color name="lib_pub_color_destroy">#FA715B</color>
     <color name="lib_pub_color_destroy_press">#D5604D</color>

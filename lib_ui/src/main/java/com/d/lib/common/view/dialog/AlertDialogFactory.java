@@ -121,8 +121,10 @@ public class AlertDialogFactory {
         return dialog;
     }
 
-    public OperationDialog getOperationDialog(String title, List<OperationDialog.Bean> datas, AbsSheetDialog.OnItemClickListener listener) {
+    public OperationDialog getOperationDialog(String title, List<OperationDialog.Bean> datas,
+                                              AbsSheetDialog.OnItemClickListener<OperationDialog.Bean> listener) {
         OperationDialog dialog = new OperationDialog(context, title, datas);
+        dialog.setOnItemClickListener(listener);
         dialog.show();
         return dialog;
     }
