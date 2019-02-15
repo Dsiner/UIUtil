@@ -18,10 +18,10 @@ import java.util.List;
  * Created by D on 2017/4/29.
  */
 public class AlertDialogFactory {
-    private Context context;
+    private Context mContext;
 
     private AlertDialogFactory(Context context) {
-        this.context = context;
+        this.mContext = context;
     }
 
     public static AlertDialogFactory createFactory(Context context) {
@@ -40,9 +40,9 @@ public class AlertDialogFactory {
      */
     public AlertDialog getLoadingDialog(String text) {
         final AlertDialog dlg = new AlertDialog
-                .Builder(new ContextThemeWrapper(context, R.style.lib_pub_dialog_style))
+                .Builder(new ContextThemeWrapper(mContext, R.style.lib_pub_dialog_style))
                 .create();
-        if (context instanceof Activity && !((Activity) context).isFinishing()) {
+        if (mContext instanceof Activity && !((Activity) mContext).isFinishing()) {
             dlg.show();
         }
         dlg.setContentView(R.layout.lib_pub_dialog_loading);
@@ -53,11 +53,14 @@ public class AlertDialogFactory {
         return dlg;
     }
 
-    public AlertDialog getAlertDialog(String title, String content, String btnOkText, String btnCancelText, final OnClickListener btnOkListener, final OnClickListener btnCancelListener) {
+    public AlertDialog getAlertDialog(String title, String content,
+                                      String btnOkText, String btnCancelText,
+                                      final OnClickListener btnOkListener,
+                                      final OnClickListener btnCancelListener) {
         final AlertDialog dlg = new AlertDialog
-                .Builder(new ContextThemeWrapper(context, R.style.lib_pub_dialog_style))
+                .Builder(new ContextThemeWrapper(mContext, R.style.lib_pub_dialog_style))
                 .create();
-        if (context instanceof Activity && !((Activity) context).isFinishing()) {
+        if (mContext instanceof Activity && !((Activity) mContext).isFinishing()) {
             dlg.show();
         }
         dlg.setContentView(R.layout.lib_pub_dialog);
@@ -71,7 +74,7 @@ public class AlertDialogFactory {
         tv_content.setText(!TextUtils.isEmpty(content) ? content : "");
 
         Button btnOk = (Button) dlg.findViewById(R.id.btn_ok);
-        btnOk.setText(!TextUtils.isEmpty(btnOkText) ? btnOkText : context.getResources().getString(R.string.lib_pub_ok));
+        btnOk.setText(!TextUtils.isEmpty(btnOkText) ? btnOkText : mContext.getResources().getString(R.string.lib_pub_ok));
 
         Button btnCancel = (Button) dlg.findViewById(R.id.btn_cancel);
         btnCancel.setText(!TextUtils.isEmpty(btnCancelText) ? btnCancelText : "");
@@ -101,29 +104,31 @@ public class AlertDialogFactory {
         return dlg;
     }
 
-    public AlertSubDialog getAlertSubDialog(String title, String content, String subTips, boolean isChecked, AlertSubDialog.OnCheckListener listener) {
-        AlertSubDialog dialog = new AlertSubDialog(context, title, content, subTips, isChecked);
+    public AlertSubDialog getAlertSubDialog(String title, String content, String subTips,
+                                            boolean isChecked,
+                                            AlertSubDialog.OnCheckListener listener) {
+        AlertSubDialog dialog = new AlertSubDialog(mContext, title, content, subTips, isChecked);
         dialog.setOnCheckListener(listener);
         dialog.show();
         return dialog;
     }
 
     public EditDialog getEditDialog(String title, String content, EditDialog.OnEditListener listener) {
-        EditDialog dialog = new EditDialog(context, title, content);
+        EditDialog dialog = new EditDialog(mContext, title, content);
         dialog.setOnEditListener(listener);
         dialog.show();
         return dialog;
     }
 
     public InfoDialog getInfoDialog(String title, List<InfoDialog.Bean> datas) {
-        InfoDialog dialog = new InfoDialog(context, title, datas);
+        InfoDialog dialog = new InfoDialog(mContext, title, datas);
         dialog.show();
         return dialog;
     }
 
     public OperationDialog getOperationDialog(String title, List<OperationDialog.Bean> datas,
                                               AbsSheetDialog.OnItemClickListener<OperationDialog.Bean> listener) {
-        OperationDialog dialog = new OperationDialog(context, title, datas);
+        OperationDialog dialog = new OperationDialog(mContext, title, datas);
         dialog.setOnItemClickListener(listener);
         dialog.show();
         return dialog;
@@ -136,7 +141,7 @@ public class AlertDialogFactory {
 
     public BottomVerSheetDialog getBottomVerDialog(String title, List<BottomVerSheetDialog.Bean> datas,
                                                    AbsSheetDialog.OnItemClickListener<BottomVerSheetDialog.Bean> listener) {
-        BottomVerSheetDialog dialog = new BottomVerSheetDialog(context, title, datas);
+        BottomVerSheetDialog dialog = new BottomVerSheetDialog(mContext, title, datas);
         dialog.setOnItemClickListener(listener);
         dialog.show();
         return dialog;
@@ -144,14 +149,14 @@ public class AlertDialogFactory {
 
     public BottomHorSheetDialog getBottomHorDialog(String title, List<BottomHorSheetDialog.Bean> datas,
                                                    AbsSheetDialog.OnItemClickListener<BottomHorSheetDialog.Bean> listener) {
-        BottomHorSheetDialog dialog = new BottomHorSheetDialog(context, title, datas);
+        BottomHorSheetDialog dialog = new BottomHorSheetDialog(mContext, title, datas);
         dialog.setOnItemClickListener(listener);
         dialog.show();
         return dialog;
     }
 
     public BottomShareSheetDialog getBottomShareDialog(String title, List<BottomShareSheetDialog.Bean> datas) {
-        BottomShareSheetDialog dialog = new BottomShareSheetDialog(context, title, datas);
+        BottomShareSheetDialog dialog = new BottomShareSheetDialog(mContext, title, datas);
         dialog.show();
         return dialog;
     }

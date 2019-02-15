@@ -5,10 +5,10 @@ import android.content.Context;
 import java.util.List;
 
 public class PopupWindowFactory {
-    private Context context;
+    private Context mContext;
 
     private PopupWindowFactory(Context context) {
-        this.context = context;
+        this.mContext = context;
     }
 
     public static PopupWindowFactory createFactory(Context context) {
@@ -16,7 +16,7 @@ public class PopupWindowFactory {
     }
 
     public MenuPopup getMenuPopup(List<MenuPopup.Bean> datas, MenuPopup.OnMenuListener l) {
-        MenuPopup popup = new MenuPopup(context, datas);
+        MenuPopup popup = new MenuPopup(mContext, datas);
         popup.setOnMenuListener(l);
         return popup;
     }

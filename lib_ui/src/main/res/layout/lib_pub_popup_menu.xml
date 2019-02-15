@@ -8,7 +8,7 @@
     <com.d.lib.common.view.ReplyBgView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lib_pub_replybv_color="#4D4F52"
+        app:lib_pub_replybv_color="#4B4B4B"
         app:lib_pub_replybv_gravity="top"
         app:lib_pub_replybv_offset="-14.5dp"
         app:lib_pub_replybv_radius="5dp"

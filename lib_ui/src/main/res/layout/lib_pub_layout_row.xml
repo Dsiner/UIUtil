@@ -28,8 +28,8 @@
 
     <com.d.lib.common.view.toggle.ToggleButton
         android:id="@+id/tb_layout_row_toggle"
-        android:layout_width="51dp"
-        android:layout_height="31dp"
+        android:layout_width="49dp"
+        android:layout_height="29dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:visibility="visible"
