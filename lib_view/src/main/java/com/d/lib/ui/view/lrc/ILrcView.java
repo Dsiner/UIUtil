@@ -9,12 +9,13 @@ import java.util.List;
  * Edited by D on 2017/5/16.
  */
 interface ILrcView {
+
     /**
      * 初始化画笔，颜色，字体大小等设置
      */
     void init(Context context);
 
-    /***
+    /**
      * 设置数据源
      */
     void setLrcRows(List<LrcRow> lrcRows);

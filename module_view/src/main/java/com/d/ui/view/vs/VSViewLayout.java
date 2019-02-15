@@ -15,19 +15,19 @@ import com.d.ui.view.R;
  * VSView Test
  * Created by D on 2017/4/20.
  */
-public class VSViewTest extends LinearLayout implements VSView.OnVSItemClickListen {
+public class VSViewLayout extends LinearLayout implements VSView.OnVSItemClickListen {
     private Context context;
     private VSView vsView;
 
-    public VSViewTest(Context context) {
+    public VSViewLayout(Context context) {
         this(context, null);
     }
 
-    public VSViewTest(Context context, AttributeSet attrs) {
+    public VSViewLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public VSViewTest(Context context, AttributeSet attrs, int defStyleAttr) {
+    public VSViewLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }

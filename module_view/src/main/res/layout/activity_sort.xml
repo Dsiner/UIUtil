@@ -11,7 +11,8 @@
         android:layout_height="@dimen/lib_pub_dimen_title_height"
         android:background="@color/lib_pub_color_main"
         app:lib_pub_tl_leftDrawable="@drawable/lib_pub_ic_title_back"
-        app:lib_pub_tl_middleText="Sort" />
+        app:lib_pub_tl_middleText="Sort"
+        app:lib_pub_tl_rightDrawable="@drawable/lib_pub_ic_title_more" />
 
     <FrameLayout
         android:layout_width="match_parent"

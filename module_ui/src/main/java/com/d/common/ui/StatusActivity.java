@@ -22,7 +22,7 @@ public class StatusActivity extends Activity implements View.OnClickListener {
         } else if (resId == R.id.iv_title_right) {
             MenuPopup menuPopup = PopupWindowFactory.createFactory(this)
                     .getMenuPopup(Arrays.asList(new MenuPopup.Bean(getResources().getString(R.string.module_ui_dialog_title) + "1",
-                                    R.color.lib_pub_color_text_hint, false),
+                                    R.color.lib_pub_color_white, false),
                             new MenuPopup.Bean(getResources().getString(R.string.module_ui_dialog_title) + "2",
                                     R.color.lib_pub_color_main, false)), new MenuPopup.OnMenuListener() {
                         @Override

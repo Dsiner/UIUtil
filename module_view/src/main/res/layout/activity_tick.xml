@@ -13,7 +13,7 @@
         app:lib_pub_tl_leftDrawable="@drawable/lib_pub_ic_title_back"
         app:lib_pub_tl_middleText="Tick" />
 
-    <com.d.ui.view.tick.CTickViewTest
+    <com.d.ui.view.tick.CTickViewLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/lib_pub_dimen_margin"

@@ -16,20 +16,20 @@ import com.d.ui.view.R;
  * CircleProgressTest
  * Created by D on 2017/11/1.
  */
-public class CircleProgressTest extends LinearLayout {
+public class CircleProgressLayout extends LinearLayout {
 
-    public CircleProgressTest(Context context) {
+    public CircleProgressLayout(Context context) {
         super(context);
         init(context);
     }
 
-    public CircleProgressTest(Context context, @Nullable AttributeSet attrs) {
+    public CircleProgressLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public CircleProgressTest(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CircleProgressLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }

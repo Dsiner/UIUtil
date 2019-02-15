@@ -10,25 +10,23 @@
         android:layout_marginLeft="12dp"
         android:layout_marginTop="12dp"
         android:layout_marginRight="12dp"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <com.d.lib.ui.view.progress.CircleProgressBar
             android:id="@+id/cpb_progress_progress"
             android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin" />
+            android:layout_height="36dp" />
 
         <com.d.lib.ui.view.progress.CircleProgressBar
             android:id="@+id/cpb_progress_pending"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin" />
+            android:layout_marginLeft="@dimen/lib_pub_dimen_margin" />
 
         <com.d.lib.ui.view.progress.CircleProgressBar
             android:id="@+id/cpb_progress_error"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginTop="@dimen/lib_pub_dimen_margin" />
+            android:layout_marginLeft="@dimen/lib_pub_dimen_margin" />
     </LinearLayout>
 </LinearLayout>

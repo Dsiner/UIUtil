@@ -85,7 +85,7 @@
             android:layout_marginTop="@dimen/lib_pub_dimen_margin"
             android:layout_marginRight="@dimen/lib_pub_dimen_margin"
             app:lib_ui_layout_am_position="right_top"
-            app:lib_ui_layout_am_radius="90dp">
+            app:lib_ui_layout_am_radius="60dp">
 
             <TextView
                 android:layout_width="35dp"
@@ -106,12 +106,19 @@
                 android:layout_height="35dp"
                 android:background="@drawable/circle_menu"
                 android:gravity="center"
+                android:text="Q" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
                 android:text="M" />
         </com.d.lib.ui.layout.arcmenu.ArcMenu>
 
         <com.d.lib.ui.layout.arcmenu.ArcMenu
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginRight="@dimen/lib_pub_dimen_margin"
@@ -124,14 +131,28 @@
                 android:layout_height="35dp"
                 android:background="@drawable/circle_menu"
                 android:gravity="center"
-                android:text="P" />
+                android:text="A" />
 
             <TextView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:background="@drawable/circle_menu"
                 android:gravity="center"
-                android:text="R" />
+                android:text="B" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="C" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/circle_menu"
+                android:gravity="center"
+                android:text="D" />
 
             <TextView
                 android:layout_width="35dp"

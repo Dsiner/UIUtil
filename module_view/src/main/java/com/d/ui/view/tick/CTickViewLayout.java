@@ -16,22 +16,22 @@ import com.d.ui.view.R;
  * CTickView Test
  * Created by D on 2017/4/20.
  */
-public class CTickViewTest extends LinearLayout implements View.OnClickListener {
+public class CTickViewLayout extends LinearLayout implements View.OnClickListener {
     private CTickView cTickView;
     private STickView sTickView;
 
-    public CTickViewTest(Context context) {
+    public CTickViewLayout(Context context) {
         super(context);
         init(context);
     }
 
-    public CTickViewTest(Context context, AttributeSet attrs) {
+    public CTickViewLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
-    public CTickViewTest(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CTickViewLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }

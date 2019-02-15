@@ -15,15 +15,24 @@ import com.d.ui.view.R;
  * Created by D on 2017/11/1.
  */
 public class ProgressActivity extends Activity {
-    private SnapProgressTest snapProgressTest;
+    private SnapProgressLayout snapProgress;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
-        initBack();
+        bindView();
         initSetting();
-        initSnap();
+    }
+
+    private void bindView() {
+        snapProgress = ViewHelper.findView(this, R.id.snap);
+        ViewHelper.setOnClick(this, R.id.iv_title_left, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initSetting() {
@@ -43,22 +52,9 @@ public class ProgressActivity extends Activity {
         });
     }
 
-    private void initSnap() {
-        snapProgressTest = ViewHelper.findView(this, R.id.snap);
-    }
-
-    private void initBack() {
-        ViewHelper.setOnClick(this, R.id.iv_title_left, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-
     @Override
     protected void onDestroy() {
-        snapProgressTest.onDestroy();
+        snapProgress.onDestroy();
         super.onDestroy();
     }
 }

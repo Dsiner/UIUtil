@@ -46,31 +46,31 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
      * [1]: Pendding
      * [2]: Error
      */
-    private int[] resIds = new int[]{-1, -1, -1};
-    private Point[] pointsA, pointsB, pointsC;
+    private final int[] RES_IDS = new int[]{-1, -1, -1};
+    private Point[] mPointsA, mPointsB, mPointsC;
 
-    private int width, height;
+    private int mWidth, mHeight;
 
-    private Context context;
-    private Paint gPaint;
-    private Path gPath;
+    private Context mContext;
+    private Paint mGPaint;
+    private Path mGPath;
 
-    private Paint paint;
-    private Rect rect;
-    private RectF rectF;
-    private int colorCircle, colorArc;
-    private int diameter;
-    private int space;
-    private int[] paddingIcon;
-    private float strokeWidth;
+    private Paint mPaint;
+    private Rect mRect;
+    private RectF mRectF;
+    private int mColorCircle, mColorArc;
+    private int mDiameter;
+    private int mSpace;
+    private int[] mPaddingIcon;
+    private float mStrokeWidth;
 
-    private float factor;
+    private float mFactor;
 
     private int mState = STATE_PROGRESS;
-    private boolean isFirst = true;
+    private boolean mIsFirst = true;
     private Request mRequest;
-    private RoundedImageView ivThumb, ivAlpha, ivState;
-    private OnClickListener listener;
+    private RoundedImageView mIvThumb, mIvAlpha, mIvState;
+    private OnClickListener mListener;
 
     @IntDef({STATE_PROGRESS, STATE_PENDING, STATE_ERROR})
     @Target({ElementType.PARAMETER})
@@ -94,94 +94,94 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
     }
 
     private void initAttrs(Context context, @SuppressWarnings("unused") AttributeSet attrs) {
-        colorCircle = Color.parseColor("#33FF4081");
-        colorArc = Color.parseColor("#FF4081");
-        space = Util.dip2px(context, 2.5f);
-        paddingIcon = new int[]{Util.dip2px(context, 21.5f),
+        mColorCircle = Color.parseColor("#33008577");
+        mColorArc = Color.parseColor("#008577");
+        mSpace = Util.dip2px(context, 2.5f);
+        mPaddingIcon = new int[]{Util.dip2px(context, 21.5f),
                 Util.dip2px(context, 20f)};
     }
 
     private void init(Context context) {
-        this.context = context;
+        this.mContext = context;
         this.setWillNotDraw(false);
-        strokeWidth = Util.dip2px(context, 3.5f);
+        mStrokeWidth = Util.dip2px(context, 3.5f);
         LayoutParams lp;
-        ivThumb = new RoundedImageView(context);
-        ivThumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        mIvThumb = new RoundedImageView(context);
+        mIvThumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
         lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         lp.gravity = Gravity.CENTER;
-        addView(ivThumb, lp);
+        addView(mIvThumb, lp);
 
-        ivAlpha = new RoundedImageView(context);
-        ivAlpha.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ivAlpha.setImageResource(R.color.lib_pub_color_trans);
+        mIvAlpha = new RoundedImageView(context);
+        mIvAlpha.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        mIvAlpha.setImageResource(R.color.lib_pub_color_trans);
         lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         lp.gravity = Gravity.CENTER;
-        addView(ivAlpha, lp);
+        addView(mIvAlpha, lp);
 
-        ivState = new RoundedImageView(context);
-        ivState.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        mIvState = new RoundedImageView(context);
+        mIvState.setScaleType(ImageView.ScaleType.CENTER_CROP);
         lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         lp.gravity = Gravity.CENTER;
-        addView(ivState, lp);
+        addView(mIvState, lp);
         setOnClickListener(this);
 
         mRequest = new Request();
-        gPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        gPaint.setColor(colorCircle);
-        gPaint.setStyle(Paint.Style.FILL);
-        gPath = new Path();
+        mGPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mGPaint.setColor(mColorCircle);
+        mGPaint.setStyle(Paint.Style.FILL);
+        mGPath = new Path();
 
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(colorCircle);
-        paint.setStrokeWidth(space);
-        paint.setStyle(Paint.Style.STROKE);
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(mColorCircle);
+        mPaint.setStrokeWidth(mSpace);
+        mPaint.setStyle(Paint.Style.STROKE);
 
-        rect = new Rect();
-        rectF = new RectF();
+        mRect = new Rect();
+        mRectF = new RectF();
     }
 
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         draw(canvas, mState);
-        rect.set((int) ((width - diameter) / 2f + space / 2f),
-                (int) ((height - diameter) / 2f + space / 2f),
-                width - (int) ((width - diameter) / 2f + space / 2f),
-                height - (int) ((height - diameter) / 2f + space / 2f));
-        rectF.set(rect);
-        paint.setColor(colorCircle);
-        paint.setStrokeCap(Paint.Cap.BUTT);
-        canvas.drawArc(rectF, -90, 360, false, paint);
-        paint.setColor(colorArc);
-        paint.setStrokeCap(Paint.Cap.ROUND);
-        canvas.drawArc(rectF, -90, factor, false, paint);
+        mRect.set((int) ((mWidth - mDiameter) / 2f + mSpace / 2f),
+                (int) ((mHeight - mDiameter) / 2f + mSpace / 2f),
+                mWidth - (int) ((mWidth - mDiameter) / 2f + mSpace / 2f),
+                mHeight - (int) ((mHeight - mDiameter) / 2f + mSpace / 2f));
+        mRectF.set(mRect);
+        mPaint.setColor(mColorCircle);
+        mPaint.setStrokeCap(Paint.Cap.BUTT);
+        canvas.drawArc(mRectF, -90, 360, false, mPaint);
+        mPaint.setColor(mColorArc);
+        mPaint.setStrokeCap(Paint.Cap.ROUND);
+        canvas.drawArc(mRectF, -90, mFactor, false, mPaint);
     }
 
     private void draw(@NonNull Canvas canvas, @State int state) {
         switch (state) {
             case STATE_PROGRESS:
-                draw(canvas, colorArc, getPoints(0));
-                draw(canvas, colorArc, getPoints(1));
+                draw(canvas, mColorArc, getPoints(0));
+                draw(canvas, mColorArc, getPoints(1));
                 break;
             case STATE_PENDING:
-                draw(canvas, colorArc, getPoints(2));
+                draw(canvas, mColorArc, getPoints(2));
                 break;
             case STATE_ERROR:
-                gPaint.setColor(colorArc);
-                canvas.translate(width / 2, height / 2);
+                mGPaint.setColor(mColorArc);
+                canvas.translate(mWidth / 2, mHeight / 2);
                 canvas.rotate(45);
 
                 float factorB = 0.51f;
-                rect.set((int) (-width / 2f * factorB), (int) (-strokeWidth / 2f),
-                        (int) (width / 2f * factorB), (int) (strokeWidth / 2f));
-                rectF.set(rect);
-                canvas.drawRect(rectF, gPaint);
+                mRect.set((int) (-mWidth / 2f * factorB), (int) (-mStrokeWidth / 2f),
+                        (int) (mWidth / 2f * factorB), (int) (mStrokeWidth / 2f));
+                mRectF.set(mRect);
+                canvas.drawRect(mRectF, mGPaint);
 
                 canvas.rotate(90);
-                canvas.drawRect(rectF, gPaint);
+                canvas.drawRect(mRectF, mGPaint);
                 canvas.rotate(-135);
-                canvas.translate(-width / 2, -height / 2);
+                canvas.translate(-mWidth / 2, -mHeight / 2);
                 break;
         }
     }
@@ -190,69 +190,69 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
     private Point[] getPoints(@IntRange(from = 0, to = 2) int type) {
         switch (type) {
             case 0:
-                if (pointsA == null) {
+                if (mPointsA == null) {
                     float factorA = 0.56f;
-                    float startX = width / 2f - strokeWidth * 1.63f;
-                    float startY = height / 2f * factorA;
-                    pointsA = new Point[]{new Point((int) (startX), (int) (startY)),
-                            new Point((int) (startX), (int) (height - startY)),
-                            new Point((int) (startX + strokeWidth), (int) (height - startY)),
-                            new Point((int) (startX + strokeWidth), (int) (startY))};
+                    float startX = mWidth / 2f - mStrokeWidth * 1.63f;
+                    float startY = mHeight / 2f * factorA;
+                    mPointsA = new Point[]{new Point((int) (startX), (int) (startY)),
+                            new Point((int) (startX), (int) (mHeight - startY)),
+                            new Point((int) (startX + mStrokeWidth), (int) (mHeight - startY)),
+                            new Point((int) (startX + mStrokeWidth), (int) (startY))};
                 }
-                return pointsA;
+                return mPointsA;
             case 1:
-                if (pointsB == null) {
+                if (mPointsB == null) {
                     float factorA = 0.56f;
-                    float startX = width / 2f + strokeWidth * 0.63f;
-                    float startY = height / 2f * factorA;
-                    pointsB = new Point[]{new Point((int) (startX), (int) (startY)),
-                            new Point((int) (startX), (int) (height - startY)),
-                            new Point((int) (startX + strokeWidth), (int) (height - startY)),
-                            new Point((int) (startX + strokeWidth), (int) (startY))};
+                    float startX = mWidth / 2f + mStrokeWidth * 0.63f;
+                    float startY = mHeight / 2f * factorA;
+                    mPointsB = new Point[]{new Point((int) (startX), (int) (startY)),
+                            new Point((int) (startX), (int) (mHeight - startY)),
+                            new Point((int) (startX + mStrokeWidth), (int) (mHeight - startY)),
+                            new Point((int) (startX + mStrokeWidth), (int) (startY))};
                 }
-                return pointsB;
+                return mPointsB;
             case 2:
             default:
-                if (pointsC == null) {
-                    pointsC = new Point[]{new Point((int) (width * (0.33f + 0.05f)), (int) (height * 0.25f)),
-                            new Point((int) (width * (0.66f + 0.05f)), (int) (height * 0.5f)),
-                            new Point((int) (width * (0.33f + 0.05f)), (int) (height * 0.75f))};
+                if (mPointsC == null) {
+                    mPointsC = new Point[]{new Point((int) (mWidth * (0.33f + 0.05f)), (int) (mHeight * 0.25f)),
+                            new Point((int) (mWidth * (0.66f + 0.05f)), (int) (mHeight * 0.5f)),
+                            new Point((int) (mWidth * (0.33f + 0.05f)), (int) (mHeight * 0.75f))};
                 }
-                return pointsC;
+                return mPointsC;
         }
     }
 
     private void draw(@NonNull Canvas canvas, @ColorInt int color, @NonNull Point... points) {
-        gPaint.setColor(color);
-        gPath.reset();
+        mGPaint.setColor(color);
+        mGPath.reset();
         boolean first = true;
         for (Point p : points) {
             if (first) {
                 first = false;
-                gPath.moveTo(p.x, p.y);
+                mGPath.moveTo(p.x, p.y);
                 continue;
             }
-            gPath.lineTo(p.x, p.y);
+            mGPath.lineTo(p.x, p.y);
         }
-        gPath.close();
-        canvas.drawPath(gPath, gPaint);
+        mGPath.close();
+        canvas.drawPath(mGPath, mGPaint);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        diameter = Math.min(width, height);
-        paddingIcon[0] = (int) (diameter * 21.5f / 60f);
-        paddingIcon[1] = (int) (diameter * 20f / 60f);
-        ivThumb.setPadding((int) ((width - diameter) / 2f + space), (int) ((height - diameter) / 2f + space),
-                (int) ((width - diameter) / 2f + space), (int) ((height - diameter) / 2f + space));
-        ivAlpha.setPadding((int) ((width - diameter) / 2f + space), (int) ((height - diameter) / 2f + space),
-                (int) ((width - diameter) / 2f + space), (int) ((height - diameter) / 2f + space));
-        setMeasuredDimension(width, height);
-        if (isFirst && diameter > 0) {
-            isFirst = false;
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        mDiameter = Math.min(mWidth, mHeight);
+        mPaddingIcon[0] = (int) (mDiameter * 21.5f / 60f);
+        mPaddingIcon[1] = (int) (mDiameter * 20f / 60f);
+        mIvThumb.setPadding((int) ((mWidth - mDiameter) / 2f + mSpace), (int) ((mHeight - mDiameter) / 2f + mSpace),
+                (int) ((mWidth - mDiameter) / 2f + mSpace), (int) ((mHeight - mDiameter) / 2f + mSpace));
+        mIvAlpha.setPadding((int) ((mWidth - mDiameter) / 2f + mSpace), (int) ((mHeight - mDiameter) / 2f + mSpace),
+                (int) ((mWidth - mDiameter) / 2f + mSpace), (int) ((mHeight - mDiameter) / 2f + mSpace));
+        setMeasuredDimension(mWidth, mHeight);
+        if (mIsFirst && mDiameter > 0) {
+            mIsFirst = false;
             setState(mState);
         }
     }
@@ -261,18 +261,18 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
     public void onClick(View v) {
         switch (mState) {
             case STATE_PROGRESS:
-                if (listener != null) {
-                    listener.onPause();
+                if (mListener != null) {
+                    mListener.onPause();
                 }
                 break;
             case STATE_PENDING:
-                if (listener != null) {
-                    listener.onResume();
+                if (mListener != null) {
+                    mListener.onResume();
                 }
                 break;
             case STATE_ERROR:
-                if (listener != null) {
-                    listener.onRestart();
+                if (mListener != null) {
+                    mListener.onRestart();
                 }
                 break;
         }
@@ -285,39 +285,39 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
         this.mState = state;
         switch (state) {
             case STATE_PROGRESS:
-                ivThumb.setVisibility(VISIBLE);
-                ivAlpha.setVisibility(GONE);
-                ivState.setVisibility(GONE);
-                ivState.setPadding((int) ((width - diameter) / 2f), (int) ((height - diameter) / 2f),
-                        (int) ((width - diameter) / 2f), (int) ((height - diameter) / 2f));
-                if (resIds[STATE_PROGRESS] != -1) {
-                    ivState.setImageResource(resIds[STATE_PROGRESS]);
+                mIvThumb.setVisibility(VISIBLE);
+                mIvAlpha.setVisibility(GONE);
+                mIvState.setVisibility(GONE);
+                mIvState.setPadding((int) ((mWidth - mDiameter) / 2f), (int) ((mHeight - mDiameter) / 2f),
+                        (int) ((mWidth - mDiameter) / 2f), (int) ((mHeight - mDiameter) / 2f));
+                if (RES_IDS[STATE_PROGRESS] != -1) {
+                    mIvState.setImageResource(RES_IDS[STATE_PROGRESS]);
                 } else {
                     invalidate();
                 }
                 break;
             case STATE_PENDING:
-                ivThumb.setVisibility(VISIBLE);
-                ivAlpha.setVisibility(VISIBLE);
-                ivState.setVisibility(VISIBLE);
-                ivState.setPadding((int) ((width - diameter) / 2f + paddingIcon[0]),
-                        (int) ((height - diameter) / 2f + paddingIcon[1]),
-                        (int) ((width - diameter) / 2f + paddingIcon[0]),
-                        (int) ((height - diameter) / 2f + paddingIcon[1]));
-                if (resIds[STATE_PENDING] != -1) {
-                    ivState.setImageResource(resIds[STATE_PENDING]);
+                mIvThumb.setVisibility(VISIBLE);
+                mIvAlpha.setVisibility(VISIBLE);
+                mIvState.setVisibility(VISIBLE);
+                mIvState.setPadding((int) ((mWidth - mDiameter) / 2f + mPaddingIcon[0]),
+                        (int) ((mHeight - mDiameter) / 2f + mPaddingIcon[1]),
+                        (int) ((mWidth - mDiameter) / 2f + mPaddingIcon[0]),
+                        (int) ((mHeight - mDiameter) / 2f + mPaddingIcon[1]));
+                if (RES_IDS[STATE_PENDING] != -1) {
+                    mIvState.setImageResource(RES_IDS[STATE_PENDING]);
                 } else {
                     invalidate();
                 }
                 break;
             case STATE_ERROR:
-                ivThumb.setVisibility(VISIBLE);
-                ivAlpha.setVisibility(GONE);
-                ivState.setVisibility(VISIBLE);
-                ivState.setPadding((int) ((width - diameter) / 2f), (int) ((height - diameter) / 2f),
-                        (int) ((width - diameter) / 2f), (int) ((height - diameter) / 2f));
-                if (resIds[STATE_ERROR] != -1) {
-                    ivState.setImageResource(resIds[STATE_ERROR]);
+                mIvThumb.setVisibility(VISIBLE);
+                mIvAlpha.setVisibility(GONE);
+                mIvState.setVisibility(VISIBLE);
+                mIvState.setPadding((int) ((mWidth - mDiameter) / 2f), (int) ((mHeight - mDiameter) / 2f),
+                        (int) ((mWidth - mDiameter) / 2f), (int) ((mHeight - mDiameter) / 2f));
+                if (RES_IDS[STATE_ERROR] != -1) {
+                    mIvState.setImageResource(RES_IDS[STATE_ERROR]);
                 } else {
                     invalidate();
                 }
@@ -332,17 +332,17 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
 
     public class Request {
         public Request thumb(Bitmap bitmap) {
-            ivThumb.setImageBitmap(bitmap);
+            mIvThumb.setImageBitmap(bitmap);
             return this;
         }
 
         public Request thumb(Drawable drawable) {
-            ivThumb.setImageDrawable(drawable);
+            mIvThumb.setImageDrawable(drawable);
             return this;
         }
 
         public Request progress(@FloatRange(from = 0f, to = 1f) float progress) {
-            factor = 360 * progress;
+            mFactor = 360 * progress;
             invalidate();
             return this;
         }
@@ -357,6 +357,6 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
     }
 
     public void setOnClickListener(OnClickListener l) {
-        this.listener = l;
+        this.mListener = l;
     }
 }

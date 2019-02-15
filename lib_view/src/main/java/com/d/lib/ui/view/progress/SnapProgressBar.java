@@ -46,31 +46,31 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
      * [3]: Done
      * [4]: Error
      */
-    private final int[] resIds = new int[]{R.drawable.lib_ui_view_vs_icon,
+    private final int[] RES_IDS = new int[]{R.drawable.lib_ui_view_vs_icon,
             R.color.lib_pub_color_trans,
-            R.drawable.lib_ui_view_vs_icon,
+            R.drawable.lib_ui_view_rtv_ic_back,
             R.drawable.lib_ui_view_vs_icon,
             R.drawable.lib_ui_view_vs_icon};
 
-    private int width, height;
+    private int mWidth, mHeight;
 
-    private Context context;
-    private Paint paint;
+    private Context mContext;
+    private Paint mPaint;
 
-    private Rect rect;
-    private RectF rectF;
-    private int colorCircle, colorArc;
-    private int diameter;
-    private int space;
-    private int[] paddingIcon;
+    private Rect mRect;
+    private RectF mRectF;
+    private int mColorCircle, mColorArc;
+    private int mDiameter;
+    private int mSpace;
+    private int[] mPaddingIcon;
 
-    private float factor;
+    private float mFactor;
 
     private int mState = STATE_SCANNING;
-    private boolean isFirst = true;
+    private boolean mIsFirst = true;
     private Request mRequest;
-    private RoundedImageView ivThumb, ivAlpha, ivState;
-    private OnClickListener listener;
+    private RoundedImageView mIvThumb, mIvAlpha, mIvState;
+    private OnClickListener mListener;
 
     @IntDef({STATE_SCANNING, STATE_PROGRESS, STATE_PENDDING, STATE_DONE, STATE_ERROR})
     @Target({ElementType.PARAMETER})
@@ -94,48 +94,48 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
     }
 
     private void initAttrs(Context context, @SuppressWarnings("unused") AttributeSet attrs) {
-        colorCircle = Color.parseColor("#33FF4081");
-        colorArc = Color.parseColor("#FF4081");
-        space = Util.dip2px(context, 2.5f);
-        paddingIcon = new int[]{Util.dip2px(context, 21.5f),
+        mColorCircle = Color.parseColor("#33008577");
+        mColorArc = Color.parseColor("#008577");
+        mSpace = Util.dip2px(context, 2.5f);
+        mPaddingIcon = new int[]{Util.dip2px(context, 21.5f),
                 Util.dip2px(context, 20f)};
     }
 
     private void init(Context context) {
-        this.context = context;
+        this.mContext = context;
         this.setWillNotDraw(false);
         LayoutParams lp;
-        ivThumb = new RoundedImageView(context);
-        ivThumb.setOval(true);
-        ivThumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        mIvThumb = new RoundedImageView(context);
+        mIvThumb.setOval(true);
+        mIvThumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
         lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         lp.gravity = Gravity.CENTER;
-        addView(ivThumb, lp);
+        addView(mIvThumb, lp);
 
-        ivAlpha = new RoundedImageView(context);
-        ivAlpha.setOval(true);
-        ivAlpha.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ivAlpha.setImageResource(R.drawable.lib_ui_view_stab_circle_msg);
+        mIvAlpha = new RoundedImageView(context);
+        mIvAlpha.setOval(true);
+        mIvAlpha.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        mIvAlpha.setImageResource(R.color.lib_pub_color_translucent);
         lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         lp.gravity = Gravity.CENTER;
-        addView(ivAlpha, lp);
+        addView(mIvAlpha, lp);
 
-        ivState = new RoundedImageView(context);
-        ivState.setOval(true);
-        ivState.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        mIvState = new RoundedImageView(context);
+        mIvState.setOval(true);
+        mIvState.setScaleType(ImageView.ScaleType.CENTER_CROP);
         lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         lp.gravity = Gravity.CENTER;
-        addView(ivState, lp);
-        ivState.setOnClickListener(this);
+        addView(mIvState, lp);
+        mIvState.setOnClickListener(this);
 
         mRequest = new Request();
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(colorCircle);
-        paint.setStrokeWidth(space);
-        paint.setStyle(Paint.Style.STROKE);
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(mColorCircle);
+        mPaint.setStrokeWidth(mSpace);
+        mPaint.setStyle(Paint.Style.STROKE);
 
-        rect = new Rect();
-        rectF = new RectF();
+        mRect = new Rect();
+        mRectF = new RectF();
     }
 
     @Override
@@ -144,45 +144,45 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
         if (mState != STATE_PROGRESS && mState != STATE_PENDDING) {
             return;
         }
-        rect.set((int) ((width - diameter) / 2f + space / 2f),
-                (int) ((height - diameter) / 2f + space / 2f),
-                width - (int) ((width - diameter) / 2f + space / 2f),
-                height - (int) ((height - diameter) / 2f + space / 2f));
-        rectF.set(rect);
-        paint.setColor(colorCircle);
-        paint.setStrokeCap(Paint.Cap.BUTT);
-        canvas.drawArc(rectF, -90, 360, false, paint);
-        paint.setColor(colorArc);
-        paint.setStrokeCap(Paint.Cap.ROUND);
-        canvas.drawArc(rectF, -90, factor, false, paint);
+        mRect.set((int) ((mWidth - mDiameter) / 2f + mSpace / 2f),
+                (int) ((mHeight - mDiameter) / 2f + mSpace / 2f),
+                mWidth - (int) ((mWidth - mDiameter) / 2f + mSpace / 2f),
+                mHeight - (int) ((mHeight - mDiameter) / 2f + mSpace / 2f));
+        mRectF.set(mRect);
+        mPaint.setColor(mColorCircle);
+        mPaint.setStrokeCap(Paint.Cap.BUTT);
+        canvas.drawArc(mRectF, -90, 360, false, mPaint);
+        mPaint.setColor(mColorArc);
+        mPaint.setStrokeCap(Paint.Cap.ROUND);
+        canvas.drawArc(mRectF, -90, mFactor, false, mPaint);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        diameter = Math.min(width, height);
-        paddingIcon[0] = (int) (diameter * 21.5f / 60f);
-        paddingIcon[1] = (int) (diameter * 20f / 60f);
-        ivThumb.setPadding((int) ((width - diameter) / 2f + space), (int) ((height - diameter) / 2f + space),
-                (int) ((width - diameter) / 2f + space), (int) ((height - diameter) / 2f + space));
-        ivAlpha.setPadding((int) ((width - diameter) / 2f + space), (int) ((height - diameter) / 2f + space),
-                (int) ((width - diameter) / 2f + space), (int) ((height - diameter) / 2f + space));
-        setMeasuredDimension(width, height);
-        if (isFirst && diameter > 0) {
-            isFirst = false;
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        mDiameter = Math.min(mWidth, mHeight);
+        mPaddingIcon[0] = (int) (mDiameter * 20f / 60f);
+        mPaddingIcon[1] = (int) (mDiameter * 20f / 60f);
+        mIvThumb.setPadding((int) ((mWidth - mDiameter) / 2f + mSpace), (int) ((mHeight - mDiameter) / 2f + mSpace),
+                (int) ((mWidth - mDiameter) / 2f + mSpace), (int) ((mHeight - mDiameter) / 2f + mSpace));
+        mIvAlpha.setPadding((int) ((mWidth - mDiameter) / 2f + mSpace), (int) ((mHeight - mDiameter) / 2f + mSpace),
+                (int) ((mWidth - mDiameter) / 2f + mSpace), (int) ((mHeight - mDiameter) / 2f + mSpace));
+        setMeasuredDimension(mWidth, mHeight);
+        if (mIsFirst && mDiameter > 0) {
+            mIsFirst = false;
             setState(mState);
         }
     }
 
     @Override
     public void onClick(View v) {
-        if (v == ivState) {
+        if (v == mIvState) {
             switch (mState) {
                 case STATE_PENDDING:
-                    if (listener != null) {
-                        listener.onRestart();
+                    if (mListener != null) {
+                        mListener.onRestart();
                     }
                     break;
             }
@@ -193,43 +193,43 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
         this.mState = state;
         switch (state) {
             case STATE_SCANNING:
-                ivThumb.setVisibility(GONE);
-                ivAlpha.setVisibility(GONE);
-                ivState.setVisibility(VISIBLE);
-                ivState.setPadding((int) ((width - diameter) / 2f), (int) ((height - diameter) / 2f),
-                        (int) ((width - diameter) / 2f), (int) ((height - diameter) / 2f));
-                ivState.setImageResource(resIds[STATE_SCANNING]);
+                mIvThumb.setVisibility(GONE);
+                mIvAlpha.setVisibility(GONE);
+                mIvState.setVisibility(VISIBLE);
+                mIvState.setPadding((int) ((mWidth - mDiameter) / 2f), (int) ((mHeight - mDiameter) / 2f),
+                        (int) ((mWidth - mDiameter) / 2f), (int) ((mHeight - mDiameter) / 2f));
+                mIvState.setImageResource(RES_IDS[STATE_SCANNING]);
                 break;
             case STATE_PROGRESS:
-                ivThumb.setVisibility(VISIBLE);
-                ivAlpha.setVisibility(GONE);
-                ivState.setVisibility(GONE);
+                mIvThumb.setVisibility(VISIBLE);
+                mIvAlpha.setVisibility(GONE);
+                mIvState.setVisibility(GONE);
                 break;
             case STATE_PENDDING:
-                ivThumb.setVisibility(VISIBLE);
-                ivAlpha.setVisibility(VISIBLE);
-                ivState.setVisibility(VISIBLE);
-                ivState.setPadding((int) ((width - diameter) / 2f + paddingIcon[0]),
-                        (int) ((height - diameter) / 2f + paddingIcon[1]),
-                        (int) ((width - diameter) / 2f + paddingIcon[0]),
-                        (int) ((height - diameter) / 2f + paddingIcon[1]));
-                ivState.setImageResource(resIds[STATE_PENDDING]);
+                mIvThumb.setVisibility(VISIBLE);
+                mIvAlpha.setVisibility(VISIBLE);
+                mIvState.setVisibility(VISIBLE);
+                mIvState.setPadding((int) ((mWidth - mDiameter) / 2f + mPaddingIcon[0]),
+                        (int) ((mHeight - mDiameter) / 2f + mPaddingIcon[1]),
+                        (int) ((mWidth - mDiameter) / 2f + mPaddingIcon[0]),
+                        (int) ((mHeight - mDiameter) / 2f + mPaddingIcon[1]));
+                mIvState.setImageResource(RES_IDS[STATE_PENDDING]);
                 break;
             case STATE_DONE:
-                ivThumb.setVisibility(GONE);
-                ivAlpha.setVisibility(GONE);
-                ivState.setVisibility(VISIBLE);
-                ivState.setPadding((int) ((width - diameter) / 2f), (int) ((height - diameter) / 2f),
-                        (int) ((width - diameter) / 2f), (int) ((height - diameter) / 2f));
-                ivState.setImageResource(resIds[STATE_DONE]);
+                mIvThumb.setVisibility(GONE);
+                mIvAlpha.setVisibility(GONE);
+                mIvState.setVisibility(VISIBLE);
+                mIvState.setPadding((int) ((mWidth - mDiameter) / 2f), (int) ((mHeight - mDiameter) / 2f),
+                        (int) ((mWidth - mDiameter) / 2f), (int) ((mHeight - mDiameter) / 2f));
+                mIvState.setImageResource(RES_IDS[STATE_DONE]);
                 break;
             case STATE_ERROR:
-                ivThumb.setVisibility(GONE);
-                ivAlpha.setVisibility(GONE);
-                ivState.setVisibility(VISIBLE);
-                ivState.setPadding((int) ((width - diameter) / 2f), (int) ((height - diameter) / 2f),
-                        (int) ((width - diameter) / 2f), (int) ((height - diameter) / 2f));
-                ivState.setImageResource(resIds[STATE_ERROR]);
+                mIvThumb.setVisibility(GONE);
+                mIvAlpha.setVisibility(GONE);
+                mIvState.setVisibility(VISIBLE);
+                mIvState.setPadding((int) ((mWidth - mDiameter) / 2f), (int) ((mHeight - mDiameter) / 2f),
+                        (int) ((mWidth - mDiameter) / 2f), (int) ((mHeight - mDiameter) / 2f));
+                mIvState.setImageResource(RES_IDS[STATE_ERROR]);
                 break;
         }
         return mRequest;
@@ -241,17 +241,17 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
 
     public class Request {
         public Request thumb(Bitmap bitmap) {
-            ivThumb.setImageBitmap(bitmap);
+            mIvThumb.setImageBitmap(bitmap);
             return this;
         }
 
         public Request thumb(Drawable drawable) {
-            ivThumb.setImageDrawable(drawable);
+            mIvThumb.setImageDrawable(drawable);
             return this;
         }
 
         public Request progress(@FloatRange(from = 0f, to = 1f) float progress) {
-            factor = 360 * progress;
+            mFactor = 360 * progress;
             invalidate();
             return this;
         }
@@ -262,6 +262,6 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
     }
 
     public void setOnClickListener(OnClickListener l) {
-        this.listener = l;
+        this.mListener = l;
     }
 }

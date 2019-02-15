@@ -6,7 +6,9 @@
         <activity android:name="com.d.ui.layout.arcmenu.ArcMenuActivity" />
         <activity android:name="com.d.ui.layout.heartlayout.HeartActivity" />
         <activity android:name="com.d.ui.layout.poi.PoiActivity" />
-        <activity android:name="com.d.ui.layout.praise.PraiseActivity" />
+        <activity
+            android:name="com.d.ui.layout.praise.PraiseActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity android:name="com.d.ui.layout.shadow.ShadowActivity" />
     </application>
 </manifest>

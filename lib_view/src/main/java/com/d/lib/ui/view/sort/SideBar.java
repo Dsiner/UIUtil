@@ -23,31 +23,35 @@ import java.util.List;
  * Created by D on 2017/6/6.
  */
 public class SideBar extends View {
-    private int TYPE_NORMAL = 0, TYPE_CENTER = 1;
-    private String[] DEFAULT_LETTERS = {"↑", "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
+    public final static int TYPE_NORMAL = 0, TYPE_CENTER = 1;
+    private final static String[] DEFAULT_LETTERS = {"↑", "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
             "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#"};
-    private String[] c;
-    private int maxCount;
+    private final static int DEFAULT_MAX_COUNT = 29;
 
-    private int width;
-    private int height;
-    private Rect rect;
-    private RectF rectF;
-    private Paint paint;
-    private Paint paintCur;
-    private Paint paintRect;
-    private int type;
-    private int colorTrans, colorWhite, colorBar, colorRect;
-    private int count;
-    private float onpice;
-    private int widthBar;
-    private int widthRect;
-    private int rectRadius;
-    private float textHeight;
-    private float textLightHeight;
-    private boolean dValid;
-    private int index = -1;
-    private OnLetterChangedListener listener;
+    private final String[] mDefaultLetters;
+    private final int mDefaultMaxCount;
+    private String[] mLetters;
+    private int mMaxCount;
+
+    private int mWidth;
+    private int mHeight;
+    private Rect mRect;
+    private RectF mRectF;
+    private Paint mPaint;
+    private Paint mPaintCur;
+    private Paint mPaintRect;
+    private int mType;
+    private int mColorTrans, mColorWhite, mColorBar, mColorRect;
+    private int mCount;
+    private float mOnepice;
+    private int mWidthBar;
+    private int mWidthRect;
+    private int mRectRadius;
+    private float mTextHeight;
+    private float mTextLightHeight;
+    private boolean mDValid;
+    private int mIndex = -1;
+    private OnLetterChangedListener mListener;
 
     public SideBar(Context context) {
         this(context, null);
@@ -59,110 +63,104 @@ public class SideBar extends View {
 
     public SideBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initTypedArray(context, attrs);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_SideBar);
+        mType = typedArray.getInt(R.styleable.lib_ui_view_SideBar_lib_ui_view_sidebar_type, TYPE_NORMAL);
+        mDefaultMaxCount = typedArray.getInt(R.styleable.lib_ui_view_SideBar_lib_ui_view_sidebar_maxCount, DEFAULT_MAX_COUNT);
+        String strLetters = typedArray.getString(R.styleable.lib_ui_view_SideBar_lib_ui_view_sidebar_letters);
+        if (TextUtils.isEmpty(strLetters)) {
+            mLetters = mDefaultLetters = DEFAULT_LETTERS;
+        } else {
+            mLetters = mDefaultLetters = strLetters.split(";");
+        }
+        mMaxCount = Math.max(mDefaultMaxCount, mLetters.length);
+        typedArray.recycle();
         init(context);
     }
 
-    private void initTypedArray(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_SideBar);
-        type = typedArray.getInt(R.styleable.lib_ui_view_SideBar_lib_ui_view_sidebar_type, TYPE_NORMAL);
-        maxCount = typedArray.getInt(R.styleable.lib_ui_view_SideBar_lib_ui_view_sidebar_maxCount, 29);
-        if (type != TYPE_CENTER) {
-            String strLetters = typedArray.getString(R.styleable.lib_ui_view_SideBar_lib_ui_view_sidebar_letters);
-            if (TextUtils.isEmpty(strLetters)) {
-                c = DEFAULT_LETTERS;
-            } else {
-                c = strLetters.split(";");
-            }
-            maxCount = c.length;
-        }
-        typedArray.recycle();
-    }
-
     private void init(Context context) {
-        if (type == TYPE_CENTER) {
-            c = new String[]{};
+        if (mType == TYPE_CENTER) {
+            mLetters = new String[]{};
         }
-        count = c.length;
-        widthRect = Util.dip2px(context, 70);
-        rectRadius = Util.dip2px(context, 6);
-        colorTrans = Color.parseColor("#00000000");
-        colorWhite = Color.parseColor("#ffffff");
-        colorBar = Color.parseColor("#aaBBBBBB");
-        colorRect = Color.parseColor("#aa7F7F7F");
+        mCount = mLetters.length;
+        mWidthRect = Util.dip2px(context, 70);
+        mRectRadius = Util.dip2px(context, 6);
+        mColorTrans = Color.parseColor("#00000000");
+        mColorWhite = Color.parseColor("#ffffff");
+        mColorBar = Color.parseColor("#aaBBBBBB");
+        mColorRect = Color.parseColor("#aa7F7F7F");
 
-        rect = new Rect();
-        rectF = new RectF();
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setTextAlign(Paint.Align.CENTER);
-        paint.setColor(Color.parseColor("#565656"));
+        mRect = new Rect();
+        mRectF = new RectF();
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setTextAlign(Paint.Align.CENTER);
+        mPaint.setColor(Color.parseColor("#565656"));
 
-        paintCur = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintCur.setTextAlign(Paint.Align.CENTER);
-        paintCur.setColor(Color.parseColor("#FF4081"));
+        mPaintCur = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintCur.setTextAlign(Paint.Align.CENTER);
+        mPaintCur.setColor(Color.parseColor("#008577"));
 
-        paintRect = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintRect.setTextAlign(Paint.Align.CENTER);
-        paintRect.setTextSize(Util.dip2px(context, 32));
+        mPaintRect = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintRect.setTextAlign(Paint.Align.CENTER);
+        mPaintRect.setTextSize(Util.dip2px(context, 32));
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (type == TYPE_NORMAL) {
-            resetRect(width - widthBar, 0, width, height, index == -1 ? colorTrans : colorBar);
-            canvas.drawRect(rectF, paintRect);
+        if (mType == TYPE_NORMAL) {
+            resetRect(mWidth - mWidthBar, 0, mWidth, mHeight, mIndex == -1 ? mColorTrans : mColorBar);
+            canvas.drawRect(mRectF, mPaintRect);
 
-            for (int i = 0; i < count; i++) {
-                canvas.drawText(c[i], width - widthBar / 2, onpice * i + onpice / 2 + textHeight / 2, i == index ? paintCur : paint);
+            for (int i = 0; i < mCount; i++) {
+                canvas.drawText(mLetters[i], mWidth - mWidthBar / 2, mOnepice * i + mOnepice / 2 + mTextHeight / 2, i == mIndex ? mPaintCur : mPaint);
             }
-            if (index >= 0 && index < count) {
-                resetRect((width - widthRect) / 2, (height - widthRect) / 2, (width + widthRect) / 2, (height + widthRect) / 2, colorRect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paintRect);
-                paintRect.setColor(colorWhite);
-                canvas.drawText(c[index], width / 2, (height + textLightHeight) / 2, paintRect);
+            if (mIndex >= 0 && mIndex < mCount) {
+                resetRect((mWidth - mWidthRect) / 2, (mHeight - mWidthRect) / 2, (mWidth + mWidthRect) / 2, (mHeight + mWidthRect) / 2, mColorRect);
+                canvas.drawRoundRect(mRectF, mRectRadius, mRectRadius, mPaintRect);
+                mPaintRect.setColor(mColorWhite);
+                canvas.drawText(mLetters[mIndex], mWidth / 2, (mHeight + mTextLightHeight) / 2, mPaintRect);
             }
         } else {
             super.onDraw(canvas);
-            float offsetY = height * (1 - 1f * count / maxCount) / 2;
-            float endY = offsetY + onpice * count;
+            float offsetY = mHeight * (1 - 1f * mCount / mMaxCount) / 2;
+            float endY = offsetY + mOnepice * mCount;
 
-            for (int i = 0; i < count; i++) {
-                canvas.drawText(c[i], width - widthBar / 2, offsetY + onpice * i + onpice / 2 + textHeight / 2, i == index ? paintCur : paint);
+            for (int i = 0; i < mCount; i++) {
+                canvas.drawText(mLetters[i], mWidth - mWidthBar / 2, offsetY + mOnepice * i + mOnepice / 2 + mTextHeight / 2, i == mIndex ? mPaintCur : mPaint);
             }
         }
     }
 
     private void resetRect(int left, int top, int right, int bottom, int color) {
-        rect.set(left, top, right, bottom);
-        rectF.set(rect);
-        paintRect.setColor(color);
+        mRect.set(left, top, right, bottom);
+        mRectF.set(mRect);
+        mPaintRect.setColor(color);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        onpice = 1f * height / (type == TYPE_CENTER ? maxCount : count);
-        widthBar = (int) (onpice * 1.182f);
-        float textSize = onpice * 0.686f;
-        paint.setTextSize(textSize);
-        paintCur.setTextSize(textSize);
-        textHeight = Util.getTextHeight(paint);
-        textLightHeight = Util.getTextHeight(paintRect);
-        setMeasuredDimension(width, height);
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        mOnepice = 1f * mHeight / mMaxCount;
+        mWidthBar = (int) (mOnepice * 1.182f);
+        float textSize = mOnepice * 0.686f;
+        mPaint.setTextSize(textSize);
+        mPaintCur.setTextSize(textSize);
+        mTextHeight = Util.getTextHeight(mPaint);
+        mTextLightHeight = Util.getTextHeight(mPaintRect);
+        setMeasuredDimension(mWidth, mHeight);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float offsetY = type == TYPE_CENTER ? height * (1 - 1f * count / maxCount) / 2 : 0;
+        float offsetY = mType == TYPE_CENTER ? mHeight * (1 - 1f * mCount / mMaxCount) / 2 : 0;
         float eX = event.getX();
         float eY = event.getY() - offsetY;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                dValid = eY >= 0 && eY <= onpice * count + 1 && eX > width - widthBar;
-                return dValid && delegate(adjustIndex(eY));
+                mDValid = eY >= 0 && eY <= mOnepice * mCount + 1 && eX > mWidth - mWidthBar;
+                return mDValid && delegate(adjustIndex(eY));
             case MotionEvent.ACTION_MOVE:
                 return delegate(adjustIndex(eY));
             case MotionEvent.ACTION_CANCEL:
@@ -174,18 +172,18 @@ public class SideBar extends View {
 
     private int adjustIndex(float eY) {
         eY = Math.max(eY, 0);
-        eY = Math.min(eY, height);
-        int i = (int) (eY / onpice);
+        eY = Math.min(eY, mHeight);
+        int i = (int) (eY / mOnepice);
         i = Math.max(i, 0);
-        i = Math.min(i, count - 1);
+        i = Math.min(i, mCount - 1);
         return i;
     }
 
     private boolean delegate(int i) {
-        if (dValid && i != index) {
-            index = i;
-            if (index != -1 && listener != null) {
-                listener.onChange(index, c[index]);
+        if (mDValid && i != mIndex) {
+            mIndex = i;
+            if (mIndex != -1 && mListener != null) {
+                mListener.onChange(mIndex, mLetters[mIndex]);
             }
             invalidate();
             return true;
@@ -193,13 +191,19 @@ public class SideBar extends View {
         return false;
     }
 
+    public void setType(int type) {
+        mType = type;
+    }
+
     public void reset(List<String> datas) {
-        if (type != TYPE_CENTER || datas == null) {
+        if (datas == null) {
             return;
         }
-        c = datas.toArray(new String[datas.size()]);
-        count = c.length;
-        invalidate();
+        mLetters = mType == TYPE_CENTER ? datas.toArray(new String[datas.size()])
+                : mDefaultLetters;
+        mMaxCount = Math.max(mDefaultMaxCount, mLetters.length);
+        mCount = mLetters.length;
+        requestLayout();
     }
 
     public interface OnLetterChangedListener {
@@ -207,6 +211,6 @@ public class SideBar extends View {
     }
 
     public void setOnLetterChangedListener(OnLetterChangedListener listener) {
-        this.listener = listener;
+        this.mListener = listener;
     }
 }

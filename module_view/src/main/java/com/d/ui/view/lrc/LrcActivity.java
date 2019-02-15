@@ -153,7 +153,7 @@ public class LrcActivity extends AppCompatActivity implements MediaPlayer.OnComp
             while ((line = br.readLine()) != null) {
                 sb.append(line + "\n");
             }
-            rows = DefaultLrcParser.getInstance().getLrcRows(sb.toString());
+            rows = DefaultLrcParser.getLrcRows(sb.toString());
             Log.d("Lrc", sb.toString());
         } catch (IOException e) {
             e.printStackTrace();

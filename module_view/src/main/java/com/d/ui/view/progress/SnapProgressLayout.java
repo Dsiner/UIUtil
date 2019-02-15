@@ -28,7 +28,7 @@ import java.util.Random;
 /**
  * Created by D on 2017/11/1.
  */
-public class SnapProgressTest extends LinearLayout {
+public class SnapProgressLayout extends LinearLayout {
     private SnapProgressBar[] spbarSnaps;
     private Random random = new Random();
     private Handler handler;
@@ -38,18 +38,18 @@ public class SnapProgressTest extends LinearLayout {
     private int index;
     private int count;
 
-    public SnapProgressTest(Context context) {
+    public SnapProgressLayout(Context context) {
         super(context);
         init(context);
     }
 
-    public SnapProgressTest(Context context, @Nullable AttributeSet attrs) {
+    public SnapProgressLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public SnapProgressTest(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SnapProgressLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
@@ -61,9 +61,9 @@ public class SnapProgressTest extends LinearLayout {
     }
 
     static class Task implements Runnable {
-        WeakReference<SnapProgressTest> weakRef;
+        WeakReference<SnapProgressLayout> weakRef;
 
-        Task(SnapProgressTest activity) {
+        Task(SnapProgressLayout activity) {
             weakRef = new WeakReference<>(activity);
         }
 
@@ -72,7 +72,7 @@ public class SnapProgressTest extends LinearLayout {
             if (isFinished()) {
                 return;
             }
-            SnapProgressTest ref = weakRef.get();
+            SnapProgressLayout ref = weakRef.get();
             ref.doTask();
             ref.handler.postDelayed(ref.task, 1000);
         }

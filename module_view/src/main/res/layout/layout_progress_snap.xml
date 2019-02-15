@@ -2,43 +2,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
     android:orientation="vertical">
 
-    <com.d.lib.ui.view.progress.SnapProgressBar
-        android:id="@+id/spbar_snap_scanning"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="@dimen/lib_pub_dimen_margin" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lib_pub_dimen_margin">
 
-    <com.d.lib.ui.view.progress.SnapProgressBar
-        android:id="@+id/spbar_snap_padding"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="@dimen/lib_pub_dimen_margin" />
+        <com.d.lib.ui.view.progress.SnapProgressBar
+            android:id="@+id/spbar_snap_scanning"
+            android:layout_width="45dp"
+            android:layout_height="45dp" />
 
-    <com.d.lib.ui.view.progress.SnapProgressBar
-        android:id="@+id/spbar_snap_done"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="@dimen/lib_pub_dimen_margin" />
+        <com.d.lib.ui.view.progress.SnapProgressBar
+            android:id="@+id/spbar_snap_padding"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="-9dp"
+            android:layout_toRightOf="@+id/spbar_snap_scanning" />
 
-    <com.d.lib.ui.view.progress.SnapProgressBar
-        android:id="@+id/spbar_snap_error"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="@dimen/lib_pub_dimen_margin" />
+        <com.d.lib.ui.view.progress.SnapProgressBar
+            android:id="@+id/spbar_snap_done"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="-9dp"
+            android:layout_toRightOf="@+id/spbar_snap_padding" />
 
-    <com.d.lib.ui.view.progress.SnapProgressBar
-        android:id="@+id/spbar_snap_progress"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="@dimen/lib_pub_dimen_margin" />
+        <com.d.lib.ui.view.progress.SnapProgressBar
+            android:id="@+id/spbar_snap_error"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="-9dp"
+            android:layout_toRightOf="@+id/spbar_snap_done" />
+
+        <com.d.lib.ui.view.progress.SnapProgressBar
+            android:id="@+id/spbar_snap_progress"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="-9dp"
+            android:layout_toRightOf="@+id/spbar_snap_error" />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/lib_pub_dimen_margin"
         android:layout_marginTop="@dimen/lib_pub_dimen_margin"
         android:text="Start" />
 </LinearLayout>

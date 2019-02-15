@@ -129,11 +129,11 @@ public class PraiseLayout extends RelativeLayout {
     public void setMarginLeft(boolean isPortrait) {
         if (isPortrait) {
             // 竖屏
-            marginLeft = Util.dip2px(getContext(), 275);
+            marginLeft = Util.dip2px(getContext(), 145);
             marginBottom = Util.dip2px(getContext(), 22);
         } else {
             // 横屏
-            marginLeft = Util.dip2px(getContext(), 275 + 14);
+            marginLeft = Util.dip2px(getContext(), 145 + 14);
             marginBottom = Util.dip2px(getContext(), 25);
         }
     }

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.d.lib.common.utils.Util;
+import com.d.lib.common.utils.ViewHelper;
 import com.d.lib.common.utils.log.ULog;
 import com.d.lib.ui.layout.praise.IPraise;
 import com.d.lib.ui.layout.praise.PraiseLayout;
@@ -84,7 +85,13 @@ public class PraiseActivity extends Activity {
     }
 
     private void initClick() {
-        findViewById(R.id.btn_praise).setOnClickListener(new View.OnClickListener() {
+        ViewHelper.setOnClick(this, R.id.llyt_do_praise, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        ViewHelper.setOnClick(this, R.id.llyt_do_praise, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int posLiving = adapter.getPosLiving();

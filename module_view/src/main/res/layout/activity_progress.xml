@@ -30,7 +30,7 @@
                 android:textColor="@color/lib_pub_color_text_main"
                 android:textSize="@dimen/lib_pub_dimen_text_sub" />
 
-            <com.d.ui.view.vs.VSViewTest
+            <com.d.ui.view.vs.VSViewLayout
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
                 android:layout_margin="@dimen/lib_pub_dimen_margin"
@@ -84,7 +84,7 @@
                 android:textColor="@color/lib_pub_color_text_main"
                 android:textSize="@dimen/lib_pub_dimen_text_sub" />
 
-            <com.d.ui.view.progress.SnapProgressTest
+            <com.d.ui.view.progress.SnapProgressLayout
                 android:id="@+id/snap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -99,7 +99,7 @@
                 android:textColor="@color/lib_pub_color_text_main"
                 android:textSize="@dimen/lib_pub_dimen_text_sub" />
 
-            <com.d.ui.view.progress.CircleProgressTest
+            <com.d.ui.view.progress.CircleProgressLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

@@ -23,4 +23,37 @@
         app:lib_ui_view_replybv_radius="4dp"
         app:lib_ui_view_replybv_trgHeight="4dp"
         app:lib_ui_view_replybv_trgWidth="9dp" />
+
+    <com.d.lib.ui.view.replybg.ReplyBgView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_margin="@dimen/lib_pub_dimen_margin"
+        app:lib_ui_view_replybv_color="@color/lib_pub_color_main"
+        app:lib_ui_view_replybv_gravity="bottom"
+        app:lib_ui_view_replybv_offset="6dp"
+        app:lib_ui_view_replybv_radius="4dp"
+        app:lib_ui_view_replybv_trgHeight="4dp"
+        app:lib_ui_view_replybv_trgWidth="9dp" />
+
+    <com.d.lib.ui.view.replybg.ReplyBgView
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_margin="@dimen/lib_pub_dimen_margin"
+        app:lib_ui_view_replybv_color="@color/lib_pub_color_main"
+        app:lib_ui_view_replybv_gravity="left"
+        app:lib_ui_view_replybv_offset="-8dp"
+        app:lib_ui_view_replybv_radius="6dp"
+        app:lib_ui_view_replybv_trgHeight="8dp"
+        app:lib_ui_view_replybv_trgWidth="18dp" />
+
+    <com.d.lib.ui.view.replybg.ReplyBgView
+        android:layout_width="105dp"
+        android:layout_height="45dp"
+        android:layout_margin="@dimen/lib_pub_dimen_margin"
+        app:lib_ui_view_replybv_color="@color/lib_pub_color_main"
+        app:lib_ui_view_replybv_gravity="right"
+        app:lib_ui_view_replybv_offset="8dp"
+        app:lib_ui_view_replybv_radius="6dp"
+        app:lib_ui_view_replybv_trgHeight="8dp"
+        app:lib_ui_view_replybv_trgWidth="18dp" />
 </LinearLayout>

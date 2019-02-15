@@ -15,15 +15,99 @@
         android:layout_height="70dp"
         android:layout_below="@+id/player" />
 
-    <Button
-        android:id="@+id/btn_praise"
-        android:layout_width="65dp"
-        android:layout_height="45dp"
+    <LinearLayout
+        android:id="@+id/llyt_tools"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="15dp"
-        android:layout_marginRight="25dp"
-        android:text="Click" />
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/lib_ui_layout_living_back" />
+
+        <View
+            android:id="@+id/s_bottom_0"
+            android:layout_width="7dp"
+            android:layout_height="1px"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_bullet_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_back"
+            android:background="@drawable/lib_ui_layout_living_bullet" />
+
+        <View
+            android:id="@+id/s_bottom_1"
+            android:layout_width="7dp"
+            android:layout_height="1px"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/llyt_do_praise"
+            android:layout_width="63dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/lib_ui_layout_living_corner_bg_like"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_living_tea"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/lib_ui_layout_living_avatar" />
+
+            <ImageView
+                android:id="@+id/iv_heart"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/lib_ui_layout_living_tr_live_kx" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/s_bottom_2"
+            android:layout_width="7dp"
+            android:layout_height="1px"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/iv_reward"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/lib_ui_layout_living_reward"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/s_bottom_3"
+            android:layout_width="7dp"
+            android:layout_height="1px"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_send_message"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/lib_ui_layout_living_question" />
+    </LinearLayout>
 
     <com.d.lib.ui.layout.praise.PraiseLayout
         android:id="@+id/pl_praise"
