@@ -204,6 +204,7 @@ public class SideBar extends View {
         mMaxCount = Math.max(mDefaultMaxCount, mLetters.length);
         mCount = mLetters.length;
         requestLayout();
+        invalidate();
     }
 
     public interface OnLetterChangedListener {
