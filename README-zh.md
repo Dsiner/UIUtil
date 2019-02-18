@@ -30,14 +30,14 @@ Name | Explain | Demo
 [PoiLayout](lib_layout/src/main/java/com/d/lib/ui/layout/poi/PoiLayout.java) | 地图列表Poi、抽屉效果 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/poi/poi.gif" width="49%">
 [ClockSetView](lib_view/src/main/java/com/d/lib/ui/view/clock/ClockSetView.java) | 时钟设置 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/clock/clockset.gif" width="49%">
 [RefreshLayout](https://github.com/Dsiner/RefreshLayout) | RefreshLayout |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/RefreshLayout/refreshlayout.gif" width="49%">
-[Component-UI-Title](https://github.com/Dsiner/Common) | Title |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-title.png" width="49%">
-[Component-UI-Ds](https://github.com/Dsiner/Common) | DS |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-ds.gif" width="49%">
-[Component-UI-Row](https://github.com/Dsiner/Common) | Row |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-row.png" width="49%">
-[Component-UI-Tab](https://github.com/Dsiner/Common) | Tab |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-tab.png" width="49%">
-[Component-UI-Alert](https://github.com/Dsiner/Common) | Alert |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-alert.gif" width="49%">
-[Component-UI-Sheet](https://github.com/Dsiner/Common) | Sheet |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-sheet.gif" width="49%">
-[Component-UI-Button](https://github.com/Dsiner/Common) | Button |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-button.gif" width="49%">
-[Component-UI-Status](https://github.com/Dsiner/Common) | Status |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-status.png" width="49%">
+[Component-UI-Title](https://github.com/Dsiner/Common) | 标题栏 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-title.png" width="49%">
+[Component-UI-Ds](https://github.com/Dsiner/Common) | 默认态 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-ds.gif" width="49%">
+[Component-UI-Row](https://github.com/Dsiner/Common) | Row行 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-row.png" width="49%">
+[Component-UI-Tab](https://github.com/Dsiner/Common) | Table |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-tab.gif" width="49%">
+[Component-UI-Alert](https://github.com/Dsiner/Common) | 弹窗 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-alert.gif" width="49%">
+[Component-UI-Sheet](https://github.com/Dsiner/Common) | 交互弹窗 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-sheet.gif" width="49%">
+[Component-UI-Button](https://github.com/Dsiner/Common) | 按钮 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-button.gif" width="49%">
+[Component-UI-Status](https://github.com/Dsiner/Common) | 状态 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-status.png" width="49%">
 
 More usage see [demo](app/src/main/java/com/d/uiutil/MainActivity.java)
 
