@@ -9,7 +9,7 @@ List
 Name | Explain | Demo
 --- | --- | ---
 [LrcView](lib_view/src/main/java/com/d/lib/ui/view/lrc/LrcView.java) | Lrc |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/lrc/lrc.gif" width="49%">
-[SideBar](lib_view/src/main/java/com/d/lib/ui/view/sort/SideBar.java) | Contact sort |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort-center.gif" width="49%"> <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort-center.gif" width="49%">
+[SideBar](lib_view/src/main/java/com/d/lib/ui/view/sort/SideBar.java) | Contact sort |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort-center.gif" width="49%"> <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort.gif" width="49%">
 [CTickView](lib_view/src/main/java/com/d/lib/ui/view/tick/CTickView.java) | Tick |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/tick/tick.gif" width="49%">
 [ToggleButton](lib_view/src/main/java/com/d/lib/ui/view/togglebutton/ToggleButton.java) | Button button (slide optional) |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/togglebutton/togglebutton.gif" width="49%">
 [ReplyBgView](lib_view/src/main/java/com/d/lib/ui/view/replybg/ReplyBgView.java) | Reply message background |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/replybg/replybg.png" width="49%">
@@ -21,9 +21,8 @@ Name | Explain | Demo
 [SlideLayout](https://github.com/Dsiner/SlideLayout) | Skid delete/menu controls |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/SlideLayout/slidelayout.gif" width="49%">
 [TabView](https://github.com/Dsiner/TabView) | Slide indicator/button/TAB control |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/TabView/tabview.gif" width="49%">
 [SettingProgress](lib_view/src/main/java/com/d/lib/ui/view/progress/SettingProgressView.java) | Progress, Level |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/progress/settingprogress.gif" width="100%">
-[SnapProgressBar](lib_view/src/main/java/com/d/lib/ui/view/progress/SnapProgressBar.java) | Progress, Album, Snap |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/progress/snap.gif" width="100%">
-[CircleProgressBar](lib_view/src/main/java/com/d/lib/ui/view/progress/SettingProgressView.java) | Progress, Circle, Download |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/progress/circle.gif" width="100%">
-
+[SnapProgressBar](lib_view/src/main/java/com/d/lib/ui/view/progress/SnapProgressBar.java) | Progress, Album, Snap |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/progress/snap.gif" width="49%">
+[CircleProgressBar](lib_view/src/main/java/com/d/lib/ui/view/progress/SettingProgressView.java) | Progress, Circle, Download |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/progress/circle.gif" width="49%">
 [Praise](lib_layout/src/main/java/com/d/lib/ui/layout/praise/PraiseLayout.java) | Praise |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/praise/praise.gif" width="49%">
 [Shadow](lib_layout/src/main/java/com/d/lib/ui/layout/shadow/ShadowLayout.java) | Shadow effect |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/shadow/shadow.png" width="49%">
 [RecordTrigger](lib/src/main/java/com/d/lib/ui/view/recordtrigger/RecordTriggerView.java) | Voice Trigger |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/recordtrigger/recordtrigger.gif" width="49%">
