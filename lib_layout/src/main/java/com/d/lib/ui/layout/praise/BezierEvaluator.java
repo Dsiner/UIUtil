@@ -9,12 +9,12 @@ import com.nineoldandroids.animation.TypeEvaluator;
  */
 class BezierEvaluator implements TypeEvaluator<PointF> {
 
-    private PointF pointF1;
-    private PointF pointF2;
+    private PointF mPointF1;
+    private PointF mPointF2;
 
     BezierEvaluator(PointF pointF1, PointF pointF2) {
-        this.pointF1 = pointF1;
-        this.pointF2 = pointF2;
+        this.mPointF1 = pointF1;
+        this.mPointF2 = pointF2;
     }
 
     @Override
@@ -25,13 +25,13 @@ class BezierEvaluator implements TypeEvaluator<PointF> {
         PointF point = new PointF();
 
         point.x = timeLeft * timeLeft * timeLeft * (startValue.x)
-                + 3 * timeLeft * timeLeft * time * (pointF1.x)
-                + 3 * timeLeft * time * time * (pointF2.x)
+                + 3 * timeLeft * timeLeft * time * (mPointF1.x)
+                + 3 * timeLeft * time * time * (mPointF2.x)
                 + time * time * time * (endValue.x);
 
         point.y = timeLeft * timeLeft * timeLeft * (startValue.y)
-                + 3 * timeLeft * timeLeft * time * (pointF1.y)
-                + 3 * timeLeft * time * time * (pointF2.y)
+                + 3 * timeLeft * timeLeft * time * (mPointF1.y)
+                + 3 * timeLeft * time * time * (mPointF2.y)
                 + time * time * time * (endValue.y);
         return point;
     }

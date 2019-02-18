@@ -85,7 +85,7 @@ public class PraiseActivity extends Activity {
     }
 
     private void initClick() {
-        ViewHelper.setOnClick(this, R.id.llyt_do_praise, new View.OnClickListener() {
+        ViewHelper.setOnClick(this, R.id.iv_back, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();

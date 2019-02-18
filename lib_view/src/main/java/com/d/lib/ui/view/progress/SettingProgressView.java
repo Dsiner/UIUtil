@@ -20,32 +20,32 @@ import com.d.lib.ui.view.R;
  * Created by D on 2016/7/7.
  */
 public class SettingProgressView extends View {
-    private int width;
-    private int height;
+    private int mWidth;
+    private int mHeight;
 
-    private Paint paint;
-    private Paint paintShader; // 用于绘制当前选中的渐变阴影
-    private int itemCount;
-    private int colorSelected;
-    private int colorUnselected;
-    private float radiusSmall;
-    private float radiusBig;
-    private float radiusSpace;
-    private float lineHeight; // 中间连接线高度
-    private float shadeRadius; // 渐变阴影的宽度
-    private float itemWidth;
-    private float firstItemRange;
-    private float bigRadiusWidth;
-    private int curColor; // 当前选中的颜色
-    private int curPosition;
-    private int clickPosition;
-    private int touchSlop;
-    private boolean canDrag;
-    private boolean isClickValid; // 点击是否有效
-    private float divX, divY; // 当前Move位置
-    private float lastX;
-    private float lastY;
-    private OnProgressChangeListener listener;
+    private Paint mPaint;
+    private Paint mPaintShader; // 用于绘制当前选中的渐变阴影
+    private int mItemCount;
+    private int mColorSelected;
+    private int mColorUnselected;
+    private float mRadiusSmall;
+    private float mRadiusBig;
+    private float mRadiusSpace;
+    private float mLineHeight; // 中间连接线高度
+    private float mShadeRadius; // 渐变阴影的宽度
+    private float mItemWidth;
+    private float mFirstItemRange;
+    private float mBigRadiusWidth;
+    private int mCurColor; // 当前选中的颜色
+    private int mCurPosition;
+    private int mClickPosition;
+    private int mTouchSlop;
+    private boolean mCanDrag;
+    private boolean mIsClickValid; // 点击是否有效
+    private float mDivX, mDivY; // 当前Move位置
+    private float mLastX;
+    private float mLastY;
+    private OnProgressChangeListener mListener;
 
     public SettingProgressView(Context context) {
         super(context, null);
@@ -58,12 +58,12 @@ public class SettingProgressView extends View {
     public SettingProgressView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_SettingProgressView);
-        itemCount = typedArray.getInteger(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_count, 5);
-        colorSelected = typedArray.getColor(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_colorSelect, Color.parseColor("#69B068"));
-        colorUnselected = typedArray.getColor(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_colorUnselect, Color.GRAY);
-        radiusSmall = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSmall, Util.dip2px(context, 5));
-        radiusBig = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusBig, Util.dip2px(context, 10));
-        radiusSpace = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSpace, Util.dip2px(context, 2));
+        mItemCount = typedArray.getInteger(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_count, 5);
+        mColorSelected = typedArray.getColor(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_colorSelect, Color.parseColor("#69B068"));
+        mColorUnselected = typedArray.getColor(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_colorUnselect, Color.GRAY);
+        mRadiusSmall = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSmall, Util.dip2px(context, 5));
+        mRadiusBig = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusBig, Util.dip2px(context, 10));
+        mRadiusSpace = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSpace, Util.dip2px(context, 2));
         typedArray.recycle();
         init(context);
     }
@@ -73,54 +73,54 @@ public class SettingProgressView extends View {
             // 禁用硬件加速
             setLayerType(LAYER_TYPE_SOFTWARE, null);
         }
-        touchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-        lineHeight = Util.dip2px(context, 2);
-        shadeRadius = Util.dip2px(context, 5);
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintShader = new Paint(Paint.ANTI_ALIAS_FLAG);
-        curColor = Color.WHITE;
-        paintShader.setColor(curColor);
-        paintShader.setShadowLayer(shadeRadius, 0, 0, colorUnselected);
+        mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+        mLineHeight = Util.dip2px(context, 2);
+        mShadeRadius = Util.dip2px(context, 5);
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintShader = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mCurColor = Color.WHITE;
+        mPaintShader.setColor(mCurColor);
+        mPaintShader.setShadowLayer(mShadeRadius, 0, 0, mColorUnselected);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        paint.setColor(colorUnselected);
-        itemWidth = (width - (radiusSpace + radiusBig) * 2) / (itemCount - 1);
-        float startx = radiusSpace + radiusBig;
-        float starty = height / 2 - lineHeight / 2;
+        mPaint.setColor(mColorUnselected);
+        mItemWidth = (mWidth - (mRadiusSpace + mRadiusBig) * 2) / (mItemCount - 1);
+        float startx = mRadiusSpace + mRadiusBig;
+        float starty = mHeight / 2 - mLineHeight / 2;
         float endx;
-        float endy = starty + lineHeight;
-        if (canDrag) {
-            endx = divX;
+        float endy = starty + mLineHeight;
+        if (mCanDrag) {
+            endx = mDivX;
         } else {
-            endx = radiusSpace + radiusBig + itemWidth * curPosition;
+            endx = mRadiusSpace + mRadiusBig + mItemWidth * mCurPosition;
         }
-        canvas.drawRect(startx, starty, endx, endy, paint);
+        canvas.drawRect(startx, starty, endx, endy, mPaint);
 
-        paint.setColor(colorSelected);
-        canvas.drawRect(endx, starty, width - radiusSpace - radiusBig, endy, paint);
+        mPaint.setColor(mColorSelected);
+        canvas.drawRect(endx, starty, mWidth - mRadiusSpace - mRadiusBig, endy, mPaint);
 
-        starty += lineHeight / 2;
-        for (int i = 0; i < itemCount; i++) {
-            startx = radiusBig + radiusSpace + itemWidth * i;
-            if (i == curPosition) {
-                if (canDrag) {
-                    if (divX > startx) {
-                        drawCircle(canvas, colorUnselected, startx, starty);
-                    } else if (divX < startx) {
-                        drawCircle(canvas, colorSelected, startx, starty);
+        starty += mLineHeight / 2;
+        for (int i = 0; i < mItemCount; i++) {
+            startx = mRadiusBig + mRadiusSpace + mItemWidth * i;
+            if (i == mCurPosition) {
+                if (mCanDrag) {
+                    if (mDivX > startx) {
+                        drawCircle(canvas, mColorUnselected, startx, starty);
+                    } else if (mDivX < startx) {
+                        drawCircle(canvas, mColorSelected, startx, starty);
                     }
-                    paint.setColor(colorSelected);
-                    canvas.drawCircle(divX, starty, radiusBig + radiusSpace - shadeRadius, paint);
+                    mPaint.setColor(mColorSelected);
+                    canvas.drawCircle(mDivX, starty, mRadiusBig + mRadiusSpace - mShadeRadius, mPaint);
                 } else {
-                    canvas.drawCircle(startx, starty, radiusBig + radiusSpace - shadeRadius, paintShader);
+                    canvas.drawCircle(startx, starty, mRadiusBig + mRadiusSpace - mShadeRadius, mPaintShader);
                 }
-            } else if (i < curPosition) {
-                drawCircle(canvas, colorUnselected, startx, starty);
+            } else if (i < mCurPosition) {
+                drawCircle(canvas, mColorUnselected, startx, starty);
             } else {
-                drawCircle(canvas, colorSelected, startx, starty);
+                drawCircle(canvas, mColorSelected, startx, starty);
             }
         }
     }
@@ -129,107 +129,107 @@ public class SettingProgressView extends View {
      * 绘制圆
      */
     private void drawCircle(Canvas canvas, int color, float startx, float starty) {
-        paint.setColor(color);
-        canvas.drawCircle(startx, starty, radiusSmall + radiusSpace, paint);
-        paint.setColor(color);
-        canvas.drawCircle(startx, starty, radiusSmall, paint);
+        mPaint.setColor(color);
+        canvas.drawCircle(startx, starty, mRadiusSmall + mRadiusSpace, mPaint);
+        mPaint.setColor(color);
+        canvas.drawCircle(startx, starty, mRadiusSmall, mPaint);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        setMeasuredDimension(width, height);
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        setMeasuredDimension(mWidth, mHeight);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        firstItemRange = radiusBig + radiusSpace + itemWidth / 2;
-        bigRadiusWidth = (radiusBig + radiusSpace) * 2;
+        mFirstItemRange = mRadiusBig + mRadiusSpace + mItemWidth / 2;
+        mBigRadiusWidth = (mRadiusBig + mRadiusSpace) * 2;
         int position = 0;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                lastX = divX = event.getX();
-                lastY = divY = event.getY();
-                clickPosition = -1;
-                if (event.getX() < bigRadiusWidth) {
-                    clickPosition = 0;
-                } else if (event.getX() >= width - bigRadiusWidth) {
-                    clickPosition = itemCount - 1;
-                } else if (event.getX() >= firstItemRange) {
-                    clickPosition = (int) ((event.getX() - firstItemRange) / itemWidth) + 1;
-                    if (!(Math.abs(bigRadiusWidth / 2 + itemWidth * clickPosition - event.getX()) <= bigRadiusWidth / 2)) {
-                        clickPosition = -1; // 未点中大圆范围内
+                mLastX = mDivX = event.getX();
+                mLastY = mDivY = event.getY();
+                mClickPosition = -1;
+                if (event.getX() < mBigRadiusWidth) {
+                    mClickPosition = 0;
+                } else if (event.getX() >= mWidth - mBigRadiusWidth) {
+                    mClickPosition = mItemCount - 1;
+                } else if (event.getX() >= mFirstItemRange) {
+                    mClickPosition = (int) ((event.getX() - mFirstItemRange) / mItemWidth) + 1;
+                    if (!(Math.abs(mBigRadiusWidth / 2 + mItemWidth * mClickPosition - event.getX()) <= mBigRadiusWidth / 2)) {
+                        mClickPosition = -1; // 未点中大圆范围内
                     }
                 }
-                if (clickPosition == curPosition) {
-                    canDrag = true;
-                    isClickValid = false; // 点击无效，交给ACTION_MOVE处理
-                    if (divX < bigRadiusWidth / 2) {
-                        divX = bigRadiusWidth / 2;
+                if (mClickPosition == mCurPosition) {
+                    mCanDrag = true;
+                    mIsClickValid = false; // 点击无效，交给ACTION_MOVE处理
+                    if (mDivX < mBigRadiusWidth / 2) {
+                        mDivX = mBigRadiusWidth / 2;
                     }
-                    if (divX > width - bigRadiusWidth / 2) {
-                        divX = width - bigRadiusWidth / 2;
+                    if (mDivX > mWidth - mBigRadiusWidth / 2) {
+                        mDivX = mWidth - mBigRadiusWidth / 2;
                     }
                     invalidate();
                 } else {
-                    canDrag = false;
-                    isClickValid = true; // 点击有效，交给ACTION_UP处理
+                    mCanDrag = false;
+                    mIsClickValid = true; // 点击有效，交给ACTION_UP处理
                 }
                 return true;
             case MotionEvent.ACTION_MOVE:
-                if (!canDrag) {
+                if (!mCanDrag) {
                     return true;
                 }
                 // Disable parent view interception events
                 getParent().requestDisallowInterceptTouchEvent(true);
-                divX = event.getX();
-                divY = event.getY();
-                if (divX < bigRadiusWidth / 2) {
-                    divX = bigRadiusWidth / 2;
+                mDivX = event.getX();
+                mDivY = event.getY();
+                if (mDivX < mBigRadiusWidth / 2) {
+                    mDivX = mBigRadiusWidth / 2;
                 }
-                if (divX > width - bigRadiusWidth / 2) {
-                    divX = width - bigRadiusWidth / 2;
+                if (mDivX > mWidth - mBigRadiusWidth / 2) {
+                    mDivX = mWidth - mBigRadiusWidth / 2;
                 }
-                isClickValid = false; // 只要移动，点击无效，交给ACTION_UP处理
-                if (event.getX() >= width - firstItemRange) {
-                    position = itemCount - 1;
-                } else if (event.getX() >= firstItemRange) {
-                    position = (int) ((event.getX() - firstItemRange) / itemWidth) + 1;
+                mIsClickValid = false; // 只要移动，点击无效，交给ACTION_UP处理
+                if (event.getX() >= mWidth - mFirstItemRange) {
+                    position = mItemCount - 1;
+                } else if (event.getX() >= mFirstItemRange) {
+                    position = (int) ((event.getX() - mFirstItemRange) / mItemWidth) + 1;
                 }
-                if (curPosition != position) {
-                    curPosition = position;
-                    if (listener != null) {
-                        listener.onProgressChange(curPosition);
+                if (mCurPosition != position) {
+                    mCurPosition = position;
+                    if (mListener != null) {
+                        mListener.onProgressChange(mCurPosition);
                     }
                 }
                 invalidate();
                 return true;
             case MotionEvent.ACTION_UP:
-                canDrag = false;
-                if (!isClickValid) {
+                mCanDrag = false;
+                if (!mIsClickValid) {
                     invalidate();
-                    if (listener != null) {
-                        listener.onClick(curPosition);
+                    if (mListener != null) {
+                        mListener.onClick(mCurPosition);
                     }
                     return true;
                 } else {
-                    if (Math.abs(event.getX() - lastX) >= touchSlop || Math.abs(event.getY() - lastY) >= touchSlop) {
+                    if (Math.abs(event.getX() - mLastX) >= mTouchSlop || Math.abs(event.getY() - mLastY) >= mTouchSlop) {
                         return true;
                     }
                 }
-                if (event.getX() >= width - firstItemRange) {
-                    position = itemCount - 1;
-                } else if (event.getX() >= firstItemRange) {
-                    position = (int) ((event.getX() - firstItemRange) / itemWidth) + 1;
+                if (event.getX() >= mWidth - mFirstItemRange) {
+                    position = mItemCount - 1;
+                } else if (event.getX() >= mFirstItemRange) {
+                    position = (int) ((event.getX() - mFirstItemRange) / mItemWidth) + 1;
                 }
-                if (curPosition != position) {
-                    curPosition = position;
+                if (mCurPosition != position) {
+                    mCurPosition = position;
                 }
                 invalidate();
-                if (listener != null) {
-                    listener.onClick(curPosition);
+                if (mListener != null) {
+                    mListener.onClick(mCurPosition);
                 }
                 return true;
         }
@@ -240,7 +240,7 @@ public class SettingProgressView extends View {
      * 设置当前选中
      */
     public SettingProgressView setCurPosition(int curPosition) {
-        this.curPosition = curPosition;
+        this.mCurPosition = curPosition;
         return this;
     }
 
@@ -258,6 +258,6 @@ public class SettingProgressView extends View {
     }
 
     public void setOnProgressChangeListener(OnProgressChangeListener listener) {
-        this.listener = listener;
+        this.mListener = listener;
     }
 }

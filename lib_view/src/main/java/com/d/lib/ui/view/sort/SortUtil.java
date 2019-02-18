@@ -20,12 +20,12 @@ import java.util.Map;
  * Created by D on 2017/6/7.
  */
 public class SortUtil {
-    private List<SortBean> datas;
-    private Map<String, int[]> letterMap;
-    private int lastFirstVisibleItem = -1;
+    private List<SortBean> mDatas;
+    private Map<String, int[]> mLetterMap;
+    private int mLastFirstVisibleItem = -1;
 
     public void onScrolled(RecyclerView recyclerView, View layout, TextView tvLetter) {
-        if (recyclerView == null || layout == null || tvLetter == null || letterMap == null || datas == null) {
+        if (recyclerView == null || layout == null || tvLetter == null || mLetterMap == null || mDatas == null) {
             return;
         }
         RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
@@ -34,13 +34,13 @@ public class SortUtil {
         }
         int firstVisibleItemPosition = ((LinearLayoutManager) manager).findFirstVisibleItemPosition();
 
-        int[] value = letterMap.get(datas.get(firstVisibleItemPosition).letter);
+        int[] value = mLetterMap.get(mDatas.get(firstVisibleItemPosition).letter);
         int nextSectionPosition = value != null ? value[1] : -1;
-        if (firstVisibleItemPosition != lastFirstVisibleItem) {
+        if (firstVisibleItemPosition != mLastFirstVisibleItem) {
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) layout.getLayoutParams();
             params.topMargin = 0;
             layout.setLayoutParams(params);
-            tvLetter.setText(datas.get(firstVisibleItemPosition).letter);
+            tvLetter.setText(mDatas.get(firstVisibleItemPosition).letter);
         }
         if (nextSectionPosition == firstVisibleItemPosition + 1) {
             View childView = recyclerView.getChildAt(0);
@@ -60,11 +60,11 @@ public class SortUtil {
                 }
             }
         }
-        lastFirstVisibleItem = firstVisibleItemPosition;
+        mLastFirstVisibleItem = firstVisibleItemPosition;
     }
 
     public void onChange(int index, String c, RecyclerView recyclerView) {
-        if (recyclerView == null || letterMap == null) {
+        if (recyclerView == null || mLetterMap == null) {
             return;
         }
         RecyclerView.LayoutManager lm = recyclerView.getLayoutManager();
@@ -76,7 +76,7 @@ public class SortUtil {
             manager.scrollToPositionWithOffset(0, 0); // 置顶
             return;
         }
-        int[] value = letterMap.get(c);
+        int[] value = mLetterMap.get(c);
         if (value != null) {
             manager.scrollToPositionWithOffset(value[0], 0);
         }
@@ -87,7 +87,7 @@ public class SortUtil {
      * @return letters
      */
     public List<String> sortDatas(List<SortBean> list) {
-        letterMap = new LinkedHashMap<>();
+        mLetterMap = new LinkedHashMap<>();
         if (list == null || list.size() <= 0) {
             return new ArrayList<>();
         }
@@ -118,11 +118,11 @@ public class SortUtil {
                     value[1] = i;
                 }
                 value = new int[]{i, -1};
-                letterMap.put(key, value);
+                mLetterMap.put(key, value);
             }
         }
-        datas = list;
-        return getLetters(letterMap);
+        mDatas = list;
+        return getLetters(mLetterMap);
     }
 
     private List<String> getLetters(Map<String, int[]> letterMap) {

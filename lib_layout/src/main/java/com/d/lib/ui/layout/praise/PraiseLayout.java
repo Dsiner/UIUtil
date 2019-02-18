@@ -28,18 +28,18 @@ import java.util.Random;
  */
 public class PraiseLayout extends RelativeLayout {
 
-    private IPraise iPraise;
+    private IPraise mIPraise;
     private int mHeight;
     private int mWidth;
-    private int dHeight; // 图片高度
-    private int dWidth; // 图片宽度
-    private int marginLeft;
-    private int marginBottom;
-    private Drawable heart;
-    private RelativeLayout.LayoutParams lp;
-    private Interpolator line = new LinearInterpolator(); // 线性
-    private Random random = new Random();
-    private int endPX;
+    private int mDHeight; // 图片高度
+    private int mDWidth; // 图片宽度
+    private int mMarginLeft;
+    private int mMarginBottom;
+    private Drawable mHeart;
+    private RelativeLayout.LayoutParams mLp;
+    private Interpolator mLine = new LinearInterpolator(); // 线性
+    private Random mRandom = new Random();
+    private int mEndPX;
 
     public PraiseLayout(Context context) {
         super(context);
@@ -57,13 +57,13 @@ public class PraiseLayout extends RelativeLayout {
     }
 
     private void init() {
-        heart = ContextCompat.getDrawable(getContext(), R.drawable.lib_ui_layout_pl_ic_heart);
-        dHeight = Util.dip2px(getContext(), 15);
-        dWidth = Util.dip2px(getContext(), 15);
+        mHeart = ContextCompat.getDrawable(getContext(), R.drawable.lib_ui_layout_pl_ic_heart);
+        mDHeight = Util.dip2px(getContext(), 15);
+        mDWidth = Util.dip2px(getContext(), 15);
         setMarginLeft(true);
-        lp = new RelativeLayout.LayoutParams(dWidth, dHeight);
-        lp.addRule(ALIGN_PARENT_BOTTOM, TRUE);
-        lp.setMargins(marginLeft, 0, 0, marginBottom);
+        mLp = new RelativeLayout.LayoutParams(mDWidth, mDHeight);
+        mLp.addRule(ALIGN_PARENT_BOTTOM, TRUE);
+        mLp.setMargins(mMarginLeft, 0, 0, mMarginBottom);
     }
 
     @Override
@@ -76,8 +76,8 @@ public class PraiseLayout extends RelativeLayout {
 
     public void addHeart(String usrId) {
         ImageView imageView = new ImageView(getContext());
-        imageView.setImageDrawable(heart);
-        imageView.setLayoutParams(lp);
+        imageView.setImageDrawable(mHeart);
+        imageView.setLayoutParams(mLp);
         imageView.setTag(usrId);
         addView(imageView);
         Animator set = getAnimator(imageView);
@@ -89,7 +89,7 @@ public class PraiseLayout extends RelativeLayout {
         ValueAnimator bezierValueAnimator = getBezierValueAnimator(target);
         AnimatorSet finalSet = new AnimatorSet();
         finalSet.playSequentially(bezierValueAnimator);
-        finalSet.setInterpolator(line);
+        finalSet.setInterpolator(mLine);
         finalSet.setTarget(target);
         return finalSet;
     }
@@ -102,7 +102,7 @@ public class PraiseLayout extends RelativeLayout {
      */
     private ValueAnimator getBezierValueAnimator(View target) {
         BezierEvaluator evaluator = new BezierEvaluator(getPointF(2), getPointF(1));
-        ValueAnimator animator = ValueAnimator.ofObject(evaluator, new PointF(marginLeft, mHeight - marginBottom - dHeight), new PointF(endPX, -dHeight));
+        ValueAnimator animator = ValueAnimator.ofObject(evaluator, new PointF(mMarginLeft, mHeight - mMarginBottom - mDHeight), new PointF(mEndPX, -mDHeight));
         animator.addUpdateListener(new BezierListener(target));
         animator.setTarget(target);
         animator.setDuration(1500);
@@ -116,8 +116,8 @@ public class PraiseLayout extends RelativeLayout {
      */
     private PointF getPointF(int scale) {
         PointF pointF = new PointF();
-        pointF.x = random.nextInt(mWidth);
-        pointF.y = random.nextInt(mHeight) / scale;
+        pointF.x = mRandom.nextInt(mWidth);
+        pointF.y = mRandom.nextInt(mHeight) / scale;
         return pointF;
     }
 
@@ -129,12 +129,12 @@ public class PraiseLayout extends RelativeLayout {
     public void setMarginLeft(boolean isPortrait) {
         if (isPortrait) {
             // 竖屏
-            marginLeft = Util.dip2px(getContext(), 145);
-            marginBottom = Util.dip2px(getContext(), 22);
+            mMarginLeft = Util.dip2px(getContext(), 145);
+            mMarginBottom = Util.dip2px(getContext(), 22);
         } else {
             // 横屏
-            marginLeft = Util.dip2px(getContext(), 145 + 14);
-            marginBottom = Util.dip2px(getContext(), 25);
+            mMarginLeft = Util.dip2px(getContext(), 145 + 14);
+            mMarginBottom = Util.dip2px(getContext(), 25);
         }
     }
 
@@ -144,7 +144,7 @@ public class PraiseLayout extends RelativeLayout {
      * @param endPX 终点横坐标
      */
     public void setEndP(int endPX) {
-        this.endPX = endPX;
+        this.mEndPX = endPX;
     }
 
     /**
@@ -162,7 +162,7 @@ public class PraiseLayout extends RelativeLayout {
     }
 
     public void setIPraise(IPraise iPraise) {
-        this.iPraise = iPraise;
+        this.mIPraise = iPraise;
     }
 
     private class BezierListener implements ValueAnimator.AnimatorUpdateListener {
@@ -193,8 +193,8 @@ public class PraiseLayout extends RelativeLayout {
         @Override
         public void onAnimationEnd(Animator animation) {
             super.onAnimationEnd(animation);
-            if (target != null && target.getTag() != null && iPraise != null) {
-                iPraise.onAnimationEnd();
+            if (target != null && target.getTag() != null && mIPraise != null) {
+                mIPraise.onAnimationEnd();
             }
             removeView(target);
         }

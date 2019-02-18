@@ -9,19 +9,20 @@ List
 Name | Explain | Demo
 --- | --- | ---
 [LrcView](lib_view/src/main/java/com/d/lib/ui/view/lrc/LrcView.java) | 歌词控件 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/lrc/lrc.gif" width="49%">
-[SideBar](lib_view/src/main/java/com/d/lib/ui/view/sort/SideBar.java) | 联系人排序 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort.gif" width="49%"> <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort-center.png" width="49%">
+[SideBar](lib_view/src/main/java/com/d/lib/ui/view/sort/SideBar.java) | 联系人排序 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort-center.gif" width="49%"> <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/sort/sort.gif" width="49%">
 [CTickView](lib_view/src/main/java/com/d/lib/ui/view/tick/CTickView.java) | 打勾 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/tick/tick.gif" width="49%">
 [ToggleButton](lib_view/src/main/java/com/d/lib/ui/view/togglebutton/ToggleButton.java) | Button按钮(滑动可选) |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/togglebutton/togglebutton.gif" width="49%">
-[ReplyBgView](lib_view/src/main/java/com/d/lib/ui/view/replybg/ReplyBgView.java) | 回复消息背景 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/replybg/replybg.png" width="100%">
+[ReplyBgView](lib_view/src/main/java/com/d/lib/ui/view/replybg/ReplyBgView.java) | 回复消息背景 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/replybg/replybg.png" width="49%">
 [VSView](lib_view/src/main/java/com/d/lib/ui/view/vs/VSView.java) | 对比 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/vs/vs.gif" width="49%">
 [HoleBgView](lib_view/src/main/java/com/d/lib/ui/view/stroke/HoleBgView.java) | 镂空背景 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/stroke/stroke.png" width="49%">
 [ArcMenu](lib_view/src/main/java/com/d/lib/ui/view/arcmenu/ArcMenu.java) | 卫星菜单 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/arcmenu/arcmenu.gif" width="49%">
 [TCHeartLayout](lib_layout/src/main/java/com/d/lib/ui/layout/heartlayout/TCHeartLayout.java) | 点赞动效 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/heartlayout/heartlayout.gif" width="49%">
-[ScrollTab](lib_view/src/main/java/com/d/lib/ui/view/tab/ScrollTab.java) | Tab指示器 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/tab/tab.gif" width="49%">
-[ItouchSort](https://github.com/Dsiner/Xrv) | 拖曳排序 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Xrv/xrv_drag.gif" width="49%">
+[ITouchSort](https://github.com/Dsiner/Xrv) | 拖曳排序 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Xrv/xrv_drag.gif" width="49%">
 [SlideLayout](https://github.com/Dsiner/SlideLayout) | 侧滑删除/菜单控件 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/SlideLayout/slidelayout.gif" width="49%">
 [TabView](https://github.com/Dsiner/TabView) | 滑动指示器/按钮/TAB控件 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/TabView/tabview.gif" width="49%">
-[SettingProgress](lib_view/src/main/java/com/d/lib/ui/view/progress/SettingProgressView.java) | 进度Progress、Level |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/progress/settingprogress.gif" width="100%">
+[SettingProgress](lib_view/src/main/java/com/d/lib/ui/view/progress/SettingProgressView.java) | 进度Progress、等级 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/progress/settingprogress.gif" width="100%">
+[SnapProgressBar](lib_view/src/main/java/com/d/lib/ui/view/progress/SnapProgressBar.java) | 进度Progress、相册、截图 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/progress/snap.gif" width="100%">
+[CircleProgressBar](lib_view/src/main/java/com/d/lib/ui/view/progress/SettingProgressView.java) | 进度Progress、圆形下载 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/progress/circle.gif" width="100%">
 [Praise](lib_layout/src/main/java/com/d/lib/ui/layout/praise/PraiseLayout.java) | 点赞动效 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/praise/praise.gif" width="49%">
 [Shadow](lib_layout/src/main/java/com/d/lib/ui/layout/shadow/ShadowLayout.java) | 阴影效果 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/shadow/shadow.png" width="49%">
 [RecordTrigger](lib/src/main/java/com/d/lib/ui/view/recordtrigger/RecordTriggerView.java) | 语音触发器 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/recordtrigger/recordtrigger.gif" width="49%">
@@ -32,8 +33,10 @@ Name | Explain | Demo
 [Component-UI-Title](https://github.com/Dsiner/Common) | Title |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-title.png" width="49%">
 [Component-UI-Ds](https://github.com/Dsiner/Common) | DS |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-ds.gif" width="49%">
 [Component-UI-Row](https://github.com/Dsiner/Common) | Row |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-row.png" width="49%">
+[Component-UI-Tab](https://github.com/Dsiner/Common) | Tab |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-tab.png" width="49%">
 [Component-UI-Alert](https://github.com/Dsiner/Common) | Alert |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-alert.gif" width="49%">
 [Component-UI-Sheet](https://github.com/Dsiner/Common) | Sheet |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-sheet.gif" width="49%">
+[Component-UI-Button](https://github.com/Dsiner/Common) | Button |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-button.gif" width="49%">
 [Component-UI-Status](https://github.com/Dsiner/Common) | Status |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Common/component-ui-status.png" width="49%">
 
 More usage see [demo](app/src/main/java/com/d/uiutil/MainActivity.java)

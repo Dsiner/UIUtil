@@ -17,28 +17,28 @@ import com.d.lib.ui.view.R;
 import com.nineoldandroids.animation.ValueAnimator;
 
 public class STickView extends View {
-    private final long mDuration = 2500; // Anim duration
+    private final long DURATION = 2500; // Anim duration
 
-    private int width;
-    private int height;
+    private int mWidth;
+    private int mHeight;
 
-    private float factor;
-    private float scaleAX = 0.2659f;
-    private float scaleAY = 0.4588f;
-    private float scaleBX = 0.4541f;
-    private float scaleBY = 0.6306f;
-    private float scaleCX = 0.7553f;
-    private float scaleCY = 0.3388f;
+    private float mFactor;
+    private float mScaleAX = 0.2659f;
+    private float mScaleAY = 0.4588f;
+    private float mScaleBX = 0.4541f;
+    private float mScaleBY = 0.6306f;
+    private float mScaleCX = 0.7553f;
+    private float mScaleCY = 0.3388f;
 
-    private int color;
-    private int colorCircle;
-    private float strokeWidth;
-    private Path path;
-    private Path pathTick;
-    private Paint paintTick;
-    private Paint paintCircle;
-    private PathMeasure tickPathMeasure;
-    private ValueAnimator animation;
+    private int mColor;
+    private int mColorCircle;
+    private float mStrokeWidth;
+    private Path mPath;
+    private Path mPathTick;
+    private Paint mPaintTick;
+    private Paint mPaintCircle;
+    private PathMeasure mTickPathMeasure;
+    private ValueAnimator mAnimation;
 
     public STickView(Context context) {
         this(context, null);
@@ -51,44 +51,44 @@ public class STickView extends View {
     public STickView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_CTickView);
-        color = typedArray.getColor(R.styleable.lib_ui_view_CTickView_lib_ui_view_ctv_color, Color.parseColor("#ffffff"));
-        colorCircle = typedArray.getColor(R.styleable.lib_ui_view_CTickView_lib_ui_view_ctv_colorCircle, Color.parseColor("#47b018"));
-        strokeWidth = typedArray.getDimension(R.styleable.lib_ui_view_CTickView_lib_ui_view_ctv_strokeWidth, Util.dip2px(context, 3.5f));
+        mColor = typedArray.getColor(R.styleable.lib_ui_view_CTickView_lib_ui_view_ctv_color, Color.parseColor("#ffffff"));
+        mColorCircle = typedArray.getColor(R.styleable.lib_ui_view_CTickView_lib_ui_view_ctv_colorCircle, Color.parseColor("#47b018"));
+        mStrokeWidth = typedArray.getDimension(R.styleable.lib_ui_view_CTickView_lib_ui_view_ctv_strokeWidth, Util.dip2px(context, 3.5f));
         typedArray.recycle();
         init();
     }
 
     public void init() {
-        path = new Path();
-        pathTick = new Path();
+        mPath = new Path();
+        mPathTick = new Path();
 
-        tickPathMeasure = new PathMeasure();
+        mTickPathMeasure = new PathMeasure();
 
-        paintCircle = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintCircle.setColor(colorCircle);
+        mPaintCircle = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintCircle.setColor(mColorCircle);
 
-        paintTick = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintTick.setColor(color);
-        paintTick.setStyle(Paint.Style.STROKE);
-        paintTick.setStrokeWidth(strokeWidth);
+        mPaintTick = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintTick.setColor(mColor);
+        mPaintTick.setStyle(Paint.Style.STROKE);
+        mPaintTick.setStrokeWidth(mStrokeWidth);
 
-        animation = ValueAnimator.ofFloat(0f, 1f);
-        animation.setDuration(mDuration);
-        animation.setInterpolator(new SpringScaleInterpolator(0.4f));
-        animation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        mAnimation = ValueAnimator.ofFloat(0f, 1f);
+        mAnimation.setDuration(DURATION);
+        mAnimation.setInterpolator(new SpringScaleInterpolator(0.4f));
+        mAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                if (paintCircle != null && paintTick != null) {
-                    float alpha = 1f * animation.getDuration() / mDuration;
+                if (mPaintCircle != null && mPaintTick != null) {
+                    float alpha = 1f * animation.getDuration() / DURATION;
                     alpha = Math.min(alpha, 1f);
                     alpha = Math.max(alpha, 0f);
-                    paintCircle.setAlpha((int) (255 * alpha));
-                    paintTick.setAlpha((int) (255 * alpha));
+                    mPaintCircle.setAlpha((int) (255 * alpha));
+                    mPaintTick.setAlpha((int) (255 * alpha));
                 }
-                factor = (float) animation.getAnimatedValue();
-                factor = factor / 1.27f;
-                factor = Math.min(factor, 1f);
-                factor = Math.max(factor, 0f);
+                mFactor = (float) animation.getAnimatedValue();
+                mFactor = mFactor / 1.27f;
+                mFactor = Math.min(mFactor, 1f);
+                mFactor = Math.max(mFactor, 0f);
                 postInvalidate();
             }
         });
@@ -96,36 +96,36 @@ public class STickView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        float width = this.width * 0.85f * factor;
-        float height = this.height * 0.85f * factor;
-        float startX = (this.width - width) / 2f;
-        float startY = (this.height - height) / 2f;
-        path.reset();
-        pathTick.reset();
-        pathTick.moveTo(startX + width * scaleAX, startY + height * scaleAY);
-        pathTick.lineTo(startX + width * scaleBX, startY + height * scaleBY);
-        pathTick.lineTo(startX + width * scaleCX, startY + height * scaleCY);
-        tickPathMeasure.setPath(pathTick, false);
+        float width = this.mWidth * 0.85f * mFactor;
+        float height = this.mHeight * 0.85f * mFactor;
+        float startX = (this.mWidth - width) / 2f;
+        float startY = (this.mHeight - height) / 2f;
+        mPath.reset();
+        mPathTick.reset();
+        mPathTick.moveTo(startX + width * mScaleAX, startY + height * mScaleAY);
+        mPathTick.lineTo(startX + width * mScaleBX, startY + height * mScaleBY);
+        mPathTick.lineTo(startX + width * mScaleCX, startY + height * mScaleCY);
+        mTickPathMeasure.setPath(mPathTick, false);
         /*
          * On KITKAT and earlier releases, the resulting path may not display on a hardware-accelerated Canvas.
          * A simple workaround is to add a single operation to this path, such as dst.rLineTo(0, 0).
          */
-        tickPathMeasure.getSegment(0, tickPathMeasure.getLength(), path, true);
-        width = this.width * factor;
-        height = this.height * factor;
-        startX = (this.width - width) / 2f;
-        startY = (this.height - height) / 2f;
-        canvas.drawCircle(startX + width / 2f, startY + width / 2f, width / 2f, paintCircle);
-        paintTick.setStrokeWidth(strokeWidth * factor);
-        canvas.drawPath(path, paintTick);
+        mTickPathMeasure.getSegment(0, mTickPathMeasure.getLength(), mPath, true);
+        width = this.mWidth * mFactor;
+        height = this.mHeight * mFactor;
+        startX = (this.mWidth - width) / 2f;
+        startY = (this.mHeight - height) / 2f;
+        canvas.drawCircle(startX + width / 2f, startY + width / 2f, width / 2f, mPaintCircle);
+        mPaintTick.setStrokeWidth(mStrokeWidth * mFactor);
+        canvas.drawPath(mPath, mPaintTick);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        setMeasuredDimension(width, height);
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        setMeasuredDimension(mWidth, mHeight);
     }
 
     /**
@@ -133,9 +133,9 @@ public class STickView extends View {
      */
     public void start() {
         stop();
-        path = new Path();
-        if (animation != null) {
-            animation.start();
+        mPath = new Path();
+        if (mAnimation != null) {
+            mAnimation.start();
         }
     }
 
@@ -143,8 +143,8 @@ public class STickView extends View {
      * Stop animation
      */
     public void stop() {
-        if (animation != null) {
-            animation.end();
+        if (mAnimation != null) {
+            mAnimation.end();
         }
     }
 

@@ -18,17 +18,17 @@ import com.d.lib.common.utils.Util;
  * Created by D on 2017/3/15.
  */
 public class HoleBgView extends View {
-    private int width;
-    private int height;
+    private int mWidth;
+    private int mHeight;
 
-    private Rect rect;
-    private RectF rectF;
-    private Paint paint;
-    private int offsetX; // 偏移
-    private int offsetY; // 偏移
-    private int withrH;
-    private int withrW;
-    private float strokeWidth;
+    private Rect mRect;
+    private RectF mRectF;
+    private Paint mPaint;
+    private int mOffsetX; // 偏移
+    private int mOffsetY; // 偏移
+    private int mWithrH;
+    private int mWithrW;
+    private float mStrokeWidth;
 
     public HoleBgView(Context context) {
         this(context, null);
@@ -48,38 +48,38 @@ public class HoleBgView extends View {
             // 禁用硬件加速
             setLayerType(LAYER_TYPE_SOFTWARE, null);
         }
-        offsetX = Util.dip2px(context, 136.5f);
-        offsetY = Util.dip2px(context, 29.5f);
-        withrH = Util.dip2px(context, 35000);
-        withrW = Util.dip2px(context, 35014.3f);
-        strokeWidth = withrH * 2 - Util.dip2px(context, 34.5f);
-        rect = new Rect();
-        rectF = new RectF();
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(strokeWidth);
-        paint.setColor(Color.parseColor("#000000"));
-        paint.setAlpha(0xcc);
+        mOffsetX = Util.dip2px(context, 136.5f);
+        mOffsetY = Util.dip2px(context, 29.5f);
+        mWithrH = Util.dip2px(context, 35000);
+        mWithrW = Util.dip2px(context, 35014.3f);
+        mStrokeWidth = mWithrH * 2 - Util.dip2px(context, 34.5f);
+        mRect = new Rect();
+        mRectF = new RectF();
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(mStrokeWidth);
+        mPaint.setColor(Color.parseColor("#000000"));
+        mPaint.setAlpha(0xcc);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        int offsetYF = height - offsetY;
-        int left = offsetX - withrW;
-        int top = offsetYF - withrH;
-        int right = offsetX + withrW;
-        int bottom = offsetYF + withrH;
-        rect.set(left, top, right, bottom);
-        rectF.set(rect);
-        canvas.drawRoundRect(rectF, withrH, withrH, paint); // 在原有矩形基础上，画成圆角矩形
+        int offsetYF = mHeight - mOffsetY;
+        int left = mOffsetX - mWithrW;
+        int top = offsetYF - mWithrH;
+        int right = mOffsetX + mWithrW;
+        int bottom = offsetYF + mWithrH;
+        mRect.set(left, top, right, bottom);
+        mRectF.set(mRect);
+        canvas.drawRoundRect(mRectF, mWithrH, mWithrH, mPaint); // 在原有矩形基础上，画成圆角矩形
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        setMeasuredDimension(width, height);
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        setMeasuredDimension(mWidth, mHeight);
     }
 }

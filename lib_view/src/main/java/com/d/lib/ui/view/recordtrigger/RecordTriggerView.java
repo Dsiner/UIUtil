@@ -25,14 +25,14 @@ public class RecordTriggerView extends TextView {
     public static final int STATE_INVALID = 2; // 无效，滑出范围
     public static final int STATE_SUBMIT = 3; // 未滑出范围，提交本次录音
 
-    private int width;
-    private int height;
+    private int mWidth;
+    private int mHeight;
 
-    private int touchRadius; // Touch有效范围，半径
-    private float dX, dY;
-    private boolean isValid; // Touch是否有效，在有效范围内
-    private OnTriggerListener listener;
-    private int curState;
+    private int mTouchRadius; // Touch有效范围，半径
+    private float mDX, mDY;
+    private boolean mIsValid; // Touch是否有效，在有效范围内
+    private OnTriggerListener mListener;
+    private int mCurState;
 
     public RecordTriggerView(Context context) {
         super(context);
@@ -50,7 +50,7 @@ public class RecordTriggerView extends TextView {
     }
 
     private void init(Context context) {
-        touchRadius = Util.dip2px(context, 105);
+        mTouchRadius = Util.dip2px(context, 105);
         setGravity(Gravity.CENTER);
         setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.lib_ui_view_rtv_corner_bg_normal));
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -61,9 +61,9 @@ public class RecordTriggerView extends TextView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        setMeasuredDimension(width, height);
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        setMeasuredDimension(mWidth, mHeight);
     }
 
     @Override
@@ -72,32 +72,32 @@ public class RecordTriggerView extends TextView {
         float eY = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                dX = eX;
-                dY = eY;
-                isValid = true;
-                curState = STATE_VALID;
+                mDX = eX;
+                mDY = eY;
+                mIsValid = true;
+                mCurState = STATE_VALID;
                 setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.lib_ui_view_rtv_corner_bg_select));
                 setText(R.string.lib_ui_view_record_tip_submit);
-                if (listener != null) {
-                    listener.onStateChange(curState);
+                if (mListener != null) {
+                    mListener.onStateChange(mCurState);
                 }
                 return true;
             case MotionEvent.ACTION_MOVE:
-                isValid = Math.abs(Math.sqrt((eX - dX) * (eX - dX) + (eY - dY) * (eY - dY))) < touchRadius;
-                int state = isValid ? STATE_VALID : STATE_INVALID;
-                if (state != curState) {
-                    setText(isValid ? R.string.lib_ui_view_record_tip_submit : R.string.lib_ui_view_record_tip_cancle);
-                    if (listener != null) {
-                        listener.onStateChange(state);
+                mIsValid = Math.abs(Math.sqrt((eX - mDX) * (eX - mDX) + (eY - mDY) * (eY - mDY))) < mTouchRadius;
+                int state = mIsValid ? STATE_VALID : STATE_INVALID;
+                if (state != mCurState) {
+                    setText(mIsValid ? R.string.lib_ui_view_record_tip_submit : R.string.lib_ui_view_record_tip_cancle);
+                    if (mListener != null) {
+                        mListener.onStateChange(state);
                     }
                 }
-                curState = state;
+                mCurState = state;
                 return true;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
-                curState = isValid ? STATE_SUBMIT : STATE_CANCLE;
-                if (listener != null) {
-                    listener.onStateChange(curState);
+                mCurState = mIsValid ? STATE_SUBMIT : STATE_CANCLE;
+                if (mListener != null) {
+                    mListener.onStateChange(mCurState);
                 }
                 setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.lib_ui_view_rtv_corner_bg_normal));
                 setText(R.string.lib_ui_view_record_tip_voice);
@@ -111,6 +111,6 @@ public class RecordTriggerView extends TextView {
     }
 
     public void setOnTriggerListener(OnTriggerListener l) {
-        this.listener = l;
+        this.mListener = l;
     }
 }

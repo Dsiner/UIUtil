@@ -14,11 +14,11 @@ import android.widget.TextView;
  */
 @SuppressLint("AppCompatCustomView")
 public class PoiTextView extends TextView {
-    private boolean isClickValid = true;
-    private int touchSlop;
-    private float dX, dY; // TouchEvent_ACTION_DOWN坐标(dX,dY)
-    private float lastY; // TouchEvent最后一次坐标(lastX,lastY)
-    private OnTikListener listener;
+    private boolean mIsClickValid = true;
+    private int mTouchSlop;
+    private float mDX, mDY; // TouchEvent_ACTION_DOWN坐标(dX,dY)
+    private float mLastY; // TouchEvent最后一次坐标(lastX,lastY)
+    private OnTikListener mListener;
 
     public PoiTextView(Context context) {
         this(context, null);
@@ -30,7 +30,7 @@ public class PoiTextView extends TextView {
 
     public PoiTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
+        mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
     }
 
     @Override
@@ -39,20 +39,20 @@ public class PoiTextView extends TextView {
         float eY = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                dX = eX;
-                dY = eY;
-                isClickValid = true;
+                mDX = eX;
+                mDY = eY;
+                mIsClickValid = true;
                 return true;
             case MotionEvent.ACTION_MOVE:
-                if (isClickValid && (Math.abs(eY - dY) > touchSlop || Math.abs(eY - dY) > touchSlop)) {
-                    isClickValid = false;
+                if (mIsClickValid && (Math.abs(eY - mDY) > mTouchSlop || Math.abs(eY - mDY) > mTouchSlop)) {
+                    mIsClickValid = false;
                 }
-                return isClickValid;
+                return mIsClickValid;
             case MotionEvent.ACTION_UP:
-                if (isClickValid && listener != null) {
-                    listener.onTik(this);
+                if (mIsClickValid && mListener != null) {
+                    mListener.onTik(this);
                 }
-                return isClickValid;
+                return mIsClickValid;
         }
         return super.onTouchEvent(event);
     }
@@ -62,6 +62,6 @@ public class PoiTextView extends TextView {
     }
 
     public void setOnTikListener(OnTikListener l) {
-        this.listener = l;
+        this.mListener = l;
     }
 }

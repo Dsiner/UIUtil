@@ -28,45 +28,45 @@ import com.d.lib.ui.view.R;
  * Created by D on 2017/2/28.
  */
 public class VSView extends View {
-    private int width; // View的宽度
-    private int height; // View的高度
-    private float padding; // 对比条距两端间距
-    private float hPercent; // 对比条高度
-    private float radius; // 对比条的圆角矩形弧度
+    private int mWidth; // View的宽度
+    private int mHeight; // View的高度
+    private float mPadding; // 对比条距两端间距
+    private float mHPercent; // 对比条高度
+    private float mRadius; // 对比条的圆角矩形弧度
 
-    private Rect rect;
-    private RectF rectF;
-    private Paint paintA; // A类颜色的画笔
-    private Paint paintB; // B类颜色的画笔
-    private Paint paintTxt; // 仅用于绘制文字的画笔
-    private Path path; // 通用路径
-    private float margin; // 两圆与对比条的垂直间距
-    private float marginTxt; // 文字与圆的水平间距
+    private Rect mRect;
+    private RectF mRectF;
+    private Paint mPaintA; // A类颜色的画笔
+    private Paint mPaintB; // B类颜色的画笔
+    private Paint mPaintTxt; // 仅用于绘制文字的画笔
+    private Path mPath; // 通用路径
+    private float mMargin; // 两圆与对比条的垂直间距
+    private float mMarginTxt; // 文字与圆的水平间距
 
-    private OnVSItemClickListen listener; // Listener
+    private OnVSClickListener mListener; // Listener
 
-    private float percent = 0.5f; // 对比A项所占百分比 范围0-1
+    private float mPercent = 0.5f; // 对比A项所占百分比 范围0-1
 
-    private int dIndex = -1; // ActionDown按压时的位置
-    private int uIndex = 0; // ActionUp松开时的位置
+    private int mDIndex = -1; // ActionDown按压时的位置
+    private int mUIndex = 0; // ActionUp松开时的位置
     private int mTouchSlop; // 最小视为移动距离
-    private float dX, dY; // ActionDown的坐标(dx,dy)
-    private boolean dInvaild; // 标志位,点击是否有效（true有效: 点中了圆, false无效: 未点中圆）
+    private float mDX, mDY; // ActionDown的坐标(dx,dy)
+    private boolean mDInvaild; // 标志位,点击是否有效（true有效: 点中了圆, false无效: 未点中圆）
 
-    private float spaceHalf; // 对比条，中间空隙的一半宽度
-    private float tanW; // 对比条，中间空隙的偏斜宽度
-    private Bitmap bitmapA; // 对比A项正常图片
-    private Bitmap bitmapAP; // 对比A项按压图片
-    private Bitmap bitmapAS; // 对比A项选中图片
-    private Bitmap bitmapAU; // 对比A项未选中图片
-    private Bitmap bitmapB; // 对比B项正常图片
-    private Bitmap bitmapBP; // 对比B项按压图片
-    private Bitmap bitmapBS; // 对比B项选中图片
-    private Bitmap bitmapBU; // 对比B项未选中图片
-    private Rect rectBp; // 仅用于图片Rect
+    private float mSpaceHalf; // 对比条，中间空隙的一半宽度
+    private float mTanW; // 对比条，中间空隙的偏斜宽度
+    private Bitmap mBitmapA; // 对比A项正常图片
+    private Bitmap mBitmapAP; // 对比A项按压图片
+    private Bitmap mBitmapAS; // 对比A项选中图片
+    private Bitmap mBitmapAU; // 对比A项未选中图片
+    private Bitmap mBitmapB; // 对比B项正常图片
+    private Bitmap mBitmapBP; // 对比B项按压图片
+    private Bitmap mBitmapBS; // 对比B项选中图片
+    private Bitmap mBitmapBU; // 对比B项未选中图片
+    private Rect mRectBp; // 仅用于图片Rect
 
-    private VSItem itemA; // 左项
-    private VSItem itemB; // 右项
+    private VSItem mItemA; // 左项
+    private VSItem mItemB; // 右项
 
     public VSView(Context context) {
         this(context, null);
@@ -83,125 +83,125 @@ public class VSView extends View {
 
     private void init(Context context) {
         int textSize = Util.dip2px(context, 13);
-        padding = Util.dip2px(context, 2);
-        hPercent = Util.dip2px(context, 3);
-        tanW = Util.dip2px(context, 0.5f);
-        spaceHalf = Util.dip2px(context, 1);
-        margin = Util.dip2px(context, 4);
-        marginTxt = Util.dip2px(context, 6);
-        radius = Util.dip2px(context, 13.5f);
+        mPadding = Util.dip2px(context, 2);
+        mHPercent = Util.dip2px(context, 3);
+        mTanW = Util.dip2px(context, 0.5f);
+        mSpaceHalf = Util.dip2px(context, 1);
+        mMargin = Util.dip2px(context, 4);
+        mMarginTxt = Util.dip2px(context, 6);
+        mRadius = Util.dip2px(context, 13.5f);
 
         mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
 
-        bitmapA = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
-        bitmapAP = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
-        bitmapAS = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
-        bitmapAU = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
-        bitmapB = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
-        bitmapBP = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
-        bitmapBS = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
-        bitmapBU = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
+        mBitmapA = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
+        mBitmapAP = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
+        mBitmapAS = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
+        mBitmapAU = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
+        mBitmapB = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
+        mBitmapBP = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
+        mBitmapBS = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
+        mBitmapBU = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_view_vs_icon);
 
-        rectBp = new Rect();
-        rect = new Rect();
-        rectF = new RectF();
+        mRectBp = new Rect();
+        mRect = new Rect();
+        mRectF = new RectF();
 
-        path = new Path();
+        mPath = new Path();
 
         int colorTxt = Color.parseColor("#7c838a");
 
-        paintTxt = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintTxt.setTextSize(textSize);
-        paintTxt.setTextAlign(Paint.Align.LEFT);
-        paintTxt.setColor(colorTxt);
-        paintTxt.setAlpha(0xbf);
+        mPaintTxt = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintTxt.setTextSize(textSize);
+        mPaintTxt.setTextAlign(Paint.Align.LEFT);
+        mPaintTxt.setColor(colorTxt);
+        mPaintTxt.setAlpha(0xbf);
 
-        paintA = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintA.setColor(Color.parseColor("#E3542B"));
-        paintB = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintB.setColor(Color.parseColor("#4ABC00"));
+        mPaintA = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintA.setColor(Color.parseColor("#E3542B"));
+        mPaintB = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintB.setColor(Color.parseColor("#4ABC00"));
 
-        itemA = new VSItem("", false);
-        itemB = new VSItem("", false);
+        mItemA = new VSItem("", false);
+        mItemB = new VSItem("", false);
         calcPercent();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (height == 0 || width == 0) {
+        if (mHeight == 0 || mWidth == 0) {
             return;
         }
-        if (percent == 0) {
-            drawRoundRect(canvas, rect, rectF, paintB, hPercent / 2,
-                    padding, height - hPercent, width - padding, height);
-        } else if (percent == 1) {
-            drawRoundRect(canvas, rect, rectF, paintA, hPercent / 2,
-                    padding, height - hPercent, width - padding, height);
+        if (mPercent == 0) {
+            drawRoundRect(canvas, mRect, mRectF, mPaintB, mHPercent / 2,
+                    mPadding, mHeight - mHPercent, mWidth - mPadding, mHeight);
+        } else if (mPercent == 1) {
+            drawRoundRect(canvas, mRect, mRectF, mPaintA, mHPercent / 2,
+                    mPadding, mHeight - mHPercent, mWidth - mPadding, mHeight);
         } else {
-            drawRoundRect(canvas, rect, rectF, paintA, hPercent / 2,
-                    padding, height - hPercent, padding + hPercent, height);
-            drawRoundRect(canvas, rect, rectF, paintB, hPercent / 2,
-                    width - hPercent - padding, height - hPercent, width - padding, height);
+            drawRoundRect(canvas, mRect, mRectF, mPaintA, mHPercent / 2,
+                    mPadding, mHeight - mHPercent, mPadding + mHPercent, mHeight);
+            drawRoundRect(canvas, mRect, mRectF, mPaintB, mHPercent / 2,
+                    mWidth - mHPercent - mPadding, mHeight - mHPercent, mWidth - mPadding, mHeight);
 
-            float offset = (width - padding * 2 - hPercent) * percent + padding + hPercent / 2;
-            if (offset < padding + hPercent + spaceHalf + tanW) {
+            float offset = (mWidth - mPadding * 2 - mHPercent) * mPercent + mPadding + mHPercent / 2;
+            if (offset < mPadding + mHPercent + mSpaceHalf + mTanW) {
                 // 限定最小值
-                offset = padding + hPercent + spaceHalf + tanW;
-            } else if (offset > width - padding - hPercent - spaceHalf - tanW) {
+                offset = mPadding + mHPercent + mSpaceHalf + mTanW;
+            } else if (offset > mWidth - mPadding - mHPercent - mSpaceHalf - mTanW) {
                 // 限定最大值
-                offset = width - padding - hPercent - spaceHalf - tanW;
+                offset = mWidth - mPadding - mHPercent - mSpaceHalf - mTanW;
             }
 
-            float left = padding + hPercent / 2;
-            float right = offset - spaceHalf;
-            drawPath(canvas, path, paintA,
-                    left, left, right + tanW, right - +tanW,
-                    height - hPercent, height, height - hPercent, height);
+            float left = mPadding + mHPercent / 2;
+            float right = offset - mSpaceHalf;
+            drawPath(canvas, mPath, mPaintA,
+                    left, left, right + mTanW, right - +mTanW,
+                    mHeight - mHPercent, mHeight, mHeight - mHPercent, mHeight);
 
-            left = offset + spaceHalf;
-            right = width - padding - hPercent / 2;
-            drawPath(canvas, path, paintB,
-                    left + tanW, left - tanW, right, right,
-                    height - hPercent, height, height - hPercent, height);
+            left = offset + mSpaceHalf;
+            right = mWidth - mPadding - mHPercent / 2;
+            drawPath(canvas, mPath, mPaintB,
+                    left + mTanW, left - mTanW, right, right,
+                    mHeight - mHPercent, mHeight, mHeight - mHPercent, mHeight);
         }
 
-        float cy = height - hPercent - margin - radius;
+        float cy = mHeight - mHPercent - mMargin - mRadius;
         drawBitmap(canvas, cy);
 
-        float textHeght = Util.getTextHeight(paintTxt);
-        paintTxt.setTextAlign(Paint.Align.LEFT);
-        canvas.drawText(itemA.mainText + " " + itemA.percent, radius * 2 + marginTxt, cy + textHeght / 2, paintTxt);
-        paintTxt.setTextAlign(Paint.Align.RIGHT);
-        canvas.drawText(itemB.mainText + " " + itemB.percent, width - radius * 2 - marginTxt, cy + textHeght / 2, paintTxt);
+        float textHeight = Util.getTextHeight(mPaintTxt);
+        mPaintTxt.setTextAlign(Paint.Align.LEFT);
+        canvas.drawText(mItemA.mainText + " " + mItemA.percent, mRadius * 2 + mMarginTxt, cy + textHeight / 2, mPaintTxt);
+        mPaintTxt.setTextAlign(Paint.Align.RIGHT);
+        canvas.drawText(mItemB.mainText + " " + mItemB.percent, mWidth - mRadius * 2 - mMarginTxt, cy + textHeight / 2, mPaintTxt);
     }
 
     private void drawBitmap(Canvas canvas, float cy) {
-        Bitmap bpA = bitmapA, bpB = bitmapB;
-        if (!itemA.isChecked && !itemB.isChecked) {
+        Bitmap bpA = mBitmapA, bpB = mBitmapB;
+        if (!mItemA.isChecked && !mItemB.isChecked) {
             // A、B项都未选中
-            if (dInvaild) {
-                if (dIndex == 0) {
-                    bpA = bitmapAP;
-                    bpB = bitmapB;
-                } else if (dIndex == 1) {
-                    bpA = bitmapA;
-                    bpB = bitmapBP;
+            if (mDInvaild) {
+                if (mDIndex == 0) {
+                    bpA = mBitmapAP;
+                    bpB = mBitmapB;
+                } else if (mDIndex == 1) {
+                    bpA = mBitmapA;
+                    bpB = mBitmapBP;
                 }
             }
         } else {
-            if (itemA.isChecked) {
-                bpA = bitmapAS;
-                bpB = bitmapBU;
+            if (mItemA.isChecked) {
+                bpA = mBitmapAS;
+                bpB = mBitmapBU;
             } else {
-                bpA = bitmapAU;
-                bpB = bitmapBS;
+                bpA = mBitmapAU;
+                bpB = mBitmapBS;
             }
         }
-        rectBp.set(0, (int) (cy - radius), (int) (radius * 2), (int) (cy + radius));
-        canvas.drawBitmap(bpA, null, rectBp, null);
-        rectBp.set((int) (width - radius * 2), (int) (cy - radius), width, (int) (cy + radius));
-        canvas.drawBitmap(bpB, null, rectBp, null);
+        mRectBp.set(0, (int) (cy - mRadius), (int) (mRadius * 2), (int) (cy + mRadius));
+        canvas.drawBitmap(bpA, null, mRectBp, null);
+        mRectBp.set((int) (mWidth - mRadius * 2), (int) (cy - mRadius), mWidth, (int) (cy + mRadius));
+        canvas.drawBitmap(bpB, null, mRectBp, null);
     }
 
     private void drawPath(Canvas canvas, Path path, Paint paint,
@@ -229,9 +229,9 @@ public class VSView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        setMeasuredDimension(width, height);
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        setMeasuredDimension(mWidth, mHeight);
     }
 
     @Override
@@ -240,58 +240,58 @@ public class VSView extends View {
         float eY = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                dX = event.getX();
-                dY = event.getY();
-                float cline = height - hPercent - margin;
-                if (eX >= 0 && eX <= radius * 2 && eY >= cline - radius * 2 && eY <= cline) {
-                    dIndex = 0;
-                    dInvaild = true; // 点击有效
-                } else if (eX >= width - radius * 2 && eX <= width && eY >= cline - radius * 2 && eY <= cline) {
-                    dIndex = 1;
-                    dInvaild = true; // 点击有效
+                mDX = event.getX();
+                mDY = event.getY();
+                float cline = mHeight - mHPercent - mMargin;
+                if (eX >= 0 && eX <= mRadius * 2 && eY >= cline - mRadius * 2 && eY <= cline) {
+                    mDIndex = 0;
+                    mDInvaild = true; // 点击有效
+                } else if (eX >= mWidth - mRadius * 2 && eX <= mWidth && eY >= cline - mRadius * 2 && eY <= cline) {
+                    mDIndex = 1;
+                    mDInvaild = true; // 点击有效
                 } else {
-                    dIndex = -1;
-                    dInvaild = false; // 点击无效
+                    mDIndex = -1;
+                    mDInvaild = false; // 点击无效
                 }
                 invalidate();
                 return true;
             case MotionEvent.ACTION_MOVE:
-                if (Math.abs(eX - dX) > mTouchSlop || Math.abs(eY - dY) > mTouchSlop) {
-                    dInvaild = false; // 点击无效
+                if (Math.abs(eX - mDX) > mTouchSlop || Math.abs(eY - mDY) > mTouchSlop) {
+                    mDInvaild = false; // 点击无效
                     invalidate();
                 }
                 return true;
             case MotionEvent.ACTION_UP:
-                if (dInvaild) {
-                    float clineF = height - hPercent - margin;
-                    if (eX >= 0 && eX <= radius * 2 && eY >= clineF - radius * 2 && eY <= clineF) {
-                        uIndex = 0;
-                    } else if (eX >= width - radius * 2 && eX <= width && eY >= clineF - radius * 2 && eY <= clineF) {
-                        uIndex = 1;
+                if (mDInvaild) {
+                    float clineF = mHeight - mHPercent - mMargin;
+                    if (eX >= 0 && eX <= mRadius * 2 && eY >= clineF - mRadius * 2 && eY <= clineF) {
+                        mUIndex = 0;
+                    } else if (eX >= mWidth - mRadius * 2 && eX <= mWidth && eY >= clineF - mRadius * 2 && eY <= clineF) {
+                        mUIndex = 1;
                     }
-                    if (uIndex == dIndex) {
-                        if (listener != null) {
-                            if (uIndex == 0) {
-                                listener.onItemClick(uIndex, itemA);
-                            } else if (uIndex == 1) {
-                                listener.onItemClick(uIndex, itemB);
+                    if (mUIndex == mDIndex) {
+                        if (mListener != null) {
+                            if (mUIndex == 0) {
+                                mListener.onItemClick(mUIndex, mItemA);
+                            } else if (mUIndex == 1) {
+                                mListener.onItemClick(mUIndex, mItemB);
                             }
                         }
                     }
                 }
                 // Reset
-                dX = 0;
-                dY = 0;
-                dIndex = -1;
-                dInvaild = false;
+                mDX = 0;
+                mDY = 0;
+                mDIndex = -1;
+                mDInvaild = false;
                 invalidate();
                 return true;
             case MotionEvent.ACTION_CANCEL:
                 // Reset
-                dX = 0;
-                dY = 0;
-                dIndex = -1;
-                dInvaild = false;
+                mDX = 0;
+                mDY = 0;
+                mDIndex = -1;
+                mDInvaild = false;
                 invalidate();
                 break;
         }
@@ -299,22 +299,22 @@ public class VSView extends View {
     }
 
     private void calcPercent() {
-        if (percent == -1) {
-            itemA.percent = itemB.percent = "";
-            percent = 0.5f;
+        if (mPercent == -1) {
+            mItemA.percent = mItemB.percent = "";
+            mPercent = 0.5f;
         } else {
-            itemA.percent = Util.formatDecimal(percent * 100, 2) + "%";
-            itemB.percent = Util.formatDecimal(100 - percent * 100, 2) + "%";
+            mItemA.percent = Util.formatDecimal(mPercent * 100, 2) + "%";
+            mItemB.percent = Util.formatDecimal(100 - mPercent * 100, 2) + "%";
         }
     }
 
     public VSView setCompareA(VSItem item) {
-        this.itemA = item;
+        this.mItemA = item;
         return this;
     }
 
     public VSView setCompareB(VSItem item) {
-        this.itemB = item;
+        this.mItemB = item;
         return this;
     }
 
@@ -322,18 +322,18 @@ public class VSView extends View {
      * 动态刷新-设置对比项A所占百分比并重新绘制-格式为0.00
      */
     public void setPercent(float percentA, boolean isRefresh) {
-        percent = percentA;
+        mPercent = percentA;
         calcPercent();
         if (isRefresh) {
             invalidate();
         }
     }
 
-    public interface OnVSItemClickListen {
+    public interface OnVSClickListener {
         void onItemClick(int index, VSItem item);
     }
 
-    public void setOnVSItemSelectListener(OnVSItemClickListen listener) {
-        this.listener = listener;
+    public void setOnVSClickListener(OnVSClickListener l) {
+        this.mListener = l;
     }
 }

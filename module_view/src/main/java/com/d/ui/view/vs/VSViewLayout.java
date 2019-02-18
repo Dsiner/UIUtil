@@ -15,7 +15,7 @@ import com.d.ui.view.R;
  * VSView Test
  * Created by D on 2017/4/20.
  */
-public class VSViewLayout extends LinearLayout implements VSView.OnVSItemClickListen {
+public class VSViewLayout extends LinearLayout implements VSView.OnVSClickListener {
     private Context context;
     private VSView vsView;
 
@@ -43,7 +43,7 @@ public class VSViewLayout extends LinearLayout implements VSView.OnVSItemClickLi
         VSItem vsA = new VSItem("A", false);
         VSItem vsB = new VSItem("B", false);
         vsView.setCompareA(vsA).setCompareB(vsB).setPercent(-1, false);
-        vsView.setOnVSItemSelectListener(this);
+        vsView.setOnVSClickListener(this);
     }
 
     @Override

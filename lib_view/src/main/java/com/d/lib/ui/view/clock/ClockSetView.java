@@ -25,26 +25,26 @@ public class ClockSetView extends View {
     public final static int MODE_HOUR = 0;
     public final static int MODE_MINUTE = 1;
 
-    private final String[] hoursAM = new String[]{"12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"};
-    private final String[] hoursPM = new String[]{"00", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
-    private final String[] minute = new String[]{"00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"};
+    private final String[] HOURS_AM = new String[]{"12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"};
+    private final String[] HOURS_PM = new String[]{"00", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
+    private final String[] MINUTE = new String[]{"00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"};
 
-    private int width;
-    private int height;
+    private int mWidth;
+    private int mHeight;
 
-    private int mode = MODE_HOUR;
-    private boolean shift;
+    private int mMode = MODE_HOUR;
+    private boolean mShift;
 
-    private Paint paint;
-    private Xfermode[] xfermodes;
-    private int colorBg, colorMain, colorSub, colorFoucusMain, colorFoucusSub, colorIndicator;
-    private float textMainSize, textSubSize;
-    private float radiusBig, radiusSmall;
-    private float indicatorWidth;
-    private float padding;
-    private float textHeight, textHeightMain, textHeightSub;
-    private int sweepAngle = 90;
-    private OnSelectListener listener;
+    private Paint mPaint;
+    private Xfermode[] mXfermodes;
+    private int mColorBg, mColorMain, mColorSub, mColorFocusMain, mColorFocusSub, mColorIndicator;
+    private float mTextMainSize, mTextSubSize;
+    private float mRadiusBig, mRadiusSmall;
+    private float mIndicatorWidth;
+    private float mPadding;
+    private float mTextHeight, mTextHeightMain, mTextHeightSub;
+    private int mSweepAngle = 90;
+    private OnSelectListener mListener;
 
     public ClockSetView(Context context) {
         this(context, null);
@@ -62,102 +62,102 @@ public class ClockSetView extends View {
 
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_ui_view_ClockSetView);
-        colorBg = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_background, Color.parseColor("#FAFAFA"));
-        colorMain = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_mainColor, Color.parseColor("#000000"));
-        colorSub = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_subColor, Color.parseColor("#707070"));
-        colorFoucusMain = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_mainFoucusColor, Color.parseColor("#ffffff"));
-        colorFoucusSub = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_subFoucusColor, Color.parseColor("#DFB5B8"));
-        colorIndicator = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_indicatorColor, Color.parseColor("#DC4339"));
-        textMainSize = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_mainTextSize, Util.dip2px(context, 16f));
-        textSubSize = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_subTextSize, Util.dip2px(context, 12f));
-        radiusBig = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_radiusBig, Util.dip2px(context, 18f));
-        radiusSmall = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_radiusSmall, Util.dip2px(context, 3));
-        indicatorWidth = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_indicatorWidth, Util.dip2px(context, 2));
-        padding = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_padding, Util.dip2px(context, 3));
+        mColorBg = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_background, Color.parseColor("#FAFAFA"));
+        mColorMain = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_mainColor, Color.parseColor("#000000"));
+        mColorSub = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_subColor, Color.parseColor("#707070"));
+        mColorFocusMain = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_mainFoucusColor, Color.parseColor("#ffffff"));
+        mColorFocusSub = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_subFoucusColor, Color.parseColor("#DFB5B8"));
+        mColorIndicator = typedArray.getColor(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_indicatorColor, Color.parseColor("#DC4339"));
+        mTextMainSize = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_mainTextSize, Util.dip2px(context, 16f));
+        mTextSubSize = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_subTextSize, Util.dip2px(context, 12f));
+        mRadiusBig = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_radiusBig, Util.dip2px(context, 18f));
+        mRadiusSmall = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_radiusSmall, Util.dip2px(context, 3));
+        mIndicatorWidth = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_indicatorWidth, Util.dip2px(context, 2));
+        mPadding = typedArray.getDimension(R.styleable.lib_ui_view_ClockSetView_lib_ui_view_clocksetv_padding, Util.dip2px(context, 3));
         typedArray.recycle();
     }
 
     private void init(Context context) {
-        xfermodes = new Xfermode[]{new PorterDuffXfermode(PorterDuff.Mode.DST_OVER),
+        mXfermodes = new Xfermode[]{new PorterDuffXfermode(PorterDuff.Mode.DST_OVER),
                 new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP)};
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(colorMain);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setTextSize(textSubSize);
-        paint.setTextAlign(Paint.Align.CENTER);
-        paint.setDither(true);
-        paint.setFilterBitmap(true);
-        textHeightSub = Util.getTextHeight(paint);
-        paint.setTextSize(textMainSize);
-        textHeightMain = Util.getTextHeight(paint);
-        textHeight = textHeightMain;
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(mColorMain);
+        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setTextSize(mTextSubSize);
+        mPaint.setTextAlign(Paint.Align.CENTER);
+        mPaint.setDither(true);
+        mPaint.setFilterBitmap(true);
+        mTextHeightSub = Util.getTextHeight(mPaint);
+        mPaint.setTextSize(mTextMainSize);
+        mTextHeightMain = Util.getTextHeight(mPaint);
+        mTextHeight = mTextHeightMain;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        paint.setColor(colorBg);
-        canvas.drawCircle(width / 2f, height / 2f, Math.min(width, height) / 2f, paint);
-        if (mode == 0) {
-            paint.setColor(colorSub);
-            paint.setTextSize(textSubSize);
-            textHeight = textHeightSub;
-            drawDial(canvas, Math.min(width, height) / 2f - radiusBig * 3f - padding, shift, hoursPM);
-            paint.setColor(colorMain);
-            paint.setTextSize(textMainSize);
-            textHeight = textHeightMain;
-            drawDial(canvas, Math.min(width, height) / 2f - radiusBig - padding, !shift, hoursAM);
+        mPaint.setColor(mColorBg);
+        canvas.drawCircle(mWidth / 2f, mHeight / 2f, Math.min(mWidth, mHeight) / 2f, mPaint);
+        if (mMode == 0) {
+            mPaint.setColor(mColorSub);
+            mPaint.setTextSize(mTextSubSize);
+            mTextHeight = mTextHeightSub;
+            drawDial(canvas, Math.min(mWidth, mHeight) / 2f - mRadiusBig * 3f - mPadding, mShift, HOURS_PM);
+            mPaint.setColor(mColorMain);
+            mPaint.setTextSize(mTextMainSize);
+            mTextHeight = mTextHeightMain;
+            drawDial(canvas, Math.min(mWidth, mHeight) / 2f - mRadiusBig - mPadding, !mShift, HOURS_AM);
         } else {
-            paint.setColor(colorMain);
-            paint.setTextSize(textMainSize);
-            textHeight = textHeightMain;
-            drawDial(canvas, Math.min(width, height) / 2f - radiusBig - padding, true, minute);
+            mPaint.setColor(mColorMain);
+            mPaint.setTextSize(mTextMainSize);
+            mTextHeight = mTextHeightMain;
+            drawDial(canvas, Math.min(mWidth, mHeight) / 2f - mRadiusBig - mPadding, true, MINUTE);
         }
     }
 
     private void drawDial(Canvas canvas, float radius, boolean withC, String[] dials) {
         canvas.save();
-        canvas.translate(width / 2f, height / 2f);
-        paint.setXfermode(null);
+        canvas.translate(mWidth / 2f, mHeight / 2f);
+        mPaint.setXfermode(null);
         for (int i = 0; i < dials.length; i++) {
             final float x = (float) (radius * Math.sin(Math.PI / 6 * i));
-            final float y = (float) (-radius * Math.cos(Math.PI / 6 * i)) + textHeight / 2f;
-            canvas.drawText(dials[i], x, y, paint);
+            final float y = (float) (-radius * Math.cos(Math.PI / 6 * i)) + mTextHeight / 2f;
+            canvas.drawText(dials[i], x, y, mPaint);
         }
 
         if (withC) {
             // Draw indicator
-            canvas.rotate(sweepAngle);
-            paint.setColor(colorIndicator);
-            final float left = -indicatorWidth / 2;
+            canvas.rotate(mSweepAngle);
+            mPaint.setColor(mColorIndicator);
+            final float left = -mIndicatorWidth / 2;
             final float top = 0;
-            final float right = indicatorWidth / 2;
+            final float right = mIndicatorWidth / 2;
             final float bottom = -radius;
-            canvas.drawRect(left, top, right, bottom, paint);
+            canvas.drawRect(left, top, right, bottom, mPaint);
             // Draw small circle
-            canvas.drawCircle(0, 0, radiusSmall, paint);
+            canvas.drawCircle(0, 0, mRadiusSmall, mPaint);
             canvas.restore();
 
             // Draw big circle
-            final int sc = canvas.saveLayer(0, 0, width, height, paint, Canvas.ALL_SAVE_FLAG);
-            canvas.translate(width / 2f, height / 2f);
-            canvas.rotate(sweepAngle);
-            canvas.drawCircle(0, -radius, radiusBig, paint);
+            final int sc = canvas.saveLayer(0, 0, mWidth, mHeight, mPaint, Canvas.ALL_SAVE_FLAG);
+            canvas.translate(mWidth / 2f, mHeight / 2f);
+            canvas.rotate(mSweepAngle);
+            canvas.drawCircle(0, -radius, mRadiusBig, mPaint);
 
-            canvas.rotate(-sweepAngle);
+            canvas.rotate(-mSweepAngle);
             // Draw shadow
-            paint.setXfermode(xfermodes[1]);
-            paint.setColor(mode == 0 && shift ? colorFoucusSub : colorFoucusMain);
+            mPaint.setXfermode(mXfermodes[1]);
+            mPaint.setColor(mMode == 0 && mShift ? mColorFocusSub : mColorFocusMain);
             for (int i = 0; i < dials.length; i++) {
                 final float x = (float) (radius * Math.sin(Math.PI / 6 * i));
-                final float y = (float) (-radius * Math.cos(Math.PI / 6 * i)) + textHeight / 2f;
-                canvas.drawText(dials[i], x, y, paint);
+                final float y = (float) (-radius * Math.cos(Math.PI / 6 * i)) + mTextHeight / 2f;
+                canvas.drawText(dials[i], x, y, mPaint);
             }
 
-            if (sweepAngle % 30 != 0) {
+            if (mSweepAngle % 30 != 0) {
                 // Draw big center circle
-                canvas.rotate(sweepAngle);
-                canvas.drawCircle(0, -radius, radiusSmall * 0.618f, paint);
+                canvas.rotate(mSweepAngle);
+                canvas.drawCircle(0, -radius, mRadiusSmall * 0.618f, mPaint);
             }
             canvas.restoreToCount(sc);
         } else {
@@ -168,52 +168,52 @@ public class ClockSetView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        setMeasuredDimension(width, height);
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        setMeasuredDimension(mWidth, mHeight);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         final float eX = event.getX();
         final float eY = event.getY();
-        final float cX = eX - width / 2f;
-        final float cY = -eY + height / 2f;
+        final float cX = eX - mWidth / 2f;
+        final float cY = -eY + mHeight / 2f;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
-                final boolean oldShift = shift;
-                final int oldSweepAngle = sweepAngle;
-                sweepAngle = (int) Math.toDegrees(Math.atan(cX / cY));
+                final boolean oldShift = mShift;
+                final int oldSweepAngle = mSweepAngle;
+                mSweepAngle = (int) Math.toDegrees(Math.atan(cX / cY));
                 if (cX == 0 && cY > 0) {
-                    sweepAngle = 0;
+                    mSweepAngle = 0;
                 } else if (cX == 0 && cY < 0) {
-                    sweepAngle = 180;
+                    mSweepAngle = 180;
                 } else if (cX > 0 && cY == 0) {
-                    sweepAngle = 90;
+                    mSweepAngle = 90;
                 } else if (cX < 0 && cY == 0) {
-                    sweepAngle = 270;
+                    mSweepAngle = 270;
                 } else if (cX > 0 && cY < 0) {
-                    sweepAngle += 180;
+                    mSweepAngle += 180;
                 } else if (cX < 0 && cY < 0) {
-                    sweepAngle += 180;
+                    mSweepAngle += 180;
                 } else if (cX < 0 && cY > 0) {
-                    sweepAngle += 360;
+                    mSweepAngle += 360;
                 }
-                sweepAngle = Math.max(0, sweepAngle);
-                sweepAngle = Math.min(360, sweepAngle);
-                final int piece = mode == MODE_MINUTE ? 6 : 30;
-                sweepAngle = (sweepAngle + piece / 2) / piece * piece;
-                if (sweepAngle >= 360) {
-                    sweepAngle = 0;
+                mSweepAngle = Math.max(0, mSweepAngle);
+                mSweepAngle = Math.min(360, mSweepAngle);
+                final int piece = mMode == MODE_MINUTE ? 6 : 30;
+                mSweepAngle = (mSweepAngle + piece / 2) / piece * piece;
+                if (mSweepAngle >= 360) {
+                    mSweepAngle = 0;
                 }
 
                 float r = (float) Math.sqrt(cX * cX + cY * cY);
-                shift = r <= Math.min(width, height) / 2f - radiusBig * 2f;
-                if (shift != oldShift || sweepAngle != oldSweepAngle) {
-                    if (listener != null) {
-                        int index = ExChange.angle2Index(mode, shift, sweepAngle);
-                        listener.onSelect(mode, ExChange.index2Value(mode, index));
+                mShift = r <= Math.min(mWidth, mHeight) / 2f - mRadiusBig * 2f;
+                if (mShift != oldShift || mSweepAngle != oldSweepAngle) {
+                    if (mListener != null) {
+                        int index = ExChange.angle2Index(mMode, mShift, mSweepAngle);
+                        mListener.onSelect(mMode, ExChange.index2Value(mMode, index));
                     }
                     invalidate();
                 }
@@ -225,13 +225,13 @@ public class ClockSetView extends View {
     }
 
     public void setMode(int mode, @IntRange(from = 0, to = 59) int index) {
-        this.mode = mode;
+        this.mMode = mode;
         if (mode == MODE_HOUR) {
             index = Math.max(0, index);
             index = Math.min(23, index);
-            this.shift = index == 0 || index > 12;
+            this.mShift = index == 0 || index > 12;
         }
-        this.sweepAngle = ExChange.index2Angle(mode, index);
+        this.mSweepAngle = ExChange.index2Angle(mode, index);
         this.invalidate();
     }
 
@@ -240,7 +240,7 @@ public class ClockSetView extends View {
     }
 
     public void setOnSelectListener(OnSelectListener l) {
-        this.listener = l;
+        this.mListener = l;
     }
 
     static class ExChange {

@@ -6,11 +6,11 @@ package com.d.lib.ui.view.vs;
  */
 public class VSItem {
     public String mainText;
-    public boolean isChecked;
     public String percent;
+    public boolean isChecked;
 
-    public VSItem(String s, boolean c) {
-        mainText = s;
-        isChecked = c;
+    public VSItem(String text, boolean checked) {
+        this.mainText = text;
+        this.isChecked = checked;
     }
 }
