@@ -13,5 +13,6 @@
         <activity android:name="com.d.ui.view.recordtrigger.RecordTriggerActivity" />
         <activity android:name="com.d.ui.view.verinor.VerInorActivity" />
         <activity android:name="com.d.ui.view.clock.ClockSetActivity" />
+        <activity android:name="com.d.ui.view.advertswitcher.AdvertSwitcherActivity" />
     </application>
 </manifest>

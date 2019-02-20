@@ -149,6 +149,14 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="@dimen/lib_pub_dimen_margin"
                 android:text="Clock Set" />
+
+            <Button
+                android:id="@+id/btn_advert_switcher"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Advert Switcher" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

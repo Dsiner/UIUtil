@@ -64,4 +64,11 @@
         <attr name="lib_ui_view_clocksetv_indicatorWidth" format="dimension" />
         <attr name="lib_ui_view_clocksetv_padding" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="lib_ui_view_AdvertSwitcher">
+        <attr name="lib_ui_view_advertswitcher_timeSpan" format="integer" />
+        <attr name="lib_ui_view_advertswitcher_inAnim" format="reference" />
+        <attr name="lib_ui_view_advertswitcher_outAnim" format="reference" />
+        <attr name="lib_ui_view_advertswitcher_interpolator" format="reference" />
+    </declare-styleable>
 </resources>

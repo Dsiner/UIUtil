@@ -12,6 +12,7 @@ import com.d.ui.layout.heartlayout.HeartActivity;
 import com.d.ui.layout.poi.PoiActivity;
 import com.d.ui.layout.praise.PraiseActivity;
 import com.d.ui.layout.shadow.ShadowActivity;
+import com.d.ui.view.advertswitcher.AdvertSwitcherActivity;
 import com.d.ui.view.clock.ClockSetActivity;
 import com.d.ui.view.lrc.LrcActivity;
 import com.d.ui.view.progress.ProgressActivity;
@@ -91,6 +92,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_clockset:
                 startActivity(new Intent(MainActivity.this, ClockSetActivity.class));
                 break;
+
+            case R.id.btn_advert_switcher:
+                startActivity(new Intent(MainActivity.this, AdvertSwitcherActivity.class));
+                break;
         }
     }
 
@@ -105,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ViewHelper.setOnClick(this, this, R.id.btn_ui, R.id.btn_lrc, R.id.btn_sort,
                 R.id.btn_tick, R.id.btn_toggle, R.id.btn_stoke, R.id.btn_replybg, R.id.btn_arcmenu,
                 R.id.btn_heart, R.id.btn_progress, R.id.btn_praise, R.id.btn_shadow,
-                R.id.btn_recordtrigger, R.id.btn_verinor, R.id.btn_poi, R.id.btn_clockset);
+                R.id.btn_recordtrigger, R.id.btn_verinor, R.id.btn_poi, R.id.btn_clockset,
+                R.id.btn_advert_switcher);
     }
 }

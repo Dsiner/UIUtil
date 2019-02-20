@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.d.lib.common.view.TitleLayout
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_pub_dimen_title_height"
+        android:background="@color/lib_pub_color_main"
+        app:lib_pub_tl_leftDrawable="@drawable/lib_pub_ic_title_back"
+        app:lib_pub_tl_middleText="Advert Switcher" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+        android:background="@color/lib_pub_color_line" />
+
+    <com.d.lib.ui.view.advertswitcher.AdvertSwitcher
+        android:id="@+id/as_advert_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/lib_pub_color_line" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+        android:background="@color/lib_pub_color_line" />
+
+    <com.d.lib.ui.view.advertswitcher.AdvertSwitcher
+        android:id="@+id/as_advert_img"
+        android:layout_width="match_parent"
+        android:layout_height="95dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/lib_pub_color_line" />
+</LinearLayout>
