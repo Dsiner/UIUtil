@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.d.lib.common.view.TitleLayout
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lib_pub_dimen_title_height"
+        android:background="@color/lib_pub_color_main"
+        app:lib_pub_tl_leftDrawable="@drawable/lib_pub_ic_title_back"
+        app:lib_pub_tl_middleText="Flow Layout" />
+
+    <com.d.lib.ui.view.flowlayout.FlowLayout
+        android:id="@+id/fl_flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lib_pub_color_bg_sub"
+        app:lib_ui_view_flow_dividerHeight="6dp"
+        app:lib_ui_view_flow_dividerWidth="6dp"
+        app:lib_ui_view_flow_paddingBottom="@dimen/lib_pub_dimen_margin"
+        app:lib_ui_view_flow_paddingLeft="@dimen/lib_pub_dimen_margin"
+        app:lib_ui_view_flow_paddingRight="@dimen/lib_pub_dimen_margin"
+        app:lib_ui_view_flow_paddingTop="@dimen/lib_pub_dimen_margin" />
+</LinearLayout>

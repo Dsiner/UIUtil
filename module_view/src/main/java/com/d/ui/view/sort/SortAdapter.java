@@ -14,8 +14,8 @@ import java.util.List;
  * SortAdapter
  * Created by D on 2017/6/7.
  */
-public class SortAdapter extends CommonAdapter<SortBean> {
-    public SortAdapter(Context context, List<SortBean> datas, int layoutId) {
+class SortAdapter extends CommonAdapter<SortBean> {
+    SortAdapter(Context context, List<SortBean> datas, int layoutId) {
         super(context, datas, layoutId);
     }
 

@@ -13,9 +13,9 @@ import com.d.ui.view.R;
 
 import java.util.List;
 
-public class AdvertSwitcherImgAdapter extends AdvertSwitcher.Adapter<AdvertSwitcherBean> {
+class AdvertSwitcherImgAdapter extends AdvertSwitcher.Adapter<AdvertSwitcherBean> {
 
-    public AdvertSwitcherImgAdapter(Context context, List<AdvertSwitcherBean> datas, int resId) {
+    AdvertSwitcherImgAdapter(Context context, List<AdvertSwitcherBean> datas, int resId) {
         super(context, datas, resId);
     }
 

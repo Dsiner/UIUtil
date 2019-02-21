@@ -71,4 +71,14 @@
         <attr name="lib_ui_view_advertswitcher_outAnim" format="reference" />
         <attr name="lib_ui_view_advertswitcher_interpolator" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="lib_ui_view_FlowLayout">
+        <attr name="lib_ui_view_flow_padding" format="dimension" />
+        <attr name="lib_ui_view_flow_paddingLeft" format="dimension" />
+        <attr name="lib_ui_view_flow_paddingTop" format="dimension" />
+        <attr name="lib_ui_view_flow_paddingRight" format="dimension" />
+        <attr name="lib_ui_view_flow_paddingBottom" format="dimension" />
+        <attr name="lib_ui_view_flow_dividerWidth" format="dimension" />
+        <attr name="lib_ui_view_flow_dividerHeight" format="dimension" />
+    </declare-styleable>
 </resources>

@@ -11,9 +11,9 @@ import com.d.ui.view.R;
 
 import java.util.List;
 
-public class AdvertSwitcherTextAdapter extends AdvertSwitcher.Adapter<AdvertSwitcherBean> {
+class AdvertSwitcherTextAdapter extends AdvertSwitcher.Adapter<AdvertSwitcherBean> {
 
-    public AdvertSwitcherTextAdapter(Context context, List<AdvertSwitcherBean> datas, int resId) {
+    AdvertSwitcherTextAdapter(Context context, List<AdvertSwitcherBean> datas, int resId) {
         super(context, datas, resId);
     }
 
@@ -25,7 +25,7 @@ public class AdvertSwitcherTextAdapter extends AdvertSwitcher.Adapter<AdvertSwit
     @Override
     public void bindView(View view, AdvertSwitcherBean item, final int position) {
         TextView tvTag = (TextView) view.findViewById(R.id.tv_no);
-        tvTag.setText(""+item.no);
+        tvTag.setText("" + item.no);
         TextView tvContent = (TextView) view.findViewById(R.id.tv_content);
         tvContent.setText(item.content);
         view.setOnClickListener(new View.OnClickListener() {

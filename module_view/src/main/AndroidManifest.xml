@@ -14,5 +14,6 @@
         <activity android:name="com.d.ui.view.verinor.VerInorActivity" />
         <activity android:name="com.d.ui.view.clock.ClockSetActivity" />
         <activity android:name="com.d.ui.view.advertswitcher.AdvertSwitcherActivity" />
+        <activity android:name="com.d.ui.view.flowlayout.FlowLayoutActivity" />
     </application>
 </manifest>

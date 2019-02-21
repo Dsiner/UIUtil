@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_flowlayout_tag"
+        android:padding="5dp"
+        android:textColor="@color/lib_pub_color_text_sub"
+        android:textSize="@dimen/lib_pub_dimen_text_small" />
+</FrameLayout>

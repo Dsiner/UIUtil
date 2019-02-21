@@ -14,6 +14,7 @@ import com.d.ui.layout.praise.PraiseActivity;
 import com.d.ui.layout.shadow.ShadowActivity;
 import com.d.ui.view.advertswitcher.AdvertSwitcherActivity;
 import com.d.ui.view.clock.ClockSetActivity;
+import com.d.ui.view.flowlayout.FlowLayoutActivity;
 import com.d.ui.view.lrc.LrcActivity;
 import com.d.ui.view.progress.ProgressActivity;
 import com.d.ui.view.recordtrigger.RecordTriggerActivity;
@@ -96,6 +97,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_advert_switcher:
                 startActivity(new Intent(MainActivity.this, AdvertSwitcherActivity.class));
                 break;
+
+            case R.id.btn_advert_flow_layout:
+                startActivity(new Intent(MainActivity.this, FlowLayoutActivity.class));
+                break;
         }
     }
 
@@ -111,6 +116,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 R.id.btn_tick, R.id.btn_toggle, R.id.btn_stoke, R.id.btn_replybg, R.id.btn_arcmenu,
                 R.id.btn_heart, R.id.btn_progress, R.id.btn_praise, R.id.btn_shadow,
                 R.id.btn_recordtrigger, R.id.btn_verinor, R.id.btn_poi, R.id.btn_clockset,
-                R.id.btn_advert_switcher);
+                R.id.btn_advert_switcher, R.id.btn_advert_flow_layout);
     }
 }
