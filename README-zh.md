@@ -17,6 +17,8 @@ Name | Explain | Demo
 [HoleBgView](lib_view/src/main/java/com/d/lib/ui/view/stroke/HoleBgView.java) | 镂空背景 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/stroke/stroke.png" width="49%">
 [ArcMenu](lib_view/src/main/java/com/d/lib/ui/view/arcmenu/ArcMenu.java) | 卫星菜单 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/arcmenu/arcmenu.gif" width="49%">
 [TCHeartLayout](lib_layout/src/main/java/com/d/lib/ui/layout/heartlayout/TCHeartLayout.java) | 点赞动效 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/heartlayout/heartlayout.gif" width="49%">
+[AdvertSwitcher](lib_view/src/main/java/com/d/lib/ui/view/advertswitcher/AdvertSwitcher.java) | 轮播广告 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/advertswitcher/advertswitcher.gif" width="49%">
+[FlowLayout](lib_view/src/main/java/com/d/lib/ui/view/flowlayout/FlowLayout.java) | 流式布局、标签 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/flowlayout/flowlayout.png" width="49%">
 [ITouchSort](https://github.com/Dsiner/Xrv) | 拖曳排序 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Xrv/xrv_drag.gif" width="49%">
 [SlideLayout](https://github.com/Dsiner/SlideLayout) | 侧滑删除/菜单控件 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/SlideLayout/slidelayout.gif" width="49%">
 [TabView](https://github.com/Dsiner/TabView) | 滑动指示器/按钮/TAB控件 |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/TabView/tabview.gif" width="49%">

@@ -17,6 +17,8 @@ Name | Explain | Demo
 [HoleBgView](lib_view/src/main/java/com/d/lib/ui/view/stroke/HoleBgView.java) | Hollow background |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/stroke/stroke.png" width="49%">
 [ArcMenu](lib_view/src/main/java/com/d/lib/ui/view/arcmenu/ArcMenu.java) | Arc menu |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/arcmenu/arcmenu.gif" width="49%">
 [TCHeartLayout](lib_layout/src/main/java/com/d/lib/ui/layout/heartlayout/TCHeartLayout.java) | Like effect |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/heartlayout/heartlayout.gif" width="49%">
+[AdvertSwitcher](lib_view/src/main/java/com/d/lib/ui/view/advertswitcher/AdvertSwitcher.java) | Carousel ad |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/advertswitcher/advertswitcher.gif" width="49%">
+[FlowLayout](lib_view/src/main/java/com/d/lib/ui/view/flowlayout/FlowLayout.java) | Flow tag |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/UIUtil/flowlayout/flowlayout.png" width="49%">
 [ITouchSort](https://github.com/Dsiner/Xrv) | Drag sort |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/Xrv/xrv_drag.gif" width="49%">
 [SlideLayout](https://github.com/Dsiner/SlideLayout) | Skid delete/menu controls |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/SlideLayout/slidelayout.gif" width="49%">
 [TabView](https://github.com/Dsiner/TabView) | Slide indicator/button/TAB control |  <img src="https://github.com/Dsiner/Resouce/blob/master/lib/TabView/tabview.gif" width="49%">
