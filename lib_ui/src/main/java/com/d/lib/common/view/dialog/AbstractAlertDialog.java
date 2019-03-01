@@ -18,8 +18,8 @@ import com.d.lib.common.R;
  * Created by D on 2017/4/29.
  */
 public abstract class AbstractAlertDialog extends AlertDialog {
-    protected Context context;
-    protected View rootView;
+    protected Context mContext;
+    protected View mRootView;
 
     protected AbstractAlertDialog(@NonNull Context context) {
         this(context, R.style.lib_pub_dialog_style, false, 0, 0, 0);
@@ -41,9 +41,9 @@ public abstract class AbstractAlertDialog extends AlertDialog {
      */
     protected AbstractAlertDialog(@NonNull Context context, @StyleRes int themeResId, boolean isSetWin, int gravity, int width, int heith) {
         super(context, themeResId);
-        this.context = context;
-        this.rootView = LayoutInflater.from(context).inflate(getLayoutRes(), null);
-        setContentView(this.rootView);
+        this.mContext = context;
+        this.mRootView = LayoutInflater.from(context).inflate(getLayoutRes(), null);
+        setContentView(this.mRootView);
         setCanceledOnTouchOutside(true);
         setCancelable(true);
         if (isSetWin) {
@@ -62,14 +62,14 @@ public abstract class AbstractAlertDialog extends AlertDialog {
                 dialogWindow.setAttributes(p);
             }
         }
-        init(this.rootView);
+        init(this.mRootView);
     }
 
     protected AbstractAlertDialog(Context context, int themeResId, ViewGroup.LayoutParams params) {
         super(context, themeResId);
-        this.context = context;
-        this.rootView = LayoutInflater.from(context).inflate(getLayoutRes(), null);
-        setContentView(this.rootView, params);
+        this.mContext = context;
+        this.mRootView = LayoutInflater.from(context).inflate(getLayoutRes(), null);
+        setContentView(this.mRootView, params);
         setCanceledOnTouchOutside(true);
         setCancelable(true);
         Window dialogWindow = getWindow();
@@ -78,7 +78,7 @@ public abstract class AbstractAlertDialog extends AlertDialog {
             dialogWindow.setBackgroundDrawableResource(android.R.color.transparent);
             dialogWindow.getDecorView().setPadding(0, 0, 0, 0);
         }
-        init(this.rootView);
+        init(this.mRootView);
     }
 
     /**
@@ -86,7 +86,7 @@ public abstract class AbstractAlertDialog extends AlertDialog {
      */
     @Override
     public void show() {
-        if (context instanceof Activity && ((Activity) context).isFinishing()) {
+        if (mContext instanceof Activity && ((Activity) mContext).isFinishing()) {
             return;
         }
         if (!isShowing()) {

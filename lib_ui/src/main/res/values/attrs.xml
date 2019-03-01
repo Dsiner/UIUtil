@@ -46,14 +46,14 @@
         <attr name="lib_pub_stab_duration" format="integer" />
     </declare-styleable>
 
-    <declare-styleable name="lib_pub_SegementView">
-        <attr name="lib_pub_segementv_titles" format="string" />
-        <attr name="lib_pub_segementv_colorMain" format="color" />
-        <attr name="lib_pub_segementv_colorSub" format="color" />
-        <attr name="lib_pub_segementv_textSize" format="dimension" />
-        <attr name="lib_pub_segementv_radius" format="dimension" />
-        <attr name="lib_pub_segementv_divideWidth" format="dimension" />
-        <attr name="lib_pub_segementv_borderWidth" format="dimension" />
+    <declare-styleable name="lib_pub_SegmentView">
+        <attr name="lib_pub_segmentv_titles" format="string" />
+        <attr name="lib_pub_segmentv_colorMain" format="color" />
+        <attr name="lib_pub_segmentv_colorSub" format="color" />
+        <attr name="lib_pub_segmentv_textSize" format="dimension" />
+        <attr name="lib_pub_segmentv_radius" format="dimension" />
+        <attr name="lib_pub_segmentv_divideWidth" format="dimension" />
+        <attr name="lib_pub_segmentv_borderWidth" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="lib_pub_ToggleButton">

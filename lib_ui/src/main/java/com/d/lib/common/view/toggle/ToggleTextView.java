@@ -13,7 +13,7 @@ import android.widget.CheckedTextView;
 @SuppressLint("AppCompatCustomView")
 public class ToggleTextView extends CheckedTextView implements ToggleView, View.OnClickListener {
 
-    private OnToggleListener listener;
+    private OnToggleListener mListener;
 
     public ToggleTextView(Context context) {
         this(context, null);
@@ -50,13 +50,13 @@ public class ToggleTextView extends CheckedTextView implements ToggleView, View.
     @Override
     public void onClick(View v) {
         toggle();
-        if (listener != null) {
-            listener.onToggle(isChecked());
+        if (mListener != null) {
+            mListener.onToggle(isChecked());
         }
     }
 
     @Override
     public void setOnToggleListener(OnToggleListener l) {
-        this.listener = l;
+        this.mListener = l;
     }
 }

@@ -22,24 +22,24 @@ public class LoadingView extends View {
     public final static int TYPE_DAISY = 0;
     public final static int TYPE_DOT = 1;
 
-    private float width;
-    private float height;
+    private float mWidth;
+    private float mHeight;
 
-    private Context context;
-    private Paint paint;
-    private RectF tempRct;
-    private int type = TYPE_DAISY;
-    private long daration;
-    private int count = 12;
-    private int color;
-    private int minAlpha;
-    private float widthRate;
-    private float heightRate;
-    private float rectWidth;
-    private int j;
-    private Handler handler;
-    private Task runnable;
-    private boolean isFirst;
+    private Context mContext;
+    private Paint mPaint;
+    private RectF mTempRect;
+    private int mType = TYPE_DAISY;
+    private long mDuration;
+    private int mCount = 12;
+    private int mColor;
+    private int mMinAlpha;
+    private float mWidthRate;
+    private float mHeightRate;
+    private float mRectWidth;
+    private int mJ;
+    private Handler mHandler;
+    private Task mRunnable;
+    private boolean mIsFirst;
 
     private static class Task implements Runnable {
 
@@ -56,13 +56,13 @@ public class LoadingView extends View {
             }
             LoadingView theView = weakRef.get();
             theView.invalidate();
-            theView.handler.postDelayed(theView.runnable, theView.daration / theView.count);
+            theView.mHandler.postDelayed(theView.mRunnable, theView.mDuration / theView.mCount);
         }
 
         private boolean isFinished() {
             return weakRef == null || weakRef.get() == null
-                    || weakRef.get().context == null
-                    || weakRef.get().context instanceof Activity && ((Activity) weakRef.get().context).isFinishing();
+                    || weakRef.get().mContext == null
+                    || weakRef.get().mContext instanceof Activity && ((Activity) weakRef.get().mContext).isFinishing();
         }
     }
 
@@ -80,68 +80,68 @@ public class LoadingView extends View {
     }
 
     private void init(Context context) {
-        this.context = context;
-        this.isFirst = true;
-        this.color = ContextCompat.getColor(context, R.color.lib_pub_color_main);
-        this.paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        this.paint.setColor(color);
-        this.daration = 1000;
-        this.minAlpha = 50;
-        this.widthRate = 1f / 3;
-        this.heightRate = 1f / 2;
-        this.handler = new Handler();
-        this.runnable = new Task(this);
+        this.mContext = context;
+        this.mIsFirst = true;
+        this.mColor = ContextCompat.getColor(context, R.color.lib_pub_color_main);
+        this.mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        this.mPaint.setColor(mColor);
+        this.mDuration = 1000;
+        this.mMinAlpha = 50;
+        this.mWidthRate = 1f / 3;
+        this.mHeightRate = 1f / 2;
+        this.mHandler = new Handler();
+        this.mRunnable = new Task(this);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (width == 0 || height == 0 || tempRct == null) {
+        if (mWidth == 0 || mHeight == 0 || mTempRect == null) {
             return;
         }
-        canvas.translate(width / 2, height / 2);
-        j++;
-        j %= count;
+        canvas.translate(mWidth / 2, mHeight / 2);
+        mJ++;
+        mJ %= mCount;
         int alpha;
-        for (int i = 0; i < count; i++) {
-            canvas.rotate(360f / count);
-            alpha = (i - j + count) % count;
-            alpha = (int) (((alpha) * (255f - minAlpha) / count + minAlpha));
-            paint.setAlpha(alpha);
-            switch (type) {
+        for (int i = 0; i < mCount; i++) {
+            canvas.rotate(360f / mCount);
+            alpha = (i - mJ + mCount) % mCount;
+            alpha = (int) (((alpha) * (255f - mMinAlpha) / mCount + mMinAlpha));
+            mPaint.setAlpha(alpha);
+            switch (mType) {
                 case TYPE_DAISY:
                     /** Daisy rotation **/
-                    canvas.drawRoundRect(tempRct, rectWidth / 2, rectWidth / 2, paint);
+                    canvas.drawRoundRect(mTempRect, mRectWidth / 2, mRectWidth / 2, mPaint);
                     break;
                 case TYPE_DOT:
                     /** Dot rotation **/
-                    canvas.drawCircle((tempRct.left + tempRct.right) / 2, (tempRct.top + tempRct.bottom) / 2, rectWidth * 2 / 3, paint);
+                    canvas.drawCircle((mTempRect.left + mTempRect.right) / 2, (mTempRect.top + mTempRect.bottom) / 2, mRectWidth * 2 / 3, mPaint);
                     break;
             }
         }
-        if (isFirst) {
-            isFirst = false;
-            handler.postDelayed(runnable, daration / count);
+        if (mIsFirst) {
+            mIsFirst = false;
+            mHandler.postDelayed(mRunnable, mDuration / mCount);
         }
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        width = w;
-        height = h;
+        mWidth = w;
+        mHeight = h;
         refreshField();
     }
 
     private void refreshField() {
-        final float h = width > height ? height : width;
-        final float rectHeight = h * heightRate / 2;
-        final float radius = h * (1 - heightRate / 2) / 2;
-        rectWidth = rectHeight * widthRate;
-        if (tempRct == null) {
-            tempRct = new RectF(-rectWidth / 2, -(radius + rectHeight / 2), rectWidth / 2, -(radius - rectHeight / 2));
+        final float h = mWidth > mHeight ? mHeight : mWidth;
+        final float rectHeight = h * mHeightRate / 2;
+        final float radius = h * (1 - mHeightRate / 2) / 2;
+        mRectWidth = rectHeight * mWidthRate;
+        if (mTempRect == null) {
+            mTempRect = new RectF(-mRectWidth / 2, -(radius + rectHeight / 2), mRectWidth / 2, -(radius - rectHeight / 2));
         } else {
-            tempRct.set(-rectWidth / 2, -(radius + rectHeight / 2), rectWidth / 2, -(radius - rectHeight / 2));
+            mTempRect.set(-mRectWidth / 2, -(radius + rectHeight / 2), mRectWidth / 2, -(radius - rectHeight / 2));
         }
     }
 
@@ -161,7 +161,7 @@ public class LoadingView extends View {
 
     @Override
     protected void onAttachedToWindow() {
-        if (!isFirst) {
+        if (!mIsFirst) {
             restart();
         }
         super.onAttachedToWindow();
@@ -174,7 +174,7 @@ public class LoadingView extends View {
     }
 
     public void setType(int type) {
-        this.type = type;
+        this.mType = type;
         this.invalidate();
     }
 
@@ -183,14 +183,14 @@ public class LoadingView extends View {
      */
     public void restart() {
         stop();
-        handler.post(runnable);
+        mHandler.post(mRunnable);
     }
 
     /**
      * Stop
      */
     public void stop() {
-        isFirst = false;
-        handler.removeCallbacks(runnable);
+        mIsFirst = false;
+        mHandler.removeCallbacks(mRunnable);
     }
 }

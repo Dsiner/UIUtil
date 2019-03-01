@@ -22,29 +22,28 @@ import com.nineoldandroids.animation.ValueAnimator;
  * Created by D on 2017/6/6.
  */
 public class ToggleButton extends View implements ToggleView {
-    private int width;
-    private int height;
+    private int mWidth;
+    private int mHeight;
 
-    private Rect rect;
-    private RectF rectF;
-    private Paint paintThumb;
-    private Paint paintTrack;
-    private Paint paintPadding;
-    private Paint paintShader;
+    private Rect mRect;
+    private RectF mRectF;
+    private Paint mPaintThumb;
+    private Paint mPaintTrack;
+    private Paint mPaintPadding;
+    private Paint mPaintShader;
 
-    private int touchSlop;
-    private boolean isOpen; // 当前的位置
-    private boolean isClickValid; // 点击是否有效
+    private int mTouchSlop;
+    private boolean mIsOpen; // 当前的位置
+    private boolean mIsClickValid; // 点击是否有效
 
-    private float padding; // Variables 背景边框线宽度
-    private int duration; // Variables 动画时长
+    private float mPadding; // Variables 背景边框线宽度
+    private int mDuration; // Variables 动画时长
 
-    private ValueAnimator animation;
-    private float factor = 1; // 进度因子:0-1
-
-    private OnToggleListener listener;
-    private int colorThumb, colorTrackOpen, colorTrackOff, colorPadding;
-    private float dX, dY;
+    private int mColorThumb, mColorTrackOpen, mColorTrackOff, mColorPadding;
+    private float mDX, mDY;
+    private ValueAnimator mAnimation;
+    private float mFactor = 1; // 进度因子: 0-1
+    private OnToggleListener mListener;
 
     public ToggleButton(Context context) {
         this(context, null);
@@ -62,44 +61,44 @@ public class ToggleButton extends View implements ToggleView {
 
     private void initTypedArray(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_pub_ToggleButton);
-        colorThumb = typedArray.getColor(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_colorThumb, ContextCompat.getColor(context, R.color.lib_pub_color_white));
-        colorTrackOpen = typedArray.getColor(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_colorTrackOpen, ContextCompat.getColor(context, R.color.lib_pub_color_main));
-        colorTrackOff = typedArray.getColor(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_colorTrackOff, ContextCompat.getColor(context, R.color.lib_pub_color_white));
-        colorPadding = typedArray.getColor(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_colorPadding, ContextCompat.getColor(context, R.color.lib_pub_color_hint));
-        padding = (int) typedArray.getDimension(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_padding, 1);
-        duration = typedArray.getInteger(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_duration, 0);
+        mColorThumb = typedArray.getColor(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_colorThumb, ContextCompat.getColor(context, R.color.lib_pub_color_white));
+        mColorTrackOpen = typedArray.getColor(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_colorTrackOpen, ContextCompat.getColor(context, R.color.lib_pub_color_main));
+        mColorTrackOff = typedArray.getColor(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_colorTrackOff, ContextCompat.getColor(context, R.color.lib_pub_color_white));
+        mColorPadding = typedArray.getColor(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_colorPadding, ContextCompat.getColor(context, R.color.lib_pub_color_hint));
+        mPadding = (int) typedArray.getDimension(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_padding, 1);
+        mDuration = typedArray.getInteger(R.styleable.lib_pub_ToggleButton_lib_pub_tbtn_duration, 0);
         typedArray.recycle();
     }
 
     private void init(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            setLayerType(LAYER_TYPE_SOFTWARE, null); // 禁用硬件加速
+            setLayerType(LAYER_TYPE_SOFTWARE, null); // Disable hardware acceleration
         }
-        touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
+        mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
 
-        rect = new Rect();
-        rectF = new RectF();
+        mRect = new Rect();
+        mRectF = new RectF();
 
-        paintThumb = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintThumb.setColor(colorThumb);
+        mPaintThumb = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintThumb.setColor(mColorThumb);
 
-        paintTrack = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintTrack.setColor(colorTrackOff);
+        mPaintTrack = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintTrack.setColor(mColorTrackOff);
 
-        paintPadding = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintPadding.setColor(colorPadding);
+        mPaintPadding = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintPadding.setColor(mColorPadding);
 
-        paintShader = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintShader.setColor(colorThumb);
-        paintShader.setShadowLayer(padding * 2, 0, 0, colorPadding);
+        mPaintShader = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaintShader.setColor(mColorThumb);
+        mPaintShader.setShadowLayer(mPadding * 2, 0, 0, mColorPadding);
 
-        animation = ValueAnimator.ofFloat(0f, 1f);
-        animation.setDuration(duration);
-        animation.setInterpolator(new LinearInterpolator());
-        animation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        mAnimation = ValueAnimator.ofFloat(0f, 1f);
+        mAnimation.setDuration(mDuration);
+        mAnimation.setInterpolator(new LinearInterpolator());
+        mAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                factor = (float) animation.getAnimatedValue(); // 更新进度因子
+                mFactor = (float) animation.getAnimatedValue(); // 更新进度因子
                 invalidate();
             }
         });
@@ -108,52 +107,52 @@ public class ToggleButton extends View implements ToggleView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        float rectRadius = height / 2f;
-        rect.set(0, 0, width, height);
-        rectF.set(rect);
-        canvas.drawRoundRect(rectF, rectRadius, rectRadius, isOpen ? paintTrack : paintPadding);
+        float rectRadius = mHeight / 2f;
+        mRect.set(0, 0, mWidth, mHeight);
+        mRectF.set(mRect);
+        canvas.drawRoundRect(mRectF, rectRadius, rectRadius, mIsOpen ? mPaintTrack : mPaintPadding);
 
-        rect.set((int) padding, (int) padding, (int) (width - padding), (int) (height - padding));
-        rectF.set(rect);
-        canvas.drawRoundRect(rectF, rectRadius, rectRadius, paintTrack);
+        mRect.set((int) mPadding, (int) mPadding, (int) (mWidth - mPadding), (int) (mHeight - mPadding));
+        mRectF.set(mRect);
+        canvas.drawRoundRect(mRectF, rectRadius, rectRadius, mPaintTrack);
 
-        float c0 = height / 2;
-        float c1 = width - height / 2;
-        float start = !isOpen ? c1 : c0;
-        float end = isOpen ? c1 : c0;
-        float offsetX = start + (end - start) * factor; // 通过属性动画因子，计算此瞬间圆心的横坐标
+        float c0 = mHeight / 2;
+        float c1 = mWidth - mHeight / 2;
+        float start = !mIsOpen ? c1 : c0;
+        float end = mIsOpen ? c1 : c0;
+        float offsetX = start + (end - start) * mFactor; // 通过属性动画因子，计算此瞬间圆心的横坐标
 
-        canvas.drawCircle(offsetX, height / 2, height / 2 - padding, paintShader);
+        canvas.drawCircle(offsetX, mHeight / 2, mHeight / 2 - mPadding, mPaintShader);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        setMeasuredDimension(width, height);
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        setMeasuredDimension(mWidth, mHeight);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!(factor == 0 || factor == 1)) {
+        if (!(mFactor == 0 || mFactor == 1)) {
             return false;
         }
         float eX = event.getX();
         float eY = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                dX = eX;
-                dY = eY;
-                isClickValid = true;
+                mDX = eX;
+                mDY = eY;
+                mIsClickValid = true;
             case MotionEvent.ACTION_MOVE:
-                if (isClickValid && (Math.abs(eX - dX) > touchSlop || Math.abs(eY - dY) > touchSlop)) {
-                    isClickValid = false;
+                if (mIsClickValid && (Math.abs(eX - mDX) > mTouchSlop || Math.abs(eY - mDY) > mTouchSlop)) {
+                    mIsClickValid = false;
                 }
-                return isClickValid;
+                return mIsClickValid;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
-                if (!isClickValid || eX < 0 || eX > width || eY < 0 || eY > height) {
+                if (!mIsClickValid || eX < 0 || eX > mWidth || eY < 0 || eY > mHeight) {
                     return false;
                 }
                 toggle();
@@ -167,8 +166,8 @@ public class ToggleButton extends View implements ToggleView {
      */
     public void start() {
         stop();
-        if (animation != null) {
-            animation.start();
+        if (mAnimation != null) {
+            mAnimation.start();
         }
     }
 
@@ -176,53 +175,53 @@ public class ToggleButton extends View implements ToggleView {
      * 停止动画
      */
     public void stop() {
-        if (animation != null) {
-            animation.cancel();
+        if (mAnimation != null) {
+            mAnimation.cancel();
         }
     }
 
     @Override
     public void toggle() {
-        isOpen = !isOpen;
-        if (isOpen) {
-            paintTrack.setColor(colorTrackOpen);
+        mIsOpen = !mIsOpen;
+        if (mIsOpen) {
+            mPaintTrack.setColor(mColorTrackOpen);
         } else {
-            paintTrack.setColor(colorTrackOff);
+            mPaintTrack.setColor(mColorTrackOff);
         }
-        if (duration <= 0) {
-            factor = 1f;
+        if (mDuration <= 0) {
+            mFactor = 1f;
             invalidate();
         } else {
             start();
         }
-        if (listener != null) {
-            listener.onToggle(isOpen);
+        if (mListener != null) {
+            mListener.onToggle(mIsOpen);
         }
     }
 
     @Override
     public void setOpen(boolean open) {
-        if (factor != 0 && factor != 1) {
+        if (mFactor != 0 && mFactor != 1) {
             return;
         }
         stop();
-        isOpen = open;
-        factor = 1f;
-        if (isOpen) {
-            paintTrack.setColor(colorTrackOpen);
+        mIsOpen = open;
+        mFactor = 1f;
+        if (mIsOpen) {
+            mPaintTrack.setColor(mColorTrackOpen);
         } else {
-            paintTrack.setColor(colorTrackOff);
+            mPaintTrack.setColor(mColorTrackOff);
         }
         invalidate();
     }
 
     @Override
     public boolean isOpen() {
-        return isOpen;
+        return mIsOpen;
     }
 
     @Override
     public void setOnToggleListener(OnToggleListener l) {
-        this.listener = l;
+        this.mListener = l;
     }
 }

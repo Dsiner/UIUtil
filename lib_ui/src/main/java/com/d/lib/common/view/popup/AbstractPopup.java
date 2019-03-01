@@ -19,8 +19,8 @@ public abstract class AbstractPopup extends PopupWindow implements View.OnKeyLis
     /**
      * Must be Activity
      */
-    protected Context context;
-    protected View rootView;
+    protected Context mContext;
+    protected View mRootView;
 
     private AbstractPopup() {
     }
@@ -50,8 +50,8 @@ public abstract class AbstractPopup extends PopupWindow implements View.OnKeyLis
          * LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
          */
         super(LayoutInflater.from(context).inflate(resource, null), width, height, focusable);
-        this.context = context;
-        this.rootView = getContentView();
+        this.mContext = context;
+        this.mRootView = getContentView();
         if (animationStyle != -1) {
             setAnimationStyle(animationStyle);
         }
@@ -66,8 +66,8 @@ public abstract class AbstractPopup extends PopupWindow implements View.OnKeyLis
      * Show PopupWindow
      */
     public void show() {
-        if (!isShowing() && context != null && !((Activity) context).isFinishing()) {
-            showAsDropDown(rootView);
+        if (!isShowing() && mContext != null && !((Activity) mContext).isFinishing()) {
+            showAsDropDown(mRootView);
         }
     }
 

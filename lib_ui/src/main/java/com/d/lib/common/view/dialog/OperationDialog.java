@@ -19,13 +19,13 @@ import java.util.List;
  * Created by D on 2018/6/15.
  */
 public class OperationDialog extends AbsSheetDialog<OperationDialog.Bean> {
-    private boolean isChecked;
+    private boolean mIsChecked;
 
     public OperationDialog(Context context, String title, List<Bean> datas) {
         super(context, R.style.lib_pub_dialog_style, false, 0, 0, 0);
-        this.title = title;
-        this.datas = datas;
-        initView(rootView);
+        this.mTitle = title;
+        this.mDatas = datas;
+        initView(mRootView);
     }
 
     @Override
@@ -36,36 +36,36 @@ public class OperationDialog extends AbsSheetDialog<OperationDialog.Bean> {
     @Override
     protected RecyclerView.Adapter getAdapter() {
         int adapterLayoutId = R.layout.lib_pub_adapter_dlg_bottom_ver;
-        if (datas != null && datas.size() > 0) {
-            int size = datas.size();
+        if (mDatas != null && mDatas.size() > 0) {
+            int size = mDatas.size();
             for (int i = 0; i < size; i++) {
-                if (datas.get(i).isChecked) {
+                if (mDatas.get(i).isChecked) {
                     adapterLayoutId = R.layout.lib_pub_adapter_dlg_bottom_ver_check;
-                    isChecked = true;
+                    mIsChecked = true;
                     break;
                 }
             }
         }
-        return new SheetAdapter(context, datas, adapterLayoutId);
+        return new SheetAdapter(mContext, mDatas, adapterLayoutId);
     }
 
     @Override
     protected void initView(View rootView) {
         initRecyclerList(rootView, R.id.rv_list, LinearLayoutManager.VERTICAL);
 
-        TextView tvCancle = (TextView) rootView.findViewById(R.id.tv_cancle);
+        TextView tvCancel = (TextView) rootView.findViewById(R.id.tv_cancel);
         TextView tvTitle = (TextView) rootView.findViewById(R.id.tv_title);
         View vLineTop = rootView.findViewById(R.id.line_top);
-        if (!TextUtils.isEmpty(title)) {
+        if (!TextUtils.isEmpty(mTitle)) {
             tvTitle.setVisibility(View.VISIBLE);
-            tvTitle.setText(title);
+            tvTitle.setText(mTitle);
             vLineTop.setVisibility(View.VISIBLE);
         } else {
             tvTitle.setVisibility(View.GONE);
             vLineTop.setVisibility(View.GONE);
         }
 
-        tvCancle.setOnClickListener(new View.OnClickListener() {
+        tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick(-1, null);
@@ -86,7 +86,7 @@ public class OperationDialog extends AbsSheetDialog<OperationDialog.Bean> {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (isChecked) {
+                    if (mIsChecked) {
                         item.isChecked = true;
                         notifyDataSetChanged();
                     }

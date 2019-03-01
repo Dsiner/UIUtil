@@ -25,19 +25,19 @@ public class ReplyBgView extends View {
     private final int TOP = 2;
     private final int BOTTOM = 3;
 
-    private int width;
-    private int height;
+    private int mWidth;
+    private int mHeight;
 
-    private Rect rect;
-    private RectF rectF;
-    private Paint paint;
-    private Path pathTrg; // Triangular path
-    private int gravity;
-    private int colorBg;
-    private float rectRadius;
-    private float offset; // Triangle left offset
-    private float trgHalfWidth; // Triangle bottom length/2
-    private float trgHeight; // Triangle height
+    private Rect mRect;
+    private RectF mRectF;
+    private Paint mPaint;
+    private Path mPathTrg; // Triangular path
+    private int mGravity;
+    private int mColorBg;
+    private float mRectRadius;
+    private float mOffset; // Triangle left offset
+    private float mTrgHalfWidth; // Triangle bottom length/2
+    private float mTrgHeight; // Triangle height
 
     public ReplyBgView(Context context) {
         this(context, null);
@@ -55,73 +55,73 @@ public class ReplyBgView extends View {
 
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_pub_ReplyBgView);
-        gravity = typedArray.getInteger(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_gravity, TOP);
-        colorBg = typedArray.getColor(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_color, ContextCompat.getColor(context, R.color.lib_pub_color_main));
-        rectRadius = typedArray.getDimension(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_radius, Util.dip2px(context, 3));
-        offset = typedArray.getDimension(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_offset, Util.dip2px(context, 6.5f));
-        trgHalfWidth = typedArray.getDimension(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_trgWidth, Util.dip2px(context, 6)) / 2;
-        trgHeight = typedArray.getDimension(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_trgHeight, Util.dip2px(context, 5));
+        mGravity = typedArray.getInteger(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_gravity, TOP);
+        mColorBg = typedArray.getColor(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_color, ContextCompat.getColor(context, R.color.lib_pub_color_main));
+        mRectRadius = typedArray.getDimension(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_radius, Util.dip2px(context, 3));
+        mOffset = typedArray.getDimension(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_offset, Util.dip2px(context, 6.5f));
+        mTrgHalfWidth = typedArray.getDimension(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_trgWidth, Util.dip2px(context, 6)) / 2;
+        mTrgHeight = typedArray.getDimension(R.styleable.lib_pub_ReplyBgView_lib_pub_replybv_trgHeight, Util.dip2px(context, 5));
         typedArray.recycle();
     }
 
     private void init(@SuppressWarnings("unused") Context context) {
-        pathTrg = new Path();
-        rect = new Rect();
-        rectF = new RectF();
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(colorBg);
+        mPathTrg = new Path();
+        mRect = new Rect();
+        mRectF = new RectF();
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(mColorBg);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        switch (gravity) {
+        switch (mGravity) {
             case LEFT:
-                pathTrg.moveTo(trgHeight, offset > 0 ? offset : height + offset - trgHalfWidth * 2);
-                pathTrg.lineTo(0, offset > 0 ? offset + trgHalfWidth : height + offset - trgHalfWidth);
-                pathTrg.lineTo(trgHeight, offset > 0 ? offset + trgHalfWidth * 2 : height + offset);
-                pathTrg.close();
-                canvas.drawPath(pathTrg, paint);
+                mPathTrg.moveTo(mTrgHeight, mOffset > 0 ? mOffset : mHeight + mOffset - mTrgHalfWidth * 2);
+                mPathTrg.lineTo(0, mOffset > 0 ? mOffset + mTrgHalfWidth : mHeight + mOffset - mTrgHalfWidth);
+                mPathTrg.lineTo(mTrgHeight, mOffset > 0 ? mOffset + mTrgHalfWidth * 2 : mHeight + mOffset);
+                mPathTrg.close();
+                canvas.drawPath(mPathTrg, mPaint);
 
-                rect.set((int) trgHeight, 0, width, height);
-                rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);
+                mRect.set((int) mTrgHeight, 0, mWidth, mHeight);
+                mRectF.set(mRect);
+                canvas.drawRoundRect(mRectF, mRectRadius, mRectRadius, mPaint);
                 break;
 
             case RIGHT:
-                pathTrg.moveTo(width - trgHeight, offset > 0 ? offset : height + offset - trgHalfWidth * 2);
-                pathTrg.lineTo(width, offset > 0 ? offset + trgHalfWidth : height + offset - trgHalfWidth);
-                pathTrg.lineTo(width - trgHeight, offset > 0 ? offset + trgHalfWidth * 2 : height + offset);
-                pathTrg.close();
-                canvas.drawPath(pathTrg, paint);
+                mPathTrg.moveTo(mWidth - mTrgHeight, mOffset > 0 ? mOffset : mHeight + mOffset - mTrgHalfWidth * 2);
+                mPathTrg.lineTo(mWidth, mOffset > 0 ? mOffset + mTrgHalfWidth : mHeight + mOffset - mTrgHalfWidth);
+                mPathTrg.lineTo(mWidth - mTrgHeight, mOffset > 0 ? mOffset + mTrgHalfWidth * 2 : mHeight + mOffset);
+                mPathTrg.close();
+                canvas.drawPath(mPathTrg, mPaint);
 
-                rect.set(0, 0, (int) (width - trgHeight), height);
-                rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);
+                mRect.set(0, 0, (int) (mWidth - mTrgHeight), mHeight);
+                mRectF.set(mRect);
+                canvas.drawRoundRect(mRectF, mRectRadius, mRectRadius, mPaint);
                 break;
 
             case TOP:
-                pathTrg.moveTo(offset > 0 ? offset : width + offset - trgHalfWidth * 2, trgHeight);
-                pathTrg.lineTo(offset > 0 ? offset + trgHalfWidth : width + offset - trgHalfWidth, 0);
-                pathTrg.lineTo(offset > 0 ? offset + trgHalfWidth * 2 : width + offset, trgHeight);
-                pathTrg.close();
-                canvas.drawPath(pathTrg, paint);
+                mPathTrg.moveTo(mOffset > 0 ? mOffset : mWidth + mOffset - mTrgHalfWidth * 2, mTrgHeight);
+                mPathTrg.lineTo(mOffset > 0 ? mOffset + mTrgHalfWidth : mWidth + mOffset - mTrgHalfWidth, 0);
+                mPathTrg.lineTo(mOffset > 0 ? mOffset + mTrgHalfWidth * 2 : mWidth + mOffset, mTrgHeight);
+                mPathTrg.close();
+                canvas.drawPath(mPathTrg, mPaint);
 
-                rect.set(0, (int) trgHeight, width, height);
-                rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);
+                mRect.set(0, (int) mTrgHeight, mWidth, mHeight);
+                mRectF.set(mRect);
+                canvas.drawRoundRect(mRectF, mRectRadius, mRectRadius, mPaint);
                 break;
 
             case BOTTOM:
-                pathTrg.moveTo(offset > 0 ? offset : width + offset - trgHalfWidth * 2, height - trgHeight);
-                pathTrg.lineTo(offset > 0 ? offset + trgHalfWidth : width + offset - trgHalfWidth, height);
-                pathTrg.lineTo(offset > 0 ? offset + trgHalfWidth * 2 : width + offset, height - trgHeight);
-                pathTrg.close();
-                canvas.drawPath(pathTrg, paint);
+                mPathTrg.moveTo(mOffset > 0 ? mOffset : mWidth + mOffset - mTrgHalfWidth * 2, mHeight - mTrgHeight);
+                mPathTrg.lineTo(mOffset > 0 ? mOffset + mTrgHalfWidth : mWidth + mOffset - mTrgHalfWidth, mHeight);
+                mPathTrg.lineTo(mOffset > 0 ? mOffset + mTrgHalfWidth * 2 : mWidth + mOffset, mHeight - mTrgHeight);
+                mPathTrg.close();
+                canvas.drawPath(mPathTrg, mPaint);
 
-                rect.set(0, 0, width, (int) (height - trgHeight));
-                rectF.set(rect);
-                canvas.drawRoundRect(rectF, rectRadius, rectRadius, paint);
+                mRect.set(0, 0, mWidth, (int) (mHeight - mTrgHeight));
+                mRectF.set(mRect);
+                canvas.drawRoundRect(mRectF, mRectRadius, mRectRadius, mPaint);
                 break;
         }
     }
@@ -129,8 +129,8 @@ public class ReplyBgView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        setMeasuredDimension(width, height);
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        setMeasuredDimension(mWidth, mHeight);
     }
 }

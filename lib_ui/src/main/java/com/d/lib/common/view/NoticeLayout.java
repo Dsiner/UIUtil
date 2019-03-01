@@ -18,13 +18,13 @@ import com.d.lib.common.R;
  * Created by D on 2017/5/3.
  */
 public class NoticeLayout extends RelativeLayout {
-    private int layout;
-    private Drawable icon;
-    private String content, button;
-    private int visibilityExit;
-    private int visibilityGoto;
-    private ImageView ivIcon, ivGoto, ivExit;
-    private TextView tvContent, tvButton;
+    private int mLayout;
+    private Drawable mIcon;
+    private String mContent, mButton;
+    private int mVisibilityExit;
+    private int mVisibilityGoto;
+    private ImageView mIvIcon, mIvGoto, mIvExit;
+    private TextView mTvContent, mTvButton;
 
     public NoticeLayout(Context context) {
         super(context);
@@ -46,37 +46,37 @@ public class NoticeLayout extends RelativeLayout {
 
     private void initAttr(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_pub_NoticeLayout);
-        layout = typedArray.getResourceId(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_layout, R.layout.lib_pub_layout_notice);
-        icon = typedArray.getDrawable(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_icon);
-        content = typedArray.getString(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_text);
-        visibilityGoto = typedArray.getInteger(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_gotoVisibility, 0);
-        visibilityExit = typedArray.getInteger(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_exitVisibility, 0);
-        button = typedArray.getString(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_button);
+        mLayout = typedArray.getResourceId(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_layout, R.layout.lib_pub_layout_notice);
+        mIcon = typedArray.getDrawable(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_icon);
+        mContent = typedArray.getString(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_text);
+        mVisibilityGoto = typedArray.getInteger(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_gotoVisibility, 0);
+        mVisibilityExit = typedArray.getInteger(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_exitVisibility, 0);
+        mButton = typedArray.getString(R.styleable.lib_pub_NoticeLayout_lib_pub_noticel_button);
         typedArray.recycle();
     }
 
     private void init(Context context) {
-        final View root = LayoutInflater.from(context).inflate(layout, this);
-        ivIcon = (ImageView) root.findViewById(R.id.iv_layout_notice_icon);
-        tvContent = (TextView) root.findViewById(R.id.tv_layout_notice_content);
-        tvButton = (TextView) root.findViewById(R.id.tv_layout_notice_button);
-        ivGoto = (ImageView) root.findViewById(R.id.iv_layout_notice_goto);
-        ivExit = (ImageView) root.findViewById(R.id.iv_layout_notice_exit);
-        ivGoto.setVisibility(visibilityGoto);
-        ivExit.setVisibility(visibilityExit);
-        if (icon != null) {
-            ivIcon.setImageDrawable(icon);
+        final View root = LayoutInflater.from(context).inflate(mLayout, this);
+        mIvIcon = (ImageView) root.findViewById(R.id.iv_layout_notice_icon);
+        mTvContent = (TextView) root.findViewById(R.id.tv_layout_notice_content);
+        mTvButton = (TextView) root.findViewById(R.id.tv_layout_notice_button);
+        mIvGoto = (ImageView) root.findViewById(R.id.iv_layout_notice_goto);
+        mIvExit = (ImageView) root.findViewById(R.id.iv_layout_notice_exit);
+        mIvGoto.setVisibility(mVisibilityGoto);
+        mIvExit.setVisibility(mVisibilityExit);
+        if (mIcon != null) {
+            mIvIcon.setImageDrawable(mIcon);
         }
-        tvContent.setText(!TextUtils.isEmpty(content) ? content : "");
-        tvButton.setVisibility(!TextUtils.isEmpty(button) ? VISIBLE : GONE);
-        tvButton.setText(!TextUtils.isEmpty(button) ? button : "");
+        mTvContent.setText(!TextUtils.isEmpty(mContent) ? mContent : "");
+        mTvButton.setVisibility(!TextUtils.isEmpty(mButton) ? VISIBLE : GONE);
+        mTvButton.setText(!TextUtils.isEmpty(mButton) ? mButton : "");
     }
 
     /**
      * Set text content
      */
     public void setText(CharSequence text) {
-        tvContent.setText(text);
+        mTvContent.setText(text);
     }
 
     public void setVisibility(int resId, int visibility) {

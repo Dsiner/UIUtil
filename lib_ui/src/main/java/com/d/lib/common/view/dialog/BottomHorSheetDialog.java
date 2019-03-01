@@ -21,9 +21,9 @@ public class BottomHorSheetDialog extends AbsSheetDialog<BottomHorSheetDialog.Be
 
     public BottomHorSheetDialog(Context context, String title, List<Bean> datas) {
         super(context);
-        this.title = title;
-        this.datas = datas;
-        initView(rootView);
+        this.mTitle = title;
+        this.mDatas = datas;
+        initView(mRootView);
     }
 
     @Override
@@ -33,23 +33,23 @@ public class BottomHorSheetDialog extends AbsSheetDialog<BottomHorSheetDialog.Be
 
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new SheetAdapter(context, datas, R.layout.lib_pub_adapter_dlg_bottom_hor);
+        return new SheetAdapter(mContext, mDatas, R.layout.lib_pub_adapter_dlg_bottom_hor);
     }
 
     @Override
     protected void initView(View rootView) {
         initRecyclerList(rootView, R.id.rv_list, LinearLayoutManager.HORIZONTAL);
 
-        TextView tvCancle = (TextView) rootView.findViewById(R.id.tv_cancle);
+        TextView tvCancel = (TextView) rootView.findViewById(R.id.tv_cancel);
         TextView tvTitle = (TextView) rootView.findViewById(R.id.tv_title);
-        if (!TextUtils.isEmpty(title)) {
+        if (!TextUtils.isEmpty(mTitle)) {
             tvTitle.setVisibility(View.VISIBLE);
-            tvTitle.setText(title);
+            tvTitle.setText(mTitle);
         } else {
             tvTitle.setVisibility(View.GONE);
         }
 
-        tvCancle.setOnClickListener(new View.OnClickListener() {
+        tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick(-1, null);

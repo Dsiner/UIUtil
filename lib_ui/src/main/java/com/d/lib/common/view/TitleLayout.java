@@ -20,12 +20,12 @@ import com.d.lib.common.R;
  * Created by D on 2017/5/3.
  */
 public class TitleLayout extends RelativeLayout {
-    protected Context context;
-    protected View rootView;
-    protected final int menuRes;
-    private final String[] texts = new String[3];
-    private final Drawable[] drawables = new Drawable[3];
-    private final int[] ress = new int[3];
+    protected Context mContext;
+    protected View mRootView;
+    protected final int mMenuRes;
+    private final String[] mTexts = new String[3];
+    private final Drawable[] mDrawables = new Drawable[3];
+    private final int[] mResIds = new int[3];
 
     public TitleLayout(Context context) {
         this(context, null);
@@ -38,35 +38,35 @@ public class TitleLayout extends RelativeLayout {
     public TitleLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_pub_TitleLayout);
-        texts[0] = typedArray.getString(R.styleable.lib_pub_TitleLayout_lib_pub_tl_leftText);
-        texts[1] = typedArray.getString(R.styleable.lib_pub_TitleLayout_lib_pub_tl_rightText);
-        texts[2] = typedArray.getString(R.styleable.lib_pub_TitleLayout_lib_pub_tl_middleText);
+        mTexts[0] = typedArray.getString(R.styleable.lib_pub_TitleLayout_lib_pub_tl_leftText);
+        mTexts[1] = typedArray.getString(R.styleable.lib_pub_TitleLayout_lib_pub_tl_rightText);
+        mTexts[2] = typedArray.getString(R.styleable.lib_pub_TitleLayout_lib_pub_tl_middleText);
 
-        drawables[0] = typedArray.getDrawable(R.styleable.lib_pub_TitleLayout_lib_pub_tl_leftDrawable);
-        drawables[1] = typedArray.getDrawable(R.styleable.lib_pub_TitleLayout_lib_pub_tl_rightDrawable);
-        drawables[2] = typedArray.getDrawable(R.styleable.lib_pub_TitleLayout_lib_pub_tl_middleDrawable);
+        mDrawables[0] = typedArray.getDrawable(R.styleable.lib_pub_TitleLayout_lib_pub_tl_leftDrawable);
+        mDrawables[1] = typedArray.getDrawable(R.styleable.lib_pub_TitleLayout_lib_pub_tl_rightDrawable);
+        mDrawables[2] = typedArray.getDrawable(R.styleable.lib_pub_TitleLayout_lib_pub_tl_middleDrawable);
 
-        ress[0] = typedArray.getResourceId(R.styleable.lib_pub_TitleLayout_lib_pub_tl_leftRes, -1);
-        ress[1] = typedArray.getResourceId(R.styleable.lib_pub_TitleLayout_lib_pub_tl_rightRes, -1);
-        ress[2] = typedArray.getResourceId(R.styleable.lib_pub_TitleLayout_lib_pub_tl_middleRes, -1);
+        mResIds[0] = typedArray.getResourceId(R.styleable.lib_pub_TitleLayout_lib_pub_tl_leftRes, -1);
+        mResIds[1] = typedArray.getResourceId(R.styleable.lib_pub_TitleLayout_lib_pub_tl_rightRes, -1);
+        mResIds[2] = typedArray.getResourceId(R.styleable.lib_pub_TitleLayout_lib_pub_tl_middleRes, -1);
 
-        menuRes = typedArray.getResourceId(R.styleable.lib_pub_TitleLayout_lib_pub_tl_menu, -1);
+        mMenuRes = typedArray.getResourceId(R.styleable.lib_pub_TitleLayout_lib_pub_tl_menu, -1);
         typedArray.recycle();
         init(context);
     }
 
     protected void init(Context context) {
-        this.context = context;
-        rootView = LayoutInflater.from(context).inflate(R.layout.lib_pub_layout_title, this);
+        this.mContext = context;
+        mRootView = LayoutInflater.from(context).inflate(R.layout.lib_pub_layout_title, this);
 
         // Left
-        inflate(context, rootView, texts[0], drawables[0], ress[0],
+        inflate(context, mRootView, mTexts[0], mDrawables[0], mResIds[0],
                 R.id.tv_title_left, R.id.iv_title_left, ALIGN_PARENT_LEFT);
         // Right
-        inflate(context, rootView, texts[1], drawables[1], ress[1],
+        inflate(context, mRootView, mTexts[1], mDrawables[1], mResIds[1],
                 R.id.tv_title_right, R.id.iv_title_right, ALIGN_PARENT_RIGHT);
         // Middle
-        inflate(context, rootView, texts[2], drawables[2], ress[2],
+        inflate(context, mRootView, mTexts[2], mDrawables[2], mResIds[2],
                 R.id.tv_title_title, R.id.iv_title_middle, CENTER_IN_PARENT);
     }
 

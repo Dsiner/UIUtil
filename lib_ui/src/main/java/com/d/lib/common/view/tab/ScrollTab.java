@@ -40,32 +40,32 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     private final int TYPE_INDICATOR_TRANSLATION = 1;
     private final int TYPE_INDICATOR_NONE = 2;
 
-    private int width;
-    private int height;
+    private int mWidth;
+    private int mHeight;
 
-    private Context context;
-    private RectF rectF;
-    private Paint paint;
+    private Context mContext;
+    private RectF mRectF;
+    private Paint mPaint;
 
-    private int type;
-    private boolean isAvag;
-    private float padding; // Item内部左右预留间距
-    private String strTitles;
-    private int indicatorType;
-    private int indicatorColor;
-    private float indicatorWidth;
-    private float indicatorWeight;
-    private float indicatorRadius;
-    private float indicatorPadding;
+    private int mType;
+    private boolean mIsAvag;
+    private float mPadding; // Item内部左右预留间距
+    private String mStrTitles;
+    private int mIndicatorType;
+    private int mIndicatorColor;
+    private float mIndicatorWidth;
+    private float mIndicatorWeight;
+    private float mIndicatorRadius;
+    private float mIndicatorPadding;
 
-    private ArrayList<TabItem> items;
-    private ArrayList<View> tabs;
-    private int count;
-    private int position = 0;
-    private float positionOffset;
-    private boolean isFirst = true;
-    private ViewPager viewPager;
-    private OnTabListener listener;
+    private ArrayList<TabItem> mItems;
+    private ArrayList<View> mTabs;
+    private int mCount;
+    private int mPosition = 0;
+    private float mPositionOffset;
+    private boolean mIsFirst = true;
+    private ViewPager mViewPager;
+    private OnTabListener mListener;
 
     public ScrollTab(Context context) {
         this(context, null);
@@ -83,35 +83,35 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
 
     private void initTypedArray(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_pub_ScrollTab);
-        type = typedArray.getInt(R.styleable.lib_pub_ScrollTab_lib_pub_stab_type, TYPE_VIEW);
-        isAvag = typedArray.getBoolean(R.styleable.lib_pub_ScrollTab_lib_pub_stab_avag, false);
-        padding = typedArray.getDimension(R.styleable.lib_pub_ScrollTab_lib_pub_stab_padding, Util.dip2px(context, 12));
-        strTitles = typedArray.getString(R.styleable.lib_pub_ScrollTab_lib_pub_stab_titles);
-        indicatorType = typedArray.getInt(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorType, TYPE_INDICATOR_TREND);
-        indicatorColor = typedArray.getColor(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorColor, ContextCompat.getColor(context, R.color.lib_pub_color_main));
-        indicatorWidth = typedArray.getDimension(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorWidth, Util.dip2px(context, 30));
-        indicatorWeight = typedArray.getDimension(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorWeight, Util.dip2px(context, 1));
-        indicatorRadius = typedArray.getDimension(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorRadius, Util.dip2px(context, 0.5f));
-        indicatorPadding = typedArray.getDimension(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorPadding, Util.dip2px(context, 5));
+        mType = typedArray.getInt(R.styleable.lib_pub_ScrollTab_lib_pub_stab_type, TYPE_VIEW);
+        mIsAvag = typedArray.getBoolean(R.styleable.lib_pub_ScrollTab_lib_pub_stab_avag, false);
+        mPadding = typedArray.getDimension(R.styleable.lib_pub_ScrollTab_lib_pub_stab_padding, Util.dip2px(context, 12));
+        mStrTitles = typedArray.getString(R.styleable.lib_pub_ScrollTab_lib_pub_stab_titles);
+        mIndicatorType = typedArray.getInt(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorType, TYPE_INDICATOR_TREND);
+        mIndicatorColor = typedArray.getColor(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorColor, ContextCompat.getColor(context, R.color.lib_pub_color_main));
+        mIndicatorWidth = typedArray.getDimension(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorWidth, Util.dip2px(context, 30));
+        mIndicatorWeight = typedArray.getDimension(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorWeight, Util.dip2px(context, 1));
+        mIndicatorRadius = typedArray.getDimension(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorRadius, Util.dip2px(context, 0.5f));
+        mIndicatorPadding = typedArray.getDimension(R.styleable.lib_pub_ScrollTab_lib_pub_stab_indicatorPadding, Util.dip2px(context, 5));
         typedArray.recycle();
     }
 
     private void init(Context context) {
-        this.context = context;
+        this.mContext = context;
         setWillNotDraw(false);
         setHorizontalScrollBarEnabled(false);
         setOverScrollMode(OVER_SCROLL_NEVER);
-        setFillViewport(isAvag);
-        rectF = new RectF();
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(indicatorColor);
+        setFillViewport(mIsAvag);
+        mRectF = new RectF();
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(mIndicatorColor);
 
-        tabs = new ArrayList<>();
-        items = new ArrayList<>();
-        if (!TextUtils.isEmpty(strTitles)) {
-            String[] strs = strTitles.split(";");
+        mTabs = new ArrayList<>();
+        mItems = new ArrayList<>();
+        if (!TextUtils.isEmpty(mStrTitles)) {
+            String[] strs = mStrTitles.split(";");
             for (String t : strs) {
-                items.add(new TabItem(t, ""));
+                mItems.add(new TabItem(t, ""));
             }
         }
     }
@@ -120,12 +120,12 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
      * 设置Titles
      */
     public void setTitles(List<String> ts) {
-        if (this.items != null && ts != null) {
-            this.items.clear();
+        if (this.mItems != null && ts != null) {
+            this.mItems.clear();
             for (String t : ts) {
-                this.items.add(new TabItem(t, ""));
+                this.mItems.add(new TabItem(t, ""));
             }
-            if (!isFirst) {
+            if (!mIsFirst) {
                 resetTab();
                 invalidate();
             }
@@ -133,39 +133,39 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     }
 
     private void resetTab() {
-        if (items == null || items.size() <= 0 || width <= 0) {
+        if (mItems == null || mItems.size() <= 0 || mWidth <= 0) {
             return;
         }
-        isFirst = false;
-        count = items.size();
-        tabs.clear();
+        mIsFirst = false;
+        mCount = mItems.size();
+        mTabs.clear();
         removeAllViews();
-        LinearLayout parent = new LinearLayout(context);
-        LayoutParams lp = new LayoutParams(isAvag ? LayoutParams.MATCH_PARENT : LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+        LinearLayout parent = new LinearLayout(mContext);
+        LayoutParams lp = new LayoutParams(mIsAvag ? LayoutParams.MATCH_PARENT : LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         parent.setOrientation(LinearLayout.HORIZONTAL);
         parent.setLayoutParams(lp);
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < mCount; i++) {
             View child = getTabView(i);
             parent.addView(child);
-            tabs.add(child);
+            mTabs.add(child);
         }
         addView(parent);
     }
 
     private View getTabView(int i) {
         View child;
-        if (type == TYPE_VIEW) {
-            child = new TabTextView(context);
+        if (mType == TYPE_VIEW) {
+            child = new TabTextView(mContext);
         } else {
-            child = new TabViewGroup(context);
+            child = new TabViewGroup(mContext);
         }
-        ((TabView) child).setText(items.get(i).title);
-        ((TabView) child).setNumber(items.get(i).text, TextUtils.isEmpty(items.get(i).text) ? GONE : VISIBLE);
-        if (!isAvag) {
-            ((TabView) child).setPadding((int) padding);
+        ((TabView) child).setText(mItems.get(i).title);
+        ((TabView) child).setNumber(mItems.get(i).text, TextUtils.isEmpty(mItems.get(i).text) ? GONE : VISIBLE);
+        if (!mIsAvag) {
+            ((TabView) child).setPadding((int) mPadding);
         }
-        ((TabView) child).notifyData(i == position);
-        child.setLayoutParams(new LinearLayout.LayoutParams(isAvag ? width / (count > 0 ? count : 1) : ViewGroup.LayoutParams.WRAP_CONTENT,
+        ((TabView) child).notifyData(i == mPosition);
+        child.setLayoutParams(new LinearLayout.LayoutParams(mIsAvag ? mWidth / (mCount > 0 ? mCount : 1) : ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
         child.setTag(i);
         child.setOnClickListener(this);
@@ -175,52 +175,52 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (isInEditMode() || count <= 0 || position < 0 || position > count - 1) {
+        if (isInEditMode() || mCount <= 0 || mPosition < 0 || mPosition > mCount - 1) {
             return;
         }
-        if (indicatorType == TYPE_INDICATOR_TREND) {
-            float left = tabs.get(position).getLeft() + indicatorPadding;
-            float right = tabs.get(position).getRight() - indicatorPadding;
-            if (position < count - 1) {
-                float nextLeft = tabs.get(position + 1).getLeft() + indicatorPadding;
-                float nextRight = tabs.get(position + 1).getRight() - indicatorPadding;
-                if (positionOffset < 0.5) {
-                    right = right + (nextRight - right) * positionOffset * 2;
+        if (mIndicatorType == TYPE_INDICATOR_TREND) {
+            float left = mTabs.get(mPosition).getLeft() + mIndicatorPadding;
+            float right = mTabs.get(mPosition).getRight() - mIndicatorPadding;
+            if (mPosition < mCount - 1) {
+                float nextLeft = mTabs.get(mPosition + 1).getLeft() + mIndicatorPadding;
+                float nextRight = mTabs.get(mPosition + 1).getRight() - mIndicatorPadding;
+                if (mPositionOffset < 0.5) {
+                    right = right + (nextRight - right) * mPositionOffset * 2;
                 } else {
-                    left = left + (nextLeft - left) * (positionOffset - 0.5f) * 2;
+                    left = left + (nextLeft - left) * (mPositionOffset - 0.5f) * 2;
                     right = nextRight;
                 }
             }
-            rectF.set(left, height - indicatorWeight, right, height);
-        } else if (indicatorType == TYPE_INDICATOR_TRANSLATION) {
-            float left = tabs.get(position).getLeft();
-            float right = tabs.get(position).getRight();
+            mRectF.set(left, mHeight - mIndicatorWeight, right, mHeight);
+        } else if (mIndicatorType == TYPE_INDICATOR_TRANSLATION) {
+            float left = mTabs.get(mPosition).getLeft();
+            float right = mTabs.get(mPosition).getRight();
             float middle = left + (right - left) / 2;
-            if (position < count - 1) {
-                float nextLeft = tabs.get(position + 1).getLeft();
-                float nextRight = tabs.get(position + 1).getRight();
+            if (mPosition < mCount - 1) {
+                float nextLeft = mTabs.get(mPosition + 1).getLeft();
+                float nextRight = mTabs.get(mPosition + 1).getRight();
                 float nextMiddle = nextLeft + (nextRight - nextLeft) / 2;
-                middle = middle + (nextMiddle - middle) * positionOffset;
+                middle = middle + (nextMiddle - middle) * mPositionOffset;
             }
-            left = middle - indicatorWidth / 2;
-            right = middle + indicatorWidth / 2;
-            rectF.set(left, height - indicatorWeight, right, height);
+            left = middle - mIndicatorWidth / 2;
+            right = middle + mIndicatorWidth / 2;
+            mRectF.set(left, mHeight - mIndicatorWeight, right, mHeight);
         } else {
-            float left = tabs.get(position).getLeft();
-            float right = tabs.get(position).getRight();
+            float left = mTabs.get(mPosition).getLeft();
+            float right = mTabs.get(mPosition).getRight();
             float middle = left + (right - left) / 2;
-            left = middle - indicatorWidth / 2;
-            right = middle + indicatorWidth / 2;
-            rectF.set(left, height - indicatorWeight, right, height);
+            left = middle - mIndicatorWidth / 2;
+            right = middle + mIndicatorWidth / 2;
+            mRectF.set(left, mHeight - mIndicatorWeight, right, mHeight);
         }
-        canvas.drawRoundRect(rectF, indicatorRadius, indicatorRadius, paint);
+        canvas.drawRoundRect(mRectF, mIndicatorRadius, mIndicatorRadius, mPaint);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        if (isFirst) {
+        mWidth = MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        if (mIsFirst) {
             resetTab();
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -229,27 +229,27 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     @Override
     public void onClick(View v) {
         int index = (int) v.getTag();
-        if (viewPager == null) {
-            position = index;
-            positionOffset = 0;
+        if (mViewPager == null) {
+            mPosition = index;
+            mPositionOffset = 0;
             onChange(index);
             adjustScrollY(index);
             invalidate();
         }
-        if (listener != null) {
-            listener.onChange(index, v);
+        if (mListener != null) {
+            mListener.onChange(index, v);
         }
     }
 
     private void onChange(int position) {
-        for (int i = 0; i < count; i++) {
-            TabView view = (TabView) tabs.get(i);
+        for (int i = 0; i < mCount; i++) {
+            TabView view = (TabView) mTabs.get(i);
             view.notifyData(i == position);
         }
     }
 
     public void setViewPager(ViewPager viewPager) {
-        this.viewPager = viewPager;
+        this.mViewPager = viewPager;
         viewPager.addOnPageChangeListener(this);
     }
 
@@ -257,22 +257,22 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
      * 设置红点
      */
     public void setNumber(int position, String text, int visibility) {
-        if (position < 0 || position > items.size() - 1) {
+        if (position < 0 || position > mItems.size() - 1) {
             return;
         }
-        items.get(position).text = text;
-        if (position < 0 || position > count - 1) {
+        mItems.get(position).text = text;
+        if (position < 0 || position > mCount - 1) {
             return;
         }
-        TabView view = (TabView) tabs.get(position);
+        TabView view = (TabView) mTabs.get(position);
         view.setNumber(text, visibility);
     }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        if (indicatorType != TYPE_INDICATOR_NONE) {
-            this.position = position;
-            this.positionOffset = positionOffset;
+        if (mIndicatorType != TYPE_INDICATOR_NONE) {
+            this.mPosition = position;
+            this.mPositionOffset = positionOffset;
             invalidate();
         }
     }
@@ -281,8 +281,8 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     public void onPageSelected(int position) {
         onChange(position);
         adjustScrollY(position);
-        if (indicatorType == TYPE_INDICATOR_NONE) {
-            this.position = position;
+        if (mIndicatorType == TYPE_INDICATOR_NONE) {
+            this.mPosition = position;
             invalidate();
         }
     }
@@ -293,11 +293,11 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     }
 
     private void adjustScrollY(int position) {
-        if (isAvag) {
+        if (mIsAvag) {
             return;
         }
-        View v = tabs.get(position);
-        int dr = v.getRight() - (width + getScrollX());
+        View v = mTabs.get(position);
+        int dr = v.getRight() - (mWidth + getScrollX());
         int dl = getScrollX() - v.getLeft();
         if (dr > 0) {
             smoothScrollBy(dr, 0);
@@ -311,6 +311,6 @@ public class ScrollTab extends HorizontalScrollView implements View.OnClickListe
     }
 
     public void setOnTabListener(OnTabListener l) {
-        this.listener = l;
+        this.mListener = l;
     }
 }

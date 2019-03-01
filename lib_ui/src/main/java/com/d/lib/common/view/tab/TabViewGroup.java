@@ -15,8 +15,8 @@ import com.d.lib.common.R;
  * Created by D on 2017/8/25.
  */
 public class TabViewGroup extends RelativeLayout implements TabView {
-    private Context context;
-    private TextView tvTitle, tvNumber;
+    private Context mContext;
+    private TextView mTvTitle, mTvNumber;
 
     public TabViewGroup(Context context) {
         super(context);
@@ -34,15 +34,15 @@ public class TabViewGroup extends RelativeLayout implements TabView {
     }
 
     private void init(Context context) {
-        this.context = context;
+        this.mContext = context;
         View root = LayoutInflater.from(context).inflate(R.layout.lib_pub_view_tab, this);
-        tvTitle = (TextView) root.findViewById(R.id.tv_title);
-        tvNumber = (TextView) root.findViewById(R.id.tv_number);
+        mTvTitle = (TextView) root.findViewById(R.id.tv_title);
+        mTvNumber = (TextView) root.findViewById(R.id.tv_number);
     }
 
     @Override
     public void setText(String text) {
-        tvTitle.setText(text);
+        mTvTitle.setText(text);
     }
 
     @Override
@@ -52,13 +52,13 @@ public class TabViewGroup extends RelativeLayout implements TabView {
 
     @Override
     public void setNumber(String text, int visibility) {
-        tvNumber.setText(text);
-        tvNumber.setVisibility(visibility);
+        mTvNumber.setText(text);
+        mTvNumber.setVisibility(visibility);
     }
 
     @Override
     public void notifyData(boolean focus) {
-        tvTitle.setTextColor(ContextCompat.getColor(context, focus ? R.color.lib_pub_color_main : R.color.lib_pub_color_gray));
+        mTvTitle.setTextColor(ContextCompat.getColor(mContext, focus ? R.color.lib_pub_color_main : R.color.lib_pub_color_gray));
     }
 
     @Override

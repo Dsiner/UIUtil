@@ -14,9 +14,9 @@ import com.d.lib.common.R;
 import java.util.List;
 
 public abstract class AbsSheetDialog<T> extends AbstractDialog {
-    protected List<T> datas;
-    protected String title;
-    protected OnItemClickListener<T> listener;
+    protected List<T> mDatas;
+    protected String mTitle;
+    protected OnItemClickListener<T> mListener;
 
     protected AbsSheetDialog(Context context) {
         super(context, R.style.lib_pub_dialog_style, true,
@@ -38,7 +38,7 @@ public abstract class AbsSheetDialog<T> extends AbstractDialog {
 
     protected void initRecyclerList(View rootView, @IdRes int id, int orientation) {
         RecyclerView list = (RecyclerView) rootView.findViewById(id);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         layoutManager.setOrientation(orientation);
         list.setLayoutManager(layoutManager);
         list.setAdapter(getAdapter());
@@ -46,11 +46,11 @@ public abstract class AbsSheetDialog<T> extends AbstractDialog {
 
     protected void onItemClick(int position, T item) {
         dismiss();
-        if (listener != null) {
+        if (mListener != null) {
             if (position == -1) {
-                listener.onCancel(this);
+                mListener.onCancel(this);
             } else {
-                listener.onClick(this, position, item);
+                mListener.onClick(this, position, item);
             }
         }
     }
@@ -75,6 +75,6 @@ public abstract class AbsSheetDialog<T> extends AbstractDialog {
     }
 
     public void setOnItemClickListener(OnItemClickListener<T> listener) {
-        this.listener = listener;
+        this.mListener = listener;
     }
 }

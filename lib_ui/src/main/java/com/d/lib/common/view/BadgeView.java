@@ -16,16 +16,16 @@ import com.d.lib.common.R;
 
 @SuppressLint("AppCompatCustomView")
 public class BadgeView extends TextView {
-    private int width;
-    private int height;
+    private int mWidth;
+    private int mHeight;
 
-    private int color;
-    private boolean circle;
-    private float corner;
-    private int max;
-    private Rect rect;
-    private RectF rectF;
-    private Paint paint;
+    private int mColor;
+    private boolean mCircle;
+    private float mCorner;
+    private int mMax;
+    private Rect mRect;
+    private RectF mRectF;
+    private Paint mPaint;
 
     public BadgeView(Context context) {
         this(context, null);
@@ -43,29 +43,29 @@ public class BadgeView extends TextView {
 
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_pub_BadgeView);
-        color = typedArray.getColor(R.styleable.lib_pub_BadgeView_lib_pub_badgev_color, getResources().getColor(R.color.lib_pub_color_red));
-        circle = typedArray.getBoolean(R.styleable.lib_pub_BadgeView_lib_pub_badgev_circle, true);
-        corner = typedArray.getDimension(R.styleable.lib_pub_BadgeView_lib_pub_badgev_radius, -1);
-        max = typedArray.getInteger(R.styleable.lib_pub_BadgeView_lib_pub_badgev_max, -1);
+        mColor = typedArray.getColor(R.styleable.lib_pub_BadgeView_lib_pub_badgev_color, getResources().getColor(R.color.lib_pub_color_red));
+        mCircle = typedArray.getBoolean(R.styleable.lib_pub_BadgeView_lib_pub_badgev_circle, true);
+        mCorner = typedArray.getDimension(R.styleable.lib_pub_BadgeView_lib_pub_badgev_radius, -1);
+        mMax = typedArray.getInteger(R.styleable.lib_pub_BadgeView_lib_pub_badgev_max, -1);
         typedArray.recycle();
     }
 
     private void init(Context context) {
         setWillNotDraw(false);
-        rect = new Rect();
-        rectF = new RectF();
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(color);
+        mRect = new Rect();
+        mRectF = new RectF();
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(mColor);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (!circle || getMeasuredWidth() > getMeasuredHeight() + 1) {
-            rect.set(0, 0, width, height);
-            rectF.set(rect);
-            canvas.drawRoundRect(rectF, corner, corner, paint);
+        if (!mCircle || getMeasuredWidth() > getMeasuredHeight() + 1) {
+            mRect.set(0, 0, mWidth, mHeight);
+            mRectF.set(mRect);
+            canvas.drawRoundRect(mRectF, mCorner, mCorner, mPaint);
         } else {
-            canvas.drawCircle(width / 2f, height / 2f, height / 2f, paint);
+            canvas.drawCircle(mWidth / 2f, mHeight / 2f, mHeight / 2f, mPaint);
         }
         super.onDraw(canvas);
     }
@@ -73,10 +73,10 @@ public class BadgeView extends TextView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = getMeasuredWidth();
-        height = getMeasuredHeight();
-        if (corner == -1) {
-            corner = (height + 0.5f) / 2;
+        mWidth = getMeasuredWidth();
+        mHeight = getMeasuredHeight();
+        if (mCorner == -1) {
+            mCorner = (mHeight + 0.5f) / 2;
         }
     }
 
@@ -84,11 +84,11 @@ public class BadgeView extends TextView {
         if (TextUtils.isEmpty(text)) {
             return;
         }
-        if (max > 0) {
+        if (mMax > 0) {
             try {
                 int count = Integer.valueOf(text.toString());
-                if (count > max) {
-                    text = max + "+";
+                if (count > mMax) {
+                    text = mMax + "+";
                 }
             } catch (Throwable e) {
                 e.printStackTrace();

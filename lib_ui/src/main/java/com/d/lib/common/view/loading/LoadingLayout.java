@@ -17,7 +17,7 @@ import com.d.lib.common.R;
  */
 public class LoadingLayout extends LinearLayout {
 
-    protected LoadingView ldvLoading;
+    protected LoadingView mLdvLoading;
 
     public LoadingLayout(Context context) {
         super(context);
@@ -39,18 +39,18 @@ public class LoadingLayout extends LinearLayout {
         setOrientation(VERTICAL);
         setGravity(Gravity.CENTER);
         View root = LayoutInflater.from(context).inflate(R.layout.lib_pub_layout_loading, this);
-        ldvLoading = (LoadingView) root.findViewById(R.id.ldv_loading);
+        mLdvLoading = (LoadingView) root.findViewById(R.id.ldv_loading);
     }
 
     @Override
     public void setVisibility(int visibility) {
         switch (visibility) {
             case VISIBLE:
-                ldvLoading.restart();
+                mLdvLoading.restart();
                 break;
             case GONE:
             case INVISIBLE:
-                ldvLoading.stop();
+                mLdvLoading.stop();
                 break;
         }
         super.setVisibility(visibility);

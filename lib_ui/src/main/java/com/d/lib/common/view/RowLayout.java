@@ -19,16 +19,16 @@ import com.d.lib.common.view.toggle.ToggleView;
  * Created by D on 2017/5/3.
  */
 public class RowLayout extends RelativeLayout {
-    private int layout;
-    private Drawable icon;
-    private final String content, hint;
-    private int visibilityToggle;
-    private int visibilityGoto;
-    private ImageView ivIcon;
-    private TextView tvNumber;
-    private TextView tvContent, tvHint;
-    private ToggleButton tbToggle;
-    private OnToggleListener listener;
+    private int mLayout;
+    private Drawable mIcon;
+    private final String mContent, mHint;
+    private int mVisibilityToggle;
+    private int mVisibilityGoto;
+    private ImageView mIvIcon;
+    private TextView mTvNumber;
+    private TextView mTvContent, mTvHint;
+    private ToggleButton mTbToggle;
+    private OnToggleListener mListener;
 
     public RowLayout(Context context) {
         this(context, null);
@@ -41,39 +41,39 @@ public class RowLayout extends RelativeLayout {
     public RowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_pub_RowLayout);
-        layout = typedArray.getResourceId(R.styleable.lib_pub_RowLayout_lib_pub_rl_layout, R.layout.lib_pub_layout_row);
-        content = typedArray.getString(R.styleable.lib_pub_RowLayout_lib_pub_rl_text);
-        hint = typedArray.getString(R.styleable.lib_pub_RowLayout_lib_pub_rl_hint);
-        icon = typedArray.getDrawable(R.styleable.lib_pub_RowLayout_lib_pub_rl_icon);
-        visibilityToggle = typedArray.getInteger(R.styleable.lib_pub_RowLayout_lib_pub_rl_toggleVisibility, 0);
-        visibilityGoto = typedArray.getInteger(R.styleable.lib_pub_RowLayout_lib_pub_rl_gotoVisibility, 0);
+        mLayout = typedArray.getResourceId(R.styleable.lib_pub_RowLayout_lib_pub_rl_layout, R.layout.lib_pub_layout_row);
+        mContent = typedArray.getString(R.styleable.lib_pub_RowLayout_lib_pub_rl_text);
+        mHint = typedArray.getString(R.styleable.lib_pub_RowLayout_lib_pub_rl_hint);
+        mIcon = typedArray.getDrawable(R.styleable.lib_pub_RowLayout_lib_pub_rl_icon);
+        mVisibilityToggle = typedArray.getInteger(R.styleable.lib_pub_RowLayout_lib_pub_rl_toggleVisibility, 0);
+        mVisibilityGoto = typedArray.getInteger(R.styleable.lib_pub_RowLayout_lib_pub_rl_gotoVisibility, 0);
         typedArray.recycle();
         init(context);
     }
 
     private void init(Context context) {
-        View root = LayoutInflater.from(context).inflate(layout, this);
-        ivIcon = (ImageView) root.findViewById(R.id.iv_layout_row_icon);
-        tvNumber = (TextView) root.findViewById(R.id.tv_layout_row_number);
-        tvContent = (TextView) root.findViewById(R.id.tv_layout_row_content);
-        tvHint = (TextView) root.findViewById(R.id.tv_layout_row_hint);
-        tbToggle = (ToggleButton) root.findViewById(R.id.tb_layout_row_toggle);
+        View root = LayoutInflater.from(context).inflate(mLayout, this);
+        mIvIcon = (ImageView) root.findViewById(R.id.iv_layout_row_icon);
+        mTvNumber = (TextView) root.findViewById(R.id.tv_layout_row_number);
+        mTvContent = (TextView) root.findViewById(R.id.tv_layout_row_content);
+        mTvHint = (TextView) root.findViewById(R.id.tv_layout_row_hint);
+        mTbToggle = (ToggleButton) root.findViewById(R.id.tb_layout_row_toggle);
         ImageView ivGoto = (ImageView) root.findViewById(R.id.iv_layout_row_goto);
-        ivGoto.setVisibility(visibilityGoto);
-        if (icon != null) {
-            ivIcon.setImageDrawable(icon);
-            ivIcon.setVisibility(VISIBLE);
+        ivGoto.setVisibility(mVisibilityGoto);
+        if (mIcon != null) {
+            mIvIcon.setImageDrawable(mIcon);
+            mIvIcon.setVisibility(VISIBLE);
         } else {
-            ivIcon.setVisibility(GONE);
+            mIvIcon.setVisibility(GONE);
         }
-        tvContent.setText(content != null ? content : "");
-        tvHint.setText(hint != null && visibilityGoto == VISIBLE ? hint : "");
-        tbToggle.setVisibility(visibilityToggle);
-        tbToggle.setOnToggleListener(new ToggleView.OnToggleListener() {
+        mTvContent.setText(mContent != null ? mContent : "");
+        mTvHint.setText(mHint != null && mVisibilityGoto == VISIBLE ? mHint : "");
+        mTbToggle.setVisibility(mVisibilityToggle);
+        mTbToggle.setOnToggleListener(new ToggleView.OnToggleListener() {
             @Override
             public void onToggle(boolean isOpen) {
-                if (listener != null) {
-                    listener.onToggle(RowLayout.this, isOpen);
+                if (mListener != null) {
+                    mListener.onToggle(RowLayout.this, isOpen);
                 }
             }
         });
@@ -83,42 +83,42 @@ public class RowLayout extends RelativeLayout {
      * Set text content
      */
     public void setText(CharSequence text) {
-        tvContent.setText(text);
+        mTvContent.setText(text);
     }
 
     /**
      * Set auxiliary text content
      */
     public void setHint(CharSequence text, int visibility) {
-        if (visibilityGoto != VISIBLE) {
+        if (mVisibilityGoto != VISIBLE) {
             return;
         }
-        tvHint.setText(text);
+        mTvHint.setText(text);
     }
 
     /**
      * Set red dot text content
      */
     public void setNumber(CharSequence text, int visibility) {
-        if (visibilityGoto != VISIBLE) {
+        if (mVisibilityGoto != VISIBLE) {
             return;
         }
-        tvNumber.setText(text);
-        tvNumber.setVisibility(visibility);
+        mTvNumber.setText(text);
+        mTvNumber.setVisibility(visibility);
     }
 
     /**
      * Toggle button set to open or close
      */
     public void setOpen(boolean open) {
-        tbToggle.setOpen(open);
+        mTbToggle.setOpen(open);
     }
 
     /**
      * Toggle button opening or closing status
      */
     public boolean isOpen() {
-        return tbToggle.isOpen();
+        return mTbToggle.isOpen();
     }
 
     public interface OnToggleListener {
@@ -126,6 +126,6 @@ public class RowLayout extends RelativeLayout {
     }
 
     public void setOnToggleListener(OnToggleListener listener) {
-        this.listener = listener;
+        this.mListener = listener;
     }
 }

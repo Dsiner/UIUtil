@@ -26,11 +26,11 @@ public class MenuPopup extends AbstractPopup {
                 Util.dip2px(context, 135),
                 datas != null ? datas.size() * Util.dip2px(context, 40) + Util.dip2px(context, 6) : 0, true, -1);
         this.datas = datas != null ? datas : new ArrayList<Bean>();
-        initView(rootView);
+        initView(mRootView);
     }
 
     private RecyclerView.Adapter getAdapter() {
-        return new SheetAdapter(context, datas, R.layout.lib_pub_adapter_popup_menu);
+        return new SheetAdapter(mContext, datas, R.layout.lib_pub_adapter_popup_menu);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class MenuPopup extends AbstractPopup {
 
     protected void initRecyclerList(View rootView, @IdRes int id, int orientation) {
         RecyclerView list = (RecyclerView) rootView.findViewById(id);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         layoutManager.setOrientation(orientation);
         list.setLayoutManager(layoutManager);
         list.setAdapter(getAdapter());
@@ -57,8 +57,8 @@ public class MenuPopup extends AbstractPopup {
 
     @Override
     public void showAsDropDown(View anchor) {
-        if (!isShowing() && context != null && !((Activity) context).isFinishing()) {
-            super.showAsDropDown(anchor, -Util.dip2px(context, 135 - 45), 0);
+        if (!isShowing() && mContext != null && !((Activity) mContext).isFinishing()) {
+            super.showAsDropDown(anchor, -Util.dip2px(mContext, 135 - 45), 0);
         }
     }
 

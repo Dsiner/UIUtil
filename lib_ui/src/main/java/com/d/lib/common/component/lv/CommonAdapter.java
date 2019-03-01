@@ -18,7 +18,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
     protected List<T> mDatas;
     protected LayoutInflater mInflater;
     protected int mLayoutId;
-    protected MultiItemTypeSupport<T> multiItemTypeSupport;
+    protected MultiItemTypeSupport<T> mMultiItemTypeSupport;
 
     public CommonAdapter(Context context, List<T> datas, int layoutId) {
         mContext = context;
@@ -31,7 +31,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
         mContext = context;
         mDatas = datas == null ? new ArrayList<T>() : datas;
         mInflater = LayoutInflater.from(mContext);
-        this.multiItemTypeSupport = multiItemTypeSupport;
+        mMultiItemTypeSupport = multiItemTypeSupport;
     }
 
     public void setDatas(List<T> datas) {
@@ -47,16 +47,16 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        if (multiItemTypeSupport != null) {
-            multiItemTypeSupport.getItemViewType(position, position < mDatas.size() ? mDatas.get(position) : null);
+        if (mMultiItemTypeSupport != null) {
+            mMultiItemTypeSupport.getItemViewType(position, position < mDatas.size() ? mDatas.get(position) : null);
         }
         return super.getItemViewType(position);
     }
 
     @Override
     public int getViewTypeCount() {
-        if (multiItemTypeSupport != null) {
-            return multiItemTypeSupport.getViewTypeCount();
+        if (mMultiItemTypeSupport != null) {
+            return mMultiItemTypeSupport.getViewTypeCount();
         }
         return super.getViewTypeCount();
     }
@@ -91,13 +91,13 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
     public abstract void convert(int position, CommonHolder holder, T item);
 
     private CommonHolder getViewHolder(int position, View convertView, ViewGroup parent) {
-        if (multiItemTypeSupport != null) {
+        if (mMultiItemTypeSupport != null) {
             if (mDatas != null && mDatas.size() > 0) {
                 return CommonHolder.get(mContext, convertView, parent,
-                        multiItemTypeSupport.getLayoutId(position, mDatas.get(position)), position);
+                        mMultiItemTypeSupport.getLayoutId(position, mDatas.get(position)), position);
             }
             return CommonHolder.get(mContext, convertView, parent,
-                    multiItemTypeSupport.getLayoutId(position, null), position);
+                    mMultiItemTypeSupport.getLayoutId(position, null), position);
         }
         return CommonHolder.get(mContext, convertView, parent, mLayoutId, position);
     }

@@ -21,9 +21,9 @@ public class InfoDialog extends AbsSheetDialog<InfoDialog.Bean> {
 
     public InfoDialog(Context context, String title, List<Bean> datas) {
         super(context, R.style.lib_pub_dialog_style, false, 0, 0, 0);
-        this.title = title;
-        this.datas = datas;
-        initView(rootView);
+        this.mTitle = title;
+        this.mDatas = datas;
+        initView(mRootView);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class InfoDialog extends AbsSheetDialog<InfoDialog.Bean> {
 
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new SheetAdapter(context, datas, R.layout.lib_pub_adapter_dlg_info);
+        return new SheetAdapter(mContext, mDatas, R.layout.lib_pub_adapter_dlg_info);
     }
 
     @Override
@@ -41,9 +41,9 @@ public class InfoDialog extends AbsSheetDialog<InfoDialog.Bean> {
         initRecyclerList(rootView, R.id.rv_list, LinearLayoutManager.VERTICAL);
 
         TextView tvTitle = (TextView) rootView.findViewById(R.id.tv_title);
-        if (!TextUtils.isEmpty(title)) {
+        if (!TextUtils.isEmpty(mTitle)) {
             tvTitle.setVisibility(View.VISIBLE);
-            tvTitle.setText(title);
+            tvTitle.setText(mTitle);
         } else {
             tvTitle.setVisibility(View.GONE);
         }

@@ -16,20 +16,20 @@ import com.d.lib.common.utils.Util;
  * Created by D on 2017/8/25.
  */
 public class TabTextView extends View implements TabView {
-    private int width;
-    private int height;
+    private int mWidth;
+    private int mHeight;
 
-    private Paint paint;
-    private String text = "title";
-    private float textHeight;
+    private Paint mPaint;
+    private String mText = "title";
+    private float mTextHeight;
 
     /**
      * Define
      */
-    private int textSize; // Title文字大小
-    private int textColor; // Title文字颜色
-    private int textColorFocus; // Title文字颜色
-    private int padding; // Title文字左右预留间距
+    private int mTextSize; // Title文字大小
+    private int mTextColor; // Title文字颜色
+    private int mTextColorFocus; // Title文字颜色
+    private int mPadding; // Title文字左右预留间距
 
     public TabTextView(Context context) {
         this(context, null);
@@ -45,45 +45,47 @@ public class TabTextView extends View implements TabView {
     }
 
     private void init(Context context) {
-        textSize = Util.dip2px(context, 15);
-        textColor = ContextCompat.getColor(context, R.color.lib_pub_color_gray);
-        textColorFocus = ContextCompat.getColor(context, R.color.lib_pub_color_main);
+        mTextSize = Util.dip2px(context, 15);
+        mTextColor = ContextCompat.getColor(context, R.color.lib_pub_color_gray);
+        mTextColorFocus = ContextCompat.getColor(context, R.color.lib_pub_color_main);
 
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setTextAlign(Paint.Align.CENTER);
-        paint.setTextSize(textSize);
-        paint.setColor(textColor);
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setTextAlign(Paint.Align.CENTER);
+        mPaint.setTextSize(mTextSize);
+        mPaint.setColor(mTextColor);
 
-        textHeight = Util.getTextHeight(paint);
+        mTextHeight = Util.getTextHeight(mPaint);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        float x = width / 2f;
-        float y = height / 2f + textHeight / 2f;
-        canvas.drawText(text, x, y, paint);
+        float x = mWidth / 2f;
+        float y = mHeight / 2f + mTextHeight / 2f;
+        canvas.drawText(mText, x, y, mPaint);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.EXACTLY) {
-            width = MeasureSpec.getSize(widthMeasureSpec);
+            mWidth = MeasureSpec.getSize(widthMeasureSpec);
         } else {
-            width = Util.getTextWidth(text, paint) + padding * 2;
+            mWidth = Util.getTextWidth(mText, mPaint) + mPadding * 2;
         }
-        height = getDefaultSize(getSuggestedMinimumWidth(), heightMeasureSpec);
-        setMeasuredDimension(width, height);
+        mHeight = getDefaultSize(getSuggestedMinimumWidth(), heightMeasureSpec);
+        setMeasuredDimension(mWidth, mHeight);
     }
 
     @Override
     public void setText(String text) {
-        this.text = text;
+        this.mText = text;
+        requestLayout();
     }
 
     @Override
     public void setPadding(int padding) {
-        this.padding = padding;
+        this.mPadding = padding;
+        requestLayout();
     }
 
     @Override
@@ -93,7 +95,7 @@ public class TabTextView extends View implements TabView {
 
     @Override
     public void notifyData(boolean focus) {
-        this.paint.setColor(focus ? textColorFocus : textColor);
+        this.mPaint.setColor(focus ? mTextColorFocus : mTextColor);
         invalidate();
     }
 

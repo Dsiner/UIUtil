@@ -51,17 +51,17 @@ public class DSLayout extends FrameLayout {
 
     }
 
-    private int layoutId;
-    private int centerType; // Centered type
-    private float adjustHeightT; // Correction height
-    private float adjustHeightB; // Correction height
-    private int resIdEmpty, resIdNetError;
+    private int mLayoutId;
+    private int mCenterType; // Centered type
+    private float mAdjustHeightT; // Correction height
+    private float mAdjustHeightB; // Correction height
+    private int mResIdEmpty, mResIdNetError;
 
-    private LinearLayout llytDsl;
-    private ImageView ivIcon;
-    private TextView tvDesc;
-    private Button button;
-    private LoadingLayout ldlLoading;
+    private LinearLayout mLlDsl;
+    private ImageView mIvIcon;
+    private TextView mTvDesc;
+    private Button mButton;
+    private LoadingLayout mLdlLoading;
 
     public DSLayout(Context context) {
         this(context, null);
@@ -74,31 +74,31 @@ public class DSLayout extends FrameLayout {
     public DSLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.lib_pub_DSLayout);
-        layoutId = typedArray.getResourceId(R.styleable.lib_pub_DSLayout_lib_pub_dsl_layout, R.layout.lib_pub_layout_ds);
-        centerType = typedArray.getInteger(R.styleable.lib_pub_DSLayout_lib_pub_dsl_ceterType, 0);
-        adjustHeightT = typedArray.getDimension(R.styleable.lib_pub_DSLayout_lib_pub_dsl_adjustHeightT, 0);
-        adjustHeightB = typedArray.getDimension(R.styleable.lib_pub_DSLayout_lib_pub_dsl_adjustHeightB, 0);
-        resIdEmpty = typedArray.getResourceId(R.styleable.lib_pub_DSLayout_lib_pub_dsl_emptyDrawable, R.drawable.lib_pub_ic_no_data);
-        resIdNetError = typedArray.getResourceId(R.styleable.lib_pub_DSLayout_lib_pub_dsl_netErroDrawable, R.drawable.lib_pub_ic_network_err);
+        mLayoutId = typedArray.getResourceId(R.styleable.lib_pub_DSLayout_lib_pub_dsl_layout, R.layout.lib_pub_layout_ds);
+        mCenterType = typedArray.getInteger(R.styleable.lib_pub_DSLayout_lib_pub_dsl_ceterType, 0);
+        mAdjustHeightT = typedArray.getDimension(R.styleable.lib_pub_DSLayout_lib_pub_dsl_adjustHeightT, 0);
+        mAdjustHeightB = typedArray.getDimension(R.styleable.lib_pub_DSLayout_lib_pub_dsl_adjustHeightB, 0);
+        mResIdEmpty = typedArray.getResourceId(R.styleable.lib_pub_DSLayout_lib_pub_dsl_emptyDrawable, R.drawable.lib_pub_ic_no_data);
+        mResIdNetError = typedArray.getResourceId(R.styleable.lib_pub_DSLayout_lib_pub_dsl_netErroDrawable, R.drawable.lib_pub_ic_network_err);
         typedArray.recycle();
         init(context);
     }
 
     protected void init(Context context) {
-        View root = LayoutInflater.from(context).inflate(layoutId, this);
+        View root = LayoutInflater.from(context).inflate(mLayoutId, this);
         View vT = root.findViewById(R.id.v_dsl_t);
         View vB = root.findViewById(R.id.v_dsl_b);
 
-        llytDsl = (LinearLayout) root.findViewById(R.id.llyt_dsl);
-        ivIcon = (ImageView) root.findViewById(R.id.iv_dsl_icon);
-        tvDesc = (TextView) root.findViewById(R.id.tv_dsl_desc);
-        button = (Button) root.findViewById(R.id.btn_dsl);
+        mLlDsl = (LinearLayout) root.findViewById(R.id.llyt_dsl);
+        mIvIcon = (ImageView) root.findViewById(R.id.iv_dsl_icon);
+        mTvDesc = (TextView) root.findViewById(R.id.tv_dsl_desc);
+        mButton = (Button) root.findViewById(R.id.btn_dsl);
 
-        ldlLoading = (LoadingLayout) root.findViewById(R.id.ldl_loading);
+        mLdlLoading = (LoadingLayout) root.findViewById(R.id.ldl_loading);
 
         ViewGroup.LayoutParams paramsT = vT.getLayoutParams();
         ViewGroup.LayoutParams paramsB = vB.getLayoutParams();
-        switch (centerType) {
+        switch (mCenterType) {
             case CENT_TYPE_MAIN:
                 paramsB.height = Util.dip2px(context, AJUST_HEIGHT[CENT_TYPE_MAIN]);
                 break;
@@ -109,10 +109,10 @@ public class DSLayout extends FrameLayout {
                 // Do nothing, default center 0/0
                 break;
         }
-        if (adjustHeightT != 0 || adjustHeightB != 0) {
+        if (mAdjustHeightT != 0 || mAdjustHeightB != 0) {
             // Priority is greater than and overrides centerType
-            paramsT.height = (int) adjustHeightT;
-            paramsB.height = (int) adjustHeightB;
+            paramsT.height = (int) mAdjustHeightT;
+            paramsB.height = (int) mAdjustHeightB;
         }
         vT.setLayoutParams(paramsT); // Set the top correction height
         vB.setLayoutParams(paramsB); // Set bottom correction height
@@ -120,34 +120,34 @@ public class DSLayout extends FrameLayout {
 
     private void showLoading() {
         setVisibility(VISIBLE);
-        ldlLoading.setVisibility(VISIBLE);
-        llytDsl.setVisibility(GONE);
+        mLdlLoading.setVisibility(VISIBLE);
+        mLlDsl.setVisibility(GONE);
     }
 
     private void showEmpty() {
         setVisibility(VISIBLE);
-        ldlLoading.setVisibility(GONE);
-        llytDsl.setVisibility(VISIBLE);
-        ivIcon.setImageResource(resIdEmpty);
-        tvDesc.setText(getResources().getString(R.string.lib_pub_no_data));
-        button.setVisibility(GONE);
+        mLdlLoading.setVisibility(GONE);
+        mLlDsl.setVisibility(VISIBLE);
+        mIvIcon.setImageResource(mResIdEmpty);
+        mTvDesc.setText(getResources().getString(R.string.lib_pub_no_data));
+        mButton.setVisibility(GONE);
     }
 
     private void showNetError() {
         setVisibility(VISIBLE);
-        ldlLoading.setVisibility(GONE);
-        llytDsl.setVisibility(VISIBLE);
-        ivIcon.setImageResource(resIdNetError);
-        tvDesc.setText(getResources().getString(R.string.lib_pub_net_error));
-        button.setText(getResources().getString(R.string.lib_pub_retry));
-        button.setVisibility(VISIBLE);
+        mLdlLoading.setVisibility(GONE);
+        mLlDsl.setVisibility(VISIBLE);
+        mIvIcon.setImageResource(mResIdNetError);
+        mTvDesc.setText(getResources().getString(R.string.lib_pub_net_error));
+        mButton.setText(getResources().getString(R.string.lib_pub_retry));
+        mButton.setVisibility(VISIBLE);
     }
 
     /**
      * Display image
      */
     public DSLayout icon(@DrawableRes int resId) {
-        ivIcon.setImageResource(resId);
+        mIvIcon.setImageResource(resId);
         return this;
     }
 
@@ -155,7 +155,7 @@ public class DSLayout extends FrameLayout {
      * Display image
      */
     public DSLayout icon(@Nullable Drawable drawable) {
-        ivIcon.setImageDrawable(drawable);
+        mIvIcon.setImageDrawable(drawable);
         return this;
     }
 
@@ -166,7 +166,7 @@ public class DSLayout extends FrameLayout {
         Glide.with(getContext())
                 .load(url)
                 .apply(new RequestOptions().dontTransform().dontAnimate())
-                .into(ivIcon);
+                .into(mIvIcon);
         return this;
     }
 
@@ -177,7 +177,7 @@ public class DSLayout extends FrameLayout {
         Glide.with(getContext())
                 .asGif()
                 .load(resId)
-                .into(ivIcon);
+                .into(mIvIcon);
         return this;
     }
 
@@ -188,7 +188,7 @@ public class DSLayout extends FrameLayout {
         Glide.with(getContext())
                 .asGif()
                 .load(url)
-                .into(ivIcon);
+                .into(mIvIcon);
         return this;
     }
 
@@ -196,7 +196,7 @@ public class DSLayout extends FrameLayout {
      * Set prompt text
      */
     public DSLayout desc(CharSequence text) {
-        tvDesc.setText(text);
+        mTvDesc.setText(text);
         return this;
     }
 
@@ -204,8 +204,8 @@ public class DSLayout extends FrameLayout {
      * Set button text, visibility state
      */
     public DSLayout button(CharSequence text, int visibility) {
-        button.setText(text);
-        button.setVisibility(visibility);
+        mButton.setText(text);
+        mButton.setVisibility(visibility);
         return this;
     }
 

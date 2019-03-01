@@ -14,15 +14,15 @@ import com.d.lib.common.view.ClearEditText;
  * Created by D on 2018/6/15.
  */
 public class EditDialog extends AbstractDialog {
-    private String title;
-    private String content;
-    private OnEditListener listener;
+    private String mTitle;
+    private String mContent;
+    private OnEditListener mListener;
 
     public EditDialog(Context context, String title, String content) {
         super(context, R.style.lib_pub_dialog_style, false, 0, 0, 0);
-        this.title = title;
-        this.content = content;
-        initView(rootView);
+        this.mTitle = title;
+        this.mContent = content;
+        initView(mRootView);
     }
 
     @Override
@@ -37,13 +37,13 @@ public class EditDialog extends AbstractDialog {
 
     protected void initView(View rootView) {
         TextView tvOk = (TextView) rootView.findViewById(R.id.btn_ok);
-        TextView tvCancle = (TextView) rootView.findViewById(R.id.btn_cancel);
+        TextView tvCancel = (TextView) rootView.findViewById(R.id.btn_cancel);
         TextView tvTitle = (TextView) rootView.findViewById(R.id.tv_title);
         final ClearEditText cetEdit = (ClearEditText) rootView.findViewById(R.id.cet_edit);
-        cetEdit.setText(!TextUtils.isEmpty(content) ? content : "");
-        if (!TextUtils.isEmpty(title)) {
+        cetEdit.setText(!TextUtils.isEmpty(mContent) ? mContent : "");
+        if (!TextUtils.isEmpty(mTitle)) {
             tvTitle.setVisibility(View.VISIBLE);
-            tvTitle.setText(title);
+            tvTitle.setText(mTitle);
         } else {
             tvTitle.setVisibility(View.GONE);
         }
@@ -51,17 +51,17 @@ public class EditDialog extends AbstractDialog {
             @Override
             public void onClick(View v) {
                 dismiss();
-                if (listener != null) {
-                    listener.onSubmit(EditDialog.this, cetEdit.getText().toString());
+                if (mListener != null) {
+                    mListener.onSubmit(EditDialog.this, cetEdit.getText().toString());
                 }
             }
         });
-        tvCancle.setOnClickListener(new View.OnClickListener() {
+        tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
-                if (listener != null) {
-                    listener.onCancel(EditDialog.this);
+                if (mListener != null) {
+                    mListener.onCancel(EditDialog.this);
                 }
             }
         });
@@ -83,6 +83,6 @@ public class EditDialog extends AbstractDialog {
     }
 
     public void setOnEditListener(OnEditListener listener) {
-        this.listener = listener;
+        this.mListener = listener;
     }
 }

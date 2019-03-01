@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.d.lib.common.utils.ViewHelper;
-import com.d.lib.common.view.SegementView;
+import com.d.lib.common.view.SegmentView;
 import com.d.lib.common.view.btb.BottomThirdBar;
 import com.d.lib.common.view.tab.ScrollTab;
 
@@ -43,7 +43,7 @@ public class ToolBarActivity extends FragmentActivity implements View.OnClickLis
 
         initBtBar();
 
-        initSegement();
+        initSegment();
 
         ScrollTab[] scrollTab0 = new ScrollTab[]{(ScrollTab) findViewById(R.id.stab_tab00), (ScrollTab) findViewById(R.id.stab_tab01), (ScrollTab) findViewById(R.id.stab_tab02)};
         ScrollTab[] scrollTab1 = new ScrollTab[]{(ScrollTab) findViewById(R.id.stab_tab10), (ScrollTab) findViewById(R.id.stab_tab11), (ScrollTab) findViewById(R.id.stab_tab12)};
@@ -103,8 +103,8 @@ public class ToolBarActivity extends FragmentActivity implements View.OnClickLis
         });
     }
 
-    private void initSegement() {
-        SegementView svTab0 = (SegementView) findViewById(R.id.sv_tab0);
+    private void initSegment() {
+        SegmentView svTab0 = (SegmentView) findViewById(R.id.sv_tab0);
         svTab0.setTitles(Arrays.asList(getResources().getString(R.string.module_ui_label1),
                 getResources().getString(R.string.module_ui_label2)));
     }

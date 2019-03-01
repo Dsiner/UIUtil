@@ -17,21 +17,21 @@ import com.d.lib.common.R;
  * Created by D on 2018/6/15.
  */
 public class AlertSubDialog extends AbstractDialog {
-    private String title;
-    private String content;
-    private String subTips;
-    private boolean isChecked;
-    private OnCheckListener listener;
+    private String mTitle;
+    private String mContent;
+    private String mSubTips;
+    private boolean mIsChecked;
+    private OnCheckListener mListener;
 
     public AlertSubDialog(Context context, String title, String content, String subTips, boolean isChecked) {
         super(context, R.style.lib_pub_dialog_style, true, Gravity.CENTER,
                 (int) context.getResources().getDimension(R.dimen.lib_pub_dimen_dialog_width),
                 WindowManager.LayoutParams.WRAP_CONTENT);
-        this.title = title;
-        this.content = content;
-        this.subTips = subTips;
-        this.isChecked = isChecked;
-        initView(rootView);
+        this.mTitle = title;
+        this.mContent = content;
+        this.mSubTips = subTips;
+        this.mIsChecked = isChecked;
+        initView(mRootView);
     }
 
     @Override
@@ -46,48 +46,48 @@ public class AlertSubDialog extends AbstractDialog {
 
     private void initView(View rootView) {
         TextView tvOk = (TextView) rootView.findViewById(R.id.btn_ok);
-        TextView tvCancle = (TextView) rootView.findViewById(R.id.btn_cancel);
+        TextView tvCancel = (TextView) rootView.findViewById(R.id.btn_cancel);
         TextView tvTitle = (TextView) rootView.findViewById(R.id.tv_title);
         TextView tvContent = (TextView) rootView.findViewById(R.id.tv_content);
         TextView tvSubTips = (TextView) rootView.findViewById(R.id.tv_sub_tips);
         final FrameLayout flytToggle = (FrameLayout) rootView.findViewById(R.id.flyt_toggle);
         final CheckBox cbToggle = (CheckBox) rootView.findViewById(R.id.cb_toggle);
-        if (!TextUtils.isEmpty(title)) {
+        if (!TextUtils.isEmpty(mTitle)) {
             tvTitle.setVisibility(View.VISIBLE);
-            tvTitle.setText(title);
+            tvTitle.setText(mTitle);
         } else {
             tvTitle.setVisibility(View.GONE);
         }
-        if (!TextUtils.isEmpty(content)) {
+        if (!TextUtils.isEmpty(mContent)) {
             tvContent.setVisibility(View.VISIBLE);
-            tvContent.setText(content);
+            tvContent.setText(mContent);
         } else {
             tvContent.setVisibility(View.GONE);
         }
-        tvSubTips.setText(!TextUtils.isEmpty(subTips) ? subTips : "");
-        cbToggle.setChecked(isChecked);
+        tvSubTips.setText(!TextUtils.isEmpty(mSubTips) ? mSubTips : "");
+        cbToggle.setChecked(mIsChecked);
         flytToggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isChecked = !cbToggle.isChecked();
-                cbToggle.setChecked(isChecked);
+                mIsChecked = !cbToggle.isChecked();
+                cbToggle.setChecked(mIsChecked);
             }
         });
         tvOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
-                if (listener != null) {
-                    listener.onSubmit(AlertSubDialog.this, isChecked);
+                if (mListener != null) {
+                    mListener.onSubmit(AlertSubDialog.this, mIsChecked);
                 }
             }
         });
-        tvCancle.setOnClickListener(new View.OnClickListener() {
+        tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
-                if (listener != null) {
-                    listener.onCancel(AlertSubDialog.this);
+                if (mListener != null) {
+                    mListener.onCancel(AlertSubDialog.this);
                 }
             }
         });
@@ -109,6 +109,6 @@ public class AlertSubDialog extends AbstractDialog {
     }
 
     public void setOnCheckListener(OnCheckListener listener) {
-        this.listener = listener;
+        this.mListener = listener;
     }
 }
