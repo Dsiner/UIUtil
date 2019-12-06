@@ -26,10 +26,10 @@ public class CBLoopViewPager extends ViewPager {
         mAdapter.setViewPager(this);
         super.setAdapter(mAdapter);
 
-        setCurrentItem(getFristItem(), false);
+        setCurrentItem(getFirstItem(), false);
     }
 
-    public int getFristItem() {
+    public int getFirstItem() {
         return canLoop ? mAdapter.getRealCount() : 0;
     }
 

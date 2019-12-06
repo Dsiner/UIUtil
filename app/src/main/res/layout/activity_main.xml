@@ -165,6 +165,14 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="@dimen/lib_pub_dimen_margin"
                 android:text="Flow Layout" />
+
+            <Button
+                android:id="@+id/btn_banner"
+                style="@style/lib_pub_btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/lib_pub_dimen_margin"
+                android:text="Banner" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

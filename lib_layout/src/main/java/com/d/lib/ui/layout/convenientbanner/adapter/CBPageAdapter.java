@@ -59,7 +59,7 @@ public class CBPageAdapter<T> extends PagerAdapter {
     public void finishUpdate(ViewGroup container) {
         int position = viewPager.getCurrentItem();
         if (position == 0) {
-            position = viewPager.getFristItem();
+            position = viewPager.getFirstItem();
         } else if (position == getCount() - 1) {
             position = viewPager.getLastItem();
         }

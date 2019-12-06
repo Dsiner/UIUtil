@@ -10,5 +10,6 @@
             android:name="com.d.ui.layout.praise.PraiseActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
         <activity android:name="com.d.ui.layout.shadow.ShadowActivity" />
+        <activity android:name="com.d.ui.layout.banner.BannerActivity" />
     </application>
 </manifest>

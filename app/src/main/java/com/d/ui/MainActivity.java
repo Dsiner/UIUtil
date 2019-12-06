@@ -8,6 +8,7 @@ import android.view.View;
 import com.d.common.ui.UIActivity;
 import com.d.lib.common.utils.ViewHelper;
 import com.d.ui.layout.arcmenu.ArcMenuActivity;
+import com.d.ui.layout.banner.BannerActivity;
 import com.d.ui.layout.heartlayout.HeartActivity;
 import com.d.ui.layout.poi.PoiActivity;
 import com.d.ui.layout.praise.PraiseActivity;
@@ -101,6 +102,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_advert_flow_layout:
                 startActivity(new Intent(MainActivity.this, FlowLayoutActivity.class));
                 break;
+
+            case R.id.btn_banner:
+                startActivity(new Intent(MainActivity.this, BannerActivity.class));
+                break;
         }
     }
 
@@ -116,6 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 R.id.btn_tick, R.id.btn_toggle, R.id.btn_stoke, R.id.btn_replybg, R.id.btn_arcmenu,
                 R.id.btn_heart, R.id.btn_progress, R.id.btn_praise, R.id.btn_shadow,
                 R.id.btn_recordtrigger, R.id.btn_verinor, R.id.btn_poi, R.id.btn_clockset,
-                R.id.btn_advert_switcher, R.id.btn_advert_flow_layout);
+                R.id.btn_advert_switcher, R.id.btn_advert_flow_layout, R.id.btn_banner);
     }
 }
