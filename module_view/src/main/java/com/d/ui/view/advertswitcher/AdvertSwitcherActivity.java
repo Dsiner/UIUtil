@@ -31,9 +31,11 @@ public class AdvertSwitcherActivity extends Activity {
     private void init() {
         textAdapter = new AdvertSwitcherTextAdapter(this, getTextDatas(), R.layout.adapter_advert_text);
         textSwitcher.setAdapter(textAdapter);
+        textAdapter.notifyDataSetChanged();
 
         imgAdapter = new AdvertSwitcherImgAdapter(this, getImgDatas(), R.layout.adapter_advert_img);
         imgSwitcher.setAdapter(imgAdapter);
+        imgAdapter.notifyDataSetChanged();
     }
 
     private void bindView() {

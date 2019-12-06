@@ -10,15 +10,16 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.UiThread;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ViewSwitcher;
 
-import com.d.lib.common.utils.log.ULog;
 import com.d.lib.ui.view.R;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,7 +39,7 @@ public class AdvertSwitcher extends ViewSwitcher {
     private int mInAnimId;
     private int mOutAnimId;
     private int mInterpolator;
-    private int mCurIndex;
+    private int mCurIndex = 0;
     private Adapter mAdapter;
     private Handler mHandler;
 
@@ -59,14 +60,13 @@ public class AdvertSwitcher extends ViewSwitcher {
             }
             switch (msg.what) {
                 case FLAG_SCROLL:
+                    theSwitcher.mCurIndex = ++theSwitcher.mCurIndex % theSwitcher.mAdapter.getCount();
                     View view = theSwitcher.getNextView();
                     theSwitcher.mAdapter.bindView(view,
                             theSwitcher.mAdapter.getItem(theSwitcher.mCurIndex),
                             theSwitcher.mCurIndex);
-                    ULog.e("Index: " + theSwitcher.mCurIndex
-                            + " / " + theSwitcher.mAdapter.getItem(theSwitcher.mCurIndex).toString());
                     theSwitcher.showNext();
-                    theSwitcher.mCurIndex = ++theSwitcher.mCurIndex % theSwitcher.mAdapter.getCount();
+                    theSwitcher.mHandler.removeMessages(FLAG_SCROLL);
                     theSwitcher.mHandler.sendEmptyMessageDelayed(FLAG_SCROLL, theSwitcher.mTimeSpan);
                     break;
             }
@@ -94,7 +94,6 @@ public class AdvertSwitcher extends ViewSwitcher {
 
     private void init(Context context) {
         mContext = context;
-        mCurIndex = 0;
         mHandler = new ScrollHandler(this);
         Animation inAnim = AnimationUtils.loadAnimation(mContext, mInAnimId);
         Animation outAnim = AnimationUtils.loadAnimation(mContext, mOutAnimId);
@@ -112,7 +111,8 @@ public class AdvertSwitcher extends ViewSwitcher {
         if (mAdapter.getCount() <= 0) {
             return;
         }
-        mHandler.sendEmptyMessage(FLAG_SCROLL);
+        mHandler.removeMessages(FLAG_SCROLL);
+        mHandler.sendEmptyMessageDelayed(FLAG_SCROLL, mTimeSpan);
     }
 
     /**
@@ -123,43 +123,73 @@ public class AdvertSwitcher extends ViewSwitcher {
         mHandler.removeMessages(FLAG_SCROLL);
     }
 
-    /**
-     * Refresh
-     */
-    @UiThread
-    public void refresh() {
-        stop();
-        mCurIndex = 0;
-        removeAllViews();
-        start();
-    }
-
     public Adapter getAdapter() {
         return mAdapter;
     }
 
+    @UiThread
     public void setAdapter(@NonNull Adapter adapter) {
-        stop();
-        mCurIndex = 0;
-        removeAllViews();
         mAdapter = adapter;
+        mAdapter.setDataSetObservable(new Adapter.DataSetObservable() {
+            @Override
+            public void notifyChanged() {
+                resetView();
+            }
+        });
+        resetView();
+    }
+
+    private void resetView() {
+        stop();
+        reset();
+        getInAnimation().cancel();
+        getOutAnimation().cancel();
+        removeAllViews();
+        mCurIndex = 0;
         setFactory(new ViewFactory() {
             @Override
             public View makeView() {
                 return mAdapter.makeView();
             }
         });
+        try {
+            View view = getCurrentView();
+            if (view != null && mAdapter.getCount() > 0) {
+                mAdapter.bindView(view, mAdapter.getItem(mCurIndex), mCurIndex);
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+            Log.e("dsiner", "AdvertSwitcher reset error.");
+        }
     }
 
     public static abstract class Adapter<T> {
         protected Context mContext;
         protected List<T> mDatas;
         protected int mResId;
+        protected DataSetObservable mDataSetObservable;
 
         public Adapter(Context context, List<T> datas, int resId) {
             mContext = context;
-            mDatas = datas;
+            mDatas = datas != null ? datas : new ArrayList<T>();
             mResId = resId;
+        }
+
+        public void setDatas(List<T> datas) {
+            if (mDatas != null && datas != null) {
+                mDatas.clear();
+                mDatas.addAll(datas);
+            }
+        }
+
+        public List<T> getDatas() {
+            return mDatas;
+        }
+
+        public void notifyDataSetChanged() {
+            if (mDataSetObservable != null) {
+                mDataSetObservable.notifyChanged();
+            }
         }
 
         public int getCount() {
@@ -173,5 +203,13 @@ public class AdvertSwitcher extends ViewSwitcher {
         public abstract View makeView();
 
         public abstract void bindView(View view, T item, int position);
+
+        public interface DataSetObservable {
+            void notifyChanged();
+        }
+
+        void setDataSetObservable(DataSetObservable observer) {
+            mDataSetObservable = observer;
+        }
     }
 }
