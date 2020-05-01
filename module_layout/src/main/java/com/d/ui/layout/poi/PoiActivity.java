@@ -2,11 +2,11 @@ package com.d.ui.layout.poi;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.d.lib.common.utils.ViewHelper;
+import com.d.lib.common.util.ViewHelper;
+import com.d.lib.taskscheduler.TaskScheduler;
 import com.d.lib.ui.layout.poi.PoiLayout;
 import com.d.lib.ui.layout.poi.PoiListView;
 import com.d.lib.ui.layout.poi.PoiTextView;
@@ -19,41 +19,49 @@ import java.util.ArrayList;
  * Poi
  * Created by D on 2017/11/1.
  */
-public class PoiActivity extends Activity implements PoiLayout.OnChangeListener {
-    private PoiLayout poiLayout;
-    private PoiListView list;
-    private PoiTextView tvBottom;
-    private PoiMapAdapter adapter;
-    private CommonLoader<PoiModel> commonLoader;
-    private Handler handler;
+public class PoiActivity extends Activity implements View.OnClickListener,
+        PoiLayout.OnChangeListener {
+    private PoiLayout poi_layout;
+    private PoiListView poi_list;
+    private PoiTextView tv_bottom;
+    private PoiMapAdapter mAdapter;
+    private CommonLoader<PoiModel> mCommonLoader;
+
+    @Override
+    public void onClick(View v) {
+        int resId = v.getId();
+        if (R.id.iv_title_left == resId) {
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poi);
-        handler = new Handler();
-        initBack();
         bindView();
-        initList();
-        initPoiLayout();
-        getData(commonLoader.page);
+        init();
+        onLoad(mCommonLoader.page);
     }
 
     private void bindView() {
-        poiLayout = (PoiLayout) findViewById(R.id.poi_layout);
-        list = (PoiListView) findViewById(R.id.poi_list);
-        tvBottom = (PoiTextView) findViewById(R.id.tv_bottom);
+        poi_layout = ViewHelper.findView(this, R.id.poi_layout);
+        poi_list = ViewHelper.findView(this, R.id.poi_list);
+        tv_bottom = ViewHelper.findView(this, R.id.tv_bottom);
+
+        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
     }
 
-    private void initList() {
-        adapter = new PoiMapAdapter(this, new ArrayList<PoiModel>(), R.layout.adapter_poi);
-        list.setCanRefresh(false);
-        list.setCanLoadMore(true);
-        list.showAsList();
-        list.setAdapter(adapter);
-        commonLoader = new CommonLoader<>(list, adapter);
-        commonLoader.setPageCount(10);
-        commonLoader.setOnLoaderListener(new CommonLoader.OnLoaderListener() {
+    private void init() {
+        mAdapter = new PoiMapAdapter(this, new ArrayList<PoiModel>(),
+                R.layout.adapter_poi);
+        poi_list.setCanRefresh(false);
+        poi_list.setCanLoadMore(true);
+        poi_list.showAsList();
+        poi_list.setAdapter(mAdapter);
+        mCommonLoader = new CommonLoader<>(poi_list, mAdapter);
+        mCommonLoader.setPageCount(10);
+        mCommonLoader.setOnLoaderListener(new CommonLoader.OnLoaderListener() {
             @Override
             public void onRefresh() {
 
@@ -61,12 +69,12 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
 
             @Override
             public void onLoadMore() {
-                getData(commonLoader.page);
+                onLoad(mCommonLoader.page);
             }
 
             @Override
             public void loadSuccess() {
-                adapter.notifyDataSetChanged();
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -79,14 +87,12 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
 
             }
         });
-    }
 
-    private void initPoiLayout() {
-        poiLayout.setOnChangeListener(this);
-        tvBottom.setOnTikListener(new PoiTextView.OnTikListener() {
+        poi_layout.setOnChangeListener(this);
+        tv_bottom.setOnTikListener(new PoiTextView.OnTikListener() {
             @Override
             public void onTik(View v) {
-                poiLayout.toggle(PoiLayout.STATUS_EXTEND);
+                poi_layout.toggle(PoiLayout.STATUS_EXTEND);
             }
         });
     }
@@ -94,9 +100,9 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
     /**
      * 模拟数据获取
      */
-    private void getData(final int page) {
-        long delayMillis = page == 1 ? 0 : 2000;
-        handler.postDelayed(new Runnable() {
+    private void onLoad(final int page) {
+        final long delayMillis = page == 1 ? 0 : 2000;
+        TaskScheduler.postMainDelayed(new Runnable() {
             @Override
             public void run() {
                 if (isFinishing()) {
@@ -117,38 +123,23 @@ public class PoiActivity extends Activity implements PoiLayout.OnChangeListener 
      * 数据设置
      */
     private void setData(final ArrayList<PoiModel> data) {
-        commonLoader.setData(data);
-        if (commonLoader.page == 1) {
+        mCommonLoader.setData(data);
+        if (mCommonLoader.page == 1) {
             if (data.size() > 0) {
-                poiLayout.setVisibility(View.VISIBLE);
-                poiLayout.toggle(PoiLayout.STATUS_DEFAULT);
+                poi_layout.setVisibility(View.VISIBLE);
+                poi_layout.toggle(PoiLayout.STATUS_DEFAULT);
             }
-            list.scrollToPosition(0);
+            poi_list.scrollToPosition(0);
         }
     }
 
     @Override
     public void onChange(int status) {
-        tvBottom.setVisibility(status == PoiLayout.STATUS_CLOSE ? View.VISIBLE : View.GONE);
+        tv_bottom.setVisibility(status == PoiLayout.STATUS_CLOSE ? View.VISIBLE : View.GONE);
     }
 
     @Override
     public void onScroll(float offset) {
-        tvBottom.setVisibility(offset == 1 ? View.VISIBLE : View.GONE);
-    }
-
-    private void initBack() {
-        ViewHelper.setOnClick(this, R.id.iv_title_left, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-
-    @Override
-    protected void onDestroy() {
-        handler.removeCallbacksAndMessages(null);
-        super.onDestroy();
+        tv_bottom.setVisibility(offset == 1 ? View.VISIBLE : View.GONE);
     }
 }

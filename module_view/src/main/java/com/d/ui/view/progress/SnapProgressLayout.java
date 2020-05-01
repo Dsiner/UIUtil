@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.d.lib.common.util.ViewHelper;
 import com.d.lib.ui.view.progress.SnapProgressBar;
 import com.d.ui.view.R;
 
@@ -29,14 +30,14 @@ import java.util.Random;
  * Created by D on 2017/11/1.
  */
 public class SnapProgressLayout extends LinearLayout {
-    private SnapProgressBar[] spbarSnaps;
-    private Random random = new Random();
-    private Handler handler;
-    private Task task;
-    private boolean isRunning;
-    private List<MediaInfo> datas = new ArrayList<>();
-    private int index;
-    private int count;
+    private SnapProgressBar[] spbar_snaps;
+    private Random mRandom = new Random();
+    private Handler mHandler;
+    private Task mTask;
+    private boolean mIsRunning;
+    private List<MediaInfo> mDatas = new ArrayList<>();
+    private int mIndex;
+    private int mCount;
 
     public SnapProgressLayout(Context context) {
         super(context);
@@ -74,12 +75,12 @@ public class SnapProgressLayout extends LinearLayout {
             }
             SnapProgressLayout ref = weakRef.get();
             ref.doTask();
-            ref.handler.postDelayed(ref.task, 1000);
+            ref.mHandler.postDelayed(ref.mTask, 1000);
         }
 
         private boolean isFinished() {
             return weakRef == null || weakRef.get() == null
-                    || !weakRef.get().isRunning
+                    || !weakRef.get().mIsRunning
                     || weakRef.get().getContext() == null
                     || weakRef.get().getContext() instanceof Activity
                     && ((Activity) weakRef.get().getContext()).isFinishing();
@@ -87,52 +88,52 @@ public class SnapProgressLayout extends LinearLayout {
     }
 
     private void doTask() {
-        if (datas.size() <= 0) {
+        if (mDatas.size() <= 0) {
             return;
         }
-        float progress = 1f * random.nextInt(100) / 100;
+        float progress = 1f * mRandom.nextInt(100) / 100;
         progress = Math.max(0, progress);
         progress = Math.min(1, progress);
-        progress = 0.33f * count + 0.33f * progress;
+        progress = 0.33f * mCount + 0.33f * progress;
 
-        MediaInfo media = datas.get(index);
-        spbarSnaps[4].setState(SnapProgressBar.STATE_PROGRESS).
+        MediaInfo media = mDatas.get(mIndex);
+        spbar_snaps[4].setState(SnapProgressBar.STATE_PROGRESS).
                 thumb(Presenter.getThumb(getContext().getApplicationContext(), media.id))
                 .progress(progress);
 
-        if (++count > 2) {
-            count = 0;
-            index++;
-            if (index >= datas.size()) {
-                index = 0;
+        if (++mCount > 2) {
+            mCount = 0;
+            mIndex++;
+            if (mIndex >= mDatas.size()) {
+                mIndex = 0;
             }
         }
     }
 
     private void restartTask() {
         stopTask();
-        handler.postDelayed(task, 1000);
-        isRunning = true;
+        mHandler.postDelayed(mTask, 1000);
+        mIsRunning = true;
     }
 
     private void stopTask() {
-        isRunning = false;
-        handler.removeCallbacks(task);
+        mIsRunning = false;
+        mHandler.removeCallbacks(mTask);
     }
 
     private void bindView() {
-        handler = new Handler();
-        task = new Task(this);
-        spbarSnaps = new SnapProgressBar[]{(SnapProgressBar) findViewById(R.id.spbar_snap_scanning),
-                (SnapProgressBar) findViewById(R.id.spbar_snap_padding),
-                (SnapProgressBar) findViewById(R.id.spbar_snap_done),
-                (SnapProgressBar) findViewById(R.id.spbar_snap_error),
-                (SnapProgressBar) findViewById(R.id.spbar_snap_progress)};
-        spbarSnaps[0].setState(SnapProgressBar.STATE_SCANNING);
-        spbarSnaps[1].setState(SnapProgressBar.STATE_PENDDING);
-        spbarSnaps[2].setState(SnapProgressBar.STATE_DONE);
-        spbarSnaps[3].setState(SnapProgressBar.STATE_ERROR);
-        spbarSnaps[4].setState(SnapProgressBar.STATE_PROGRESS).progress(0);
+        mHandler = new Handler();
+        mTask = new Task(this);
+        spbar_snaps = new SnapProgressBar[]{ViewHelper.findView(this, R.id.spbar_snap_scanning),
+                ViewHelper.findView(this, R.id.spbar_snap_padding),
+                ViewHelper.findView(this, R.id.spbar_snap_done),
+                ViewHelper.findView(this, R.id.spbar_snap_error),
+                ViewHelper.findView(this, R.id.spbar_snap_progress)};
+        spbar_snaps[0].setState(SnapProgressBar.STATE_SCANNING);
+        spbar_snaps[1].setState(SnapProgressBar.STATE_PENDDING);
+        spbar_snaps[2].setState(SnapProgressBar.STATE_DONE);
+        spbar_snaps[3].setState(SnapProgressBar.STATE_ERROR);
+        spbar_snaps[4].setState(SnapProgressBar.STATE_PROGRESS).progress(0);
 
         findViewById(R.id.btn_start).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,8 +143,8 @@ public class SnapProgressLayout extends LinearLayout {
                     public void run() {
                         List<MediaInfo> list = Presenter.getPhotos(getContext().getApplicationContext());
                         if (list.size() > 0) {
-                            index = 0;
-                            datas.addAll(list);
+                            mIndex = 0;
+                            mDatas.addAll(list);
                             restartTask();
                         }
                     }

@@ -16,14 +16,14 @@ import java.util.List;
  * Created by D on 2017/1/4.
  */
 public class VerInorAdapter extends CommonAdapter<VerInorModel> {
-    private int upPos; // 父position
+    private int mParentPosition; // 父position
 
     public VerInorAdapter(Context context, List<VerInorModel> datas, int layoutId) {
         super(context, datas, layoutId);
     }
 
-    public void setUpPos(int upPos) {
-        this.upPos = upPos;
+    public void setParentPosition(int position) {
+        this.mParentPosition = position;
     }
 
     @Override
@@ -32,7 +32,8 @@ public class VerInorAdapter extends CommonAdapter<VerInorModel> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext.getApplicationContext(), "Click at: " + upPos + "_" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext.getApplicationContext(),
+                        "Click at: " + mParentPosition + "_" + position, Toast.LENGTH_SHORT).show();
             }
         });
     }

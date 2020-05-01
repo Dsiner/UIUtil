@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.d.lib.common.utils.ViewHelper;
+import com.d.lib.common.util.ViewHelper;
 import com.d.lib.ui.view.advertswitcher.AdvertSwitcher;
 import com.d.ui.view.R;
 
@@ -15,10 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class AdvertSwitcherActivity extends Activity {
-    private AdvertSwitcher textSwitcher, imgSwitcher;
-    private AdvertSwitcherTextAdapter textAdapter;
-    private AdvertSwitcherImgAdapter imgAdapter;
+public class AdvertSwitcherActivity extends Activity implements View.OnClickListener {
+    private AdvertSwitcher as_advert_text, as_advert_img;
+
+    @Override
+    public void onClick(View v) {
+        int resId = v.getId();
+        if (R.id.iv_title_left == resId) {
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,38 +35,36 @@ public class AdvertSwitcherActivity extends Activity {
     }
 
     private void init() {
-        textAdapter = new AdvertSwitcherTextAdapter(this, getTextDatas(), R.layout.adapter_advert_text);
-        textSwitcher.setAdapter(textAdapter);
+        AdvertSwitcherTextAdapter textAdapter = new AdvertSwitcherTextAdapter(this, getTextDatas(),
+                R.layout.adapter_advert_text);
+        as_advert_text.setAdapter(textAdapter);
         textAdapter.notifyDataSetChanged();
 
-        imgAdapter = new AdvertSwitcherImgAdapter(this, getImgDatas(), R.layout.adapter_advert_img);
-        imgSwitcher.setAdapter(imgAdapter);
+        AdvertSwitcherImgAdapter imgAdapter = new AdvertSwitcherImgAdapter(this, getImgDatas(),
+                R.layout.adapter_advert_img);
+        as_advert_img.setAdapter(imgAdapter);
         imgAdapter.notifyDataSetChanged();
     }
 
     private void bindView() {
-        textSwitcher = ViewHelper.findView(this, R.id.as_advert_text);
-        imgSwitcher = ViewHelper.findView(this, R.id.as_advert_img);
-        ViewHelper.setOnClick(this, R.id.iv_title_left, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        as_advert_text = ViewHelper.findView(this, R.id.as_advert_text);
+        as_advert_img = ViewHelper.findView(this, R.id.as_advert_img);
+
+        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        textSwitcher.start();
-        imgSwitcher.start();
+        as_advert_text.start();
+        as_advert_img.start();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        textSwitcher.stop();
-        imgSwitcher.stop();
+        as_advert_text.stop();
+        as_advert_img.stop();
     }
 
     private List<AdvertSwitcherBean> getTextDatas() {

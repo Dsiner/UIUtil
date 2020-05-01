@@ -6,8 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.d.lib.common.utils.Util;
-import com.d.lib.common.utils.ViewHelper;
+import com.d.lib.common.util.ScreenUtils;
+import com.d.lib.common.util.ViewHelper;
 import com.d.lib.ui.layout.convenientbanner.ConvenientBanner;
 import com.d.lib.ui.layout.convenientbanner.holder.CBViewHolderCreator;
 import com.d.lib.ui.layout.convenientbanner.listener.OnItemClickListener;
@@ -46,7 +46,7 @@ public class BannerActivity extends Activity {
 
     private void initBanner(ConvenientBanner banner) {
         banner.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                ((int) (Util.getScreenSize(this)[0] / BANNER_ASPECT_RATIO))));
+                ((int) (ScreenUtils.getScreenSize(this)[0] / BANNER_ASPECT_RATIO))));
         banner.setCanLoop(true);
         banner.getViewPager().setClipToPadding(false);
         banner.setPageIndicator(new int[]{R.drawable.banner_indicator,

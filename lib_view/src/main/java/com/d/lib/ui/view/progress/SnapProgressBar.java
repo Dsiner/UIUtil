@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.d.lib.common.utils.Util;
+import com.d.lib.common.util.DimenUtils;
 import com.d.lib.common.view.roundedimageview.RoundedImageView;
 import com.d.lib.ui.view.R;
 
@@ -96,9 +96,9 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
     private void initAttrs(Context context, @SuppressWarnings("unused") AttributeSet attrs) {
         mColorCircle = Color.parseColor("#33008577");
         mColorArc = Color.parseColor("#008577");
-        mSpace = Util.dip2px(context, 2.5f);
-        mPaddingIcon = new int[]{Util.dip2px(context, 21.5f),
-                Util.dip2px(context, 20f)};
+        mSpace = DimenUtils.dp2px(context, 2.5f);
+        mPaddingIcon = new int[]{DimenUtils.dp2px(context, 21.5f),
+                DimenUtils.dp2px(context, 20f)};
     }
 
     private void init(Context context) {

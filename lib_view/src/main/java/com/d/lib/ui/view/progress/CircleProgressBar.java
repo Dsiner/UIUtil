@@ -23,7 +23,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.d.lib.common.utils.Util;
+import com.d.lib.common.util.DimenUtils;
 import com.d.lib.common.view.roundedimageview.RoundedImageView;
 import com.d.lib.ui.view.R;
 
@@ -96,15 +96,15 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
     private void initAttrs(Context context, @SuppressWarnings("unused") AttributeSet attrs) {
         mColorCircle = Color.parseColor("#33008577");
         mColorArc = Color.parseColor("#008577");
-        mSpace = Util.dip2px(context, 2.5f);
-        mPaddingIcon = new int[]{Util.dip2px(context, 21.5f),
-                Util.dip2px(context, 20f)};
+        mSpace = DimenUtils.dp2px(context, 2.5f);
+        mPaddingIcon = new int[]{DimenUtils.dp2px(context, 21.5f),
+                DimenUtils.dp2px(context, 20f)};
     }
 
     private void init(Context context) {
         this.mContext = context;
         this.setWillNotDraw(false);
-        mStrokeWidth = Util.dip2px(context, 3.5f);
+        mStrokeWidth = DimenUtils.dp2px(context, 3.5f);
         LayoutParams lp;
         mIvThumb = new RoundedImageView(context);
         mIvThumb.setScaleType(ImageView.ScaleType.CENTER_CROP);

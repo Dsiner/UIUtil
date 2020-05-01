@@ -8,7 +8,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 
-import com.d.lib.common.utils.Util;
+import com.d.lib.common.util.DimenUtils;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.ValueAnimator;
 
@@ -59,8 +59,8 @@ public class PoiLayout extends ViewGroup {
 
     private void init(Context context) {
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
-        mSlideSlop = Util.dip2px(context, 45);
-        mOffsetB = Util.dip2px(context, 40);
+        mSlideSlop = DimenUtils.dp2px(context, 45);
+        mOffsetB = DimenUtils.dp2px(context, 40);
         mAnimation = ValueAnimator.ofFloat(0f, 1f);
         mAnimation.setDuration(mDuration);
         mAnimation.setInterpolator(new LinearInterpolator());
@@ -136,7 +136,7 @@ public class PoiLayout extends ViewGroup {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         mWidth = MeasureSpec.getSize(widthMeasureSpec);
         mHeight = MeasureSpec.getSize(heightMeasureSpec);
-        mOffsetY = mHeight - Util.dip2px(getContext(), 210);
+        mOffsetY = mHeight - DimenUtils.dp2px(getContext(), 210);
         mOffsetExtend = mOffsetY;
         mOffsetClose = mOffsetY + mOffsetB - mHeight;
         mOffsetDefault = 0;

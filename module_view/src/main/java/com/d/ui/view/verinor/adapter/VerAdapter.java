@@ -23,11 +23,11 @@ import java.util.List;
  * Created by D on 2017/1/4.
  */
 public class VerAdapter extends CommonAdapter<VerModel> {
-    private RecyclerView.RecycledViewPool viewPool;
+    private RecyclerView.RecycledViewPool mViewPool;
 
     public VerAdapter(Context context, List<VerModel> datas, MultiItemTypeSupport<VerModel> multiItemTypeSupport) {
         super(context, datas, multiItemTypeSupport);
-        viewPool = new RecyclerView.RecycledViewPool();
+        mViewPool = new RecyclerView.RecycledViewPool();
     }
 
     @Override
@@ -57,13 +57,13 @@ public class VerAdapter extends CommonAdapter<VerModel> {
             LinearLayoutManager llManager = new LinearLayoutManager(mContext);
             llManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             adapter = new VerInorAdapter(mContext, new ArrayList<VerInorModel>(), R.layout.adapter_ver_inor);
-            list.setRecycledViewPool(viewPool);
+            list.setRecycledViewPool(mViewPool);
             list.setHasFixedSize(true);
             list.setLayoutManager(llManager);
             list.setItemAnimator(new DefaultItemAnimator());
             list.setAdapter(adapter);
         }
-        adapter.setUpPos(position);
+        adapter.setParentPosition(position);
         adapter.setDatas(item.datas);
         adapter.notifyDataSetChanged();
         OffsetBean.scrollToPositionWithOffset(list);

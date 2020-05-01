@@ -17,14 +17,16 @@ import com.d.ui.view.R;
  */
 public class VSViewLayout extends LinearLayout implements VSView.OnVSClickListener {
     private Context context;
-    private VSView vsView;
+    private VSView vsv_vs;
 
     public VSViewLayout(Context context) {
-        this(context, null);
+        super(context);
+        init(context);
     }
 
     public VSViewLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        init(context);
     }
 
     public VSViewLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -35,23 +37,23 @@ public class VSViewLayout extends LinearLayout implements VSView.OnVSClickListen
     private void init(Context context) {
         this.context = context;
         View view = LayoutInflater.from(context).inflate(R.layout.layout_vs, this, true);
-        vsView = (VSView) view.findViewById(R.id.vsv_vs);
+        vsv_vs = (VSView) view.findViewById(R.id.vsv_vs);
         initVS();
     }
 
     private void initVS() {
         VSItem vsA = new VSItem("A", false);
         VSItem vsB = new VSItem("B", false);
-        vsView.setCompareA(vsA).setCompareB(vsB).setPercent(-1, false);
-        vsView.setOnVSClickListener(this);
+        vsv_vs.setCompareA(vsA).setCompareB(vsB).setPercent(-1, false);
+        vsv_vs.setOnVSClickListener(this);
     }
 
     @Override
     public void onItemClick(int index, VSItem item) {
         if (index == 0) {
-            vsView.setPercent(0.7f, true);
+            vsv_vs.setPercent(0.7f, true);
         } else {
-            vsView.setPercent(0.3f, true);
+            vsv_vs.setPercent(0.3f, true);
         }
         Toast.makeText(context, "Selected: " + item.mainText, Toast.LENGTH_SHORT).show();
     }

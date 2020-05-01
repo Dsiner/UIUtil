@@ -12,7 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.d.lib.common.utils.Util;
+import com.d.lib.common.util.DimenUtils;
 import com.d.lib.ui.view.R;
 
 /**
@@ -61,9 +61,9 @@ public class SettingProgressView extends View {
         mItemCount = typedArray.getInteger(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_count, 5);
         mColorSelected = typedArray.getColor(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_colorSelect, Color.parseColor("#69B068"));
         mColorUnselected = typedArray.getColor(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_colorUnselect, Color.GRAY);
-        mRadiusSmall = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSmall, Util.dip2px(context, 5));
-        mRadiusBig = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusBig, Util.dip2px(context, 10));
-        mRadiusSpace = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSpace, Util.dip2px(context, 2));
+        mRadiusSmall = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSmall, DimenUtils.dp2px(context, 5));
+        mRadiusBig = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusBig, DimenUtils.dp2px(context, 10));
+        mRadiusSpace = typedArray.getDimension(R.styleable.lib_ui_view_SettingProgressView_lib_ui_view_spv_radiusSpace, DimenUtils.dp2px(context, 2));
         typedArray.recycle();
         init(context);
     }
@@ -74,8 +74,8 @@ public class SettingProgressView extends View {
             setLayerType(LAYER_TYPE_SOFTWARE, null);
         }
         mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-        mLineHeight = Util.dip2px(context, 2);
-        mShadeRadius = Util.dip2px(context, 5);
+        mLineHeight = DimenUtils.dp2px(context, 2);
+        mShadeRadius = DimenUtils.dp2px(context, 5);
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaintShader = new Paint(Paint.ANTI_ALIAS_FLAG);
         mCurColor = Color.WHITE;

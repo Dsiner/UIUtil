@@ -11,7 +11,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
-import com.d.lib.common.utils.Util;
+import com.d.lib.common.util.DimenUtils;
 import com.d.lib.ui.view.R;
 
 /**
@@ -50,7 +50,7 @@ public class RecordTriggerView extends TextView {
     }
 
     private void init(Context context) {
-        mTouchRadius = Util.dip2px(context, 105);
+        mTouchRadius = DimenUtils.dp2px(context, 105);
         setGravity(Gravity.CENTER);
         setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.lib_ui_view_rtv_corner_bg_normal));
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

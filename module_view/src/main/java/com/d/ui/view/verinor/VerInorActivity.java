@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.d.lib.common.utils.ViewHelper;
+import com.d.lib.common.util.ViewHelper;
 import com.d.lib.xrv.XRecyclerView;
 import com.d.lib.xrv.adapter.CommonHolder;
 import com.d.lib.xrv.adapter.MultiItemTypeSupport;
@@ -18,20 +18,29 @@ import com.d.ui.view.verinor.models.VerModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VerInorActivity extends Activity {
-    private XRecyclerView xrvList;
+public class VerInorActivity extends Activity implements View.OnClickListener {
+    private XRecyclerView xrv_list;
+
+    @Override
+    public void onClick(View v) {
+        int resId = v.getId();
+        if (R.id.iv_title_left == resId) {
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verinor);
-        initBack();
         bindView();
         init();
     }
 
     private void bindView() {
-        xrvList = (XRecyclerView) findViewById(R.id.xrv_list);
+        xrv_list = ViewHelper.findView(this, R.id.xrv_list);
+
+        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
     }
 
     private void init() {
@@ -53,11 +62,11 @@ public class VerInorActivity extends Activity {
                 return horModel.type;
             }
         });
-        xrvList.setCanRefresh(false);
-        xrvList.setCanLoadMore(false);
-        xrvList.showAsList();
-        xrvList.setAdapter(adapter);
-        xrvList.setRecyclerListener(new RecyclerView.RecyclerListener() {
+        xrv_list.setCanRefresh(false);
+        xrv_list.setCanLoadMore(false);
+        xrv_list.showAsList();
+        xrv_list.setAdapter(adapter);
+        xrv_list.setRecyclerListener(new RecyclerView.RecyclerListener() {
             @Override
             public void onViewRecycled(RecyclerView.ViewHolder vh) {
                 if (vh instanceof CommonHolder && ((CommonHolder) vh).mLayoutId == R.layout.adapter_ver1) {
@@ -100,14 +109,5 @@ public class VerInorActivity extends Activity {
             models.add(m);
         }
         return models;
-    }
-
-    private void initBack() {
-        ViewHelper.setOnClick(this, R.id.iv_title_left, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 }

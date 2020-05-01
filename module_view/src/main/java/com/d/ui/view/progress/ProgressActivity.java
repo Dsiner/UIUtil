@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import com.d.lib.common.utils.ViewHelper;
+import com.d.lib.common.util.ViewHelper;
 import com.d.lib.ui.view.progress.SettingProgressView;
 import com.d.ui.view.R;
 
@@ -14,8 +14,16 @@ import com.d.ui.view.R;
  * ProgressActivity
  * Created by D on 2017/11/1.
  */
-public class ProgressActivity extends Activity {
-    private SnapProgressLayout snapProgress;
+public class ProgressActivity extends Activity implements View.OnClickListener {
+    private SnapProgressLayout snap;
+
+    @Override
+    public void onClick(View v) {
+        int resId = v.getId();
+        if (R.id.iv_title_left == resId) {
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,18 +34,14 @@ public class ProgressActivity extends Activity {
     }
 
     private void bindView() {
-        snapProgress = ViewHelper.findView(this, R.id.snap);
-        ViewHelper.setOnClick(this, R.id.iv_title_left, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        snap = ViewHelper.findView(this, R.id.snap);
+
+        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
     }
 
     private void initSetting() {
-        final TextView tvLevel = (TextView) findViewById(R.id.tv_level);
-        SettingProgressView spvLevel = (SettingProgressView) findViewById(R.id.spv_level);
+        final TextView tvLevel = ViewHelper.findView(this, R.id.tv_level);
+        final SettingProgressView spvLevel = ViewHelper.findView(this, R.id.spv_level);
         spvLevel.setCurPosition(0);
         spvLevel.setOnProgressChangeListener(new SettingProgressView.OnProgressChangeListener() {
             @Override
@@ -54,7 +58,7 @@ public class ProgressActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        snapProgress.onDestroy();
+        snap.onDestroy();
         super.onDestroy();
     }
 }

@@ -12,7 +12,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.d.lib.common.utils.Util;
+import com.d.lib.common.util.DimenUtils;
 import com.d.lib.ui.layout.R;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
@@ -58,8 +58,8 @@ public class PraiseLayout extends RelativeLayout {
 
     private void init() {
         mHeart = ContextCompat.getDrawable(getContext(), R.drawable.lib_ui_layout_pl_ic_heart);
-        mDHeight = Util.dip2px(getContext(), 15);
-        mDWidth = Util.dip2px(getContext(), 15);
+        mDHeight = DimenUtils.dp2px(getContext(), 15);
+        mDWidth = DimenUtils.dp2px(getContext(), 15);
         setMarginLeft(true);
         mLp = new RelativeLayout.LayoutParams(mDWidth, mDHeight);
         mLp.addRule(ALIGN_PARENT_BOTTOM, TRUE);
@@ -129,12 +129,12 @@ public class PraiseLayout extends RelativeLayout {
     public void setMarginLeft(boolean isPortrait) {
         if (isPortrait) {
             // 竖屏
-            mMarginLeft = Util.dip2px(getContext(), 145);
-            mMarginBottom = Util.dip2px(getContext(), 22);
+            mMarginLeft = DimenUtils.dp2px(getContext(), 145);
+            mMarginBottom = DimenUtils.dp2px(getContext(), 22);
         } else {
             // 横屏
-            mMarginLeft = Util.dip2px(getContext(), 145 + 14);
-            mMarginBottom = Util.dip2px(getContext(), 25);
+            mMarginLeft = DimenUtils.dp2px(getContext(), 145 + 14);
+            mMarginBottom = DimenUtils.dp2px(getContext(), 25);
         }
     }
 

@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.d.lib.common.utils.ViewHelper;
+import com.d.lib.common.util.ViewHelper;
 import com.d.lib.common.view.popup.MenuPopup;
 import com.d.lib.common.view.popup.PopupWindowFactory;
 import com.d.lib.ui.view.sort.SideBar;
@@ -22,10 +22,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SortActivity extends AppCompatActivity implements View.OnClickListener {
-    private LinearLayout llytTin;
-    private TextView tvTinLetter;
-    private RecyclerView rvList;
-    private SideBar sideBar;
+    private LinearLayout llyt_tin;
+    private TextView tv_tin_letter;
+    private RecyclerView rv_list;
+    private SideBar sb_sidebar;
     private SortUtil sortUtil;
 
     @Override
@@ -43,12 +43,12 @@ public class SortActivity extends AppCompatActivity implements View.OnClickListe
                         public void onClick(PopupWindow popup, int position, String item) {
                             switch (position) {
                                 case 0:
-                                    sideBar.setType(SideBar.TYPE_CENTER);
-                                    sideBar.reset(sortUtil.sortDatas(getDatas()));
+                                    sb_sidebar.setType(SideBar.TYPE_CENTER);
+                                    sb_sidebar.reset(sortUtil.sortDatas(getDatas()));
                                     break;
                                 case 1:
-                                    sideBar.setType(SideBar.TYPE_NORMAL);
-                                    sideBar.reset(sortUtil.sortDatas(getDatas()));
+                                    sb_sidebar.setType(SideBar.TYPE_NORMAL);
+                                    sb_sidebar.reset(sortUtil.sortDatas(getDatas()));
                                     break;
                             }
                         }
@@ -61,10 +61,6 @@ public class SortActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sort);
-        llytTin = (LinearLayout) findViewById(R.id.llyt_tin);
-        tvTinLetter = (TextView) findViewById(R.id.tv_tin_letter);
-        rvList = (RecyclerView) findViewById(R.id.rv_list);
-        sideBar = (SideBar) findViewById(R.id.sb_sidebar);
         bindView();
         init();
     }
@@ -72,9 +68,9 @@ public class SortActivity extends AppCompatActivity implements View.OnClickListe
     private void init() {
         List<SortBean> datas = getDatas();
         sortUtil = new SortUtil();
-        rvList.setLayoutManager(new LinearLayoutManager(this));
-        rvList.setAdapter(new SortAdapter(this, datas, R.layout.adapter_sort));
-        rvList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        rv_list.setLayoutManager(new LinearLayoutManager(this));
+        rv_list.setAdapter(new SortAdapter(this, datas, R.layout.adapter_sort));
+        rv_list.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
@@ -83,15 +79,15 @@ public class SortActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                sortUtil.onScrolled(recyclerView, llytTin, tvTinLetter);
+                sortUtil.onScrolled(recyclerView, llyt_tin, tv_tin_letter);
             }
         });
-        sideBar.setType(SideBar.TYPE_CENTER);
-        sideBar.reset(sortUtil.sortDatas(datas));
-        sideBar.setOnLetterChangedListener(new SideBar.OnLetterChangedListener() {
+        sb_sidebar.setType(SideBar.TYPE_CENTER);
+        sb_sidebar.reset(sortUtil.sortDatas(datas));
+        sb_sidebar.setOnLetterChangedListener(new SideBar.OnLetterChangedListener() {
             @Override
             public void onChange(int index, String c) {
-                sortUtil.onChange(index, c, rvList);
+                sortUtil.onChange(index, c, rv_list);
             }
         });
     }
@@ -108,6 +104,11 @@ public class SortActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void bindView() {
+        llyt_tin = ViewHelper.findView(this, R.id.llyt_tin);
+        tv_tin_letter = ViewHelper.findView(this, R.id.tv_tin_letter);
+        rv_list = ViewHelper.findView(this, R.id.rv_list);
+        sb_sidebar = ViewHelper.findView(this, R.id.sb_sidebar);
+
         ViewHelper.setOnClick(this, this, R.id.iv_title_left, R.id.iv_title_right);
     }
 }

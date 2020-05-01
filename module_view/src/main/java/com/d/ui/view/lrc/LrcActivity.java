@@ -1,16 +1,16 @@
 package com.d.ui.view.lrc;
 
+import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.d.lib.common.utils.ViewHelper;
+import com.d.lib.common.util.ViewHelper;
 import com.d.lib.ui.view.lrc.DefaultLrcParser;
 import com.d.lib.ui.view.lrc.LrcRow;
 import com.d.lib.ui.view.lrc.LrcView;
@@ -22,31 +22,60 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
-public class LrcActivity extends AppCompatActivity implements MediaPlayer.OnCompletionListener, SeekBar.OnSeekBarChangeListener, View.OnClickListener {
-    private LrcView lrcvLrc;
-    private SeekBar sbProgress;
-    private SeekBar sbScale;
-    private TextView ivPlayPause;
-    private MediaPlayer player;
-    private boolean isPressed;
+public class LrcActivity extends Activity
+        implements MediaPlayer.OnCompletionListener,
+        SeekBar.OnSeekBarChangeListener,
+        View.OnClickListener {
 
-    private boolean isRunning;
-    private Handler handler = new Handler();
-    private Runnable runnable = new Runnable() {
+    private LrcView lrcv_lrc;
+    private SeekBar sb_progress;
+    private SeekBar sb_scale;
+    private TextView tv_play_pause;
+    private MediaPlayer mPlayer;
+    private boolean mIsPressed;
+
+    private boolean mIsRunning;
+    private Handler mHandler = new Handler();
+    private Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
-            if (!isRunning) {
+            if (!mIsRunning) {
                 return;
             }
             setProgress();
-            handler.postDelayed(runnable, 500);
+            mHandler.postDelayed(mRunnable, 500);
         }
     };
 
     private void setProgress() {
-        if (!isPressed) {
-            sbProgress.setMax(player.getDuration());
-            sbProgress.setProgress(player.getCurrentPosition());
+        if (!mIsPressed) {
+            sb_progress.setMax(mPlayer.getDuration());
+            sb_progress.setProgress(mPlayer.getCurrentPosition());
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        int resId = v.getId();
+        if (R.id.iv_title_left == resId) {
+            finish();
+        } else if (R.id.tv_play_pause == resId) {
+            if ("Play".equals(tv_play_pause.getText())) {
+                mPlayer.start();
+                lrcv_lrc.setLrcRows(getLrcRows());
+                tv_play_pause.setText("暂停");
+                reStartTimer();
+            } else {
+                if (mPlayer.isPlaying()) {
+                    mPlayer.pause();
+                    tv_play_pause.setText("播放");
+                    stopTimer();
+                } else {
+                    mPlayer.start();
+                    tv_play_pause.setText("暂停");
+                    reStartTimer();
+                }
+            }
         }
     }
 
@@ -54,29 +83,38 @@ public class LrcActivity extends AppCompatActivity implements MediaPlayer.OnComp
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lrc);
-        lrcvLrc = (LrcView) findViewById(R.id.lrcv_lrc);
-        sbProgress = (SeekBar) findViewById(R.id.sb_progress);
-        sbScale = (SeekBar) findViewById(R.id.sb_scale);
-        ivPlayPause = (TextView) findViewById(R.id.tv_play_pause);
-        ivPlayPause.setOnClickListener(this);
-        sbProgress.setOnSeekBarChangeListener(this);
-        sbScale.setOnSeekBarChangeListener(this);
-        sbScale.setMax(100);
-        sbScale.setProgress(50);
-        initBack();
+        bindView();
+        init();
+    }
+
+    private void bindView() {
+        lrcv_lrc = ViewHelper.findView(this, R.id.lrcv_lrc);
+        sb_progress = ViewHelper.findView(this, R.id.sb_progress);
+        sb_scale = ViewHelper.findView(this, R.id.sb_scale);
+        tv_play_pause = ViewHelper.findView(this, R.id.tv_play_pause);
+
+        ViewHelper.setOnClick(this, this, R.id.iv_title_left,
+                R.id.tv_play_pause);
+    }
+
+    private void init() {
+        sb_progress.setOnSeekBarChangeListener(this);
+        sb_scale.setOnSeekBarChangeListener(this);
+        sb_scale.setMax(100);
+        sb_scale.setProgress(50);
         initPlayer();
         initLrc();
     }
 
     private void initLrc() {
-        lrcvLrc.setOnSeekChangeListener(new LrcView.OnSeekChangeListener() {
+        lrcv_lrc.setOnSeekChangeListener(new LrcView.OnSeekChangeListener() {
             @Override
             public void onProgressChanged(int progress) {
-                player.seekTo(progress);
+                mPlayer.seekTo(progress);
                 setProgress();
             }
         });
-        lrcvLrc.setOnClickListener(new LrcView.OnClickListener() {
+        lrcv_lrc.setOnClickListener(new LrcView.OnClickListener() {
             @Override
             public void onClick() {
                 Toast.makeText(LrcActivity.this, "Click lrc!", Toast.LENGTH_SHORT).show();
@@ -85,61 +123,38 @@ public class LrcActivity extends AppCompatActivity implements MediaPlayer.OnComp
     }
 
     private void initPlayer() {
-        player = MediaPlayer.create(this, R.raw.huasha);
-        player.setOnCompletionListener(this);
+        mPlayer = MediaPlayer.create(this, R.raw.huasha);
+        mPlayer.setOnCompletionListener(this);
     }
 
     @Override
     public void onCompletion(MediaPlayer mp) {
         stopTimer();
-        player.seekTo(0);
-        sbProgress.setProgress(0);
+        mPlayer.seekTo(0);
+        sb_progress.setProgress(0);
     }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        if (seekBar == sbProgress) {
-            lrcvLrc.seekTo(progress, fromUser);
-        } else if (seekBar == sbScale && fromUser) {
-            lrcvLrc.setLrcScale(progress / 100f);
+        if (seekBar == sb_progress) {
+            lrcv_lrc.seekTo(progress, fromUser);
+        } else if (seekBar == sb_scale && fromUser) {
+            lrcv_lrc.setLrcScale(progress / 100f);
         }
     }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-        if (seekBar == sbProgress) {
-            isPressed = true;
+        if (seekBar == sb_progress) {
+            mIsPressed = true;
         }
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        if (seekBar == sbProgress) {
-            isPressed = false;
-            player.seekTo(seekBar.getProgress());
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        int resId = v.getId();
-        if (resId == R.id.tv_play_pause) {
-            if ("Play".equals(ivPlayPause.getText())) {
-                player.start();
-                lrcvLrc.setLrcRows(getLrcRows());
-                ivPlayPause.setText("暂停");
-                reStartTimer();
-            } else {
-                if (player.isPlaying()) {
-                    player.pause();
-                    ivPlayPause.setText("播放");
-                    stopTimer();
-                } else {
-                    player.start();
-                    ivPlayPause.setText("暂停");
-                    reStartTimer();
-                }
-            }
+        if (seekBar == sb_progress) {
+            mIsPressed = false;
+            mPlayer.seekTo(seekBar.getProgress());
         }
     }
 
@@ -163,34 +178,25 @@ public class LrcActivity extends AppCompatActivity implements MediaPlayer.OnComp
 
     private void reStartTimer() {
         stopTimer();
-        isRunning = true;
-        handler.post(runnable);
+        mIsRunning = true;
+        mHandler.post(mRunnable);
     }
 
     private void stopTimer() {
-        isRunning = false;
-        handler.removeCallbacks(runnable);
-    }
-
-    private void initBack() {
-        ViewHelper.setOnClick(this, R.id.iv_title_left, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        mIsRunning = false;
+        mHandler.removeCallbacks(mRunnable);
     }
 
     @Override
     protected void onDestroy() {
         stopTimer();
-        if (player != null) {
-            player.stop();
-            player.release();
-            player = null;
+        if (mPlayer != null) {
+            mPlayer.stop();
+            mPlayer.release();
+            mPlayer = null;
         }
-        if (lrcvLrc != null) {
-            lrcvLrc.reset();
+        if (lrcv_lrc != null) {
+            lrcv_lrc.reset();
         }
         super.onDestroy();
     }

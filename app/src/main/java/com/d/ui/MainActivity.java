@@ -5,8 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.d.common.ui.UIActivity;
-import com.d.lib.common.utils.ViewHelper;
+import com.d.lib.common.util.ViewHelper;
 import com.d.ui.layout.arcmenu.ArcMenuActivity;
 import com.d.ui.layout.banner.BannerActivity;
 import com.d.ui.layout.heartlayout.HeartActivity;
@@ -31,10 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_ui:
-                startActivity(new Intent(MainActivity.this, UIActivity.class));
-                break;
-
             case R.id.btn_lrc:
                 startActivity(new Intent(MainActivity.this, LrcActivity.class));
                 break;
@@ -117,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void bindView() {
-        ViewHelper.setOnClick(this, this, R.id.btn_ui, R.id.btn_lrc, R.id.btn_sort,
+        ViewHelper.setOnClick(this, this, R.id.btn_lrc, R.id.btn_sort,
                 R.id.btn_tick, R.id.btn_toggle, R.id.btn_stoke, R.id.btn_replybg, R.id.btn_arcmenu,
                 R.id.btn_heart, R.id.btn_progress, R.id.btn_praise, R.id.btn_shadow,
                 R.id.btn_recordtrigger, R.id.btn_verinor, R.id.btn_poi, R.id.btn_clockset,

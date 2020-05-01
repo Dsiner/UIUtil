@@ -1,8 +1,7 @@
 include ':app',
-        ':module_ui',
-        ':module_view',
-        ':module_layout',
-        ':lib_ui',
         ':lib_view',
-        ':lib_layout'
+        ':lib_layout',
+        ':module_view',
+        ':module_layout'
+
 

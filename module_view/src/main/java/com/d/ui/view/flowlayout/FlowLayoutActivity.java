@@ -6,17 +6,24 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.d.lib.common.utils.Util;
-import com.d.lib.common.utils.ViewHelper;
+import com.d.lib.common.util.ToastUtils;
+import com.d.lib.common.util.ViewHelper;
 import com.d.lib.ui.view.flowlayout.FlowLayout;
 import com.d.ui.view.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlowLayoutActivity extends Activity {
-    private FlowLayout flFlow;
-    private FlowTagAdapter flowTagAdapter;
+public class FlowLayoutActivity extends Activity implements View.OnClickListener {
+    private FlowLayout fl_flow;
+
+    @Override
+    public void onClick(View v) {
+        int resId = v.getId();
+        if (R.id.iv_title_left == resId) {
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,25 +34,21 @@ public class FlowLayoutActivity extends Activity {
     }
 
     private void bindView() {
-        flFlow = ViewHelper.findView(this, R.id.fl_flow);
-        ViewHelper.setOnClick(this, R.id.iv_title_left, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        fl_flow = ViewHelper.findView(this, R.id.fl_flow);
+
+        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
     }
 
     private void init() {
-        flowTagAdapter = new FlowTagAdapter(this, getDatas(),
+        FlowTagAdapter flowTagAdapter = new FlowTagAdapter(this, getDatas(),
                 R.layout.adapter_flowlayout_tag);
         flowTagAdapter.setOnClickListener(new FlowTagAdapter.OnClickListener() {
             @Override
             public void onClick(View v, String tag) {
-                Util.toast(getApplicationContext(), "Click at: " + tag);
+                ToastUtils.toast(getApplicationContext(), "Click at: " + tag);
             }
         });
-        flFlow.setAdapter(flowTagAdapter);
+        fl_flow.setAdapter(flowTagAdapter);
     }
 
     @NonNull

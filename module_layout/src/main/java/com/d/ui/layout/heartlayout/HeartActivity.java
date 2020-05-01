@@ -1,45 +1,61 @@
 package com.d.ui.layout.heartlayout;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 
-import com.d.lib.common.utils.ViewHelper;
+import com.d.lib.common.util.ViewHelper;
 import com.d.lib.ui.layout.heartlayout.TCChatEntity;
 import com.d.lib.ui.layout.heartlayout.TCHeartLayout;
 import com.d.ui.layout.R;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-public class HeartActivity extends AppCompatActivity {
-    private String[] name = new String[]{"Tom:", "Lily:", "Hornoo:", "Bill:"};
-    private String[] content = new String[]{"frequent", "audience", "essential", "glass", "inch", "animal",
+public class HeartActivity extends Activity implements View.OnClickListener {
+    private String[] mName = new String[]{"Tom:", "Lily:", "Hornoo:", "Bill:"};
+    private String[] mContent = new String[]{"frequent", "audience", "essential", "glass", "inch", "animal",
             "discussion", "attend", "encourage", "shoulder", "repeat", "straight", "importance", "mountain"};
-    private Random random = new Random();
-    private TCHeartLayout tcHeartLayout;
-    private TCChatMsgListAdapter adapter;
-    private ArrayList<TCChatEntity> datas = new ArrayList<>();
+    private Random mRandom = new Random();
+    private TCHeartLayout tch_pr;
+    private ListView lv_msg;
+    private TCChatMsgListAdapter mAdapter;
+    private List<TCChatEntity> mDatas = new ArrayList<>();
+
+    @Override
+    public void onClick(View v) {
+        int resId = v.getId();
+        if (R.id.iv_title_left == resId) {
+            finish();
+        }
+        if (R.id.btn_click == resId) {
+            tch_pr.addFavor();
+            handleTextMsg(mName[mRandom.nextInt(mName.length)],
+                    mContent[mRandom.nextInt(mContent.length)]);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heart);
-        initBack();
-        tcHeartLayout = (TCHeartLayout) findViewById(R.id.tch_pr);
+        bindView();
+        init();
+    }
 
-        ListView listview = (ListView) findViewById(R.id.lv_msg);
-        adapter = new TCChatMsgListAdapter(this, listview, datas);
-        listview.setAdapter(adapter);
+    private void bindView() {
+        tch_pr = ViewHelper.findView(this, R.id.tch_pr);
+        lv_msg = (ListView) findViewById(R.id.lv_msg);
 
-        findViewById(R.id.btn_click).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tcHeartLayout.addFavor();
-                handleTextMsg(name[random.nextInt(name.length)], content[random.nextInt(content.length)]);
-            }
-        });
+        ViewHelper.setOnClick(this, this, R.id.iv_title_left,
+                R.id.btn_click);
+    }
+
+    private void init() {
+        mAdapter = new TCChatMsgListAdapter(this, lv_msg, mDatas);
+        lv_msg.setAdapter(mAdapter);
     }
 
     public void handleTextMsg(String nickname, String text) {
@@ -51,16 +67,7 @@ public class HeartActivity extends AppCompatActivity {
     }
 
     private void notifyMsg(final TCChatEntity entity) {
-        datas.add(entity);
-        adapter.notifyDataSetChanged();
-    }
-
-    private void initBack() {
-        ViewHelper.setOnClick(this, R.id.iv_title_left, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        mDatas.add(entity);
+        mAdapter.notifyDataSetChanged();
     }
 }

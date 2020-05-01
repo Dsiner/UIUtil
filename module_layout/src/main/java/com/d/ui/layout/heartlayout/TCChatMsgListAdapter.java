@@ -31,18 +31,19 @@ import java.util.List;
  */
 public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnScrollListener {
     private static String TAG = TCChatMsgListAdapter.class.getSimpleName();
-    private static final int ITEMCOUNT = 7;
-    private List<TCChatEntity> listMessage = null;
-    private LayoutInflater inflater;
-    private LinearLayout layout;
-    private int mTotalHeight;
+
     public static final int TYPE_TEXT_SEND = 0;
     public static final int TYPE_TEXT_RECV = 1;
-    private Context context;
-    private ListView mListView;
-    private ArrayList<TCChatEntity> myArray = new ArrayList<>();
 
-//    private boolean  mBLiveAnimator = false;
+    private static final int ITEMCOUNT = 7;
+
+    private List<TCChatEntity> mListMessage;
+    private LayoutInflater mInflater;
+    private LinearLayout mLayout;
+    private int mTotalHeight;
+    private Context mContext;
+    private ListView mListView;
+    private List<TCChatEntity> myArray = new ArrayList<>();
 
     class AnimatorInfo {
         long createTime;
@@ -70,10 +71,10 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
 //    private boolean mCreateAnimator = false;
 
     public TCChatMsgListAdapter(Context context, ListView listview, List<TCChatEntity> objects) {
-        this.context = context;
+        this.mContext = context;
         mListView = listview;
-        inflater = LayoutInflater.from(context);
-        this.listMessage = objects;
+        mInflater = LayoutInflater.from(context);
+        this.mListMessage = objects;
 
         mAnimatorSetList = new LinkedList<>();
         mAnimatorInfoList = new LinkedList<>();
@@ -83,12 +84,12 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
 
     @Override
     public int getCount() {
-        return listMessage.size();
+        return mListMessage.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return listMessage.get(position);
+        return mListMessage.get(position);
     }
 
     @Override
@@ -109,22 +110,22 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
 
         switch (idx & 0x7) {
             case 1:
-                return context.getResources().getColor(R.color.color_sendname1);
+                return mContext.getResources().getColor(R.color.color_sendname1);
             case 2:
-                return context.getResources().getColor(R.color.color_sendname2);
+                return mContext.getResources().getColor(R.color.color_sendname2);
             case 3:
-                return context.getResources().getColor(R.color.color_sendname3);
+                return mContext.getResources().getColor(R.color.color_sendname3);
             case 4:
-                return context.getResources().getColor(R.color.color_sendname4);
+                return mContext.getResources().getColor(R.color.color_sendname4);
             case 5:
-                return context.getResources().getColor(R.color.color_sendname5);
+                return mContext.getResources().getColor(R.color.color_sendname5);
             case 6:
-                return context.getResources().getColor(R.color.color_sendname6);
+                return mContext.getResources().getColor(R.color.color_sendname6);
             case 7:
-                return context.getResources().getColor(R.color.color_sendname7);
+                return mContext.getResources().getColor(R.color.color_sendname7);
             case 0:
             default:
-                return context.getResources().getColor(R.color.color_sendname);
+                return mContext.getResources().getColor(R.color.color_sendname);
         }
     }
 
@@ -135,7 +136,7 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
 
         if (convertView == null) {
             holder = new ViewHolder();
-            LayoutInflater layoutInflater = LayoutInflater.from(context);
+            LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             convertView = layoutInflater.inflate(R.layout.adapter_hl_msg, null);
             holder.sendContext = (TextView) convertView.findViewById(R.id.sendcontext);
             convertView.setTag(R.id.tag_hl_first, holder);
@@ -143,7 +144,7 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
             holder = (ViewHolder) convertView.getTag(R.id.tag_hl_first);
         }
 
-        TCChatEntity item = listMessage.get(position);
+        TCChatEntity item = mListMessage.get(position);
 
 //        if (mCreateAnimator && mBLiveAnimator) {
 //            playViewAnimator(convertView, position, item);
@@ -154,12 +155,12 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
             // 设置名称为粗体
             StyleSpan boldStyle = new StyleSpan(Typeface.BOLD_ITALIC);
             spanString.setSpan(boldStyle, 0, item.getSenderName().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            holder.sendContext.setTextColor(context.getResources().getColor(R.color.color_sendname1));
+            holder.sendContext.setTextColor(mContext.getResources().getColor(R.color.color_sendname1));
         } else {
             // 根据名称计算颜色
             spanString.setSpan(new ForegroundColorSpan(calcNameColor(item.getSenderName())),
                     0, item.getSenderName().length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-            holder.sendContext.setTextColor(context.getResources().getColor(R.color.color_white));
+            holder.sendContext.setTextColor(mContext.getResources().getColor(R.color.color_white));
         }
         holder.sendContext.setText(spanString);
         // 设置控件实际宽度以便计算列表项实际高度
@@ -224,7 +225,7 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
      * @param item
      */
     private void continueAnimator(View itemView, int position, final TCChatEntity item) {
-        int animatorIdx = listMessage.size() - 1 - position;
+        int animatorIdx = mListMessage.size() - 1 - position;
 
         if (animatorIdx < MAXANIMATORCOUNT) {
             float startAlpha = 1f;
@@ -248,10 +249,10 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
             }
 
             // 创建属性动画并播放
-            Log.v(TAG, "continueAnimator->pos: " + position + "/" + listMessage.size() + ", alpha:" + startAlpha + ", dur:" + during);
+            Log.v(TAG, "continueAnimator->pos: " + position + "/" + mListMessage.size() + ", alpha:" + startAlpha + ", dur:" + during);
             playViewAnimator(itemView, startAlpha, during);
         } else {
-            Log.v(TAG, "continueAnimator->ignore pos: " + position + "/" + listMessage.size());
+            Log.v(TAG, "continueAnimator->ignore pos: " + position + "/" + mListMessage.size());
         }
     }
 
@@ -305,8 +306,8 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
      */
     private void clearFinishItem() {
         // 删除超过的列表项
-        while (listMessage.size() > MAXITEMCOUNT) {
-            listMessage.remove(0);
+        while (mListMessage.size() > MAXITEMCOUNT) {
+            mListMessage.remove(0);
             if (mAnimatorInfoList.size() > 0) {
                 mAnimatorInfoList.remove(0);
             }
@@ -317,8 +318,8 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
             myArray.remove(0);
         }
 
-        while (mAnimatorInfoList.size() >= listMessage.size()) {
-            Log.e(TAG, "clearFinishItem->error size: " + mAnimatorInfoList.size() + "/" + listMessage.size());
+        while (mAnimatorInfoList.size() >= mListMessage.size()) {
+            Log.e(TAG, "clearFinishItem->error size: " + mAnimatorInfoList.size() + "/" + mListMessage.size());
             if (mAnimatorInfoList.size() > 0) {
                 mAnimatorInfoList.remove(0);
             } else {
@@ -335,7 +336,7 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
         int totalHeight = 0;
         int start = 0, lineCount = 0;
 
-        if (listMessage.size() <= 0) {
+        if (mListMessage.size() <= 0) {
             return;
         }
 
@@ -345,7 +346,7 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
 
         // 计算底部ITEMCOUNT条记录的高度
 //        mCreateAnimator = false;    // 计算高度时不播放属性动画
-        for (int i = listMessage.size() - 1; i >= start && lineCount < ITEMCOUNT; i--, lineCount++) {
+        for (int i = mListMessage.size() - 1; i >= start && lineCount < ITEMCOUNT; i--, lineCount++) {
             View listItem = getView(i, null, mListView);
 
             listItem.measure(View.MeasureSpec.makeMeasureSpec(MAXLISTVIEWHEIGHT, View.MeasureSpec.AT_MOST)

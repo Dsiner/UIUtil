@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.d.lib.common.component.lv.CommonHolder;
+import com.d.lib.common.view.btb.CommonHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,13 +67,14 @@ public abstract class FlowLayoutAdapter<T> {
     public View getView(int position, View convertView, ViewGroup parent) {
         final CommonHolder holder = getViewHolder(position, convertView, parent);
         convert(position, holder, getItem(position));
-        return holder.getConvertView();
+        return holder.itemView;
     }
 
     public abstract void convert(int position, CommonHolder holder, T item);
 
     private CommonHolder getViewHolder(int position, View convertView, ViewGroup parent) {
-        return CommonHolder.get(mContext, convertView, parent, mLayoutId, position);
+        return CommonHolder.createViewHolder(mContext, convertView, parent,
+                mLayoutId, position);
     }
 
     public interface DataSetObserver {

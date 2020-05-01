@@ -14,8 +14,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.d.lib.common.utils.Util;
+import com.d.lib.common.util.DimenUtils;
 import com.d.lib.ui.view.R;
+
+import java.text.DecimalFormat;
 
 /**
  * Use:
@@ -82,14 +84,14 @@ public class VSView extends View {
     }
 
     private void init(Context context) {
-        int textSize = Util.dip2px(context, 13);
-        mPadding = Util.dip2px(context, 2);
-        mHPercent = Util.dip2px(context, 3);
-        mTanW = Util.dip2px(context, 0.5f);
-        mSpaceHalf = Util.dip2px(context, 1);
-        mMargin = Util.dip2px(context, 4);
-        mMarginTxt = Util.dip2px(context, 6);
-        mRadius = Util.dip2px(context, 13.5f);
+        int textSize = DimenUtils.dp2px(context, 13);
+        mPadding = DimenUtils.dp2px(context, 2);
+        mHPercent = DimenUtils.dp2px(context, 3);
+        mTanW = DimenUtils.dp2px(context, 0.5f);
+        mSpaceHalf = DimenUtils.dp2px(context, 1);
+        mMargin = DimenUtils.dp2px(context, 4);
+        mMarginTxt = DimenUtils.dp2px(context, 6);
+        mRadius = DimenUtils.dp2px(context, 13.5f);
 
         mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
 
@@ -169,7 +171,7 @@ public class VSView extends View {
         float cy = mHeight - mHPercent - mMargin - mRadius;
         drawBitmap(canvas, cy);
 
-        float textHeight = Util.getTextHeight(mPaintTxt);
+        float textHeight = DimenUtils.getTextHeight(mPaintTxt);
         mPaintTxt.setTextAlign(Paint.Align.LEFT);
         canvas.drawText(mItemA.mainText + " " + mItemA.percent, mRadius * 2 + mMarginTxt, cy + textHeight / 2, mPaintTxt);
         mPaintTxt.setTextAlign(Paint.Align.RIGHT);
@@ -303,8 +305,8 @@ public class VSView extends View {
             mItemA.percent = mItemB.percent = "";
             mPercent = 0.5f;
         } else {
-            mItemA.percent = Util.formatDecimal(mPercent * 100, 2) + "%";
-            mItemB.percent = Util.formatDecimal(100 - mPercent * 100, 2) + "%";
+            mItemA.percent = formatDecimal(mPercent * 100, 2) + "%";
+            mItemB.percent = formatDecimal(100 - mPercent * 100, 2) + "%";
         }
     }
 
@@ -326,6 +328,63 @@ public class VSView extends View {
         calcPercent();
         if (isRefresh) {
             invalidate();
+        }
+    }
+
+    /**
+     * format a number properly with the given number of digits
+     *
+     * @param number the number to format
+     * @param digits the number of digits
+     */
+    public static String formatDecimal(double number, int digits) {
+        number = roundNumber((float) number, digits);
+        StringBuffer a = new StringBuffer();
+        for (int i = 0; i < digits; i++) {
+            if (i == 0)
+                a.append(".");
+            a.append("0");
+        }
+        DecimalFormat nf = new DecimalFormat("###,###,###,##0" + a.toString());
+        String formatted = nf.format(number);
+        return formatted;
+    }
+
+    /**
+     * Math.pow(...) is very expensive, so avoid calling it and create it
+     * yourself.
+     */
+    private static final int POW_10[] = {
+            1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000
+    };
+
+    public static float roundNumber(float number, int digits) {
+        try {
+            if (digits == 0) {
+                int r0 = (int) Math.round(number);
+                return r0;
+            } else if (digits > 0) {
+                if (digits > 9)
+                    digits = 9;
+                StringBuffer a = new StringBuffer();
+                for (int i = 0; i < digits; i++) {
+                    if (i == 0)
+                        a.append(".");
+                    a.append("0");
+                }
+                DecimalFormat nf = new DecimalFormat("#" + a.toString());
+                String formatted = nf.format(number);
+                return Float.valueOf(formatted);
+            } else {
+                digits = -digits;
+                if (digits > 9)
+                    digits = 9;
+                int r2 = (int) (number / POW_10[digits] + 0.5);
+                return r2 * POW_10[digits];
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return number;
         }
     }
 

@@ -13,7 +13,7 @@ import android.view.ViewConfiguration;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
 
-import com.d.lib.common.utils.Util;
+import com.d.lib.common.util.DimenUtils;
 import com.d.lib.ui.view.R;
 import com.nineoldandroids.animation.ValueAnimator;
 
@@ -120,7 +120,7 @@ public class LrcView extends View implements ILrcView {
         MIN_SCALE = typedArray.getFloat(R.styleable.lib_ui_view_LrcView_lib_ui_view_lrc_minScale, 0.7f);
         MAX_SCALE = typedArray.getFloat(R.styleable.lib_ui_view_LrcView_lib_ui_view_lrc_maxScale, 1.7f);
         typedArray.recycle();
-        mPaddingTime = PADDING_TIME_DEFAULT = Util.dip2px(context, 5);
+        mPaddingTime = PADDING_TIME_DEFAULT = DimenUtils.dp2px(context, 5);
         init(context);
     }
 
@@ -159,7 +159,9 @@ public class LrcView extends View implements ILrcView {
         if (mLrcRows.size() <= 0) {
             // 画默认的显示文字
             mPaint.setColor(mColorText);
-            drawLine(canvas, mPaint, mHeight / 2 + Util.getTextHeight(mPaint) / 2, DEFAULT_TEXT);
+            drawLine(canvas, mPaint,
+                    mHeight / 2 + DimenUtils.getTextHeight(mPaint) / 2,
+                    DEFAULT_TEXT);
             return;
         }
 
@@ -202,11 +204,14 @@ public class LrcView extends View implements ILrcView {
                 // 画时间线和时间
                 if (mWithLine) {
                     float lineY = mHeight / 2 + getScrollY();
-                    canvas.drawText(mLrcRows.get(mCurRow).getTimeStr(), 0, lineY - 5, mPaintLine);
+                    canvas.drawText(mLrcRows.get(mCurRow).getTimeStr(), 0,
+                            lineY - 5, mPaintLine);
 
-                    float stopX = textWidth < mWidth - mPaddingTime ? (mWidth - textWidth) / 2 - mPaddingTime : 0;
+                    float stopX = textWidth < mWidth - mPaddingTime
+                            ? (mWidth - textWidth) / 2 - mPaddingTime : 0;
                     canvas.drawLine(0, lineY, stopX, lineY, mPaintLine);
-                    float startX = textWidth < mWidth - mPaddingTime ? mWidth - (mWidth - textWidth) / 2 + mPaddingTime : mWidth;
+                    float startX = textWidth < mWidth - mPaddingTime
+                            ? mWidth - (mWidth - textWidth) / 2 + mPaddingTime : mWidth;
                     canvas.drawLine(startX, lineY, mWidth, lineY, mPaintLine);
                 }
             } else {
@@ -295,7 +300,8 @@ public class LrcView extends View implements ILrcView {
                     // 点击无效
                     mDVaild = false;
                 }
-                if (!mCanDrag && Math.abs(eY - mDY) > mTouchSlop && Math.abs(eY - mDY) > Math.abs(eX - mDX)) {
+                if (!mCanDrag && Math.abs(eY - mDY) > mTouchSlop
+                        && Math.abs(eY - mDY) > Math.abs(eX - mDX)) {
                     mCanDrag = true;
                     forceFinished();
                     stopHorizontalScrollLrc();
@@ -321,7 +327,8 @@ public class LrcView extends View implements ILrcView {
                     }
                 } else {
                     if (mCanDrag) {
-                        if (mLrcRows.size() > 0 && mCurRow < mLrcRows.size() && mOnSeekChangeListener != null) {
+                        if (mLrcRows.size() > 0 && mCurRow < mLrcRows.size()
+                                && mOnSeekChangeListener != null) {
                             mOnSeekChangeListener.onProgressChanged(mLrcRows.get(mCurRow).getTime());
                         }
                     }
@@ -442,8 +449,8 @@ public class LrcView extends View implements ILrcView {
         mPaint.setTextSize(mSizeText);
         mPaintCur.setTextSize(mSizeTextCur);
         mPaintLine.setTextSize(mSizeTime);
-        mOffsetY = (int) (Util.getTextHeight(mPaintCur) / 2);
-        mRowHeight = (int) (Util.getTextHeight(mPaintCur) + mPadding);
+        mOffsetY = (int) (DimenUtils.getTextHeight(mPaintCur) / 2);
+        mRowHeight = (int) (DimenUtils.getTextHeight(mPaintCur) + mPadding);
     }
 
     @Override

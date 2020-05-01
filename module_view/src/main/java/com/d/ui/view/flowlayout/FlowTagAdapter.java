@@ -3,7 +3,7 @@ package com.d.ui.view.flowlayout;
 import android.content.Context;
 import android.view.View;
 
-import com.d.lib.common.component.lv.CommonHolder;
+import com.d.lib.common.view.btb.CommonHolder;
 import com.d.lib.ui.view.flowlayout.FlowLayoutAdapter;
 import com.d.ui.view.R;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * Created by D on 2018/10/23.
  **/
 class FlowTagAdapter extends FlowLayoutAdapter<FlowBean> {
-    private OnClickListener onClickListener;
+    private OnClickListener mOnClickListener;
 
     FlowTagAdapter(Context context, List<FlowBean> datas, int layoutId) {
         super(context, datas, layoutId);
@@ -23,11 +23,11 @@ class FlowTagAdapter extends FlowLayoutAdapter<FlowBean> {
     @Override
     public void convert(int position, CommonHolder holder, final FlowBean item) {
         holder.setText(R.id.tv_tag, item.tag);
-        holder.getConvertView().setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onClickListener != null) {
-                    onClickListener.onClick(v, item.tag);
+                if (mOnClickListener != null) {
+                    mOnClickListener.onClick(v, item.tag);
                 }
             }
         });
@@ -38,6 +38,6 @@ class FlowTagAdapter extends FlowLayoutAdapter<FlowBean> {
     }
 
     public void setOnClickListener(OnClickListener l) {
-        this.onClickListener = l;
+        this.mOnClickListener = l;
     }
 }

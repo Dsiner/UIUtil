@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.d.lib.common.utils.Util;
+import com.d.lib.common.util.DimenUtils;
 import com.d.lib.ui.view.R;
 
 import java.util.List;
@@ -82,8 +82,8 @@ public class SideBar extends View {
             mLetters = new String[]{};
         }
         mCount = mLetters.length;
-        mWidthRect = Util.dip2px(context, 70);
-        mRectRadius = Util.dip2px(context, 6);
+        mWidthRect = DimenUtils.dp2px(context, 70);
+        mRectRadius = DimenUtils.dp2px(context, 6);
         mColorTrans = Color.parseColor("#00000000");
         mColorWhite = Color.parseColor("#ffffff");
         mColorBar = Color.parseColor("#aaBBBBBB");
@@ -101,7 +101,7 @@ public class SideBar extends View {
 
         mPaintRect = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaintRect.setTextAlign(Paint.Align.CENTER);
-        mPaintRect.setTextSize(Util.dip2px(context, 32));
+        mPaintRect.setTextSize(DimenUtils.dp2px(context, 32));
     }
 
     @Override
@@ -147,8 +147,8 @@ public class SideBar extends View {
         float textSize = mOnepice * 0.686f;
         mPaint.setTextSize(textSize);
         mPaintCur.setTextSize(textSize);
-        mTextHeight = Util.getTextHeight(mPaint);
-        mTextLightHeight = Util.getTextHeight(mPaintRect);
+        mTextHeight = DimenUtils.getTextHeight(mPaint);
+        mTextLightHeight = DimenUtils.getTextHeight(mPaintRect);
         setMeasuredDimension(mWidth, mHeight);
     }
 

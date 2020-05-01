@@ -11,7 +11,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.d.lib.common.utils.Util;
+import com.d.lib.common.util.DimenUtils;
 
 /**
  * 镂空背景
@@ -48,11 +48,11 @@ public class HoleBgView extends View {
             // 禁用硬件加速
             setLayerType(LAYER_TYPE_SOFTWARE, null);
         }
-        mOffsetX = Util.dip2px(context, 136.5f);
-        mOffsetY = Util.dip2px(context, 29.5f);
-        mWithrH = Util.dip2px(context, 35000);
-        mWithrW = Util.dip2px(context, 35014.3f);
-        mStrokeWidth = mWithrH * 2 - Util.dip2px(context, 34.5f);
+        mOffsetX = DimenUtils.dp2px(context, 136.5f);
+        mOffsetY = DimenUtils.dp2px(context, 29.5f);
+        mWithrH = DimenUtils.dp2px(context, 35000);
+        mWithrW = DimenUtils.dp2px(context, 35014.3f);
+        mStrokeWidth = mWithrH * 2 - DimenUtils.dp2px(context, 34.5f);
         mRect = new Rect();
         mRectF = new RectF();
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
