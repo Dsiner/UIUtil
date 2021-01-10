@@ -6,9 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.d.lib.common.util.ViewHelper;
-import com.d.lib.xrv.XRecyclerView;
-import com.d.lib.xrv.adapter.CommonHolder;
-import com.d.lib.xrv.adapter.MultiItemTypeSupport;
+import com.d.lib.pulllayout.rv.PullRecyclerView;
+import com.d.lib.pulllayout.rv.adapter.CommonHolder;
+import com.d.lib.pulllayout.rv.adapter.MultiItemTypeSupport;
 import com.d.ui.view.R;
 import com.d.ui.view.verinor.adapter.VerAdapter;
 import com.d.ui.view.verinor.models.OffsetBean;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VerInorActivity extends Activity implements View.OnClickListener {
-    private XRecyclerView xrv_list;
+    private PullRecyclerView mPullList;
 
     @Override
     public void onClick(View v) {
@@ -38,38 +38,41 @@ public class VerInorActivity extends Activity implements View.OnClickListener {
     }
 
     private void bindView() {
-        xrv_list = ViewHelper.findView(this, R.id.xrv_list);
+        mPullList = ViewHelper.findViewById(this, R.id.pull_list);
 
-        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
+        ViewHelper.setOnClickListener(this, this, R.id.iv_title_left);
     }
 
     private void init() {
-        VerAdapter adapter = new VerAdapter(VerInorActivity.this, getVerDatas(), new MultiItemTypeSupport<VerModel>() {
-            @Override
-            public int getLayoutId(int viewType) {
-                switch (viewType) {
-                    case 0:
-                        return R.layout.adapter_ver0;
-                    case 1:
-                        return R.layout.adapter_ver1;
-                    default:
-                        return R.layout.adapter_ver0;
-                }
-            }
+        final VerAdapter adapter = new VerAdapter(VerInorActivity.this, getVerDatas(),
+                new MultiItemTypeSupport<VerModel>() {
+                    @Override
+                    public int getLayoutId(int viewType) {
+                        switch (viewType) {
+                            case 0:
+                                return R.layout.adapter_ver_text;
 
-            @Override
-            public int getItemViewType(int position, VerModel horModel) {
-                return horModel.type;
-            }
-        });
-        xrv_list.setCanRefresh(false);
-        xrv_list.setCanLoadMore(false);
-        xrv_list.showAsList();
-        xrv_list.setAdapter(adapter);
-        xrv_list.setRecyclerListener(new RecyclerView.RecyclerListener() {
+                            case 1:
+                                return R.layout.adapter_ver_inor;
+
+                            default:
+                                return R.layout.adapter_ver_text;
+                        }
+                    }
+
+                    @Override
+                    public int getItemViewType(int position, VerModel horModel) {
+                        return horModel.type;
+                    }
+                });
+        mPullList.setCanPullDown(false);
+        mPullList.setCanPullUp(false);
+        mPullList.setAdapter(adapter);
+        mPullList.setRecyclerListener(new RecyclerView.RecyclerListener() {
             @Override
             public void onViewRecycled(RecyclerView.ViewHolder vh) {
-                if (vh instanceof CommonHolder && ((CommonHolder) vh).mLayoutId == R.layout.adapter_ver1) {
+                if (vh instanceof CommonHolder
+                        && ((CommonHolder) vh).layoutId == R.layout.adapter_ver_inor) {
                     CommonHolder holder = (CommonHolder) vh;
                     OffsetBean.setPositionAndOffset((RecyclerView) holder.getView(R.id.rv_ver_inor));
                 }
@@ -91,6 +94,7 @@ public class VerInorActivity extends Activity implements View.OnClickListener {
                     model = new VerModel(1);
                     model.datas = getVerInorDatas(i);
                     break;
+
                 default:
                     model = new VerModel(0);
                     model.content = "" + i;

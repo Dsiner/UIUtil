@@ -50,11 +50,6 @@ public class ConvenientBanner<T> extends LinearLayout {
     private boolean canLoop = true;
     private int pointPadding;//指示器左右padding
     private int cbLayout;
-
-    public enum PageIndicatorAlign {
-        ALIGN_PARENT_LEFT, ALIGN_PARENT_RIGHT, CENTER_HORIZONTAL
-    }
-
     private AdSwitchTask adSwitchTask;
 
     public ConvenientBanner(Context context) {
@@ -109,28 +104,6 @@ public class ConvenientBanner<T> extends LinearLayout {
         initViewPagerScroll();
 
         adSwitchTask = new AdSwitchTask(this);
-    }
-
-    static class AdSwitchTask implements Runnable {
-
-        private final WeakReference<ConvenientBanner> reference;
-
-        AdSwitchTask(ConvenientBanner convenientBanner) {
-            this.reference = new WeakReference<ConvenientBanner>(convenientBanner);
-        }
-
-        @Override
-        public void run() {
-            ConvenientBanner convenientBanner = reference.get();
-
-            if (convenientBanner != null) {
-                if (convenientBanner.viewPager != null && convenientBanner.turning) {
-                    int page = convenientBanner.viewPager.getCurrentItem() + 1;
-                    convenientBanner.viewPager.setCurrentItem(page);
-                    convenientBanner.postDelayed(convenientBanner.adSwitchTask, convenientBanner.autoTurningTime);
-                }
-            }
-        }
     }
 
     public ConvenientBanner setPages(CBViewHolderCreator holderCreator, List<T> datas) {
@@ -257,7 +230,6 @@ public class ConvenientBanner<T> extends LinearLayout {
         return this;
     }
 
-
     /**
      * 设置ViewPager的滑动速度
      */
@@ -340,6 +312,11 @@ public class ConvenientBanner<T> extends LinearLayout {
         return viewPager.isCanLoop();
     }
 
+    public void setCanLoop(boolean canLoop) {
+        this.canLoop = canLoop;
+        viewPager.setCanLoop(canLoop);
+    }
+
     /**
      * 监听item点击
      *
@@ -354,6 +331,10 @@ public class ConvenientBanner<T> extends LinearLayout {
         return this;
     }
 
+    public int getScrollDuration() {
+        return scroller.getScrollDuration();
+    }
+
     /**
      * 设置ViewPager的滚动速度
      *
@@ -363,16 +344,33 @@ public class ConvenientBanner<T> extends LinearLayout {
         scroller.setScrollDuration(scrollDuration);
     }
 
-    public int getScrollDuration() {
-        return scroller.getScrollDuration();
-    }
-
     public CBLoopViewPager getViewPager() {
         return viewPager;
     }
 
-    public void setCanLoop(boolean canLoop) {
-        this.canLoop = canLoop;
-        viewPager.setCanLoop(canLoop);
+    public enum PageIndicatorAlign {
+        ALIGN_PARENT_LEFT, ALIGN_PARENT_RIGHT, CENTER_HORIZONTAL
+    }
+
+    static class AdSwitchTask implements Runnable {
+
+        private final WeakReference<ConvenientBanner> reference;
+
+        AdSwitchTask(ConvenientBanner convenientBanner) {
+            this.reference = new WeakReference<ConvenientBanner>(convenientBanner);
+        }
+
+        @Override
+        public void run() {
+            ConvenientBanner convenientBanner = reference.get();
+
+            if (convenientBanner != null) {
+                if (convenientBanner.viewPager != null && convenientBanner.turning) {
+                    int page = convenientBanner.viewPager.getCurrentItem() + 1;
+                    convenientBanner.viewPager.setCurrentItem(page);
+                    convenientBanner.postDelayed(convenientBanner.adSwitchTask, convenientBanner.autoTurningTime);
+                }
+            }
+        }
     }
 }

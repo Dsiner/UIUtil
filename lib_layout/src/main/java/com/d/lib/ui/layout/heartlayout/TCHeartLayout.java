@@ -58,6 +58,11 @@ public class TCHeartLayout extends RelativeLayout {
         init(attrs, defStyleAttr);
     }
 
+    private static int sp2px(Context context, float spValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
+    }
+
     private void findViewById(Context context) {
         LayoutInflater.from(context).inflate(R.layout.lib_ui_layout_hl_periscope, this);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.lib_ui_layout_hl_ic_like);
@@ -116,10 +121,5 @@ public class TCHeartLayout extends RelativeLayout {
 //        heartView.setImageDrawable(sDrawables[random.nextInt(8)]);
 //        init(attrs, defStyleAttr);
         mAnimator.start(heartView, this);
-    }
-
-    private static int sp2px(Context context, float spValue) {
-        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (spValue * fontScale + 0.5f);
     }
 }

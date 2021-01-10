@@ -30,12 +30,18 @@ import java.text.DecimalFormat;
  * Created by D on 2017/2/28.
  */
 public class VSView extends View {
+    /**
+     * Math.pow(...) is very expensive, so avoid calling it and create it
+     * yourself.
+     */
+    private static final int POW_10[] = {
+            1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000
+    };
     private int mWidth; // View的宽度
     private int mHeight; // View的高度
     private float mPadding; // 对比条距两端间距
     private float mHPercent; // 对比条高度
     private float mRadius; // 对比条的圆角矩形弧度
-
     private Rect mRect;
     private RectF mRectF;
     private Paint mPaintA; // A类颜色的画笔
@@ -44,17 +50,13 @@ public class VSView extends View {
     private Path mPath; // 通用路径
     private float mMargin; // 两圆与对比条的垂直间距
     private float mMarginTxt; // 文字与圆的水平间距
-
     private OnVSClickListener mListener; // Listener
-
     private float mPercent = 0.5f; // 对比A项所占百分比 范围0-1
-
     private int mDIndex = -1; // ActionDown按压时的位置
     private int mUIndex = 0; // ActionUp松开时的位置
     private int mTouchSlop; // 最小视为移动距离
     private float mDX, mDY; // ActionDown的坐标(dx,dy)
     private boolean mDInvaild; // 标志位,点击是否有效（true有效: 点中了圆, false无效: 未点中圆）
-
     private float mSpaceHalf; // 对比条，中间空隙的一半宽度
     private float mTanW; // 对比条，中间空隙的偏斜宽度
     private Bitmap mBitmapA; // 对比A项正常图片
@@ -66,7 +68,6 @@ public class VSView extends View {
     private Bitmap mBitmapBS; // 对比B项选中图片
     private Bitmap mBitmapBU; // 对比B项未选中图片
     private Rect mRectBp; // 仅用于图片Rect
-
     private VSItem mItemA; // 左项
     private VSItem mItemB; // 右项
 
@@ -81,6 +82,55 @@ public class VSView extends View {
     public VSView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
+    }
+
+    /**
+     * format a number properly with the given number of digits
+     *
+     * @param number the number to format
+     * @param digits the number of digits
+     */
+    public static String formatDecimal(double number, int digits) {
+        number = roundNumber((float) number, digits);
+        StringBuffer a = new StringBuffer();
+        for (int i = 0; i < digits; i++) {
+            if (i == 0)
+                a.append(".");
+            a.append("0");
+        }
+        DecimalFormat nf = new DecimalFormat("###,###,###,##0" + a.toString());
+        String formatted = nf.format(number);
+        return formatted;
+    }
+
+    public static float roundNumber(float number, int digits) {
+        try {
+            if (digits == 0) {
+                int r0 = (int) Math.round(number);
+                return r0;
+            } else if (digits > 0) {
+                if (digits > 9)
+                    digits = 9;
+                StringBuffer a = new StringBuffer();
+                for (int i = 0; i < digits; i++) {
+                    if (i == 0)
+                        a.append(".");
+                    a.append("0");
+                }
+                DecimalFormat nf = new DecimalFormat("#" + a.toString());
+                String formatted = nf.format(number);
+                return Float.valueOf(formatted);
+            } else {
+                digits = -digits;
+                if (digits > 9)
+                    digits = 9;
+                int r2 = (int) (number / POW_10[digits] + 0.5);
+                return r2 * POW_10[digits];
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return number;
+        }
     }
 
     private void init(Context context) {
@@ -331,68 +381,11 @@ public class VSView extends View {
         }
     }
 
-    /**
-     * format a number properly with the given number of digits
-     *
-     * @param number the number to format
-     * @param digits the number of digits
-     */
-    public static String formatDecimal(double number, int digits) {
-        number = roundNumber((float) number, digits);
-        StringBuffer a = new StringBuffer();
-        for (int i = 0; i < digits; i++) {
-            if (i == 0)
-                a.append(".");
-            a.append("0");
-        }
-        DecimalFormat nf = new DecimalFormat("###,###,###,##0" + a.toString());
-        String formatted = nf.format(number);
-        return formatted;
-    }
-
-    /**
-     * Math.pow(...) is very expensive, so avoid calling it and create it
-     * yourself.
-     */
-    private static final int POW_10[] = {
-            1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000
-    };
-
-    public static float roundNumber(float number, int digits) {
-        try {
-            if (digits == 0) {
-                int r0 = (int) Math.round(number);
-                return r0;
-            } else if (digits > 0) {
-                if (digits > 9)
-                    digits = 9;
-                StringBuffer a = new StringBuffer();
-                for (int i = 0; i < digits; i++) {
-                    if (i == 0)
-                        a.append(".");
-                    a.append("0");
-                }
-                DecimalFormat nf = new DecimalFormat("#" + a.toString());
-                String formatted = nf.format(number);
-                return Float.valueOf(formatted);
-            } else {
-                digits = -digits;
-                if (digits > 9)
-                    digits = 9;
-                int r2 = (int) (number / POW_10[digits] + 0.5);
-                return r2 * POW_10[digits];
-            }
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            return number;
-        }
+    public void setOnVSClickListener(OnVSClickListener l) {
+        this.mListener = l;
     }
 
     public interface OnVSClickListener {
         void onItemClick(int index, VSItem item);
-    }
-
-    public void setOnVSClickListener(OnVSClickListener l) {
-        this.mListener = l;
     }
 }

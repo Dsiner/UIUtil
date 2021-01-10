@@ -1,5 +1,6 @@
 package com.d.lib.ui.view.lrc;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,7 +16,6 @@ import android.widget.Scroller;
 
 import com.d.lib.common.util.DimenUtils;
 import com.d.lib.ui.view.R;
-import com.nineoldandroids.animation.ValueAnimator;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -79,25 +79,6 @@ public class LrcView extends View implements ILrcView {
 
     private OnClickListener mOnClickListener;
     private OnSeekChangeListener mOnSeekChangeListener;
-
-    static class UpdateListener implements ValueAnimator.AnimatorUpdateListener {
-        private final WeakReference<LrcView> reference;
-
-        UpdateListener(LrcView view) {
-            this.reference = new WeakReference<>(view);
-        }
-
-        @Override
-        public void onAnimationUpdate(ValueAnimator animation) {
-            LrcView view = reference.get();
-            if (view == null || view.mContext == null
-                    || view.mContext instanceof Activity && ((Activity) view.mContext).isFinishing()) {
-                return;
-            }
-            view.mTextOffsetX = (float) animation.getAnimatedValue();
-            view.invalidate();
-        }
-    }
 
     public LrcView(Context context) {
         this(context, null);
@@ -483,6 +464,14 @@ public class LrcView extends View implements ILrcView {
         }
     }
 
+    public void setOnClickListener(OnClickListener l) {
+        this.mOnClickListener = l;
+    }
+
+    public void setOnSeekChangeListener(OnSeekChangeListener l) {
+        this.mOnSeekChangeListener = l;
+    }
+
     public interface OnClickListener {
         void onClick();
     }
@@ -491,11 +480,22 @@ public class LrcView extends View implements ILrcView {
         void onProgressChanged(int progress);
     }
 
-    public void setOnClickListener(OnClickListener l) {
-        this.mOnClickListener = l;
-    }
+    static class UpdateListener implements ValueAnimator.AnimatorUpdateListener {
+        private final WeakReference<LrcView> reference;
 
-    public void setOnSeekChangeListener(OnSeekChangeListener l) {
-        this.mOnSeekChangeListener = l;
+        UpdateListener(LrcView view) {
+            this.reference = new WeakReference<>(view);
+        }
+
+        @Override
+        public void onAnimationUpdate(ValueAnimator animation) {
+            LrcView view = reference.get();
+            if (view == null || view.mContext == null
+                    || view.mContext instanceof Activity && ((Activity) view.mContext).isFinishing()) {
+                return;
+            }
+            view.mTextOffsetX = (float) animation.getAnimatedValue();
+            view.invalidate();
+        }
     }
 }

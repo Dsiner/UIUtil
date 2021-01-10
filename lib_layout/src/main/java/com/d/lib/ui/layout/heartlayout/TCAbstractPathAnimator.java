@@ -30,8 +30,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 飘心路径
  */
 public abstract class TCAbstractPathAnimator {
-    private final Random mRandom;
     protected final Config mConfig;
+    private final Random mRandom;
 
     public TCAbstractPathAnimator(Config config) {
         mConfig = config;

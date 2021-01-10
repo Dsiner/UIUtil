@@ -37,11 +37,11 @@ import com.d.lib.ui.layout.R;
 public class TCHeartView extends AppCompatImageView {
 
     private static final Paint sPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
-    private int mHeartResId = R.drawable.lib_ui_layout_hl_ic_heart0;
-    private int mHeartBorderResId = R.drawable.lib_ui_layout_hl_ic_heart1;
+    private static final Canvas sCanvas = new Canvas();
     private static Bitmap sHeart;
     private static Bitmap sHeartBorder;
-    private static final Canvas sCanvas = new Canvas();
+    private int mHeartResId = R.drawable.lib_ui_layout_hl_ic_heart0;
+    private int mHeartBorderResId = R.drawable.lib_ui_layout_hl_ic_heart1;
 
     public TCHeartView(Context context) {
         super(context);
@@ -53,6 +53,15 @@ public class TCHeartView extends AppCompatImageView {
 
     public TCHeartView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    private static Bitmap createBitmapSafely(int width, int height) {
+        try {
+            return Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        } catch (OutOfMemoryError error) {
+            error.printStackTrace();
+        }
+        return null;
     }
 
     public void setDrawable(BitmapDrawable bitmap) {
@@ -100,14 +109,5 @@ public class TCHeartView extends AppCompatImageView {
         p.setColorFilter(null);
         canvas.setBitmap(null);
         return bm;
-    }
-
-    private static Bitmap createBitmapSafely(int width, int height) {
-        try {
-            return Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        } catch (OutOfMemoryError error) {
-            error.printStackTrace();
-        }
-        return null;
     }
 }

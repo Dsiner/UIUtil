@@ -3,9 +3,9 @@ package com.d.ui.view.sort;
 import android.content.Context;
 import android.view.View;
 
+import com.d.lib.pulllayout.rv.adapter.CommonAdapter;
+import com.d.lib.pulllayout.rv.adapter.CommonHolder;
 import com.d.lib.ui.view.sort.SortBean;
-import com.d.lib.xrv.adapter.CommonAdapter;
-import com.d.lib.xrv.adapter.CommonHolder;
 import com.d.ui.view.R;
 
 import java.util.List;
@@ -22,10 +22,10 @@ class SortAdapter extends CommonAdapter<SortBean> {
     @Override
     public void convert(int position, CommonHolder holder, SortBean item) {
         if (item.isLetter) {
-            holder.setViewVisibility(R.id.llyt_sort, View.VISIBLE);
+            holder.setVisibility(R.id.llyt_sort, View.VISIBLE);
             holder.setText(R.id.tv_letter, item.letter);
         } else {
-            holder.setViewVisibility(R.id.llyt_sort, View.GONE);
+            holder.setVisibility(R.id.llyt_sort, View.GONE);
         }
         holder.setText(R.id.tv_content, item.content);
     }

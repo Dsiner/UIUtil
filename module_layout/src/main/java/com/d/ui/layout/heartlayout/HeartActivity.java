@@ -46,10 +46,10 @@ public class HeartActivity extends Activity implements View.OnClickListener {
     }
 
     private void bindView() {
-        tch_pr = ViewHelper.findView(this, R.id.tch_pr);
+        tch_pr = ViewHelper.findViewById(this, R.id.tch_pr);
         lv_msg = (ListView) findViewById(R.id.lv_msg);
 
-        ViewHelper.setOnClick(this, this, R.id.iv_title_left,
+        ViewHelper.setOnClickListener(this, this, R.id.iv_title_left,
                 R.id.btn_click);
     }
 

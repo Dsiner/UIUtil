@@ -54,11 +54,11 @@ public class ShadowLayout extends FrameLayout {
             setFilterBitmap(true);
         }
     };
-    // Shadow bitmap and canvas
-    private Bitmap mBitmap;
     private final Canvas mCanvas = new Canvas();
     // View bounds
     private final Rect mBounds = new Rect();
+    // Shadow bitmap and canvas
+    private Bitmap mBitmap;
     // Check whether need to redraw shadow
     private boolean mInvalidateShadow = true;
 

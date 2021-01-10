@@ -34,10 +34,10 @@ public class RecordTriggerActivity extends Activity implements View.OnClickListe
     }
 
     private void bindView() {
-        rtv_trigger = ViewHelper.findView(this, R.id.rtv_trigger);
-        rlv_light = ViewHelper.findView(this, R.id.rlv_light);
+        rtv_trigger = ViewHelper.findViewById(this, R.id.rtv_trigger);
+        rlv_light = ViewHelper.findViewById(this, R.id.rlv_light);
 
-        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
+        ViewHelper.setOnClickListener(this, this, R.id.iv_title_left);
     }
 
     private void init() {

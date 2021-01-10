@@ -1,4 +1,4 @@
-package com.d.lib.ui.layout.poi;
+package com.d.lib.ui.layout.poilayout;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -57,11 +57,11 @@ public class PoiTextView extends TextView {
         return super.onTouchEvent(event);
     }
 
-    public interface OnTikListener {
-        void onTik(View v);
-    }
-
     public void setOnTikListener(OnTikListener l) {
         this.mListener = l;
+    }
+
+    public interface OnTikListener {
+        void onTik(View v);
     }
 }

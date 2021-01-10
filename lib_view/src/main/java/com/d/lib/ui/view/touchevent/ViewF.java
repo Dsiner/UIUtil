@@ -13,43 +13,30 @@ import android.view.ViewDebug;
  */
 public class ViewF extends View {
 
-    int mPrivateFlags;
-
-    /**
-     * The view flags hold various views states.
-     * {@hide}
-     */
-    @ViewDebug.ExportedProperty
-    int mViewFlags;
-
     /**
      * Mask for use with setFlags indicating bits used for indicating whether
      * this view is enabled
      * {@hide}
      */
     static final int ENABLED_MASK = 0x00000020;
-
     /**
      * This view is enabled. Intrepretation varies by subclass.
      * Use with ENABLED_MASK when calling setFlags.
      * {@hide}
      */
     static final int ENABLED = 0x00000000;
-
     /**
      * This view is disabled. Intrepretation varies by subclass.
      * Use with ENABLED_MASK when calling setFlags.
      * {@hide}
      */
     static final int DISABLED = 0x00000020;
-
     /**
      * <p>Indicates this view can be clicked. When clickable, a View reacts
      * to clicks by notifying the OnClickListener.<p>
      * {@hide}
      */
     static final int CLICKABLE = 0x00004000;
-
     /**
      * <p>
      * Indicates this view can be long clicked. When long clickable, a View
@@ -59,7 +46,13 @@ public class ViewF extends View {
      * {@hide}
      */
     static final int LONG_CLICKABLE = 0x00200000;
-
+    int mPrivateFlags;
+    /**
+     * The view flags hold various views states.
+     * {@hide}
+     */
+    @ViewDebug.ExportedProperty
+    int mViewFlags;
     private OnTouchListener mOnTouchListener;
 
     public ViewF(Context context) {

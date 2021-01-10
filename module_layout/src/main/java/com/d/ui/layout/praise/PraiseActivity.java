@@ -58,10 +58,10 @@ public class PraiseActivity extends Activity implements View.OnClickListener {
     }
 
     private void bindView() {
-        rv_list = ViewHelper.findView(this, R.id.rv_list);
-        pl_praise = ViewHelper.findView(this, R.id.pl_praise);
+        rv_list = ViewHelper.findViewById(this, R.id.rv_list);
+        pl_praise = ViewHelper.findViewById(this, R.id.pl_praise);
 
-        ViewHelper.setOnClick(this, this, R.id.iv_back, R.id.llyt_do_praise);
+        ViewHelper.setOnClickListener(this, this, R.id.iv_back, R.id.llyt_do_praise);
     }
 
     private void initPraise() {

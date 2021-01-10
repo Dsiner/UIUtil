@@ -24,7 +24,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.d.lib.common.util.DimenUtils;
-import com.d.lib.common.view.roundedimageview.RoundedImageView;
+import com.d.lib.common.widget.roundedimageview.RoundedImageView;
 import com.d.lib.ui.view.R;
 
 import java.lang.annotation.ElementType;
@@ -71,13 +71,6 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
     private Request mRequest;
     private RoundedImageView mIvThumb, mIvAlpha, mIvState;
     private OnClickListener mListener;
-
-    @IntDef({STATE_PROGRESS, STATE_PENDING, STATE_ERROR})
-    @Target({ElementType.PARAMETER})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface State {
-
-    }
 
     public CircleProgressBar(@NonNull Context context) {
         this(context, null);
@@ -330,6 +323,25 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
         view.setImageResource(id);
     }
 
+    public void setOnClickListener(OnClickListener l) {
+        this.mListener = l;
+    }
+
+    @IntDef({STATE_PROGRESS, STATE_PENDING, STATE_ERROR})
+    @Target({ElementType.PARAMETER})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface State {
+
+    }
+
+    public interface OnClickListener {
+        void onRestart();
+
+        void onResume();
+
+        void onPause();
+    }
+
     public class Request {
         public Request thumb(Bitmap bitmap) {
             mIvThumb.setImageBitmap(bitmap);
@@ -346,17 +358,5 @@ public class CircleProgressBar extends FrameLayout implements View.OnClickListen
             invalidate();
             return this;
         }
-    }
-
-    public interface OnClickListener {
-        void onRestart();
-
-        void onResume();
-
-        void onPause();
-    }
-
-    public void setOnClickListener(OnClickListener l) {
-        this.mListener = l;
     }
 }

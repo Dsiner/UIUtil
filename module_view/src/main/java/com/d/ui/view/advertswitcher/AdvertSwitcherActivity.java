@@ -47,10 +47,10 @@ public class AdvertSwitcherActivity extends Activity implements View.OnClickList
     }
 
     private void bindView() {
-        as_advert_text = ViewHelper.findView(this, R.id.as_advert_text);
-        as_advert_img = ViewHelper.findView(this, R.id.as_advert_img);
+        as_advert_text = ViewHelper.findViewById(this, R.id.as_advert_text);
+        as_advert_img = ViewHelper.findViewById(this, R.id.as_advert_img);
 
-        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
+        ViewHelper.setOnClickListener(this, this, R.id.iv_title_left);
     }
 
     @Override

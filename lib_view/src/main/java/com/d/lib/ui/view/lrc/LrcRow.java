@@ -45,38 +45,6 @@ public class LrcRow implements Comparable<LrcRow> {
         this.content = content;
     }
 
-    public String getTimeStr() {
-        return timeStr;
-    }
-
-    public void setTimeStr(String timeStr) {
-        this.timeStr = timeStr;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public int getTotalTime() {
-        return totalTime;
-    }
-
-    public void setTotalTime(int totalTime) {
-        this.totalTime = totalTime;
-    }
-
     /**
      * 将歌词文件中的某一行 解析成一个List<LrcRow>
      * 因为一行中可能包含了多个LrcRow对象
@@ -120,6 +88,38 @@ public class LrcRow implements Comparable<LrcRow> {
         return Integer.parseInt(times[0]) * 60 * 1000
                 + Integer.parseInt(times[1]) * 1000
                 + Integer.parseInt(times[2]);
+    }
+
+    public String getTimeStr() {
+        return timeStr;
+    }
+
+    public void setTimeStr(String timeStr) {
+        this.timeStr = timeStr;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(int totalTime) {
+        this.totalTime = totalTime;
     }
 
     @Override

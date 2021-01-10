@@ -106,11 +106,11 @@ public class RecordTriggerView extends TextView {
         return super.onTouchEvent(event);
     }
 
-    public interface OnTriggerListener {
-        void onStateChange(int state);
-    }
-
     public void setOnTriggerListener(OnTriggerListener l) {
         this.mListener = l;
+    }
+
+    public interface OnTriggerListener {
+        void onStateChange(int state);
     }
 }

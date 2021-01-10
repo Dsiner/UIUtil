@@ -7,9 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.d.lib.xrv.adapter.CommonAdapter;
-import com.d.lib.xrv.adapter.CommonHolder;
-import com.d.lib.xrv.adapter.MultiItemTypeSupport;
+import com.d.lib.pulllayout.rv.adapter.CommonAdapter;
+import com.d.lib.pulllayout.rv.adapter.CommonHolder;
+import com.d.lib.pulllayout.rv.adapter.MultiItemTypeSupport;
 import com.d.ui.view.R;
 import com.d.ui.view.verinor.models.OffsetBean;
 import com.d.ui.view.verinor.models.VerInorModel;
@@ -32,34 +32,36 @@ public class VerAdapter extends CommonAdapter<VerModel> {
 
     @Override
     public void convert(final int position, CommonHolder holder, VerModel item) {
-        if (holder.mLayoutId == R.layout.adapter_ver0) {
-            // 文本类型
+        if (holder.layoutId == R.layout.adapter_ver_text) {
+            // Text type
             holder.setText(R.id.tv_desc, item.content);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext.getApplicationContext(), "Click at: " + position, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext.getApplicationContext(),
+                            "Click at: " + position, Toast.LENGTH_SHORT).show();
                 }
             });
-        } else if (holder.mLayoutId == R.layout.adapter_ver1) {
-            // 嵌套类型
+        } else if (holder.layoutId == R.layout.adapter_ver_inor) {
+            // Nested type
             loadInor((RecyclerView) holder.getView(R.id.rv_ver_inor), item, position);
         }
     }
 
     /**
-     * 装载横向Recyclerview
+     * Load horizontal Recyclerview
      */
     private void loadInor(final RecyclerView list, final VerModel item, int position) {
         list.setTag(item);
         VerInorAdapter adapter = (VerInorAdapter) list.getAdapter();
         if (adapter == null) {
-            LinearLayoutManager llManager = new LinearLayoutManager(mContext);
-            llManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-            adapter = new VerInorAdapter(mContext, new ArrayList<VerInorModel>(), R.layout.adapter_ver_inor);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
+            layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+            adapter = new VerInorAdapter(mContext, new ArrayList<VerInorModel>(),
+                    R.layout.adapter_ver_inor_text);
             list.setRecycledViewPool(mViewPool);
             list.setHasFixedSize(true);
-            list.setLayoutManager(llManager);
+            list.setLayoutManager(layoutManager);
             list.setItemAnimator(new DefaultItemAnimator());
             list.setAdapter(adapter);
         }

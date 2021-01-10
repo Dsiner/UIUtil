@@ -10,8 +10,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.d.lib.common.util.ViewHelper;
-import com.d.lib.common.view.popup.MenuPopup;
-import com.d.lib.common.view.popup.PopupWindowFactory;
+import com.d.lib.common.widget.popup.MenuPopup;
+import com.d.lib.common.widget.popup.PopupWindowFactory;
 import com.d.lib.ui.view.sort.SideBar;
 import com.d.lib.ui.view.sort.SortBean;
 import com.d.lib.ui.view.sort.SortUtil;
@@ -53,7 +53,7 @@ public class SortActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         }
                     });
-            menuPopup.showAsDropDown((View) ViewHelper.findView(this, R.id.iv_title_right));
+            menuPopup.showAsDropDown((View) ViewHelper.findViewById(this, R.id.iv_title_right));
         }
     }
 
@@ -104,11 +104,11 @@ public class SortActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void bindView() {
-        llyt_tin = ViewHelper.findView(this, R.id.llyt_tin);
-        tv_tin_letter = ViewHelper.findView(this, R.id.tv_tin_letter);
-        rv_list = ViewHelper.findView(this, R.id.rv_list);
-        sb_sidebar = ViewHelper.findView(this, R.id.sb_sidebar);
+        llyt_tin = ViewHelper.findViewById(this, R.id.llyt_tin);
+        tv_tin_letter = ViewHelper.findViewById(this, R.id.tv_tin_letter);
+        rv_list = ViewHelper.findViewById(this, R.id.rv_list);
+        sb_sidebar = ViewHelper.findViewById(this, R.id.sb_sidebar);
 
-        ViewHelper.setOnClick(this, this, R.id.iv_title_left, R.id.iv_title_right);
+        ViewHelper.setOnClickListener(this, this, R.id.iv_title_left, R.id.iv_title_right);
     }
 }

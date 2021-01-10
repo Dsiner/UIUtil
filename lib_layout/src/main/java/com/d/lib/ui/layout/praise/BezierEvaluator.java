@@ -1,8 +1,7 @@
 package com.d.lib.ui.layout.praise;
 
+import android.animation.TypeEvaluator;
 import android.graphics.PointF;
-
-import com.nineoldandroids.animation.TypeEvaluator;
 
 /**
  * Created by D on 2016/11/8.

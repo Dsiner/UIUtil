@@ -1,5 +1,6 @@
 package com.d.ui.view.progress;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -17,7 +18,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.d.lib.common.util.ToastUtils;
 import com.d.lib.common.util.ViewHelper;
+import com.d.lib.permissioncompat.Permission;
+import com.d.lib.permissioncompat.PermissionCompat;
+import com.d.lib.permissioncompat.PermissionSchedulers;
+import com.d.lib.permissioncompat.callback.PermissionCallback;
 import com.d.lib.ui.view.progress.SnapProgressBar;
 import com.d.ui.view.R;
 
@@ -61,32 +67,6 @@ public class SnapProgressLayout extends LinearLayout {
         bindView();
     }
 
-    static class Task implements Runnable {
-        WeakReference<SnapProgressLayout> weakRef;
-
-        Task(SnapProgressLayout activity) {
-            weakRef = new WeakReference<>(activity);
-        }
-
-        @Override
-        public void run() {
-            if (isFinished()) {
-                return;
-            }
-            SnapProgressLayout ref = weakRef.get();
-            ref.doTask();
-            ref.mHandler.postDelayed(ref.mTask, 1000);
-        }
-
-        private boolean isFinished() {
-            return weakRef == null || weakRef.get() == null
-                    || !weakRef.get().mIsRunning
-                    || weakRef.get().getContext() == null
-                    || weakRef.get().getContext() instanceof Activity
-                    && ((Activity) weakRef.get().getContext()).isFinishing();
-        }
-    }
-
     private void doTask() {
         if (mDatas.size() <= 0) {
             return;
@@ -124,11 +104,11 @@ public class SnapProgressLayout extends LinearLayout {
     private void bindView() {
         mHandler = new Handler();
         mTask = new Task(this);
-        spbar_snaps = new SnapProgressBar[]{ViewHelper.findView(this, R.id.spbar_snap_scanning),
-                ViewHelper.findView(this, R.id.spbar_snap_padding),
-                ViewHelper.findView(this, R.id.spbar_snap_done),
-                ViewHelper.findView(this, R.id.spbar_snap_error),
-                ViewHelper.findView(this, R.id.spbar_snap_progress)};
+        spbar_snaps = new SnapProgressBar[]{ViewHelper.findViewById(this, R.id.spbar_snap_scanning),
+                ViewHelper.findViewById(this, R.id.spbar_snap_padding),
+                ViewHelper.findViewById(this, R.id.spbar_snap_done),
+                ViewHelper.findViewById(this, R.id.spbar_snap_error),
+                ViewHelper.findViewById(this, R.id.spbar_snap_progress)};
         spbar_snaps[0].setState(SnapProgressBar.STATE_SCANNING);
         spbar_snaps[1].setState(SnapProgressBar.STATE_PENDDING);
         spbar_snaps[2].setState(SnapProgressBar.STATE_DONE);
@@ -138,23 +118,74 @@ public class SnapProgressLayout extends LinearLayout {
         findViewById(R.id.btn_start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Thread(new Runnable() {
+                requestPermission(new Runnable() {
                     @Override
                     public void run() {
-                        List<MediaInfo> list = Presenter.getPhotos(getContext().getApplicationContext());
-                        if (list.size() > 0) {
-                            mIndex = 0;
-                            mDatas.addAll(list);
-                            restartTask();
-                        }
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                List<MediaInfo> list = Presenter.getPhotos(getContext().getApplicationContext());
+                                if (list.size() > 0) {
+                                    mIndex = 0;
+                                    mDatas.addAll(list);
+                                    restartTask();
+                                }
+                            }
+                        }).start();
                     }
-                }).start();
+                });
             }
         });
     }
 
+    private void requestPermission(final Runnable runnable) {
+        PermissionCompat.with((Activity) getContext())
+                .requestEachCombined(Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribeOn(PermissionSchedulers.io())
+                .observeOn(PermissionSchedulers.mainThread())
+                .requestPermissions(new PermissionCallback<Permission>() {
+                    @Override
+                    public void onNext(Permission permission) {
+                        if (!permission.granted) {
+                            ToastUtils.toast(getContext().getApplicationContext(), "Denied permission!");
+                            return;
+                        }
+                        if (runnable != null) {
+                            runnable.run();
+                        }
+                    }
+                });
+    }
+
     public void onDestroy() {
         stopTask();
+    }
+
+    static class Task implements Runnable {
+        WeakReference<SnapProgressLayout> weakRef;
+
+        Task(SnapProgressLayout activity) {
+            weakRef = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void run() {
+            if (isFinished()) {
+                return;
+            }
+            SnapProgressLayout ref = weakRef.get();
+            ref.doTask();
+            ref.mHandler.postDelayed(ref.mTask, 1000);
+        }
+
+        private boolean isFinished() {
+            return weakRef == null || weakRef.get() == null
+                    || !weakRef.get().mIsRunning
+                    || weakRef.get().getContext() == null
+                    || weakRef.get().getContext() instanceof Activity
+                    && ((Activity) weakRef.get().getContext()).isFinishing();
+        }
     }
 
     static class Presenter {
@@ -175,7 +206,8 @@ public class SnapProgressLayout extends LinearLayout {
             if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
                 return datas;
             }
-            String selection = MediaStore.Files.FileColumns.DATA + " LIKE '%" + "/DCIM/Camera/" + "%' ";
+            String selection = MediaStore.Files.FileColumns.DATA
+                    + " LIKE '%" + "/DCIM/Camera/" + "%' ";
             Uri uri = MediaStore.Files.getContentUri("external");
             Cursor cursor = context.getContentResolver().query(uri,
                     new String[]{MediaStore.Files.FileColumns.DATA, MediaStore.Files.FileColumns._ID},

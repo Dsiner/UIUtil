@@ -6,8 +6,8 @@ android {
     resourcePrefix 'lib_ui_layout_'
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 22
+        minSdkVersion 11
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         consumerProguardFiles 'consumer-proguard-rules.pro'
@@ -24,10 +24,10 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    api 'com.dsiner.lib:common:1.0.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api 'com.dsiner.lib:common:1.2.1'
 }

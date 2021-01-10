@@ -6,21 +6,21 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.d.lib.common.util.ViewHelper;
+import com.d.lib.pulllayout.loader.CommonLoader;
 import com.d.lib.taskscheduler.TaskScheduler;
-import com.d.lib.ui.layout.poi.PoiLayout;
-import com.d.lib.ui.layout.poi.PoiListView;
-import com.d.lib.ui.layout.poi.PoiTextView;
+import com.d.lib.ui.layout.poilayout.PoiLayout;
+import com.d.lib.ui.layout.poilayout.PoiListView;
+import com.d.lib.ui.layout.poilayout.PoiTextView;
 import com.d.ui.layout.R;
-import com.d.ui.layout.loader.CommonLoader;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Poi
  * Created by D on 2017/11/1.
  */
-public class PoiActivity extends Activity implements View.OnClickListener,
-        PoiLayout.OnChangeListener {
+public class PoiActivity extends Activity implements View.OnClickListener {
     private PoiLayout poi_layout;
     private PoiListView poi_list;
     private PoiTextView tv_bottom;
@@ -45,22 +45,20 @@ public class PoiActivity extends Activity implements View.OnClickListener,
     }
 
     private void bindView() {
-        poi_layout = ViewHelper.findView(this, R.id.poi_layout);
-        poi_list = ViewHelper.findView(this, R.id.poi_list);
-        tv_bottom = ViewHelper.findView(this, R.id.tv_bottom);
+        poi_layout = ViewHelper.findViewById(this, R.id.poi_layout);
+        poi_list = ViewHelper.findViewById(this, R.id.poi_list);
+        tv_bottom = ViewHelper.findViewById(this, R.id.tv_bottom);
 
-        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
+        ViewHelper.setOnClickListener(this, this, R.id.iv_title_left);
     }
 
     private void init() {
-        mAdapter = new PoiMapAdapter(this, new ArrayList<PoiModel>(),
-                R.layout.adapter_poi);
-        poi_list.setCanRefresh(false);
-        poi_list.setCanLoadMore(true);
-        poi_list.showAsList();
+        mAdapter = new PoiMapAdapter(this, new ArrayList<PoiModel>(), R.layout.adapter_poi);
+        poi_list.setCanPullDown(false);
+        poi_list.setCanPullUp(true);
         poi_list.setAdapter(mAdapter);
         mCommonLoader = new CommonLoader<>(poi_list, mAdapter);
-        mCommonLoader.setPageCount(10);
+        mCommonLoader.setPageCount(20);
         mCommonLoader.setOnLoaderListener(new CommonLoader.OnLoaderListener() {
             @Override
             public void onRefresh() {
@@ -88,7 +86,17 @@ public class PoiActivity extends Activity implements View.OnClickListener,
             }
         });
 
-        poi_layout.setOnChangeListener(this);
+        poi_layout.setOnChangeListener(new PoiLayout.OnChangeListener() {
+            @Override
+            public void onChange(int status) {
+                tv_bottom.setVisibility(status == PoiLayout.STATUS_CLOSE ? View.VISIBLE : View.GONE);
+            }
+
+            @Override
+            public void onScroll(float offset) {
+                tv_bottom.setVisibility(offset == 1 ? View.VISIBLE : View.GONE);
+            }
+        });
         tv_bottom.setOnTikListener(new PoiTextView.OnTikListener() {
             @Override
             public void onTik(View v) {
@@ -98,7 +106,7 @@ public class PoiActivity extends Activity implements View.OnClickListener,
     }
 
     /**
-     * 模拟数据获取
+     * Simulation data acquisition
      */
     private void onLoad(final int page) {
         final long delayMillis = page == 1 ? 0 : 2000;
@@ -114,16 +122,16 @@ public class PoiActivity extends Activity implements View.OnClickListener,
                     int index = 10 * (page - 1) + i;
                     datas.add(new PoiModel("标题:" + index, "xxxxxxxxxx" + index));
                 }
-                setData(datas);
+                loadSuccess(datas);
             }
         }, delayMillis);
     }
 
     /**
-     * 数据设置
+     * Data loaded successfully
      */
-    private void setData(final ArrayList<PoiModel> data) {
-        mCommonLoader.setData(data);
+    private void loadSuccess(final List<PoiModel> data) {
+        mCommonLoader.loadSuccess(data);
         if (mCommonLoader.page == 1) {
             if (data.size() > 0) {
                 poi_layout.setVisibility(View.VISIBLE);
@@ -131,15 +139,5 @@ public class PoiActivity extends Activity implements View.OnClickListener,
             }
             poi_list.scrollToPosition(0);
         }
-    }
-
-    @Override
-    public void onChange(int status) {
-        tv_bottom.setVisibility(status == PoiLayout.STATUS_CLOSE ? View.VISIBLE : View.GONE);
-    }
-
-    @Override
-    public void onScroll(float offset) {
-        tv_bottom.setVisibility(offset == 1 ? View.VISIBLE : View.GONE);
     }
 }

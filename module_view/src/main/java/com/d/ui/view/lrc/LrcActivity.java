@@ -17,7 +17,6 @@ import com.d.lib.ui.view.lrc.LrcView;
 import com.d.ui.view.R;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -59,6 +58,7 @@ public class LrcActivity extends Activity
         int resId = v.getId();
         if (R.id.iv_title_left == resId) {
             finish();
+
         } else if (R.id.tv_play_pause == resId) {
             if ("Play".equals(tv_play_pause.getText())) {
                 mPlayer.start();
@@ -88,12 +88,12 @@ public class LrcActivity extends Activity
     }
 
     private void bindView() {
-        lrcv_lrc = ViewHelper.findView(this, R.id.lrcv_lrc);
-        sb_progress = ViewHelper.findView(this, R.id.sb_progress);
-        sb_scale = ViewHelper.findView(this, R.id.sb_scale);
-        tv_play_pause = ViewHelper.findView(this, R.id.tv_play_pause);
+        lrcv_lrc = ViewHelper.findViewById(this, R.id.lrcv_lrc);
+        sb_progress = ViewHelper.findViewById(this, R.id.sb_progress);
+        sb_scale = ViewHelper.findViewById(this, R.id.sb_scale);
+        tv_play_pause = ViewHelper.findViewById(this, R.id.tv_play_pause);
 
-        ViewHelper.setOnClick(this, this, R.id.iv_title_left,
+        ViewHelper.setOnClickListener(this, this, R.id.iv_title_left,
                 R.id.tv_play_pause);
     }
 
@@ -117,7 +117,8 @@ public class LrcActivity extends Activity
         lrcv_lrc.setOnClickListener(new LrcView.OnClickListener() {
             @Override
             public void onClick() {
-                Toast.makeText(LrcActivity.this, "Click lrc!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LrcActivity.this,
+                        "Click lrc!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -160,7 +161,7 @@ public class LrcActivity extends Activity
 
     private List<LrcRow> getLrcRows() {
         List<LrcRow> rows = null;
-        InputStream is = getResources().openRawResource(R.raw.hs);
+        InputStream is = getResources().openRawResource(R.raw.huashalrc);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         StringBuilder sb = new StringBuilder();
@@ -170,7 +171,7 @@ public class LrcActivity extends Activity
             }
             rows = DefaultLrcParser.getLrcRows(sb.toString());
             Log.d("Lrc", sb.toString());
-        } catch (IOException e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
         return rows;

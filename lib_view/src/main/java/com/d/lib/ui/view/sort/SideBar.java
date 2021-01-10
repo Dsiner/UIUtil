@@ -207,11 +207,11 @@ public class SideBar extends View {
         invalidate();
     }
 
-    public interface OnLetterChangedListener {
-        void onChange(int index, String c);
-    }
-
     public void setOnLetterChangedListener(OnLetterChangedListener listener) {
         this.mListener = listener;
+    }
+
+    public interface OnLetterChangedListener {
+        void onChange(int index, String c);
     }
 }

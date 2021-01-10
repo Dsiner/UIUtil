@@ -30,11 +30,11 @@ public class ClockSetActivity extends Activity implements View.OnClickListener {
     }
 
     private void bindView() {
-        tv_hour = ViewHelper.findView(this, R.id.tv_hour);
-        tv_minute = ViewHelper.findView(this, R.id.tv_minute);
-        csv_clockset = ViewHelper.findView(this, R.id.csv_clockset);
+        tv_hour = ViewHelper.findViewById(this, R.id.tv_hour);
+        tv_minute = ViewHelper.findViewById(this, R.id.tv_minute);
+        csv_clockset = ViewHelper.findViewById(this, R.id.csv_clockset);
 
-        ViewHelper.setOnClick(this, this, R.id.iv_title_left,
+        ViewHelper.setOnClickListener(this, this, R.id.iv_title_left,
                 R.id.tv_hour, R.id.tv_minute);
     }
 

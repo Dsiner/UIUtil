@@ -20,7 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.d.lib.common.util.DimenUtils;
-import com.d.lib.common.view.roundedimageview.RoundedImageView;
+import com.d.lib.common.widget.roundedimageview.RoundedImageView;
 import com.d.lib.ui.view.R;
 
 import java.lang.annotation.ElementType;
@@ -71,13 +71,6 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
     private Request mRequest;
     private RoundedImageView mIvThumb, mIvAlpha, mIvState;
     private OnClickListener mListener;
-
-    @IntDef({STATE_SCANNING, STATE_PROGRESS, STATE_PENDDING, STATE_DONE, STATE_ERROR})
-    @Target({ElementType.PARAMETER})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface State {
-
-    }
 
     public SnapProgressBar(@NonNull Context context) {
         this(context, null);
@@ -239,6 +232,21 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
         view.setImageResource(id);
     }
 
+    public void setOnClickListener(OnClickListener l) {
+        this.mListener = l;
+    }
+
+    @IntDef({STATE_SCANNING, STATE_PROGRESS, STATE_PENDDING, STATE_DONE, STATE_ERROR})
+    @Target({ElementType.PARAMETER})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface State {
+
+    }
+
+    public interface OnClickListener {
+        void onRestart();
+    }
+
     public class Request {
         public Request thumb(Bitmap bitmap) {
             mIvThumb.setImageBitmap(bitmap);
@@ -255,13 +263,5 @@ public class SnapProgressBar extends FrameLayout implements View.OnClickListener
             invalidate();
             return this;
         }
-    }
-
-    public interface OnClickListener {
-        void onRestart();
-    }
-
-    public void setOnClickListener(OnClickListener l) {
-        this.mListener = l;
     }
 }

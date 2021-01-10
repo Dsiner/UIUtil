@@ -1,5 +1,6 @@
 package com.d.lib.ui.view.tick;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -13,7 +14,6 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 import com.d.lib.ui.view.R;
-import com.nineoldandroids.animation.ValueAnimator;
 
 /**
  * Tick

@@ -29,6 +29,6 @@ public class ArcMenuActivity extends Activity implements View.OnClickListener {
     }
 
     private void bindView() {
-        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
+        ViewHelper.setOnClickListener(this, this, R.id.iv_title_left);
     }
 }

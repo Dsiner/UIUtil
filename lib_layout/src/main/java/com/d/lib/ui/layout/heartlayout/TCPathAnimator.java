@@ -34,20 +34,23 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 飘心路径动画器
  */
 public class TCPathAnimator extends TCAbstractPathAnimator {
-    private final AtomicInteger mCounter = new AtomicInteger(0);
-    private Handler mHandler;
-
     //路径的缓存
     private final static int MAX_PATH_COUNTS = 10;      //最多生成的路径数目
+    private final AtomicInteger mCounter = new AtomicInteger(0);
+    private final Random mRandom;                       //随机数
+    private Handler mHandler;
     private int mCurrentPathCounts = 0;                 //已经生成的路径数目
     private HashMap<Integer, Path> mPathVec = null;     //已经生成的路径缓存
-    private final Random mRandom;                       //随机数
 
     public TCPathAnimator(Config config) {
         super(config);
         mHandler = new Handler(Looper.getMainLooper());
         mPathVec = new HashMap<>();
         mRandom = new Random();
+    }
+
+    private static float scale(double a, double b, double c, double d, double e) {
+        return (float) ((a - b) / (c - b) * (e - d) + d);
     }
 
     @Override
@@ -122,10 +125,6 @@ public class TCPathAnimator extends TCAbstractPathAnimator {
             mView.setScaleY(scale);
             transformation.setAlpha(1.0F - factor);
         }
-    }
-
-    private static float scale(double a, double b, double c, double d, double e) {
-        return (float) ((a - b) / (c - b) * (e - d) + d);
     }
 }
 

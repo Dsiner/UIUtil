@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void bindView() {
-        ViewHelper.setOnClick(this, this, R.id.btn_lrc, R.id.btn_sort,
+        ViewHelper.setOnClickListener(this, this, R.id.btn_lrc, R.id.btn_sort,
                 R.id.btn_tick, R.id.btn_toggle, R.id.btn_stoke, R.id.btn_replybg, R.id.btn_arcmenu,
                 R.id.btn_heart, R.id.btn_progress, R.id.btn_praise, R.id.btn_shadow,
                 R.id.btn_recordtrigger, R.id.btn_verinor, R.id.btn_poi, R.id.btn_clockset,

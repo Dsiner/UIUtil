@@ -15,12 +15,17 @@ import java.util.List;
  * Created by Sai on 15/7/29.
  */
 public class CBPageAdapter<T> extends PagerAdapter {
+    private final int MULTIPLE_COUNT = 300;
     protected List<T> mDatas;
     protected CBViewHolderCreator holderCreator;
     //    private View.OnClickListener onItemClickListener;
     private boolean canLoop = true;
     private CBLoopViewPager viewPager;
-    private final int MULTIPLE_COUNT = 300;
+
+    public CBPageAdapter(CBViewHolderCreator holderCreator, List<T> datas) {
+        this.holderCreator = holderCreator;
+        this.mDatas = datas;
+    }
 
     public int toRealPosition(int position) {
         int realCount = getRealCount();
@@ -81,11 +86,6 @@ public class CBPageAdapter<T> extends PagerAdapter {
 
     public void setViewPager(CBLoopViewPager viewPager) {
         this.viewPager = viewPager;
-    }
-
-    public CBPageAdapter(CBViewHolderCreator holderCreator, List<T> datas) {
-        this.holderCreator = holderCreator;
-        this.mDatas = datas;
     }
 
     public View getView(int position, View view, ViewGroup container) {

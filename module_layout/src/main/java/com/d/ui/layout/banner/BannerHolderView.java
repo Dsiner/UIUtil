@@ -23,7 +23,7 @@ public class BannerHolderView implements Holder<BannerBean> {
 
     @Override
     public void UpdateUI(Context context, int position, BannerBean data, boolean canLoop) {
-        ImageView iv_banner_image = ViewHelper.findView(root, R.id.iv_banner_image);
+        ImageView iv_banner_image = ViewHelper.findViewById(root, R.id.iv_banner_image);
         Glide.with(context.getApplicationContext()).load(data.url)
                 .apply(new RequestOptions()
                         .diskCacheStrategy(DiskCacheStrategy.DATA)

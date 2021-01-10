@@ -34,14 +34,14 @@ public class ProgressActivity extends Activity implements View.OnClickListener {
     }
 
     private void bindView() {
-        snap = ViewHelper.findView(this, R.id.snap);
+        snap = ViewHelper.findViewById(this, R.id.snap);
 
-        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
+        ViewHelper.setOnClickListener(this, this, R.id.iv_title_left);
     }
 
     private void initSetting() {
-        final TextView tvLevel = ViewHelper.findView(this, R.id.tv_level);
-        final SettingProgressView spvLevel = ViewHelper.findView(this, R.id.spv_level);
+        final TextView tvLevel = ViewHelper.findViewById(this, R.id.tv_level);
+        final SettingProgressView spvLevel = ViewHelper.findViewById(this, R.id.spv_level);
         spvLevel.setCurPosition(0);
         spvLevel.setOnProgressChangeListener(new SettingProgressView.OnProgressChangeListener() {
             @Override

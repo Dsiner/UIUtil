@@ -43,36 +43,6 @@ public class AdvertSwitcher extends ViewSwitcher {
     private Adapter mAdapter;
     private Handler mHandler;
 
-    private static class ScrollHandler extends Handler {
-        private WeakReference<AdvertSwitcher> reference;
-
-        ScrollHandler(AdvertSwitcher switcher) {
-            reference = new WeakReference<>(switcher);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            AdvertSwitcher theSwitcher = reference.get();
-            if (theSwitcher == null || theSwitcher.mContext == null
-                    || theSwitcher.mContext instanceof Activity
-                    && ((Activity) theSwitcher.mContext).isFinishing()) {
-                return;
-            }
-            switch (msg.what) {
-                case FLAG_SCROLL:
-                    theSwitcher.mCurIndex = ++theSwitcher.mCurIndex % theSwitcher.mAdapter.getCount();
-                    View view = theSwitcher.getNextView();
-                    theSwitcher.mAdapter.bindView(view,
-                            theSwitcher.mAdapter.getItem(theSwitcher.mCurIndex),
-                            theSwitcher.mCurIndex);
-                    theSwitcher.showNext();
-                    theSwitcher.mHandler.removeMessages(FLAG_SCROLL);
-                    theSwitcher.mHandler.sendEmptyMessageDelayed(FLAG_SCROLL, theSwitcher.mTimeSpan);
-                    break;
-            }
-        }
-    }
-
     public AdvertSwitcher(Context context) {
         this(context, null);
     }
@@ -163,6 +133,36 @@ public class AdvertSwitcher extends ViewSwitcher {
         }
     }
 
+    private static class ScrollHandler extends Handler {
+        private WeakReference<AdvertSwitcher> reference;
+
+        ScrollHandler(AdvertSwitcher switcher) {
+            reference = new WeakReference<>(switcher);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            AdvertSwitcher theSwitcher = reference.get();
+            if (theSwitcher == null || theSwitcher.mContext == null
+                    || theSwitcher.mContext instanceof Activity
+                    && ((Activity) theSwitcher.mContext).isFinishing()) {
+                return;
+            }
+            switch (msg.what) {
+                case FLAG_SCROLL:
+                    theSwitcher.mCurIndex = ++theSwitcher.mCurIndex % theSwitcher.mAdapter.getCount();
+                    View view = theSwitcher.getNextView();
+                    theSwitcher.mAdapter.bindView(view,
+                            theSwitcher.mAdapter.getItem(theSwitcher.mCurIndex),
+                            theSwitcher.mCurIndex);
+                    theSwitcher.showNext();
+                    theSwitcher.mHandler.removeMessages(FLAG_SCROLL);
+                    theSwitcher.mHandler.sendEmptyMessageDelayed(FLAG_SCROLL, theSwitcher.mTimeSpan);
+                    break;
+            }
+        }
+    }
+
     public static abstract class Adapter<T> {
         protected Context mContext;
         protected List<T> mDatas;
@@ -175,15 +175,15 @@ public class AdvertSwitcher extends ViewSwitcher {
             mResId = resId;
         }
 
+        public List<T> getDatas() {
+            return mDatas;
+        }
+
         public void setDatas(List<T> datas) {
             if (mDatas != null && datas != null) {
                 mDatas.clear();
                 mDatas.addAll(datas);
             }
-        }
-
-        public List<T> getDatas() {
-            return mDatas;
         }
 
         public void notifyDataSetChanged() {
@@ -204,12 +204,12 @@ public class AdvertSwitcher extends ViewSwitcher {
 
         public abstract void bindView(View view, T item, int position);
 
-        public interface DataSetObservable {
-            void notifyChanged();
-        }
-
         void setDataSetObservable(DataSetObservable observer) {
             mDataSetObservable = observer;
+        }
+
+        public interface DataSetObservable {
+            void notifyChanged();
         }
     }
 }

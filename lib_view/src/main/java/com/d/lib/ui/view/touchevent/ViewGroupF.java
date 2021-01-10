@@ -13,24 +13,22 @@ import android.view.View;
 public class ViewGroupF extends ViewF {
 
     /**
+     * When set, this ViewGroup should not intercept touch events.
+     * {@hide}
+     */
+    protected static final int FLAG_DISALLOW_INTERCEPT = 0x80000;
+    /**
      * Mask for use with setFlags indicating bits used for visibility.
      * {@hide}
      */
     static final int VISIBILITY_MASK = 0x0000000C;
-
     /**
      * Indicates whether the view is temporarily detached.
      *
      * @hide
      */
     static final int CANCEL_NEXT_UP_EVENT = 0x04000000;
-
-    /**
-     * When set, this ViewGroup should not intercept touch events.
-     * {@hide}
-     */
-    protected static final int FLAG_DISALLOW_INTERCEPT = 0x80000;
-
+    private final Rect mTempRect = new Rect();
     /**
      * Internal flags.
      * <p>
@@ -38,17 +36,14 @@ public class ViewGroupF extends ViewF {
      * {@hide}
      */
     protected int mGroupFlags;
-
     private ViewGroupF mParent;
     // Child views of this ViewGroup
     private ViewF[] mChildren;
     // Number of valid children in the mChildren array, the rest should be null or not
     // considered as children
     private int mChildrenCount;
-
     // Target of Motion events
     private ViewF mMotionTarget;
-    private final Rect mTempRect = new Rect();
 
     public ViewGroupF(Context context) {
         super(context);

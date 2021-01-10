@@ -34,9 +34,9 @@ public class FlowLayoutActivity extends Activity implements View.OnClickListener
     }
 
     private void bindView() {
-        fl_flow = ViewHelper.findView(this, R.id.fl_flow);
+        fl_flow = ViewHelper.findViewById(this, R.id.fl_flow);
 
-        ViewHelper.setOnClick(this, this, R.id.iv_title_left);
+        ViewHelper.setOnClickListener(this, this, R.id.iv_title_left);
     }
 
     private void init() {

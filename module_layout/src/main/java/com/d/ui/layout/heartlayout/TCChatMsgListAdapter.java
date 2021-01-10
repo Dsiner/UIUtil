@@ -1,5 +1,7 @@
 package com.d.ui.layout.heartlayout;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -19,8 +21,6 @@ import android.widget.TextView;
 
 import com.d.lib.ui.layout.heartlayout.TCChatEntity;
 import com.d.ui.layout.R;
-import com.nineoldandroids.animation.AnimatorSet;
-import com.nineoldandroids.animation.ObjectAnimator;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -30,13 +30,14 @@ import java.util.List;
  * 消息列表的Adapter
  */
 public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnScrollListener {
-    private static String TAG = TCChatMsgListAdapter.class.getSimpleName();
-
     public static final int TYPE_TEXT_SEND = 0;
     public static final int TYPE_TEXT_RECV = 1;
-
     private static final int ITEMCOUNT = 7;
-
+    private static final int MAXANIMATORCOUNT = 8;
+    private static final int MAXLISTVIEWHEIGHT = 450;
+    private static final int ANIMATORDURING = 8000;
+    private static final int MAXITEMCOUNT = 50;
+    private static String TAG = TCChatMsgListAdapter.class.getSimpleName();
     private List<TCChatEntity> mListMessage;
     private LayoutInflater mInflater;
     private LinearLayout mLayout;
@@ -44,31 +45,9 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
     private Context mContext;
     private ListView mListView;
     private List<TCChatEntity> myArray = new ArrayList<>();
-
-    class AnimatorInfo {
-        long createTime;
-
-        public AnimatorInfo(long uTime) {
-            createTime = uTime;
-        }
-
-        public long getCreateTime() {
-            return createTime;
-        }
-
-        public void setCreateTime(long createTime) {
-            this.createTime = createTime;
-        }
-    }
-
-    private static final int MAXANIMATORCOUNT = 8;
-    private static final int MAXLISTVIEWHEIGHT = 450;
-    private static final int ANIMATORDURING = 8000;
-    private static final int MAXITEMCOUNT = 50;
     private LinkedList<AnimatorSet> mAnimatorSetList;
     private LinkedList<AnimatorInfo> mAnimatorInfoList;
     private boolean mScrolling = false;
-//    private boolean mCreateAnimator = false;
 
     public TCChatMsgListAdapter(Context context, ListView listview, List<TCChatEntity> objects) {
         this.mContext = context;
@@ -81,6 +60,7 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
 
         mListView.setOnScrollListener(this);
     }
+//    private boolean mCreateAnimator = false;
 
     @Override
     public int getCount() {
@@ -166,10 +146,6 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
         // 设置控件实际宽度以便计算列表项实际高度
         //holder.sendContext.fixViewWidth(mListView.getWidth());
         return convertView;
-    }
-
-    static class ViewHolder {
-        public TextView sendContext;
     }
 
     /**
@@ -474,5 +450,25 @@ public class TCChatMsgListAdapter extends BaseAdapter implements AbsListView.OnS
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 
+    }
+
+    static class ViewHolder {
+        public TextView sendContext;
+    }
+
+    class AnimatorInfo {
+        long createTime;
+
+        public AnimatorInfo(long uTime) {
+            createTime = uTime;
+        }
+
+        public long getCreateTime() {
+            return createTime;
+        }
+
+        public void setCreateTime(long createTime) {
+            this.createTime = createTime;
+        }
     }
 }

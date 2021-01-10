@@ -3,7 +3,7 @@ package com.d.ui.view.flowlayout;
 import android.content.Context;
 import android.view.View;
 
-import com.d.lib.common.view.btb.CommonHolder;
+import com.d.lib.pulllayout.lv.adapter.CommonHolder;
 import com.d.lib.ui.view.flowlayout.FlowLayoutAdapter;
 import com.d.ui.view.R;
 
@@ -33,11 +33,11 @@ class FlowTagAdapter extends FlowLayoutAdapter<FlowBean> {
         });
     }
 
-    public interface OnClickListener {
-        void onClick(View v, String tag);
-    }
-
     public void setOnClickListener(OnClickListener l) {
         this.mOnClickListener = l;
+    }
+
+    public interface OnClickListener {
+        void onClick(View v, String tag);
     }
 }

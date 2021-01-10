@@ -235,12 +235,12 @@ public class ClockSetView extends View {
         this.invalidate();
     }
 
-    public interface OnSelectListener {
-        void onSelect(int mode, int value);
-    }
-
     public void setOnSelectListener(OnSelectListener l) {
         this.mListener = l;
+    }
+
+    public interface OnSelectListener {
+        void onSelect(int mode, int value);
     }
 
     static class ExChange {

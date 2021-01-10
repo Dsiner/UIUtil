@@ -1,5 +1,7 @@
 package com.d.ui.layout.praise.adapter;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,11 +11,9 @@ import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
 import com.d.lib.common.util.ViewHelper;
-import com.d.lib.xrv.adapter.CommonAdapter;
-import com.d.lib.xrv.adapter.CommonHolder;
+import com.d.lib.pulllayout.rv.adapter.CommonAdapter;
+import com.d.lib.pulllayout.rv.adapter.CommonHolder;
 import com.d.ui.layout.R;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.ValueAnimator;
 
 import java.util.List;
 
@@ -87,15 +87,15 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
         return mScrollState == RecyclerView.SCROLL_STATE_IDLE;
     }
 
+    public int getPosLiving() {
+        return mPosLiving;
+    }
+
     public void setPosLiving(int position) {
         if (position < 0 || position >= mDatas.size()) {
             return;
         }
         mPosLiving = position;
-    }
-
-    public int getPosLiving() {
-        return mPosLiving;
     }
 
     /**
@@ -149,7 +149,8 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
      * @param notify 是否刷新当前新增数
      */
     public void doPraiseAll(long count, boolean notify) {
-        if (mDatas == null || mDatas.size() <= 0 || mPosLiving < 0 || mPosLiving >= mDatas.size()) {
+        if (mDatas == null || mDatas.size() <= 0
+                || mPosLiving < 0 || mPosLiving >= mDatas.size()) {
             return;
         }
         mDatas.get(mPosLiving).count += count;
@@ -166,8 +167,8 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
         mAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                com.nineoldandroids.view.ViewHelper.setScaleX(mAnimView, (float) animation.getAnimatedValue());
-                com.nineoldandroids.view.ViewHelper.setScaleY(mAnimView, (float) animation.getAnimatedValue());
+                mAnimView.setScaleX((float) animation.getAnimatedValue());
+                mAnimView.setScaleY((float) animation.getAnimatedValue());
             }
         });
         mAnim.addListener(new Animator.AnimatorListener() {
@@ -217,7 +218,7 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
     /**
      * 放大动画
      */
-    private void aS() {
+    private void startScaleAnim() {
         if (mIsAsAnimation) {
             return;
         }
@@ -236,9 +237,9 @@ public class PraiseAdapter extends CommonAdapter<PraiseAdapter.Bean> {
             if (mAnim == null) {
                 initAnim();
             }
-            aS();
+            startScaleAnim();
         } else if (position != mPosLiving) {
-            holder.setViewVisibility(R.id.llyt_praise_layer, View.GONE);
+            holder.setVisibility(R.id.llyt_praise_layer, View.GONE);
         }
     }
 

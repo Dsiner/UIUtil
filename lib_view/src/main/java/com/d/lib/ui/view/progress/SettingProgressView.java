@@ -244,6 +244,10 @@ public class SettingProgressView extends View {
         return this;
     }
 
+    public void setOnProgressChangeListener(OnProgressChangeListener listener) {
+        this.mListener = listener;
+    }
+
     public interface OnProgressChangeListener {
 
         /**
@@ -255,9 +259,5 @@ public class SettingProgressView extends View {
          * @param position from 0 to item count - 1
          */
         void onClick(int position);
-    }
-
-    public void setOnProgressChangeListener(OnProgressChangeListener listener) {
-        this.mListener = listener;
     }
 }

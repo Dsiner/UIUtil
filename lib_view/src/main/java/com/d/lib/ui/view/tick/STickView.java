@@ -1,5 +1,6 @@
 package com.d.lib.ui.view.tick;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -14,7 +15,6 @@ import android.view.animation.Interpolator;
 
 import com.d.lib.common.util.DimenUtils;
 import com.d.lib.ui.view.R;
-import com.nineoldandroids.animation.ValueAnimator;
 
 public class STickView extends View {
     private final long DURATION = 2500; // Anim duration

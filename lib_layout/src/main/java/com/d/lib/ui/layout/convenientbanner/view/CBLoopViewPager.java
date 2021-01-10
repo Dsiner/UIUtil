@@ -12,13 +12,65 @@ import com.d.lib.ui.layout.convenientbanner.listener.OnItemClickListener;
 import java.lang.reflect.Field;
 
 public class CBLoopViewPager extends ViewPager {
+    private static final float sens = 5;
     OnPageChangeListener mOuterPageChangeListener;
     private OnItemClickListener onItemClickListener;
     private CBPageAdapter mAdapter;
-
     private boolean isCanScroll = true;
     private boolean canLoop = true;
     private boolean isFirstLayout = true;
+    private float oldX = 0, newX = 0;
+    private OnPageChangeListener onPageChangeListener = new OnPageChangeListener() {
+        private float mPreviousPosition = -1;
+
+        @Override
+        public void onPageSelected(int position) {
+            int realPosition = mAdapter.toRealPosition(position);
+            if (mPreviousPosition != realPosition) {
+                mPreviousPosition = realPosition;
+                if (mOuterPageChangeListener != null) {
+                    mOuterPageChangeListener.onPageSelected(realPosition);
+                }
+            }
+        }
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset,
+                                   int positionOffsetPixels) {
+            int realPosition = position;
+
+            if (mOuterPageChangeListener != null) {
+                if (realPosition != mAdapter.getRealCount() - 1) {
+                    mOuterPageChangeListener.onPageScrolled(realPosition,
+                            positionOffset, positionOffsetPixels);
+                } else {
+                    if (positionOffset > .5) {
+                        mOuterPageChangeListener.onPageScrolled(0, 0, 0);
+                    } else {
+                        mOuterPageChangeListener.onPageScrolled(realPosition,
+                                0, 0);
+                    }
+                }
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+            if (mOuterPageChangeListener != null) {
+                mOuterPageChangeListener.onPageScrollStateChanged(state);
+            }
+        }
+    };
+
+    public CBLoopViewPager(Context context) {
+        super(context);
+        init();
+    }
+
+    public CBLoopViewPager(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
 
     public void setAdapter(PagerAdapter adapter, boolean canLoop) {
         mAdapter = (CBPageAdapter) adapter;
@@ -44,9 +96,6 @@ public class CBLoopViewPager extends ViewPager {
     public void setCanScroll(boolean isCanScroll) {
         this.isCanScroll = isCanScroll;
     }
-
-    private float oldX = 0, newX = 0;
-    private static final float sens = 5;
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
@@ -113,62 +162,9 @@ public class CBLoopViewPager extends ViewPager {
         mOuterPageChangeListener = listener;
     }
 
-
-    public CBLoopViewPager(Context context) {
-        super(context);
-        init();
-    }
-
-    public CBLoopViewPager(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
-    }
-
     private void init() {
         super.setOnPageChangeListener(onPageChangeListener);
     }
-
-    private OnPageChangeListener onPageChangeListener = new OnPageChangeListener() {
-        private float mPreviousPosition = -1;
-
-        @Override
-        public void onPageSelected(int position) {
-            int realPosition = mAdapter.toRealPosition(position);
-            if (mPreviousPosition != realPosition) {
-                mPreviousPosition = realPosition;
-                if (mOuterPageChangeListener != null) {
-                    mOuterPageChangeListener.onPageSelected(realPosition);
-                }
-            }
-        }
-
-        @Override
-        public void onPageScrolled(int position, float positionOffset,
-                                   int positionOffsetPixels) {
-            int realPosition = position;
-
-            if (mOuterPageChangeListener != null) {
-                if (realPosition != mAdapter.getRealCount() - 1) {
-                    mOuterPageChangeListener.onPageScrolled(realPosition,
-                            positionOffset, positionOffsetPixels);
-                } else {
-                    if (positionOffset > .5) {
-                        mOuterPageChangeListener.onPageScrolled(0, 0, 0);
-                    } else {
-                        mOuterPageChangeListener.onPageScrolled(realPosition,
-                                0, 0);
-                    }
-                }
-            }
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-            if (mOuterPageChangeListener != null) {
-                mOuterPageChangeListener.onPageScrollStateChanged(state);
-            }
-        }
-    };
 
     public boolean isCanLoop() {
         return canLoop;

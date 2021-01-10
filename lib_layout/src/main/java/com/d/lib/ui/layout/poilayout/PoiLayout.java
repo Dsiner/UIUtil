@@ -1,5 +1,7 @@
-package com.d.lib.ui.layout.poi;
+package com.d.lib.ui.layout.poilayout;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -9,8 +11,6 @@ import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 
 import com.d.lib.common.util.DimenUtils;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.ValueAnimator;
 
 /**
  * PoiLayout
@@ -298,13 +298,13 @@ public class PoiLayout extends ViewGroup {
         }
     }
 
+    public void setOnChangeListener(OnChangeListener l) {
+        this.mListener = l;
+    }
+
     public interface OnChangeListener {
         void onChange(int status);
 
         void onScroll(float offset);
-    }
-
-    public void setOnChangeListener(OnChangeListener l) {
-        this.mListener = l;
     }
 }

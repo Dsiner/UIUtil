@@ -1,9 +1,14 @@
 package com.d.lib.ui.layout.praise;
 
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
@@ -14,11 +19,6 @@ import android.widget.RelativeLayout;
 
 import com.d.lib.common.util.DimenUtils;
 import com.d.lib.ui.layout.R;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.nineoldandroids.animation.AnimatorSet;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.view.ViewHelper;
 
 import java.util.Random;
 
@@ -176,9 +176,11 @@ public class PraiseLayout extends RelativeLayout {
         @Override
         public void onAnimationUpdate(ValueAnimator animation) {
             PointF pointF = (PointF) animation.getAnimatedValue();
-            ViewHelper.setX(target, pointF.x);
-            ViewHelper.setY(target, pointF.y);
-            ViewHelper.setAlpha(target, 1 - animation.getAnimatedFraction());
+            target.setX(pointF.x);
+            target.setY(pointF.y);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
+                target.setAlpha(1 - animation.getAnimatedFraction());
+            }
         }
     }
 

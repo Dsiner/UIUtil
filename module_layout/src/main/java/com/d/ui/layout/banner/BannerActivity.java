@@ -35,8 +35,8 @@ public class BannerActivity extends Activity {
     }
 
     private void bindView() {
-        cb_banner = ViewHelper.findView(this, R.id.cb_banner);
-        cb_banner_vertical = ViewHelper.findView(this, R.id.cb_banner_vertical);
+        cb_banner = ViewHelper.findViewById(this, R.id.cb_banner);
+        cb_banner_vertical = ViewHelper.findViewById(this, R.id.cb_banner_vertical);
     }
 
     private void init() {

@@ -39,17 +39,6 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
     private OnMenuItemClickListener mMenuItemClickListener;
     private int mCount;
 
-    public enum Status {
-        OPEN, CLOSE
-    }
-
-    /**
-     * 菜单的位置枚举类
-     */
-    public enum Position {
-        LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM
-    }
-
     public ArcMenu(Context context) {
         this(context, null);
     }
@@ -302,14 +291,25 @@ public class ArcMenu extends ViewGroup implements OnClickListener {
         return anim;
     }
 
+    public void setOnMenuItemClickListener(OnMenuItemClickListener mMenuItemClickListener) {
+        this.mMenuItemClickListener = mMenuItemClickListener;
+    }
+
+    public enum Status {
+        OPEN, CLOSE
+    }
+
+    /**
+     * 菜单的位置枚举类
+     */
+    public enum Position {
+        LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM
+    }
+
     /**
      * 点击子菜单项的回调接口
      */
     public interface OnMenuItemClickListener {
         void onClick(View view, int pos);
-    }
-
-    public void setOnMenuItemClickListener(OnMenuItemClickListener mMenuItemClickListener) {
-        this.mMenuItemClickListener = mMenuItemClickListener;
     }
 }
